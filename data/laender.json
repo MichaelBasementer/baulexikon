@@ -38,7 +38,8 @@
     {"land":"he","schadstoff":"pak","material":"Benzo(a)pyren","bezug":"Originalsubstanz","op":"≥","zahl":50,"einheit":"mg/kg","quelle":"he-merkblatt","fundstelle":"Kapitel 3.2 PAK"},
     {"land":"bw","schadstoff":"pak","material":"teerhaltig","bezug":"PAK nach EPA, Originalsubstanz","zahl":200,"einheit":"mg/kg","quelle":"bw-schreiben","fundstelle":"Schreiben vom 12.08.2024, Nr. 2"},
     {"land":"bw","schadstoff":"pak","material":"andere PAK-haltige Abfälle","bezug":"z. B. Brandschutt, Aschen; PAK nach EPA, OS","zahl":1000,"einheit":"mg/kg","quelle":"bw-schreiben","fundstelle":"Schreiben vom 12.08.2024, Nr. 2"},
-    {"land":"bw","schadstoff":"schwermetalle","material":"Quecksilber","bezug":"Originalsubstanz","zahl":500,"einheit":"mg/kg","quelle":"bw-schreiben","fundstelle":"Schreiben vom 12.08.2024, Nr. 3"},
+    {"land":"he","schadstoff":"schwermetalle","material":"Quecksilber","bezug":"OS, Merkblatt 2025; LAGA Juli 2025 nennt 15 mg/kg","op":"≥","zahl":2500,"einheit":"mg/kg","quelle":"he-merkblatt","fundstelle":"Kapitel 3.2"},
+    {"land":"bw","schadstoff":"schwermetalle","material":"Quecksilber","bezug":"OS, Schreiben 2024; LAGA Juli 2025 nennt 15 mg/kg","zahl":500,"einheit":"mg/kg","quelle":"bw-schreiben","fundstelle":"Schreiben vom 12.08.2024, Nr. 3"},
     {"land":"bw","schadstoff":"mkw","material":"natürliche MKW in Böden","bezug":"MKW C10–C40, Ölschiefer","op":">","zahl":8000,"einheit":"mg/kg","quelle":"bw-schreiben","fundstelle":"Schreiben vom 12.08.2024, Nr. 1"},
     {"land":"rp","schadstoff":"pak","material":"Boden, mineralischer Bauabfall","bezug":"Regeleinstufung, Ausnahmen beachten","text":"über BM-F3 / DK II","quelle":"rp-entscheidung"},
     {"land":"rp","schadstoff":"schwermetalle","material":"Boden, mineralischer Bauabfall","bezug":"Regeleinstufung, Ausnahmen beachten","text":"über BM-F3 / DK II","quelle":"rp-entscheidung"}

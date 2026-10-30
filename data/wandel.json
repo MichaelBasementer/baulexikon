@@ -2,5 +2,7 @@
   {"titel":"Asbest-Genehmigung","text":"Für Abbruch im niedrigen und mittleren Risiko bis zum Ablauf des 19.12.2026 nachzuweisen (§ 25 Abs. 9 GefStoffV)","status":"Frist","quelle":"gefstoffv"},
   {"titel":"TRGS 519 Neufassung","text":"Anpassung an die GefStoffV angekündigt, am 30.10.2026 noch nicht erschienen","status":"offen","quelle":"trgs519"},
   {"titel":"EBV-Novelle","text":"Referentenentwurf Juli 2026, noch nicht in Kraft","status":"Entwurf","quelle":"ebv-novelle"},
+  {"titel":"Quecksilber-Grenze","text":"LAGA Technische Hinweise Juli 2025: 15 mg/kg. Ältere Länderwerte: Hessen 2.500, Baden-Württemberg 500. Sachsen verweist seit 2026 auf die LAGA-Tabelle. Geltung bei der Behörde klären","status":"klären","quelle":"laga-th"},
+  {"titel":"PBDE-Grenzen","text":"POP-Grenze seit 30.12.2025 bei 350 mg/kg, ab 30.12.2027 bei 200 mg/kg","status":"Frist","quelle":"laga-th"},
   {"titel":"Sachkunde Asbest","text":"Sachkunde und Fachkunde bis zum 05.12.2027 nachzuweisen (§ 25 Abs. 5 GefStoffV)","status":"Frist","quelle":"gefstoffv"}
 ]

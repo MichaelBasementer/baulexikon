@@ -85,7 +85,9 @@ async function avv(old) {
   const old = JSON.parse(fs.readFileSync(path.join(ROOT, "data/avv.json"), "utf8"));
   const tabs = [...await depv(), ...await ebv()];
   const codes = await avv(old);
-  fs.writeFileSync(path.join(ROOT, "data/tabellen.json"), JSON.stringify(tabs, null, 1) + "\n");
+  // LAGA tables come from a PDF and are maintained in the file itself.
+  const lagaTabs = JSON.parse(fs.readFileSync(path.join(ROOT, "data/tabellen.json"), "utf8")).filter(t => t.quelle === "laga-th");
+  fs.writeFileSync(path.join(ROOT, "data/tabellen.json"), JSON.stringify([...tabs, ...lagaTabs], null, 1) + "\n");
   fs.writeFileSync(path.join(ROOT, "data/avv.json"), JSON.stringify(codes, null, 1) + "\n");
   tabs.forEach(t => console.log(`${t.id}: ${t.zeilen.length} Zeilen, ${t.fussnoten.length} Fußnoten`));
   console.log(`AVV Kapitel 17: ${codes.length} Schlüssel`);

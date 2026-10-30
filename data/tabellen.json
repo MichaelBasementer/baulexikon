@@ -3798,5 +3798,747 @@
   "fussnoten": [
    "1) Einzelwerte jeweils für Dimefuron, Flazasulfuron, Flumioxazin, Ethidimuron, Thiazafluron sowie für neu zugelassene Wirkstoffe."
   ]
+ },
+ {
+  "id": "laga-metalle",
+  "titel": "Gefährlichkeit: Metalle",
+  "sub": "LAGA Technische Hinweise, Tabelle 1",
+  "stichworte": "Gefährlichkeit Konzentrationsgrenze Spiegeleintrag gefährlich HP Blei Kupfer Zink Quecksilber Arsen Cadmium",
+  "spalten": [
+   "mg/kg OS",
+   "Eigenschaft"
+  ],
+  "start": [
+   0,
+   1
+  ],
+  "zeilen": [
+   {
+    "parameter": "Antimon",
+    "einheit": "",
+    "werte": [
+     {
+      "s": "10.000",
+      "zahl": 10000
+     },
+     {
+      "text": "HP 7"
+     }
+    ]
+   },
+   {
+    "parameter": "Arsen",
+    "einheit": "",
+    "werte": [
+     {
+      "s": "1.000",
+      "zahl": 1000
+     },
+     {
+      "text": "HP 7"
+     }
+    ]
+   },
+   {
+    "parameter": "Blei",
+    "einheit": "",
+    "werte": [
+     {
+      "s": "2.500",
+      "zahl": 2500
+     },
+     {
+      "text": "HP 14 X"
+     }
+    ]
+   },
+   {
+    "parameter": "Cadmium",
+    "einheit": "",
+    "werte": [
+     {
+      "s": "1.000",
+      "zahl": 1000,
+      "fn": "1"
+     },
+     {
+      "text": "HP 7"
+     }
+    ]
+   },
+   {
+    "parameter": "Chrom-VI",
+    "einheit": "",
+    "werte": [
+     {
+      "s": "1.000",
+      "zahl": 1000
+     },
+     {
+      "text": "HP 7"
+     }
+    ]
+   },
+   {
+    "parameter": "Kobalt",
+    "einheit": "",
+    "werte": [
+     {
+      "s": "1.000",
+      "zahl": 1000
+     },
+     {
+      "text": "HP 7"
+     }
+    ]
+   },
+   {
+    "parameter": "Kupfer",
+    "einheit": "",
+    "werte": [
+     {
+      "s": "2.500",
+      "zahl": 2500
+     },
+     {
+      "text": "HP 14 X"
+     }
+    ]
+   },
+   {
+    "parameter": "Nickel",
+    "einheit": "",
+    "werte": [
+     {
+      "s": "1.000",
+      "zahl": 1000,
+      "fn": "1"
+     },
+     {
+      "text": "HP 7"
+     }
+    ]
+   },
+   {
+    "parameter": "Quecksilber",
+    "einheit": "",
+    "werte": [
+     {
+      "s": "15",
+      "zahl": 15,
+      "fn": "2"
+     },
+     null
+    ]
+   },
+   {
+    "parameter": "Selen",
+    "einheit": "",
+    "werte": [
+     {
+      "s": "2.500",
+      "zahl": 2500
+     },
+     {
+      "text": "HP 14 X"
+     }
+    ]
+   },
+   {
+    "parameter": "Thallium",
+    "einheit": "",
+    "werte": [
+     {
+      "s": "2.500",
+      "zahl": 2500
+     },
+     {
+      "text": "HP 6"
+     }
+    ]
+   },
+   {
+    "parameter": "Organozinnverbindungen",
+    "einheit": "",
+    "werte": [
+     {
+      "s": "2.500",
+      "zahl": 2500
+     },
+     {
+      "text": "HP 14 X"
+     }
+    ]
+   },
+   {
+    "parameter": "Zink",
+    "einheit": "",
+    "werte": [
+     {
+      "s": "2.500",
+      "zahl": 2500
+     },
+     {
+      "text": "HP 14 X"
+     }
+    ]
+   },
+   {
+    "parameter": "Beryllium",
+    "einheit": "",
+    "werte": [
+     {
+      "s": "1.000",
+      "zahl": 1000
+     },
+     {
+      "text": "HP 7"
+     }
+    ]
+   },
+   {
+    "parameter": "Silber",
+    "einheit": "",
+    "werte": [
+     {
+      "s": "2.500",
+      "zahl": 2500
+     },
+     {
+      "text": "HP 14 X"
+     }
+    ]
+   },
+   {
+    "parameter": "Vanadium",
+    "einheit": "",
+    "werte": [
+     {
+      "s": "1.000",
+      "zahl": 1000
+     },
+     {
+      "text": "HP 7"
+     }
+    ]
+   }
+  ],
+  "quelle": "laga-th",
+  "fundstelle": "Tabelle 1, Stand Juli 2025",
+  "fussnoten": [
+   "1) Liegen Kenntnisse vor, dass im Abfall Cadmium- und Nickelverbindungen mit in Anhang VI der CLP-VO abweichender Einstufung enthalten sind, können diese herangezogen werden.",
+   "2) Wert beruht auf dem Beschluss MC-5/10 der 5. Vertragsstaatenkonferenz des Minamata-Übereinkommens. Für bestimmte Lampenfraktionen können die Länder abweichen.",
+   "X: Stoffe chronisch gewässergefährdend H410. Sie werden addiert, wenn sie einzeln mindestens 1.000 mg/kg erreichen. Ab einer Summe von 2.500 mg/kg ist der Abfall ökotoxisch (HP 14).",
+   "Die Grenzen gelten für unbekannte Einzelverbindungen und beziehen sich auf die Originalsubstanz. Länderregeln können ergänzen."
+  ]
+ },
+ {
+  "id": "laga-eluat",
+  "titel": "Gefährlichkeit: Eluat",
+  "sub": "LAGA Technische Hinweise, Tabelle 2",
+  "stichworte": "Gefährlichkeit Konzentrationsgrenze Spiegeleintrag gefährlich HP HP 15 Eluat DK II",
+  "spalten": [
+   "mg/l"
+  ],
+  "start": [
+   0
+  ],
+  "zeilen": [
+   {
+    "parameter": "Phenole",
+    "einheit": "",
+    "werte": [
+     {
+      "s": "50",
+      "zahl": 50
+     }
+    ]
+   },
+   {
+    "parameter": "Arsen",
+    "einheit": "",
+    "werte": [
+     {
+      "s": "0,2",
+      "zahl": 0.2
+     }
+    ]
+   },
+   {
+    "parameter": "Blei",
+    "einheit": "",
+    "werte": [
+     {
+      "s": "1",
+      "zahl": 1
+     }
+    ]
+   },
+   {
+    "parameter": "Cadmium",
+    "einheit": "",
+    "werte": [
+     {
+      "s": "0,1",
+      "zahl": 0.1
+     }
+    ]
+   },
+   {
+    "parameter": "Kupfer",
+    "einheit": "",
+    "werte": [
+     {
+      "s": "5",
+      "zahl": 5
+     }
+    ]
+   },
+   {
+    "parameter": "Nickel",
+    "einheit": "",
+    "werte": [
+     {
+      "s": "1",
+      "zahl": 1
+     }
+    ]
+   },
+   {
+    "parameter": "Quecksilber",
+    "einheit": "",
+    "werte": [
+     {
+      "s": "0,02",
+      "zahl": 0.02
+     }
+    ]
+   },
+   {
+    "parameter": "Zink",
+    "einheit": "",
+    "werte": [
+     {
+      "s": "5",
+      "zahl": 5
+     }
+    ]
+   },
+   {
+    "parameter": "Cyanid, leicht freisetzbar",
+    "einheit": "",
+    "werte": [
+     {
+      "s": "0,5",
+      "zahl": 0.5
+     }
+    ]
+   },
+   {
+    "parameter": "Barium",
+    "einheit": "",
+    "werte": [
+     {
+      "s": "10",
+      "zahl": 10
+     }
+    ]
+   },
+   {
+    "parameter": "Chrom, gesamt",
+    "einheit": "",
+    "werte": [
+     {
+      "s": "1",
+      "zahl": 1
+     }
+    ]
+   },
+   {
+    "parameter": "Molybdän",
+    "einheit": "",
+    "werte": [
+     {
+      "s": "1",
+      "zahl": 1
+     }
+    ]
+   },
+   {
+    "parameter": "Antimon",
+    "einheit": "",
+    "werte": [
+     {
+      "s": "0,07",
+      "zahl": 0.07
+     }
+    ]
+   },
+   {
+    "parameter": "Selen",
+    "einheit": "",
+    "werte": [
+     {
+      "s": "0,05",
+      "zahl": 0.05
+     }
+    ]
+   }
+  ],
+  "quelle": "laga-th",
+  "fundstelle": "Tabelle 2, Stand Juli 2025",
+  "fussnoten": [
+   "Zuordnungswerte DK II der DepV, Eluat mit W/F 10/1. Überschreitung: gefährlich nach HP 15. Gilt nur für feste Abfälle."
+  ]
+ },
+ {
+  "id": "laga-organik",
+  "titel": "Gefährlichkeit: Organische Stoffe",
+  "sub": "LAGA Technische Hinweise, Tabelle 3",
+  "stichworte": "Gefährlichkeit Konzentrationsgrenze Spiegeleintrag gefährlich HP PCB MKW BTEX LHKW Dioxine Benzo(a)pyren DDT Lindan",
+  "spalten": [
+   "mg/kg OS",
+   "Eigenschaft"
+  ],
+  "start": [
+   0,
+   1
+  ],
+  "zeilen": [
+   {
+    "parameter": "PAK nach EPA",
+    "fn": "1",
+    "einheit": "",
+    "werte": [
+     {
+      "text": "länderspezifisch"
+     },
+     null
+    ]
+   },
+   {
+    "parameter": "Benzo(a)pyren",
+    "einheit": "",
+    "werte": [
+     {
+      "s": "50",
+      "zahl": 50
+     },
+     {
+      "text": "HP 7"
+     }
+    ]
+   },
+   {
+    "parameter": "MKW C10–C40",
+    "einheit": "",
+    "werte": [
+     {
+      "s": "1.000",
+      "zahl": 1000,
+      "fn": "2"
+     },
+     {
+      "text": "HP 7"
+     }
+    ]
+   },
+   {
+    "parameter": "MKW C10–C40, ohne karzinogene KW",
+    "einheit": "",
+    "werte": [
+     {
+      "s": "2.500",
+      "zahl": 2500,
+      "fn": "2"
+     },
+     {
+      "text": "HP 14 X"
+     }
+    ]
+   },
+   {
+    "parameter": "BTEX (Benzol)",
+    "einheit": "",
+    "werte": [
+     {
+      "s": "1.000",
+      "zahl": 1000
+     },
+     {
+      "text": "HP 7"
+     }
+    ]
+   },
+   {
+    "parameter": "LHKW",
+    "einheit": "",
+    "werte": [
+     {
+      "s": "1.000",
+      "zahl": 1000
+     },
+     {
+      "text": "HP 7, 11, 14"
+     }
+    ]
+   },
+   {
+    "parameter": "PCB",
+    "fn": "3",
+    "einheit": "",
+    "werte": [
+     {
+      "s": "50",
+      "zahl": 50
+     },
+     null
+    ]
+   },
+   {
+    "parameter": "PCDD/F (I-TEQ)",
+    "fn": "4",
+    "einheit": "",
+    "werte": [
+     {
+      "text": "5 µg/kg"
+     },
+     null
+    ]
+   },
+   {
+    "parameter": "DDT, HCH inkl. Lindan, Aldrin u. a., je Stoff",
+    "einheit": "",
+    "werte": [
+     {
+      "s": "50",
+      "zahl": 50
+     },
+     null
+    ]
+   }
+  ],
+  "quelle": "laga-th",
+  "fundstelle": "Tabelle 3, Stand Juli 2025",
+  "fussnoten": [
+   "1) PAK-haltige Abfälle sind nach länderspezifischen Regelungen zu prüfen.",
+   "2) Weist der Erzeuger nach, dass keine karzinogenen KW enthalten sind, gelten 2.500 mg/kg. Nachweis: PAK16 und Benzol bzw. BTEX jeweils unter 1.000 mg/kg. Bitumen- und Kunststoffanteile können bei der MKW-Analytik falsch-positive Befunde bewirken. Kann das herkunftsbedingt ausgeschlossen werden, etwa bei bituminösem Schwarzanstrich auf Beton, bleiben diese Konzentrationen unberücksichtigt.",
+   "3) In der Regel Summe der sechs Ballschmiter-Kongenere (28, 52, 101, 138, 153, 180) mal 5.",
+   "4) Nach Länderrecht zum Teil 1 µg/kg."
+  ]
+ },
+ {
+  "id": "laga-pop",
+  "titel": "POP-Abfälle",
+  "sub": "LAGA Technische Hinweise, Tabelle 4",
+  "stichworte": "Gefährlichkeit Konzentrationsgrenze Spiegeleintrag gefährlich HP POP HBCD PCP Pentachlorphenol PFOS PFOA PBDE Chlorparaffine SCCP",
+  "spalten": [
+   "Gefährlich ab",
+   "POP-Grenze"
+  ],
+  "start": [
+   0,
+   1
+  ],
+  "zeilen": [
+   {
+    "parameter": "Kurzkettige Chlorparaffine (SCCP)",
+    "einheit": "mg/kg OS",
+    "werte": [
+     {
+      "s": "2.500",
+      "zahl": 2500
+     },
+     {
+      "s": "1.500",
+      "zahl": 1500,
+      "fn": "1"
+     }
+    ]
+   },
+   {
+    "parameter": "Dicofol",
+    "einheit": "mg/kg OS",
+    "werte": [
+     {
+      "s": "2.500",
+      "zahl": 2500
+     },
+     {
+      "s": "50",
+      "zahl": 50
+     }
+    ]
+   },
+   {
+    "parameter": "Endosulfan",
+    "einheit": "mg/kg OS",
+    "werte": [
+     {
+      "s": "2.500",
+      "zahl": 2500
+     },
+     {
+      "s": "50",
+      "zahl": 50
+     }
+    ]
+   },
+   {
+    "parameter": "HBCD",
+    "einheit": "mg/kg OS",
+    "werte": [
+     {
+      "s": "30.000",
+      "zahl": 30000
+     },
+     {
+      "s": "500",
+      "zahl": 500,
+      "fn": "1"
+     }
+    ]
+   },
+   {
+    "parameter": "HCBD",
+    "einheit": "mg/kg OS",
+    "werte": [
+     {
+      "s": "2.500",
+      "zahl": 2500
+     },
+     {
+      "s": "100",
+      "zahl": 100
+     }
+    ]
+   },
+   {
+    "parameter": "Pentachlorphenol (PCP)",
+    "einheit": "mg/kg OS",
+    "werte": [
+     {
+      "s": "2.500",
+      "zahl": 2500
+     },
+     {
+      "s": "100",
+      "zahl": 100
+     }
+    ]
+   },
+   {
+    "parameter": "PFHxS und Salze",
+    "einheit": "mg/kg OS",
+    "werte": [
+     {
+      "s": "200.000",
+      "zahl": 200000
+     },
+     {
+      "s": "1",
+      "zahl": 1,
+      "fn": "2"
+     }
+    ]
+   },
+   {
+    "parameter": "PFHxS-verwandte Verbindungen",
+    "einheit": "mg/kg OS",
+    "werte": [
+     {
+      "s": "100.000",
+      "zahl": 100000
+     },
+     {
+      "s": "40",
+      "zahl": 40,
+      "fn": "3"
+     }
+    ]
+   },
+   {
+    "parameter": "PFOA und Salze",
+    "einheit": "mg/kg OS",
+    "werte": [
+     {
+      "s": "3.000",
+      "zahl": 3000
+     },
+     {
+      "s": "1",
+      "zahl": 1,
+      "fn": "2"
+     }
+    ]
+   },
+   {
+    "parameter": "PFOA-verwandte Verbindungen",
+    "einheit": "mg/kg OS",
+    "werte": [
+     {
+      "s": "200.000",
+      "zahl": 200000
+     },
+     {
+      "s": "40",
+      "zahl": 40,
+      "fn": "3"
+     }
+    ]
+   },
+   {
+    "parameter": "PFOS und Derivate",
+    "einheit": "mg/kg OS",
+    "werte": [
+     {
+      "s": "3.000",
+      "zahl": 3000
+     },
+     {
+      "s": "50",
+      "zahl": 50
+     }
+    ]
+   },
+   {
+    "parameter": "PBDE, Summe",
+    "einheit": "mg/kg OS",
+    "werte": [
+     {
+      "s": "2.500",
+      "zahl": 2500
+     },
+     {
+      "s": "350",
+      "zahl": 350,
+      "fn": "5"
+     }
+    ]
+   },
+   {
+    "parameter": "Polychlorierte Naphthaline",
+    "einheit": "mg/kg OS",
+    "werte": [
+     {
+      "s": "2.500",
+      "zahl": 2500
+     },
+     {
+      "s": "10",
+      "zahl": 10
+     }
+    ]
+   }
+  ],
+  "quelle": "laga-th",
+  "fundstelle": "Tabelle 4, Stand Juli 2025",
+  "fussnoten": [
+   "Gefährlich ab: Anhang III AbfRRL. POP-Grenze: Anhang IV EU-POP-VO; darüber gelten getrennte Sammlung, Vermischungsverbot sowie Nachweis- und Registerpflichten nach POP-Abfall-ÜberwV.",
+   "1) Überprüfung durch die Europäische Kommission bis spätestens 30.12.2027.",
+   "2) Gilt für die Stoffe und ihre Salze; Überprüfung durch die Kommission vorgesehen.",
+   "3) Gilt für die Summe der verwandten Verbindungen; Überprüfung durch die Kommission vorgesehen.",
+   "5) Seit 30.12.2025 bis 29.12.2027: 350 mg/kg. Ab 30.12.2027: 200 mg/kg."
+  ]
  }
 ]

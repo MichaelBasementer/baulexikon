@@ -3,7 +3,7 @@
   {"id":"estrich","titel":"Estrich","sub":"Bodenaufbau","foto":"m-estrich","text":["Zement- oder Calciumsulfatestrich als Lastverteilschicht unter dem Belag."],"schadstoffe":["asbest"]},
   {"id":"mauerwerk","titel":"Mauerwerk / Ziegel","sub":"Wände und Füllkörper","foto":"m-mauerwerk","text":["Ziegel, Kalksandstein, Porenbeton, Bims. Bohrstaub rot, weiß oder grau je nach Stein."],"schadstoffe":["kmf"]},
   {"id":"daemmung","titel":"Dämmstoff, weich","sub":"Mineralwolle, Holzfaser","foto":"m-mineralwolle","text":["Mineralwolle vor 1996 gilt als alte KMF."],"schadstoffe":["kmf"]},
-  {"id":"hartschaum","titel":"Dämmstoff, Hartschaum","sub":"EPS, XPS, PUR","foto":"m-eps","text":["EPS bis ca. 2015 kann HBCD enthalten und ist dann POP-Abfall."],"schadstoffe":["hbcd"]},
+  {"id":"hartschaum","titel":"Dämmstoff, Hartschaum","sub":"EPS, XPS, PUR","foto":"m-eps","text":["EPS kann HBCD enthalten, verbreitet bis ca. 2015, gekennzeichnet noch bis Februar 2018 zulässig. Dann ist es POP-Abfall."],"schadstoffe":["hbcd"]},
   {"id":"holz","titel":"Holz","sub":"Balken, Dielen, Lagerhölzer","foto":"m-holz","text":["Tragwerk und Böden. Holzschutzmittel v. a. 1950–1989 möglich."],"schadstoffe":["holzschutz"]},
   {"id":"platte","titel":"Gips-/Faserplatte, Bekleidung","sub":"Trockenbau","foto":"m-gips","text":["Gipsplatten, Faserplatten, Fassadenbekleidungen. Ältere Brandschutzplatten und Faserzement auf Asbest prüfen."],"schadstoffe":["asbest"]},
   {"id":"bims","titel":"Bims / Leichtbeton","sub":"Füllkörper, Dielen","foto":"m-bims","text":["Leichter, poröser grauer Stein. Bei Schlacken- oder Hüttenbims sind Schwermetalle und Sulfat möglich."],"schadstoffe":["schwermetalle"]},

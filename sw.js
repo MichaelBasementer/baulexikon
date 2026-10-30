@@ -1,5 +1,5 @@
 // Offline cache. Bump VERSION whenever app files change so phones pick up the update.
-const VERSION = "baulexikon-v8";
+const VERSION = "baulexikon-v9";
 importScripts("files.js");
 
 self.addEventListener("install", e => {

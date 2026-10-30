@@ -27,8 +27,11 @@
     "Abfall: am Entstehungsort möglichst staubdicht verpacken, ggf. befeuchten, kennzeichnen. Abfallschlüssel 17 06 03*. Die Entsorgung ist landesspezifisch, also bei der zuständigen Behörde zu erfragen."
   ],"quelle":"trgs521"},
   {"id":"trgs524","bereich":"arbeitsschutz","titel":"TRGS 524 Kontaminierte Bereiche","sub":"Ausgabe März 2026","stichworte":"Altlasten Sanierung Gebäudeschadstoffe Fachkunde Veranlasser Gefährdungsbeurteilung","text":[
-    "Gilt für Tätigkeiten in kontaminierten Bereichen einschließlich vorbereitender, begleitender und abschließender Arbeiten.",
-    "Sie konkretisiert die Mitwirkungs- und Informationspflichten des Veranlassers nach § 5a GefStoffV und die Informationsermittlung des Arbeitgebers.",
+    "Gilt für Tätigkeiten in kontaminierten Bereichen einschließlich vorbereitender, begleitender und abschließender Arbeiten. Sie konkretisiert die Mitwirkungs- und Informationspflichten des Veranlassers nach § 5a GefStoffV und die Informationsermittlung des Arbeitgebers.",
+    "Kontaminierte Bereiche sind Standorte, Anlagen, Boden, Wasser oder Luft, die über eine gesundheitlich unbedenkliche Grundbelastung hinaus mit Gefahrstoffen verunreinigt sind oder bei denen die Bau- oder Nutzungsgeschichte dies vermuten lässt. Dazu zählen auch Umbau und Rückbau, teerhaltige Materialien im Tief- und Straßenbau und kalte Brandstellen.",
+    "Erkundung: erst historisch (Bauakten, Nutzung), dann technisch mit Probenahme und Analyse. Die historische Erkundung ist Aufgabe des Auftraggebers. Was dort nicht ermittelt wird, wird später in der Regel nicht berücksichtigt.",
+    "Sind Gefahrstoffe zu vermuten oder vorhanden, sollte schon in der Planung eine fachkundige Person einen Arbeits- und Sicherheitsplan (A+S-Plan) erstellen. Für bestimmte Situationen ist eine koordinierende Person zu bestellen, die in stofflichen Fragen weisungsbefugt ist.",
+    "Die Gefährdungsbeurteilung erstellt eine fachkundige Person. Anlage 2A regelt die allgemeine Fachkunde, Anlage 2B die Fachkunde für Gebäudeschadstoffe.",
     "Für Asbest gelten TRGS 519 und TRGS 517."
   ],"quelle":"trgs524"},
   {"id":"trgs551","bereich":"arbeitsschutz","titel":"TRGS 551 Teer und andere Pyrolyseprodukte","sub":"Ausgabe August 2015","stichworte":"PAK Teer Pech","text":["Regelt Tätigkeiten mit Teer und anderen Pyrolyseprodukten aus organischem Material, also PAK-haltigen Materialien."],"quelle":"trgs551"},
@@ -37,8 +40,9 @@
   {"id":"spiegel","bereich":"abfall","titel":"Spiegeleinträge und Gefährlichkeit","sub":"LAGA Technische Hinweise","stichworte":"Einstufung gefährlich Spiegeleintrag Sternchen Abfallschlüssel","text":[
     "Ein Stern am Abfallschlüssel bedeutet gefährlicher Abfall. Bei Spiegeleinträgen gibt es denselben Abfall einmal mit und einmal ohne Stern. Dann entscheiden die Gehalte gefährlicher Stoffe und die gefahrenrelevanten Eigenschaften.",
     "Weil Abfälle oft Gemische unbekannter Zusammensetzung sind, empfiehlt die LAGA die Technischen Hinweise als vereinfachte Prüfung anhand geeigneter Parameter. Die Länder ergänzen sie durch eigene Werte, siehe Länderregeln.",
-    "Die Technischen Hinweise wurden zuletzt mit Stand Juli 2025 aktualisiert."
-  ],"quelle":"laga-th"},
+    "Die Konzentrationsgrenzen beziehen sich auf die Originalsubstanz. Ist eine erreicht oder überschritten, gilt der gefährliche Spiegeleintrag. Liegen Detailkenntnisse zur Zusammensetzung vor, haben AVV und Anhang III AbfRRL Vorrang.",
+    "Laborfalle: Bitumen- und Kunststoffanteile können bei der MKW-Analytik falsch-positive Befunde ergeben. pH-Werte ≤ 2 oder ≥ 11,5 sind ein Indiz für reizend oder ätzend (HP 4, HP 8)."
+  ],"quelle":"laga-th","tabellen":["laga-metalle","laga-organik","laga-pop","laga-eluat"]},
   {"id":"boden-bauschutt","bereich":"abfall","titel":"Boden-Bauschutt-Gemische","sub":"LAGA-Information Juni 2024","stichworte":"Gemisch Fremdbestandteile Aushub Bauschutt 50 Vol.-%","text":[
     "Die AVV kennt für solche Gemische keinen eigenen Schlüssel.",
     "Bauschuttanteil bis 50 Vol.-%: Spiegeleintrag 17 05 03* / 17 05 04.",
@@ -58,5 +62,5 @@
   {"id":"depv-kurz","bereich":"abfall","titel":"Deponieklassen","sub":"DepV","stichworte":"DK 0 DK I DK II DK III Inertstoff Zuordnung","text":["Die DepV ordnet Abfälle über die Zuordnungskriterien nach Anhang 3 Tabelle 2 den Deponieklassen 0 bis III zu. Daneben gelten die Fußnoten und die Genehmigung der jeweiligen Deponie."],"quelle":"depv","tabellen":["depv-fest","depv-eluat"]},
   {"id":"ebv-kurz","bereich":"abfall","titel":"Ersatzbaustoffverordnung","sub":"EBV","stichworte":"Materialklassen RC BM BG Einbau technische Bauwerke","text":["Die EBV regelt Herstellung und Einbau mineralischer Ersatzbaustoffe in technische Bauwerke. Die Materialklassen ergeben sich aus den Materialwerten der Anlage 1. Für Einbauweisen gelten die weiteren Anlagen.","Eine Novelle liegt als Referentenentwurf vom Juli 2026 vor und ist noch nicht in Kraft."],"quelle":"ebv","tabellen":["ebv-rc","ebv-bm","ebv-bm-zusatz","ebv-asche","ebv-gs"]},
   {"id":"verfuellung","bereich":"abfall","titel":"Verfüllung und Bodenschutz","sub":"BBodSchV","stichworte":"Verfüllung Auffüllung durchwurzelbare Bodenschicht Grube","text":["Für das Auf- oder Einbringen von Materialien auf oder in den Boden gelten die §§ 6 bis 8 BBodSchV. Technische Bauwerke fallen unter die EBV.","Die Länder können eigene Regeln zur Verfüllung treffen. In Hessen gilt die Verfüllrichtlinie, siehe Länderregeln."],"quelle":"bbodschv"},
-  {"id":"pop","bereich":"abfall","titel":"POP-Abfälle","sub":"LAGA M41","stichworte":"HBCD Dämmung EU-POP-Verordnung persistente organische Schadstoffe","text":["Die EU-POP-Verordnung regelt Abfälle mit persistenten organischen Schadstoffen, im Bauwesen vor allem HBCD in EPS und XPS. Die LAGA-Mitteilung 41 enthält die Vollzugshilfe mit Stoffsteckbriefen."],"quelle":"laga-m41"}
+  {"id":"pop","bereich":"abfall","titel":"POP-Abfälle","sub":"LAGA M41","stichworte":"HBCD Dämmung EU-POP-Verordnung persistente organische Schadstoffe","text":["Die EU-POP-Verordnung regelt Abfälle mit persistenten organischen Schadstoffen, im Bauwesen vor allem HBCD in EPS und XPS. HBCD: POP-Grenze 500 mg/kg, gefährlich ab 30.000 mg/kg. Dazwischen gelten getrennte Sammlung, Vermischungsverbot und Nachweispflichten.","Die LAGA-Mitteilung 41 enthält die Vollzugshilfe mit Stoffsteckbriefen."],"quelle":"laga-th","tabellen":["laga-pop"]}
 ]
