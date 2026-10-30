@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Baulexikon – Mockup M0</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Azeret+Mono:wght@400;500;600&display=swap">
+<style>
+/* Colors, type and panels follow TimeLogger/style.css */
+:root{
+  --bg:#EEF1F4; --surface:#FFFFFF; --ink:#16202B; --muted:#5E6B78; --line:#D7DDE3;
+  --accent:#2350C8; --accent-ink:#FFFFFF; --plus:#18794E; --minus:#C2362B; --off:#B7791F; --soft:#E3E9F7;
+  --sans:"Instrument Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:"Azeret Mono",ui-monospace,"Roboto Mono",Consolas,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root{
+  --bg:#10151B; --surface:#19212A; --ink:#E8EDF2; --muted:#93A0AD; --line:#2A3542;
+  --accent:#6E92F2; --accent-ink:#0B1220; --plus:#4CC38A; --minus:#F07167; --off:#E0A84A; --soft:#1F2C44; color-scheme:dark}}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.4;-webkit-tap-highlight-color:transparent}
+.app{max-width:440px;margin:0 auto;min-height:100%;padding:0 16px calc(96px + env(safe-area-inset-bottom,0px))}
+header{display:flex;align-items:center;gap:8px;padding-block:16px 8px}
+header h1{font-size:20px;margin:0;font-weight:700;letter-spacing:-.01em;flex:1;min-width:0}
+header small{display:block;color:var(--muted);font-size:13px;font-weight:500}
+.icon-btn{width:44px;height:44px;flex:none;border-radius:12px;border:1px solid var(--line);background:var(--surface);color:var(--ink);display:grid;place-items:center;cursor:pointer;font-size:20px;text-decoration:none}
+main{display:flex;flex-direction:column;gap:16px;padding-top:8px}
+.search{display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:0 14px;min-height:56px}
+.search input{flex:1;min-width:0;border:0;background:none;color:var(--ink);font:500 17px var(--sans);outline:0;height:54px}
+.search:focus-within{outline:3px solid var(--accent);outline-offset:2px}
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.tile{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px;min-height:112px;color:var(--ink);text-decoration:none;display:flex;flex-direction:column;gap:4px}
+.tile svg{width:24px;height:24px;color:var(--accent);margin-bottom:6px}
+.tile b{font-size:16px}
+.tile span{font-size:13px;color:var(--muted)}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:4px 16px}
+.section-h{font-size:13px;font-weight:600;color:var(--muted);margin:4px 0 -8px;letter-spacing:.02em}
+.item{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-block:12px;border-bottom:1px solid var(--line);color:var(--ink);text-decoration:none}
+.item:last-child{border-bottom:0}
+.item small{display:block;color:var(--muted);font-size:13px}
+.item i{font-style:normal;color:var(--muted)}
+.tag{font:600 12px var(--sans);border-radius:8px;padding:3px 8px;background:var(--soft);color:var(--accent);text-decoration:none;display:inline-block}
+.tag.warn{background:color-mix(in srgb,var(--off) 18%,transparent);color:var(--off)}
+.tag.bad{background:color-mix(in srgb,var(--minus) 15%,transparent);color:var(--minus)}
+.tag.ok{background:color-mix(in srgb,var(--plus) 15%,transparent);color:var(--plus)}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px 16px}
+.card h2{font-size:15px;margin:0 0 8px}
+.card p{margin:0;font-size:15px}
+.card.alert{border-color:var(--off);border-left:4px solid var(--off)}
+.layers{list-style:none;margin:0;padding:0;font-size:15px}
+.layers li{display:grid;grid-template-columns:26px 1fr auto;gap:8px;padding-block:7px;border-bottom:1px solid var(--line);align-items:baseline}
+.layers li:last-child{border-bottom:0}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.layers .num{font-size:12px;color:var(--muted)}
+.n{width:20px;height:20px;border-radius:50%;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;font:600 11px var(--sans)}
+.section svg{display:block;width:100%;height:auto}
+.src{font-size:12px;color:var(--muted);display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{min-height:40px;min-width:56px;padding:0 12px;border-radius:12px;border:1px solid var(--line);background:var(--surface);color:var(--ink);font:600 14px var(--sans);cursor:pointer}
+.chip[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{padding:10px 8px;text-align:right;border-bottom:1px solid var(--line)}
+tr:last-child td{border-bottom:0}
+th:first-child,td:first-child{text-align:left;position:sticky;left:0;background:var(--surface)}
+td small{display:block;color:var(--muted);font-size:12px}
+th{font-size:13px;color:var(--muted)}
+.tablewrap{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:2px 8px}
+.link{color:var(--accent);font-weight:500;text-decoration:none}
+button:focus-visible,a:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.tabbar{position:fixed;left:0;right:0;bottom:0;background:var(--surface);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px)}
+.tabbar nav{max-width:440px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr)}
+.tabbar a{display:flex;flex-direction:column;align-items:center;gap:3px;padding-block:9px 8px;color:var(--muted);font:500 12px var(--sans);text-decoration:none}
+.tabbar a[aria-current=page]{color:var(--accent)}
+.tabbar svg{width:22px;height:22px}
+.mock{font-size:12px;color:var(--muted);text-align:center;padding:4px 0 0}
+</style>
+</head>
+<body>
+<div class="app">
+  <header id="hdr"></header>
+  <main id="view"></main>
+</div>
+<div class="tabbar"><nav id="tabs">
+  <a href="#/" data-t="start"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 11l8-7 8 7v9h-5v-6H9v6H4z"/></svg>Start</a>
+  <a href="#/themen" data-t="themen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 4h14v16H5zM9 9h6M9 13h6"/></svg>Themen</a>
+  <a href="#/merkliste" data-t="merkliste"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 4h12v17l-6-4-6 4z"/></svg>Merkliste</a>
+  <a href="#/quellen" data-t="quellen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 3h7l4 4v14H7zM14 3v4h4M10 12h5M10 16h5"/></svg>Quellen</a>
+</nav></div>
+
+<script>
+const view = document.getElementById("view"), hdr = document.getElementById("hdr");
+const fold = s => s.toLowerCase().replace(/ä/g, "ae").replace(/ö/g, "oe").replace(/ü/g, "ue").replace(/ß/g, "ss").replace(/[\s*.\-/]/g, "");
+
+const INDEX = [
+  ["Holzbalkendecke", "Bauteil · bis ca. 1950", "#/bauteil/holzbalken"],
+  ["Preußische Kappendecke", "Bauteil · ca. 1870–1930", "#/bauteil/holzbalken"],
+  ["Filigrandecke", "Bauteil · ab ca. 1965", "#/bauteil/holzbalken"],
+  ["Gussasphaltestrich", "Bauteil · ab 1920er", "#/bauteil/holzbalken"],
+  ["Flexplatten", "Bodenbelag · Asbest prüfen", "#/bauteil/holzbalken"],
+  ["PAK / Teer", "Schadstoff", "#/schadstoff/pak"],
+  ["Asbest", "Schadstoff", "#/schadstoff/pak"],
+  ["17 06 05* asbesthaltige Baustoffe", "AVV-Schlüssel · gefährlich", "#/schadstoff/pak"],
+  ["17 05 03* Boden und Steine, gefährliche Stoffe", "AVV-Schlüssel · Spiegeleintrag zu 17 05 04", "#/schadstoff/pak"],
+  ["17 03 01* kohlenteerhaltige Bitumengemische", "AVV-Schlüssel · gefährlich", "#/schadstoff/pak"],
+  ["DepV Deponieklassen DK 0 bis III", "Grenzwerttabelle", "#/tabelle"],
+  ["TRGS 524 Kontaminierte Bereiche", "Regelwerk · Neufassung Juli 2026", "#/quelle"],
+];
+
+function head(title, sub, back) {
+  hdr.innerHTML = (back ? `<a class="icon-btn" href="${back}" aria-label="Zurück">‹</a>` : "") +
+    `<div style="flex:1;min-width:0"><h1>${title}</h1><small>${sub || ""}</small></div>`;
+}
+const SEARCH = `<div class="search"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><input id="q" type="search" placeholder="17 06 05, Flexplatte, PAK …" aria-label="Suche"></div>`;
+
+function start() {
+  head("Baulexikon", "Nachschlagen für Bestand und Rückbau");
+  view.innerHTML = SEARCH + `<div id="res"></div><div id="home"><div class="tiles">
+    ${tile("Bauteilaufbauten", "Decken, Böden, Wände, Dächer", "#/bauteil/holzbalken", '<path d="M3 7h18M3 12h18M3 17h18"/>')}
+    ${tile("Schadstoffe", "Asbest, PAK, PCB, KMF", "#/schadstoff/pak", '<path d="M12 3l9 16H3zM12 10v4M12 17v.5"/>')}
+    ${tile("Arbeitsschutz", "TRGS 519, 521, 524", "#/quelle", '<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/>')}
+    ${tile("Abfallrecht", "AVV, DepV, EBV, LAGA", "#/tabelle", '<path d="M5 7h14l-1 14H6zM9 7V4h6v3M3 7h18"/>')}
+    ${tile("Länderregeln", "Hessen, BW, RLP", "#/schadstoff/pak", '<path d="M9 4l6 3 5-2v14l-5 2-6-3-5 2V6zM9 4v14M15 7v14"/>')}
+    ${tile("Im Wandel", "3 offene Änderungen", "#/quellen", '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>')}
+  </div></div>`;
+  const q = document.getElementById("q");
+  q.addEventListener("input", () => {
+    const f = fold(q.value);
+    document.getElementById("home").hidden = !!f;
+    document.getElementById("res").innerHTML = !f ? "" :
+      `<div class="panel">` + (INDEX.filter(i => fold(i[0] + i[1]).includes(f)).map(i =>
+        `<a class="item" href="${i[2]}"><span>${i[0]}<small>${i[1]}</small></span><i>›</i></a>`).join("") ||
+        `<p class="item">Kein Treffer</p>`) + `</div>`;
+  });
+}
+const tile = (t, s, h, p) => `<a class="tile" href="${h}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">${p}</svg><b>${t}</b><span>${s}</span></a>`;
+
+function themen() {
+  head("Themen", "Alle Kapitel");
+  const g = [["Bauteilaufbauten", "A Decken, B Fußböden, B+ Beläge, C Wände innen, D Wände außen, Dächer, Keller, Materialtafel", "#/bauteil/holzbalken"],
+    ["Gebäudeschadstoffe", "Asbest, PAK, PCB, KMF, Holzschutz, Blei, HBCD, Schlacke", "#/schadstoff/pak"],
+    ["Arbeitsschutz", "TRGS 519, 521, 524, GefStoffV", "#/quelle"],
+    ["Abfallrecht", "AVV Kapitel 17, Gefährlichkeit, LAGA M23, DepV, EBV, BBodSchV", "#/tabelle"],
+    ["Länderregeln", "Hessen, Baden-Württemberg, Rheinland-Pfalz, Linkliste", "#/schadstoff/pak"]];
+  view.innerHTML = `<div class="panel">` + g.map(i => `<a class="item" href="${i[2]}"><span>${i[0]}<small>${i[1]}</small></span><i>›</i></a>`).join("") + `</div>`;
+}
+
+const SECTION = `<svg viewBox="0 0 340 170" role="img" aria-label="Schnitt Holzbalkendecke, nicht maßstäblich">
+  <defs><pattern id="sch" width="8" height="8" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.1" fill="var(--muted)"/><circle cx="6" cy="6" r=".8" fill="var(--muted)"/></pattern>
+  <pattern id="holz" width="14" height="6" patternUnits="userSpaceOnUse"><path d="M0 3q7-3 14 0" fill="none" stroke="var(--off)" stroke-width=".7"/></pattern></defs>
+  <rect x="10" y="14" width="260" height="14" fill="url(#holz)" stroke="var(--ink)"/>
+  <rect x="10" y="28" width="260" height="66" fill="none"/>
+  <g stroke="var(--ink)"><rect x="42" y="28" width="38" height="92" fill="url(#holz)"/><rect x="202" y="28" width="38" height="92" fill="url(#holz)"/></g>
+  <rect x="80" y="62" width="122" height="30" fill="url(#sch)" stroke="var(--ink)" stroke-width=".7"/>
+  <rect x="80" y="92" width="122" height="7" fill="var(--soft)" stroke="var(--ink)" stroke-width=".7"/>
+  <rect x="10" y="120" width="260" height="10" fill="var(--soft)" stroke="var(--ink)"/>
+  <rect x="10" y="130" width="260" height="12" fill="var(--line)" stroke="var(--ink)"/>
+  ${[[21, 1], [50, 2], [77, 3], [96, 4], [125, 5], [136, 6]].map(([y, n]) =>
+    `<line x1="${n === 2 ? 240 : n === 3 || n === 4 ? 202 : 270}" y1="${y}" x2="300" y2="${y}" stroke="var(--muted)" stroke-width=".7"/><circle cx="310" cy="${y}" r="9" fill="var(--accent)"/><text x="310" y="${y + 4}" text-anchor="middle" font-size="11" font-weight="600" fill="var(--accent-ink)" font-family="var(--sans)">${n}</text>`).join("")}
+  <text x="10" y="162" font-size="11" fill="var(--muted)" font-family="var(--sans)">Balkenachse ca. 70–100 cm · nicht maßstäblich</text>
+</svg>`;
+
+function bauteil() {
+  head("Holzbalkendecke", "Bauteil A · Balkendecke mit Einschub", "#/");
+  const L = [["Dielenboden, oft genagelt", "2,5–3,5 cm"], ["Holzbalken", "16–26 cm"], ["Schüttung: Lehm, Sand, Asche, Schlacke", "5–10 cm"],
+    ["Einschub / Fehlboden auf Latten", "2 cm"], ["Schalung + Putzträger", ""], ["Deckenputz (Kalk/Gips)", "1,5–2,5 cm"]];
+  view.innerHTML = `<div class="tags"><span class="tag">bis ca. 1950</span><span class="tag">d 25–35 cm</span></div>
+  <div class="card section">${SECTION}</div>
+  <ul class="panel layers">${L.map((x, i) => `<li><span class="n">${i + 1}</span><span>${x[0]}</span><span class="num">${x[1]}</span></li>`).join("")}</ul>
+  <div class="card"><h2>Erkennen</h2><p>Decke schwingt beim Gehen, hohler Klang. Beim Öffnen der Untersicht Schilfrohr- oder Lattenputzträger. Bohrspäne aus Holz, Schüttung rieselt.</p></div>
+  <div class="card alert"><h2>Schadstoffverdacht</h2><p>Schüttung aus Schlacke/Asche: PAK und Schwermetalle. Holzschutzmittel an Balken, v. a. 1950–1989. Teerpappen als Trennlage: PAK. Nachträgliche Dämmung: KMF.</p>
+    <div class="tags" style="margin-top:10px"><a class="tag warn" href="#/schadstoff/pak">PAK / Teer ›</a><span class="tag warn">Holzschutzmittel ›</span><span class="tag warn">KMF ›</span><span class="tag warn">Schwermetalle ›</span></div></div>
+  <p class="src">Atlas der Bauteilaufbauten · Bandbreiten, keine Planungswerte · Verdacht ersetzt keine Probenahme</p>`;
+}
+
+function schadstoff() {
+  head("PAK / Teer", "Gebäudeschadstoff", "#/");
+  view.innerHTML = `<div class="card"><h2>Wo typisch?</h2><ul style="margin:0;padding-left:18px;font-size:15px">
+    <li>Parkettkleber, schwarz glänzend, bis ca. 1970er</li><li>Teerpappe als Trennlage</li><li>Gussasphalt mit Steinkohlenteer, bis ca. 1970er</li><li>Schlacke- und Asche-Schüttungen</li><li>Teeranstriche an Kellerwänden</li></ul></div>
+  <div class="section-h">GEFÄHRLICHER ABFALL AB</div>
+  <div class="panel">
+    <div class="item"><span>Hessen, teerpechhaltig<small>Summe 16 PAK nach EPA, Originalsubstanz</small></span><span class="num">≥ 400 mg/kg</span></div>
+    <div class="item"><span>Hessen, pechfrei<small>Summe 16 PAK nach EPA, Originalsubstanz</small></span><span class="num">≥ 1.000 mg/kg</span></div>
+    <div class="item"><span>Hessen, Benzo(a)pyren<small>Originalsubstanz</small></span><span class="num">≥ 50 mg/kg</span></div>
+    <div class="item"><span>Baden-Württemberg</span><span class="tag warn">ungeprüft</span></div>
+    <div class="item"><span>Rheinland-Pfalz</span><span class="tag warn">ungeprüft</span></div>
+  </div>
+  <p class="src"><a class="link" href="#/quelle">Merkblatt Entsorgung von Bauabfällen, RP Hessen</a> · Stand 05.03.2025 · <span class="tag ok">geprüft 30.10.2026</span></p>
+  <div class="section-h">AVV-SCHLÜSSEL</div>
+  <div class="panel">
+    <div class="item"><span><span class="num">17 03 01*</span><small>kohlenteerhaltige Bitumengemische</small></span><span class="tag bad">gefährlich</span></div>
+    <div class="item"><span><span class="num">17 05 03*</span><small>Boden und Steine, gefährliche Stoffe</small></span><span class="tag bad">gefährlich</span></div>
+    <div class="item"><span><span class="num">17 05 04</span><small>Spiegeleintrag zu 17 05 03*</small></span><span class="tag ok">nicht gefährlich</span></div>
+  </div>
+  <div class="section-h">ARBEITSSCHUTZ</div>
+  <div class="panel"><a class="item" href="#/quelle"><span>TRGS 524 Kontaminierte Bereiche<small>Neufassung Juli 2026</small></span><i>›</i></a><div class="item"><span>TRGS 551 Teer und andere Pyrolyseprodukte</span><i>›</i></div></div>`;
+}
+
+const TAB = { cols: ["DK 0", "DK I", "DK II", "DK III"], rows: [
+  ["pH-Wert", "", ["5,5–13", "5,5–13", "5,5–13", "4–13"]], ["DOC", "mg/l", ["≤ 50", "≤ 50", "≤ 80", "≤ 100"]],
+  ["Arsen", "mg/l", ["≤ 0,05", "≤ 0,2", "≤ 0,2", "≤ 2,5"]], ["Blei", "mg/l", ["≤ 0,05", "≤ 0,2", "≤ 1", "≤ 5"]],
+  ["Cadmium", "mg/l", ["≤ 0,004", "≤ 0,05", "≤ 0,1", "≤ 0,5"]], ["Quecksilber", "mg/l", ["≤ 0,001", "≤ 0,005", "≤ 0,02", "≤ 0,2"]],
+  ["Gelöste Feststoffe", "mg/l", ["≤ 400", "≤ 3 000", "≤ 6 000", "≤ 10 000"]]] };
+let picked = [0, 1, 2];
+function tabelle() {
+  head("Deponieklassen", "DepV Anhang 3 Tabelle 2 · Eluat", "#/");
+  const shown = picked.slice().sort();
+  view.innerHTML = `<div class="section-h">BIS DREI KLASSEN VERGLEICHEN</div>
+  <div class="chips">${TAB.cols.map((c, i) => `<button class="chip" data-c="${i}" aria-pressed="${picked.includes(i)}">${c}</button>`).join("")}</div>
+  <div class="tablewrap"><table><thead><tr><th>Parameter</th>${shown.map(i => `<th>${TAB.cols[i]}</th>`).join("")}</tr></thead>
+  <tbody>${TAB.rows.map(r => `<tr><td>${r[0]}<small>${r[1]}</small></td>${shown.map(i => `<td class="num">${r[2][i]}</td>`).join("")}</tr>`).join("")}</tbody></table></div>
+  <div class="card alert"><p>Auszug fürs Mockup. Fußnoten und weitere Parameter stehen im Original. Chlorid und Sulfat fehlen, weil sie 2026 geändert wurden.</p></div>
+  <p class="src"><a class="link" href="#/quelle">DepV Anhang 3</a> · <span class="tag warn">Fassung noch zu prüfen</span></p>`;
+  view.querySelectorAll(".chip").forEach(b => b.onclick = () => {
+    const c = +b.dataset.c;
+    if (picked.includes(c)) { if (picked.length > 1) picked = picked.filter(x => x !== c); }
+    else picked = [...picked.slice(-2), c];
+    tabelle();
+  });
+}
+
+function quelle() {
+  head("Quelle", "Fundstelle und Stand", "#/quellen");
+  view.innerHTML = `<div class="card"><h2>TRGS 524 Schutzmaßnahmen bei Tätigkeiten in kontaminierten Bereichen</h2>
+    <div class="tags"><span class="tag">GMBl 2026 S. 385–428</span><span class="tag">17.07.2026</span></div></div>
+  <div class="panel">
+    <div class="item"><span>Ersetzt</span><span>Fassung Februar 2010</span></div>
+    <div class="item"><span>Herausgeber</span><span>AGS / BAuA</span></div>
+    <div class="item"><span>Geprüft am</span><span class="num">30.10.2026</span></div>
+    <div class="item"><span>Status</span><span class="tag warn">Volltext wird ausgewertet</span></div>
+  </div>
+  <div class="card"><h2>Praxis-Zusammenfassung</h2><p>Hier steht künftig die eigene Kurzfassung. Im Mockup nur Platzhalter.</p></div>
+  <a class="link" href="#/quelle" style="align-self:center;padding:8px">Original bei der BAuA öffnen ↗</a>`;
+}
+
+function quellen() {
+  head("Quellen", "Fundstellen und Änderungen");
+  view.innerHTML = `<div class="section-h">IM WANDEL</div><div class="panel">
+    <div class="item"><span>EBV-Novelle<small>Referentenentwurf Juli 2026, noch nicht in Kraft</small></span><span class="tag warn">Entwurf</span></div>
+    <div class="item"><span>TRGS 519 Neufassung<small>Angepasst an die GefStoffV, erwartet</small></span><span class="tag warn">offen</span></div>
+    <div class="item"><span>Asbest-Genehmigung<small>Übergangsfrist Dezember 2026</small></span><span class="tag warn">klären</span></div></div>
+  <div class="section-h">REGELWERKE</div><div class="panel">
+    <a class="item" href="#/quelle"><span>TRGS 524<small>GMBl 2026 · geprüft 30.10.2026</small></span><i>›</i></a>
+    <a class="item" href="#/quelle"><span>LAGA M23<small>Stand 29.11.2022 · geprüft 30.10.2026</small></span><i>›</i></a>
+    <a class="item" href="#/quelle"><span>Merkblatt Bauabfälle Hessen<small>Stand 05.03.2025 · geprüft 30.10.2026</small></span><i>›</i></a></div>
+  <p class="src">Orientierung, keine Rechtsberatung. Ersetzt keine Probenahme und Laboranalyse.</p>`;
+}
+
+function merkliste() {
+  head("Merkliste", "Gemerkt und zuletzt angesehen");
+  view.innerHTML = `<div class="panel"><a class="item" href="#/bauteil/holzbalken"><span>Holzbalkendecke<small>Bauteil</small></span><i>›</i></a>
+    <a class="item" href="#/schadstoff/pak"><span>PAK / Teer<small>Schadstoff</small></span><i>›</i></a></div>`;
+}
+
+const ROUTES = [[/^#\/bauteil/, bauteil, "themen"], [/^#\/schadstoff/, schadstoff, "themen"], [/^#\/tabelle/, tabelle, "themen"],
+  [/^#\/quellen/, quellen, "quellen"], [/^#\/quelle/, quelle, "quellen"], [/^#\/themen/, themen, "themen"], [/^#\/merkliste/, merkliste, "merkliste"]];
+function route() {
+  const h = location.hash || "#/", r = ROUTES.find(x => x[0].test(h));
+  (r ? r[1] : start)();
+  document.querySelectorAll("#tabs a").forEach(a => a.dataset.t === (r ? r[2] : "start") ? a.setAttribute("aria-current", "page") : a.removeAttribute("aria-current"));
+  scrollTo(0, 0);
+  view.insertAdjacentHTML("beforeend", `<p class="mock">Mockup M0</p>`);
+}
+addEventListener("hashchange", route);
+route();
+</script>
+</body>
+</html>

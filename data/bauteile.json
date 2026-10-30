@@ -1,0 +1,7 @@
+[
+  {"id":"holzbalken","titel":"Holzbalkendecke","alias":"Balkendecke mit Einschub / Fehlboden","gruppe":"A","bauzeit":"bis ca. 1950","dicke":"d 25–35 cm","schnitt":"holzbalken",
+   "schichten":[{"name":"Dielenboden, oft genagelt","dicke":"2,5–3,5 cm"},{"name":"Holzbalken","dicke":"16–26 cm"},{"name":"Schüttung: Lehm, Sand, Asche, Schlacke","dicke":"5–10 cm"},{"name":"Einschub / Fehlboden auf Latten","dicke":"2 cm"},{"name":"Schalung + Putzträger (Schilfrohr, Latten)"},{"name":"Deckenputz (Kalk/Gips)","dicke":"1,5–2,5 cm"}],
+   "erkennen":"Decke schwingt beim Gehen, hohler Klang. Beim Öffnen der Untersicht Schilfrohr- oder Lattenputzträger. Bohrspäne aus Holz, Schüttung rieselt.",
+   "verdacht":"Schüttung aus Schlacke/Asche: PAK und Schwermetalle. Holzschutzmittel an Balken (PCP, Lindan, DDT, v. a. 1950–1989). Teerpappen als Trennlage: PAK. Nachträgliche Dämmung: KMF.",
+   "schadstoffe":["pak"],"quelle":"atlas"}
+]

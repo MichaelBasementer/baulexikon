@@ -1,0 +1,12 @@
+[
+  {"id":"depv-eluat","titel":"Deponieklassen, Eluat","sub":"DepV Anhang 3 Tabelle 2","stichworte":"DK0 DK1 DK2 DK3 Deponie Zuordnung","spalten":["DK 0","DK I","DK II","DK III"],
+   "zeilen":[
+    {"parameter":"pH-Wert","einheit":"","werte":[{"von":5.5,"bis":13},{"von":5.5,"bis":13},{"von":5.5,"bis":13},{"von":4,"bis":13}]},
+    {"parameter":"DOC","einheit":"mg/l","werte":[{"op":"≤","zahl":50},{"op":"≤","zahl":50},{"op":"≤","zahl":80},{"op":"≤","zahl":100}]},
+    {"parameter":"Arsen","einheit":"mg/l","werte":[{"op":"≤","zahl":0.05},{"op":"≤","zahl":0.2},{"op":"≤","zahl":0.2},{"op":"≤","zahl":2.5}]},
+    {"parameter":"Blei","einheit":"mg/l","werte":[{"op":"≤","zahl":0.05},{"op":"≤","zahl":0.2},{"op":"≤","zahl":1},{"op":"≤","zahl":5}]},
+    {"parameter":"Cadmium","einheit":"mg/l","werte":[{"op":"≤","zahl":0.004},{"op":"≤","zahl":0.05},{"op":"≤","zahl":0.1},{"op":"≤","zahl":0.5}]},
+    {"parameter":"Quecksilber","einheit":"mg/l","werte":[{"op":"≤","zahl":0.001},{"op":"≤","zahl":0.005},{"op":"≤","zahl":0.02},{"op":"≤","zahl":0.2}]},
+    {"parameter":"Gelöste Feststoffe","einheit":"mg/l","werte":[{"op":"≤","zahl":400},{"op":"≤","zahl":3000},{"op":"≤","zahl":6000},{"op":"≤","zahl":10000}]}
+   ],"hinweis":"Vorläufiger Auszug ohne Fußnoten. Die vollständige Tabelle folgt in Schritt M5.","quelle":"depv","fundstelle":"Anhang 3 Tabelle 2, Nr. 3"}
+]

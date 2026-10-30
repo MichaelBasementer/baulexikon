@@ -1,0 +1,9 @@
+[
+  {"code":"17 01 06*","titel":"Gemische aus oder getrennte Fraktionen von Beton, Ziegeln, Fliesen und Keramik, die gefährliche Stoffe enthalten","gefaehrlich":true,"spiegel":"17 01 07","stichworte":"Bauschutt","quelle":"avv"},
+  {"code":"17 01 07","titel":"Gemische aus Beton, Ziegeln, Fliesen und Keramik mit Ausnahme derjenigen, die unter 17 01 06 fallen","gefaehrlich":false,"spiegel":"17 01 06*","stichworte":"Bauschutt","quelle":"avv"},
+  {"code":"17 03 01*","titel":"kohlenteerhaltige Bitumengemische","gefaehrlich":true,"spiegel":"17 03 02","stichworte":"Straßenaufbruch Teer Asphalt","quelle":"avv"},
+  {"code":"17 03 02","titel":"Bitumengemische mit Ausnahme derjenigen, die unter 17 03 01 fallen","gefaehrlich":false,"spiegel":"17 03 01*","stichworte":"Ausbauasphalt","quelle":"avv"},
+  {"code":"17 05 03*","titel":"Boden und Steine, die gefährliche Stoffe enthalten","gefaehrlich":true,"spiegel":"17 05 04","stichworte":"Aushub Bodenmaterial","quelle":"avv"},
+  {"code":"17 05 04","titel":"Boden und Steine mit Ausnahme derjenigen, die unter 17 05 03 fallen","gefaehrlich":false,"spiegel":"17 05 03*","stichworte":"Aushub Bodenmaterial","quelle":"avv"},
+  {"code":"17 06 05*","titel":"asbesthaltige Baustoffe","gefaehrlich":true,"stichworte":"Asbest Faserzement Flexplatten","quelle":"avv"}
+]

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 170" role="img" aria-label="Schnitt Holzbalkendecke, nicht maßstäblich">
+  <defs>
+    <pattern id="sch" width="8" height="8" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.1" fill="var(--muted)"/><circle cx="6" cy="6" r=".8" fill="var(--muted)"/></pattern>
+    <pattern id="holz" width="14" height="6" patternUnits="userSpaceOnUse"><path d="M0 3q7-3 14 0" fill="none" stroke="var(--off)" stroke-width=".7"/></pattern>
+  </defs>
+  <rect x="10" y="14" width="260" height="14" fill="url(#holz)" stroke="var(--ink)"/>
+  <g stroke="var(--ink)"><rect x="42" y="28" width="38" height="92" fill="url(#holz)"/><rect x="202" y="28" width="38" height="92" fill="url(#holz)"/></g>
+  <rect x="80" y="62" width="122" height="30" fill="url(#sch)" stroke="var(--ink)" stroke-width=".7"/>
+  <rect x="80" y="92" width="122" height="7" fill="var(--soft)" stroke="var(--ink)" stroke-width=".7"/>
+  <rect x="10" y="120" width="260" height="10" fill="var(--soft)" stroke="var(--ink)"/>
+  <rect x="10" y="130" width="260" height="12" fill="var(--line)" stroke="var(--ink)"/>
+  <g stroke="var(--muted)" stroke-width=".7">
+    <line x1="270" y1="21" x2="300" y2="21"/><line x1="240" y1="50" x2="300" y2="50"/><line x1="202" y1="77" x2="300" y2="77"/>
+    <line x1="202" y1="96" x2="300" y2="96"/><line x1="270" y1="125" x2="300" y2="125"/><line x1="270" y1="136" x2="300" y2="136"/>
+  </g>
+  <g fill="var(--accent)"><circle cx="310" cy="21" r="9"/><circle cx="310" cy="50" r="9"/><circle cx="310" cy="77" r="9"/><circle cx="310" cy="96" r="9"/><circle cx="310" cy="125" r="9"/><circle cx="310" cy="136" r="9"/></g>
+  <g text-anchor="middle" font-size="11" font-weight="600" fill="var(--accent-ink)" font-family="var(--sans)">
+    <text x="310" y="25">1</text><text x="310" y="54">2</text><text x="310" y="81">3</text><text x="310" y="100">4</text><text x="310" y="129">5</text><text x="310" y="140">6</text>
+  </g>
+  <text x="10" y="162" font-size="11" fill="var(--muted)" font-family="var(--sans)">Balkenachse ca. 70–100 cm · nicht maßstäblich</text>
+</svg>

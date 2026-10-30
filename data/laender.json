@@ -1,0 +1,27 @@
+{
+  "laender": [
+    {"id":"he","name":"Hessen","ausbau":true,"quellen":["he-merkblatt","he-verfuellung"]},
+    {"id":"bw","name":"Baden-Württemberg","ausbau":true,"quellen":["bw-einstufung"]},
+    {"id":"rp","name":"Rheinland-Pfalz","ausbau":true,"quellen":["rp-einstufung"]},
+    {"id":"by","name":"Bayern","ausbau":false},
+    {"id":"be","name":"Berlin","ausbau":false},
+    {"id":"bb","name":"Brandenburg","ausbau":false},
+    {"id":"hb","name":"Bremen","ausbau":false},
+    {"id":"hh","name":"Hamburg","ausbau":false},
+    {"id":"mv","name":"Mecklenburg-Vorpommern","ausbau":false},
+    {"id":"ni","name":"Niedersachsen","ausbau":false},
+    {"id":"nw","name":"Nordrhein-Westfalen","ausbau":false},
+    {"id":"sl","name":"Saarland","ausbau":false},
+    {"id":"sn","name":"Sachsen","ausbau":false},
+    {"id":"st","name":"Sachsen-Anhalt","ausbau":false},
+    {"id":"sh","name":"Schleswig-Holstein","ausbau":false},
+    {"id":"th","name":"Thüringen","ausbau":false}
+  ],
+  "werte": [
+    {"land":"he","schadstoff":"pak","material":"teerpechhaltig","bezug":"Summe 16 PAK nach EPA, Originalsubstanz","op":"≥","zahl":400,"einheit":"mg/kg","quelle":"he-merkblatt","fundstelle":"Kapitel 3.2 PAK"},
+    {"land":"he","schadstoff":"pak","material":"pechfrei","bezug":"Summe 16 PAK nach EPA, Originalsubstanz","op":"≥","zahl":1000,"einheit":"mg/kg","quelle":"he-merkblatt","fundstelle":"Kapitel 3.2 PAK"},
+    {"land":"he","schadstoff":"pak","material":"Benzo(a)pyren","bezug":"Originalsubstanz","op":"≥","zahl":50,"einheit":"mg/kg","quelle":"he-merkblatt","fundstelle":"Kapitel 3.2 PAK"},
+    {"land":"bw","schadstoff":"pak","material":"PAK","bezug":"Wert wird geprüft","offen":true,"einheit":"mg/kg","quelle":"bw-einstufung"},
+    {"land":"rp","schadstoff":"pak","material":"PAK","bezug":"Wert wird geprüft","offen":true,"einheit":"mg/kg","quelle":"rp-einstufung"}
+  ]
+}

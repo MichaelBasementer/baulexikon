@@ -1,0 +1,307 @@
+// Baulexikon: hash router and views. All content comes from data/*.json.
+const FILES = ["kapitel", "bauteile", "materialien", "schadstoffe", "regeln", "avv", "tabellen", "laender", "quellen", "wandel", "bilder"];
+const STALE_DAYS = 180;
+const STORE = "baulexikon-v1";
+const D = {};
+let index = [];
+const view = document.getElementById("view"), hdr = document.getElementById("hdr");
+
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const byId = (list, id) => list.find(x => x.id === id);
+const fmtDate = iso => iso ? iso.split("-").reverse().join(".") : "";
+const fmtNum = n => n.toLocaleString("de-DE", { maximumFractionDigits: 6 });
+
+function fmtWert(w) {
+  if (!w) return "–";
+  if (w.von != null) return `${fmtNum(w.von)}–${fmtNum(w.bis)}`;
+  return `${w.op ? w.op + " " : ""}${fmtNum(w.zahl)}`;
+}
+
+// Favourites and recently viewed only; nothing leaves the device.
+function loadStore() {
+  try { return { fav: [], recent: [], ...JSON.parse(localStorage.getItem(STORE)) }; }
+  catch { return { fav: [], recent: [] }; }
+}
+const saveStore = s => localStorage.setItem(STORE, JSON.stringify(s));
+function remember(entry) {
+  const s = loadStore();
+  s.recent = [entry.route, ...s.recent.filter(r => r !== entry.route)].slice(0, 12);
+  saveStore(s);
+}
+
+function isStale(iso) {
+  return !iso || (Date.now() - new Date(iso)) / 864e5 > STALE_DAYS;
+}
+function statusTag(q) {
+  if (q.status === "entwurf") return `<span class="tag warn">Entwurf</span>`;
+  if (q.status !== "geprueft") return `<span class="tag warn">ungeprüft</span>`;
+  if (isStale(q.geprueft)) return `<span class="tag warn">Prüfung überfällig</span>`;
+  return `<span class="tag ok">geprüft ${fmtDate(q.geprueft)}</span>`;
+}
+function srcLine(id, extra = "") {
+  const q = byId(D.quellen, id);
+  return `<p class="src"><a class="link" href="#/q/${q.id}">${esc(q.kurz)}</a>${extra ? ` · ${esc(extra)}` : ""} · Stand ${esc(q.fassung)} ${statusTag(q)}</p>`;
+}
+
+const row = (href, titel, sub, right = "<i>›</i>") =>
+  `<a class="item" href="${href}"><span>${esc(titel)}${sub ? `<small>${esc(sub)}</small>` : ""}</span>${right}</a>`;
+const avvTag = a => a.gefaehrlich ? `<span class="tag bad">gefährlich</span>` : `<span class="tag ok">nicht gefährlich</span>`;
+const paras = list => (list || []).map(p => `<p>${esc(p)}</p>`).join("");
+const hRow = (titel, html) => html ? `<div class="section-h">${esc(titel)}</div>${html}` : "";
+
+const FAV_ICON = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 4h12v17l-6-4-6 4z"/></svg>`;
+function head(titel, sub, opts = {}) {
+  const fav = opts.route ? loadStore().fav.includes(opts.route) : false;
+  hdr.innerHTML = (opts.back ? `<a class="icon-btn" href="${opts.back}" aria-label="Zurück">‹</a>` : "") +
+    `<div class="ttl"><h1>${esc(titel)}</h1><small>${esc(sub || "")}</small></div>` +
+    (opts.route ? `<button class="icon-btn" id="fav" aria-label="Merken" aria-pressed="${fav}">${FAV_ICON}</button>` : "");
+  if (opts.route) document.getElementById("fav").onclick = e => {
+    const s = loadStore(), on = !s.fav.includes(opts.route);
+    s.fav = on ? [opts.route, ...s.fav] : s.fav.filter(r => r !== opts.route);
+    saveStore(s);
+    e.currentTarget.setAttribute("aria-pressed", on);
+  };
+}
+
+/* ---------- Search index ---------- */
+function buildEntries() {
+  const e = [];
+  const add = (titel, sub, stichworte, route, kind) => e.push({ titel, sub, stichworte, route, kind });
+  D.bauteile.forEach(b => add(b.titel, `Bauteil · ${b.bauzeit}`, [b.alias, ...(b.schichten || []).map(s => s.name), b.erkennen].join(" "), `#/b/${b.id}`));
+  D.materialien.forEach(m => add(m.titel, `Material · ${m.sub || ""}`, m.stichworte, `#/m/${m.id}`));
+  D.schadstoffe.forEach(s => add(s.titel, "Schadstoff", [s.stichworte, ...(s.fundorte || [])].join(" "), `#/s/${s.id}`));
+  D.regeln.forEach(r => add(r.titel, `Regelwerk · ${r.sub || ""}`, r.stichworte, `#/r/${r.id}`));
+  D.avv.forEach(a => add(`${a.code} ${a.titel}`, `AVV-Schlüssel · ${a.gefaehrlich ? "gefährlich" : "nicht gefährlich"}`, a.stichworte, `#/a/${a.code.replace(/\D/g, "")}`));
+  D.tabellen.forEach(t => add(t.titel, `Grenzwerte · ${t.sub}`, t.stichworte, `#/t/${t.id}`));
+  D.laender.laender.forEach(l => add(l.name, "Länderregeln", l.stichworte, `#/l/${l.id}`));
+  return e;
+}
+
+/* ---------- Views ---------- */
+const SEARCH = `<div class="search"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><input id="q" type="search" placeholder="17 06 05, Flexplatte, PAK …" aria-label="Suche" autocomplete="off"></div>`;
+
+function start() {
+  head("Baulexikon", "Nachschlagen für Bestand und Rückbau");
+  const offen = D.wandel.length;
+  view.innerHTML = SEARCH + `<div id="res" class="panel" hidden></div><div id="home" class="tiles">` +
+    D.kapitel.map(k => `<a class="tile" href="${k.route}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">${k.icon}</svg><b>${esc(k.titel)}</b><span>${esc(k.kurz)}</span></a>`).join("") +
+    `<a class="tile" href="#/quellen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><b>Im Wandel</b><span>${offen} offene Änderungen</span></a></div>`;
+  const q = document.getElementById("q"), res = document.getElementById("res"), home = document.getElementById("home");
+  q.addEventListener("input", () => {
+    const hits = Search.find(index, q.value), on = !!q.value.trim();
+    home.hidden = on; res.hidden = !on;
+    res.innerHTML = hits.map(h => row(h.route, h.titel, h.sub)).join("") || `<p class="item">Kein Treffer</p>`;
+  });
+}
+
+function themen() {
+  head("Themen", "Alle Kapitel");
+  view.innerHTML = `<div class="panel">` + D.kapitel.map(k => row(k.route, k.titel, k.lang)).join("") + `</div>`;
+}
+
+function kapitel(id) {
+  const k = byId(D.kapitel, id);
+  if (!k) return notFound();
+  head(k.titel, k.kurz, { back: "#/themen" });
+  const lists = {
+    bauteile: () => D.bauteile.map(b => row(`#/b/${b.id}`, b.titel, b.bauzeit)),
+    schadstoffe: () => D.schadstoffe.map(s => row(`#/s/${s.id}`, s.titel, s.kurz)),
+    regeln: () => D.regeln.map(r => row(`#/r/${r.id}`, r.titel, r.sub)),
+    abfall: () => [...D.tabellen.map(t => row(`#/t/${t.id}`, t.titel, t.sub)),
+      ...D.avv.map(a => row(`#/a/${a.code.replace(/\D/g, "")}`, a.code, a.titel, avvTag(a)))],
+    laender: () => D.laender.laender.map(l => row(`#/l/${l.id}`, l.name, l.ausbau ? "voll ausgearbeitet" : "Linkliste")),
+  };
+  view.innerHTML = `<div class="panel">${lists[id]().join("") || `<p class="item">Noch keine Einträge</p>`}</div>`;
+}
+
+async function bauteil(id) {
+  const b = byId(D.bauteile, id), route = `#/b/${id}`;
+  if (!b) return notFound();
+  head(b.titel, b.alias, { back: "#/k/bauteile", route });
+  remember({ route });
+  const sch = (b.schadstoffe || []).map(s => {
+    const x = byId(D.schadstoffe, s);
+    return x ? `<a class="tag warn" href="#/s/${x.id}">${esc(x.titel)} ›</a>` : "";
+  }).join("");
+  view.innerHTML = `<div class="tags"><span class="tag">${esc(b.bauzeit)}</span>${b.dicke ? `<span class="tag">${esc(b.dicke)}</span>` : ""}</div>
+    ${b.schnitt ? `<div class="card section" id="schnitt"></div>` : ""}
+    <ul class="panel layers">${b.schichten.map((s, i) => `<li><span class="n">${i + 1}</span><span>${esc(s.name)}</span><span class="num">${esc(s.dicke || "")}</span></li>`).join("")}</ul>
+    <div class="card"><h2>Erkennen</h2><p>${esc(b.erkennen)}</p></div>
+    <div class="card alert"><h2>Schadstoffverdacht</h2><p>${esc(b.verdacht)}</p>${sch ? `<div class="tags">${sch}</div>` : ""}</div>
+    ${srcLine(b.quelle, "Bandbreiten, keine Planungswerte. Ein Verdacht ersetzt keine Probenahme.")}`;
+  // Inlined so the drawing can use the light/dark CSS variables.
+  if (b.schnitt) {
+    const svg = await fetch(`img/schnitte/${b.schnitt}.svg`).then(r => r.text());
+    const box = document.getElementById("schnitt");
+    if (box) box.innerHTML = svg;
+  }
+}
+
+function schadstoff(id) {
+  const s = byId(D.schadstoffe, id), route = `#/s/${id}`;
+  if (!s) return notFound();
+  head(s.titel, "Gebäudeschadstoff", { back: "#/k/schadstoffe", route });
+  remember({ route });
+  const werte = D.laender.werte.filter(w => w.schadstoff === id);
+  const avv = (s.avv || []).map(c => D.avv.find(a => a.code === c)).filter(Boolean);
+  const regeln = (s.regeln || []).map(r => byId(D.regeln, r)).filter(Boolean);
+  view.innerHTML = `<div class="card"><h2>Wo typisch?</h2><ul>${s.fundorte.map(f => `<li>${esc(f)}</li>`).join("")}</ul></div>
+    ${s.text ? `<div class="card">${paras(s.text)}</div>` : ""}
+    ${hRow("Gefährlicher Abfall ab", werte.length ? `<div class="panel">${laenderRows(werte)}</div>${[...new Set(werte.map(w => w.quelle))].map(q => srcLine(q)).join("")}` : "")}
+    ${hRow("AVV-Schlüssel", avv.length ? `<div class="panel">${avv.map(a => row(`#/a/${a.code.replace(/\D/g, "")}`, a.code, a.titel, avvTag(a))).join("")}</div>` : "")}
+    ${hRow("Arbeitsschutz", regeln.length ? `<div class="panel">${regeln.map(r => row(`#/r/${r.id}`, r.titel, r.sub)).join("")}</div>` : "")}`;
+}
+
+// Values of an unverified source are never displayed, only the state.
+function laenderRows(werte) {
+  return werte.map(w => {
+    const land = byId(D.laender.laender, w.land), q = byId(D.quellen, w.quelle);
+    const right = !w.offen && q.status === "geprueft" ? `<span class="num">${esc(fmtWert(w))} ${esc(w.einheit)}</span>` : `<span class="tag warn">ungeprüft</span>`;
+    return `<a class="item" href="#/l/${land.id}"><span>${esc(land.name)}, ${esc(w.material)}<small>${esc(w.bezug)}</small></span>${right}</a>`;
+  }).join("");
+}
+
+function regel(id) {
+  const r = byId(D.regeln, id), route = `#/r/${id}`;
+  if (!r) return notFound();
+  head(r.titel, r.sub, { back: "#/k/regeln", route });
+  remember({ route });
+  view.innerHTML = `<div class="card">${paras(r.text)}</div>${srcLine(r.quelle)}`;
+}
+
+function avv(code) {
+  const a = D.avv.find(x => x.code.replace(/\D/g, "") === code), route = `#/a/${code}`;
+  if (!a) return notFound();
+  head(a.code, "AVV-Schlüssel", { back: "#/k/abfall", route });
+  remember({ route });
+  const m = a.spiegel ? D.avv.find(x => x.code === a.spiegel) : null;
+  const sch = D.schadstoffe.filter(s => (s.avv || []).includes(a.code));
+  view.innerHTML = `<div class="card"><h2>${esc(a.titel)}</h2><div class="tags">${avvTag(a)}</div></div>
+    ${a.text ? `<div class="card">${paras(a.text)}</div>` : ""}
+    ${hRow("Spiegeleintrag", m ? `<div class="panel">${row(`#/a/${m.code.replace(/\D/g, "")}`, m.code, m.titel, avvTag(m))}</div>` : "")}
+    ${hRow("Schadstoffe", sch.length ? `<div class="panel">${sch.map(s => row(`#/s/${s.id}`, s.titel)).join("")}</div>` : "")}
+    ${srcLine(a.quelle)}`;
+}
+
+const picks = {};
+function tabelle(id) {
+  const t = byId(D.tabellen, id), route = `#/t/${id}`;
+  if (!t) return notFound();
+  const pick = picks[id] ||= t.spalten.slice(0, 3).map((_, i) => i);
+  head(t.titel, t.sub, { back: "#/k/abfall", route });
+  remember({ route });
+  const shown = pick.slice().sort((a, b) => a - b);
+  view.innerHTML = `<div class="section-h">Bis drei Klassen vergleichen</div>
+    <div class="chips">${t.spalten.map((c, i) => `<button class="chip" data-c="${i}" aria-pressed="${pick.includes(i)}">${esc(c)}</button>`).join("")}</div>
+    <div class="tablewrap"><table><thead><tr><th>Parameter</th>${shown.map(i => `<th>${esc(t.spalten[i])}</th>`).join("")}</tr></thead>
+    <tbody>${t.zeilen.map(z => `<tr><td>${esc(z.parameter)}<small>${esc(z.einheit)}</small></td>${shown.map(i => `<td class="num">${esc(fmtWert(z.werte[i]))}</td>`).join("")}</tr>`).join("")}</tbody></table></div>
+    ${t.hinweis ? `<div class="card alert"><p>${esc(t.hinweis)}</p></div>` : ""}
+    ${srcLine(t.quelle, t.fundstelle)}`;
+  view.querySelectorAll(".chip").forEach(b => b.onclick = () => {
+    const c = +b.dataset.c;
+    if (pick.includes(c)) { if (pick.length > 1) picks[id] = pick.filter(x => x !== c); }
+    else picks[id] = [...pick.slice(-2), c];
+    tabelle(id);
+  });
+}
+
+function land(id) {
+  const l = byId(D.laender.laender, id), route = `#/l/${id}`;
+  if (!l) return notFound();
+  head(l.name, l.ausbau ? "Länderregeln" : "Linkliste", { back: "#/k/laender", route });
+  remember({ route });
+  const werte = D.laender.werte.filter(w => w.land === id);
+  const docs = (l.quellen || []).map(q => byId(D.quellen, q)).filter(Boolean);
+  view.innerHTML = `${l.text ? `<div class="card">${paras(l.text)}</div>` : ""}
+    ${hRow("Werte", werte.length ? `<div class="panel">${laenderRows(werte)}</div>` : "")}
+    ${hRow("Dokumente", docs.length ? `<div class="panel">${docs.map(q => row(`#/q/${q.id}`, q.kurz, `Stand ${q.fassung}`, statusTag(q))).join("")}</div>` : "")}
+    ${l.text || werte.length || docs.length ? "" : `<p class="empty">Für dieses Land sind noch keine Dokumente hinterlegt.</p>`}`;
+}
+
+function material(id) {
+  const m = byId(D.materialien, id), route = `#/m/${id}`;
+  if (!m) return notFound();
+  head(m.titel, m.sub, { back: "#/k/bauteile", route });
+  remember({ route });
+  view.innerHTML = `<div class="card">${paras(m.text)}</div>`;
+}
+
+function quelle(id) {
+  const q = byId(D.quellen, id);
+  if (!q) return notFound();
+  head("Quelle", q.kurz, { back: "#/quellen" });
+  const zeile = (k, v) => v ? `<div class="item"><span>${esc(k)}</span><span>${v}</span></div>` : "";
+  view.innerHTML = `<div class="card"><h2>${esc(q.titel)}</h2><div class="tags">${statusTag(q)}</div></div>
+    <div class="panel">${zeile("Fundstelle", esc(q.fundstelle))}${zeile("Stand", esc(q.fassung))}${zeile("Herausgeber", esc(q.herausgeber))}${zeile("Geprüft am", q.geprueft ? `<span class="num">${fmtDate(q.geprueft)}</span>` : "")}</div>
+    ${q.hinweis ? `<div class="card alert"><p>${esc(q.hinweis)}</p></div>` : ""}
+    ${q.url ? `<a class="link center" href="${esc(q.url)}" target="_blank" rel="noopener">Original öffnen ↗</a>` : ""}`;
+}
+
+function quellen() {
+  head("Quellen", "Fundstellen und Änderungen");
+  const bilder = D.bilder.length ? `<a class="item" href="#/bilder"><span>Bildnachweis<small>${D.bilder.length} Fotos</small></span><i>›</i></a>` : "";
+  view.innerHTML = `<div class="section-h">Im Wandel</div><div class="panel">
+    ${D.wandel.map(w => `<a class="item" href="#/q/${w.quelle}"><span>${esc(w.titel)}<small>${esc(w.text)}</small></span><span class="tag warn">${esc(w.status)}</span></a>`).join("")}</div>
+    <div class="section-h">Regelwerke und Quellen</div>
+    <div class="panel">${D.quellen.map(q => row(`#/q/${q.id}`, q.kurz, `Stand ${q.fassung}`, statusTag(q))).join("")}${bilder}</div>
+    <p class="src">Orientierung, keine Rechtsberatung. Ersetzt keine Probenahme und Laboranalyse. Verbindlich sind nur die Originaltexte und die zuständige Behörde. Normen werden nur genannt, nicht wiedergegeben.</p>`;
+}
+
+function bildnachweis() {
+  head("Bildnachweis", "Urheber und Lizenzen", { back: "#/quellen" });
+  view.innerHTML = `<div class="panel">${D.bilder.map(b => `<a class="item" href="${esc(b.url)}" target="_blank" rel="noopener"><span>${esc(b.titel)}<small>${esc(b.urheber)} · ${esc(b.lizenz)}</small></span><i>↗</i></a>`).join("")}</div>`;
+}
+
+function merkliste() {
+  head("Merkliste", "Gemerkt und zuletzt angesehen");
+  const s = loadStore(), byRoute = r => index.find(e => e.route === r);
+  const list = rs => rs.map(byRoute).filter(Boolean).map(e => row(e.route, e.titel, e.sub)).join("");
+  const fav = list(s.fav), rec = list(s.recent);
+  view.innerHTML = fav || rec
+    ? hRow("Gemerkt", fav && `<div class="panel">${fav}</div>`) + hRow("Zuletzt angesehen", rec && `<div class="panel">${rec}</div>`)
+    : `<p class="empty">Noch nichts gemerkt. Das Lesezeichen oben auf einer Seite speichert sie hier.</p>`;
+}
+
+function notFound() {
+  head("Nicht gefunden", "");
+  view.innerHTML = `<p class="empty">Diese Seite gibt es nicht.</p><a class="link center" href="#/">Zur Startseite</a>`;
+}
+
+/* ---------- Router ---------- */
+const ROUTES = [
+  [/^#\/themen$/, themen, "themen"], [/^#\/k\/(\w+)$/, kapitel, "themen"], [/^#\/b\/([\w-]+)$/, bauteil, "themen"],
+  [/^#\/m\/([\w-]+)$/, material, "themen"], [/^#\/s\/([\w-]+)$/, schadstoff, "themen"], [/^#\/r\/([\w-]+)$/, regel, "themen"],
+  [/^#\/a\/(\d+)$/, avv, "themen"], [/^#\/t\/([\w-]+)$/, tabelle, "themen"], [/^#\/l\/([\w-]+)$/, land, "themen"],
+  [/^#\/q\/([\w-]+)$/, quelle, "quellen"], [/^#\/quellen$/, quellen, "quellen"], [/^#\/bilder$/, bildnachweis, "quellen"],
+  [/^#\/merkliste$/, merkliste, "merkliste"],
+];
+function route() {
+  const h = location.hash || "#/";
+  const r = ROUTES.find(x => x[0].test(h));
+  if (r) r[1](...h.match(r[0]).slice(1));
+  else if (h === "#/" ) start();
+  else notFound();
+  const tab = r ? r[2] : "start";
+  document.querySelectorAll("#tabs a").forEach(a => a.dataset.t === tab ? a.setAttribute("aria-current", "page") : a.removeAttribute("aria-current"));
+  scrollTo(0, 0);
+}
+
+async function boot() {
+  try {
+    await Promise.all(FILES.map(async f => { D[f] = await fetch(`data/${f}.json`).then(r => { if (!r.ok) throw new Error(f); return r.json(); }); }));
+  } catch {
+    view.innerHTML = `<p class="empty">Die Daten konnten nicht geladen werden. Bitte einmal mit Internetverbindung öffnen.</p>`;
+    return;
+  }
+  index = Search.build(buildEntries());
+  addEventListener("hashchange", route);
+  route();
+}
+
+if ("serviceWorker" in navigator) {
+  // First-time installs must not reload; only a replacement worker does.
+  const hadController = !!navigator.serviceWorker.controller;
+  navigator.serviceWorker.addEventListener("controllerchange", () => { if (hadController) location.reload(); });
+  navigator.serviceWorker.register("sw.js");
+}
+boot();
