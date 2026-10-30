@@ -191,7 +191,8 @@ function schadstoff(id) {
     ${hRow("AVV-Schlüssel", avv.length ? `<div class="panel">${avv.map(a => row(`#/a/${a.code.replace(/\D/g, "")}`, a.code, a.titel, avvTag(a))).join("")}</div>` : "")}
     ${hRow("Arbeitsschutz", regeln.length ? `<div class="panel">${regeln.map(r => row(`#/r/${r.id}`, r.titel, r.sub)).join("")}</div>` : "")}
     ${hRow("Kommt vor in", vor.length ? `<div class="panel">${vor.map(b => row(`#/b/${b.id}`, b.titel, GRUPPEN[b.gruppe])).join("")}</div>` : "")}
-    ${srcLine(s.quelle, "Orientierung. Ein Verdacht ersetzt keine Probenahme.")}`;
+    ${srcLine(s.quelle, "Orientierung. Ein Verdacht ersetzt keine Probenahme.")}
+    ${(s.belege || []).map(q => srcLine(q)).join("")}`;
 }
 
 // Values of an unverified source are never displayed, only the state.

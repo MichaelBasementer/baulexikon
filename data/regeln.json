@@ -3,6 +3,7 @@
     "Was der Bohrer zeigt: Ortbeton bleibt durchgehend massiv mit grauem Staub, Stahl wird getroffen. Bei der Filigrandecke zeigt der Kern die Fuge zwischen Fertigteil und Aufbeton. Bei der Hohldiele folgt nach 3–5 cm ein Hohlraum. Roter Bohrstaub deutet auf Ziegel, weißer auf Kalksandstein oder Porenbeton, grauer auf Bims oder Beton.",
     "Schwimmender Estrich: Der Kern zeigt Estrich und darunter weiches Dämmmaterial. WDVS: Der Bohrstaub zeigt erst Putz, dann Styropor oder Wolle.",
     "Erkundung: Ein vollständiges Durchkernen von Decken ist anzustreben, besonders beim Rückbau. Bei Bodenplatten und erdberührten Wänden mindestens 100 mm Durchmesser, in der Regel reicht eine Kernbohrung je Platte. Kerne mit Schichtstärke, Material und Auffälligkeiten aufnehmen, fotografieren und nach Schichten trennen. Oben und unten kennzeichnen.",
+    "Fußbodenaufbauten: Bei der Ersterkundung Öffnungen mit mindestens 100 mm, Kernbohrgerät und Wasserspülung. Bohrhammer und Trockenbohren sind wegen unkontrollierter Staubfreisetzung nicht geeignet. Der Aufbau kann von Raum zu Raum wechseln, deshalb lieber mehrere Stellen.",
     "Vorher klären: Spannlitzen in Hohldielen niemals ohne Statik anbohren. Weiße Wannen im Bestand nicht durchbohren. Bei Fußbodenheizung den Rohrverlauf klären (Wärmebildkamera, Pläne).",
     "Asbest: Bei Baubeginn vor dem 31.10.1993 ist Asbest in Spachtel, Klebern und Bodenaufbauten möglich. TRGS 519 Anlage 9 nennt dafür Verfahren mit niedrigem Risiko: BT 50 durch Wände mit asbesthaltigen Wandbekleidungen, BT 51 durch Bodenplatten und Zwischendecken aus Beton mit asbesthaltigen Bodenaufbauten, jeweils 42–125 mm Durchmesser, sowie BT 55 in asbesthaltige Fußbodenaufbauten mit spezieller Absaugvorrichtung. Die Einschränkungen und Schutzmaßnahmen stehen in den BT-Blättern."
   ],"quelle":"trgs519"},
@@ -60,6 +61,28 @@
     "Ein bundeseinheitlicher Grenzwert für die Gefährlichkeit besteht nicht, die Länder regeln das selbst.",
     "Ausbauasphalt mit PAK16 bis 25 mg/kg gilt als pechfrei im Sinne der Verwertung, darüber liegen pechtypische Bestandteile vor. Die Einstufung als gefährlicher Abfall 17 03 01* richtet sich nach dem Länderwert."
   ],"quelle":"laga-teer"},
+  {"id":"getrennthaltung","bereich":"abfall","titel":"Getrennthaltung auf der Baustelle","sub":"GewAbfV § 8, § 9","stichworte":"Gewerbeabfallverordnung Trennpflicht Getrenntsammlung Dokumentation Gemisch","text":[
+    "Getrennt zu sammeln sind: Glas, Kunststoff, Metalle, Holz, Dämmmaterial (17 06 04), Bitumengemische (17 03 02), Baustoffe auf Gipsbasis (17 08 02), Beton, Ziegel, Fliesen und Keramik.",
+    "Die Pflicht entfällt nur, wenn das technisch nicht möglich oder wirtschaftlich nicht zumutbar ist, etwa bei Platzmangel. Vermeidbare Kosten durch unterlassenen selektiven Rückbau zählen dabei nicht.",
+    "Zu dokumentieren mit Lageplänen, Lichtbildern, Liefer- oder Wiegescheinen und der Erklärung des Übernehmers. Auch Abweichungen sind zu dokumentieren.",
+    "Gemische gehen unverzüglich in eine Vorbehandlungs- oder Aufbereitungsanlage. Für technische Bauwerke gilt § 24 EBV. Das Vermischungsverbot für gefährliche Abfälle bleibt unberührt."
+  ],"quelle":"gewabfv"},
+  {"id":"altholz","bereich":"abfall","titel":"Altholz aus dem Rückbau","sub":"AltholzV Anhang III","stichworte":"Altholzverordnung A I A II A III A IV Dachsparren Fachwerk Fenster 17 02 04","text":[
+    "A I: naturbelassen. A II: verleimt, gestrichen, beschichtet, ohne Halogenorganik und Holzschutzmittel. A III: mit halogenorganischer Beschichtung. A IV: mit Holzschutzmitteln behandelt.",
+    "Regelzuordnung A II, 17 02 01: Dielen, Fehlböden, Schalungen aus dem Innenausbau, Innentüren und Zargen, Deckenpaneele, Bauspanplatten, jeweils ohne schädliche Verunreinigungen.",
+    "Regelzuordnung A IV, 17 02 04*: Konstruktionshölzer für tragende Teile, Holzfachwerk und Dachsparren, Fenster und Außentüren, imprägnierte Bauhölzer, Abbruchholz mit schädlichen Verunreinigungen.",
+    "Dämm- und Schallschutzplatten mit PCB-Mitteln: Beseitigung, 17 06 03*."
+  ],"quelle":"altholzv"},
+  {"id":"nachweise","bereich":"abfall","titel":"Nachweise für gefährliche Abfälle","sub":"NachwV, POP-Abfall-ÜberwV","stichworte":"Entsorgungsnachweis Begleitschein Übernahmeschein Kleinmenge eANV Deklarationsanalyse","text":[
+    "Gefährliche Abfälle sind nachweispflichtig. Vor Beginn der Entsorgung belegt der Entsorgungsnachweis die Zulässigkeit, mit verantwortlicher Erklärung des Erzeugers samt Deklarationsanalyse und Annahmeerklärung des Entsorgers.",
+    "Erzeuger mit nicht mehr als zwei Tonnen gefährlicher Abfälle jährlich sind von der Nachweispflicht ausgenommen. Übernahmescheine bleiben Pflicht.",
+    "Nicht gefährliche POP-Abfälle über den Grenzwerten unterliegen ebenfalls Nachweis- und Registerpflichten."
+  ],"quelle":"nachwv"},
+  {"id":"probenahme","bereich":"abfall","titel":"Probenahme und Erkundung","sub":"LAGA PN 98, Schadstoffratgeber","stichworte":"PN 98 Haufwerk Mischprobe Hot-Spot Probenahmeprotokoll Raumbuch Erkundung OTE PTE","text":[
+    "Haufwerke werden nach LAGA PN 98 beprobt. Die Grundmenge wird über Einzel-, Misch- und Laborproben charakterisiert. Hot-Spots sind generell als Einzelprobe zu entnehmen und zu analysieren. Für die Fachkunde wird eine Auffrischung im Abstand von 5 Jahren genannt.",
+    "Vor dem Abbruch: erst Bestandsaufnahme mit Begehung und Unterlagen, dann Probenahmeplan und technische Erkundung. Eine punktuelle Erkundung reicht für Sanierung oder Rückbau nicht aus.",
+    "Alle Probenstellen in Lageplänen kennzeichnen, Probenahmeprotokolle führen, Fotodokumentation ist zwingend. Fehlböden und abgehängte Decken immer öffnen. Dachbahnen nicht nur in der obersten Lage beproben."
+  ],"quelle":"laga-pn98"},
   {"id":"depv-kurz","bereich":"abfall","titel":"Deponieklassen","sub":"DepV","stichworte":"DK 0 DK I DK II DK III Inertstoff Zuordnung","text":["Die DepV ordnet Abfälle über die Zuordnungskriterien nach Anhang 3 Tabelle 2 den Deponieklassen 0 bis III zu. Daneben gelten die Fußnoten und die Genehmigung der jeweiligen Deponie."],"quelle":"depv","tabellen":["depv-fest","depv-eluat"]},
   {"id":"ebv-kurz","bereich":"abfall","titel":"Ersatzbaustoffverordnung","sub":"EBV","stichworte":"Materialklassen RC BM BG Einbau technische Bauwerke","text":["Die EBV regelt Herstellung und Einbau mineralischer Ersatzbaustoffe in technische Bauwerke. Die Materialklassen ergeben sich aus den Materialwerten der Anlage 1. Für Einbauweisen gelten die weiteren Anlagen.","Eine Novelle liegt als Referentenentwurf vom Juli 2026 vor und ist noch nicht in Kraft."],"quelle":"ebv","tabellen":["ebv-rc","ebv-bm","ebv-bm-zusatz","ebv-asche","ebv-gs"]},
   {"id":"verfuellung","bereich":"abfall","titel":"Verfüllung und Bodenschutz","sub":"BBodSchV","stichworte":"Verfüllung Auffüllung durchwurzelbare Bodenschicht Grube","text":["Für das Auf- oder Einbringen von Materialien auf oder in den Boden gelten die §§ 6 bis 8 BBodSchV. Technische Bauwerke fallen unter die EBV.","Die Länder können eigene Regeln zur Verfüllung treffen. In Hessen gilt die Verfüllrichtlinie, siehe Länderregeln."],"quelle":"bbodschv"},

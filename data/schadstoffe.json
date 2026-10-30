@@ -1,34 +1,302 @@
 [
-  {"id":"asbest","titel":"Asbest","kurz":"Bauwerke vor dem 31.10.1993","stichworte":"Spritzasbest Asbestzement Faserzement Flexplatten Spachtel Putz Fliesenkleber PSF",
-   "fundorte":["Putze, Spachtel und Fliesenkleber (bis 1993)","Floor-Flex-Platten, schwarzer Kleber, ca. 1955–1985","Cushion-Vinyl, Rückenpapier, ca. 1960–1985","Faserzement-Abstandhalter in der Bewehrung","Spritzasbest an Stahlträgern und Brandschutz (bis ca. 1979)","Faserzementplatten und -schindeln vor 1993","Steinholzestrich als Zuschlag","Fugenbänder, ältere Bitumenkleber und Dichtmassen","Dach- und Schweißbahnen","Flanschdichtungen an Heizung und Lüftung","Brandschutzklappen, -türen und Leichtbauplatten","Spachtelmassen im Trockenbau","Asbestpappe in Heizkörpernischen und Estrichen"],
-   "text":["Bei Bauwerken, mit deren Errichtung vor dem 31.10.1993 begonnen wurde, ist mit Asbest zu rechnen, solange kein Nachweis der Asbestfreiheit vorliegt.","Bauschutt mit weniger als 0,1 M.-% Asbest ist ein gering asbesthaltiger, nicht gefährlicher Abfall (z. B. 17 01 01). Ab 0,1 M.-% kommt der Spiegeleintrag 17 01 06* in Betracht. Die Verfahren und Sonderfälle stehen in der LAGA M23."],
-   "quelle":"laga-m23","avv":["17 06 05*","17 06 01*","17 01 06*","17 01 07"],"regeln":["gefstoffv-asbest","trgs519"]},
-  {"id":"pak","titel":"PAK / Teer","kurz":"Teerkleber, Teerpappe, Schlacke","stichworte":"polyzyklische aromatische Kohlenwasserstoffe Benzo(a)pyren BaP Steinkohlenteer Pech Teerkleber Carbolineum",
-   "fundorte":["Parkettkleber, schwarz glänzend, bis ca. 1970er","Teerpappe als Trennlage, vor ca. 1970er","Gussasphalt mit Steinkohlenteerpech, bis ca. 1970er","Schlacke- und Asche-Schüttungen","Teerkork an Rohren, Decken und Bodenplatten","Teeranstriche und Teerbahnen an Kellerwänden, vor ca. 1970","Bitumen-/Teeranstriche am Sockel"],
-   "quelle":"atlas","avv":["17 03 01*","17 03 02","17 03 03*","17 05 03*","17 05 04","17 01 06*","17 01 07"],"regeln":["trgs524","trgs551"]},
-  {"id":"pcb","titel":"PCB","kurz":"Fugenmassen, Altbeschichtungen","stichworte":"polychlorierte Biphenyle dauerelastisch Fugen Beschichtung",
-   "fundorte":["Dauerelastische Fugenmassen, v. a. 1955–1975, vereinzelt bis Anfang der 1990er","Akustik-Deckenplatten Typ Wilhelmi, 1960er bis Anfang 1970er","Kapillarrohr-Regler in Speicherheizgeräten bis 1989","Alte Bodenbeschichtungen","Kunstharzbeschichtungen in Altbeständen","Kleber","Trafos und Leistungskondensatoren (Öl)","Altkabelummantelungen"],
-   "text":["PCB-haltige Dichtungsmassen müssen vor dem Abbruch von den übrigen Baumaterialien getrennt und separat entsorgt werden. Die Betonkanten sind auf PCB zu untersuchen.","Ab 50 mg/kg PCB (Summe der 6 Kongenere mal 5) ist der Abfall gefährlich und zu beseitigen, er darf nicht verwertet werden."],
-   "quelle":"he-merkblatt","avv":["17 09 02*","17 09 03*","17 09 04"],"regeln":["trgs524"]},
-  {"id":"kmf","titel":"KMF / alte Mineralwolle","kurz":"Mineralwolle vor 1996","stichworte":"künstliche Mineralfasern Glaswolle Steinwolle Dämmung",
-   "fundorte":["Trittschalldämmung aus alter Mineralwolle","Dämmung zwischen Lagerhölzern","Nachträgliche Dämmung in Holzbalkendecken","Metallständerwände","Kerndämmung und Fassadendämmung","KMF-Spritzputz an Stahlträgern"],
-   "text":["Bei Mineralwolle, die vor 1996 eingebaut wurde, ist von alter Mineralwolle auszugehen, zwischen 1996 und 2000 ist sie noch möglich. Für sie gilt seit Juni 2000 das Herstellungs- und Verwendungsverbot. Abfallschlüssel: 17 06 03*."],
-   "quelle":"atlas","avv":["17 06 03*","17 06 04"],"regeln":["trgs521"]},
-  {"id":"holzschutz","titel":"Holzschutzmittel","kurz":"PCP, Lindan, DDT, Carbolineum","stichworte":"Pentachlorphenol PCP Lindan DDT Carbolineum Chloranisole Formaldehyd Fertighaus",
-   "fundorte":["Holzbalken, v. a. 1950–1989","Lagerhölzer","Holzständer und Fachwerk","Holzlattung an Fassaden","Fertighäuser 1960–1990, dort auch Formaldehyd und Chloranisole (Geruch)"],
-   "quelle":"atlas","avv":["17 02 04*"],"regeln":["trgs524"]},
-  {"id":"blei","titel":"Blei","kurz":"Bleimennige an Stahl","stichworte":"Bleimennige Rostschutz Anstrich",
-   "fundorte":["Stahlträger mit Bleimennige-Anstrich","Ältere Stahlbauteile","Einblechungen am Dach","Bleirohre, sehr verbreitet bis ca. 1935","Bleikabel und Kabel mit Bleiblech"],
-   "quelle":"atlas","regeln":["trgs524"]},
-  {"id":"hbcd","titel":"HBCD","kurz":"EPS bis ca. 2015, POP-Abfall","stichworte":"Hexabromcyclododecan Styropor EPS Flammschutz POP",
-   "fundorte":["EPS-Dämmplatten im WDVS, bis ca. 2015"],
-   "text":["HBCD wurde 2016 in die EU-POP-Verordnung aufgenommen. Bis Februar 2018 durften gekennzeichnete EPS-Dämmstoffe mit HBCD noch verwendet werden. HBCD-haltiges EPS ist ab 500 mg/kg POP-Abfall und getrennt zu entsorgen, ab 30.000 mg/kg ist es gefährlicher Abfall. Die Vorgaben stehen in der LAGA-Mitteilung 41."],
-   "quelle":"atlas","avv":["17 06 03*","17 06 04"]},
-  {"id":"schwermetalle","titel":"Schlacke / Schwermetalle","kurz":"Schüttungen, Hüttenbims","stichworte":"Asche Schlacke Hüttenbims Sulfat Schüttung",
-   "fundorte":["Schüttungen aus Schlacke oder Asche in Holzbalken- und Kappendecken","Flachdach-Ausgleichsschüttungen","Tragschichten unter Bodenplatten","Bims aus Schlacke oder Hütten (auch Sulfat möglich)"],
-   "text":["Fehlböden sind bei der Erkundung immer zu öffnen und die Füllung zu dokumentieren. Bei Schlacke ist auch natürliche Radioaktivität möglich."],
-   "quelle":"atlas","avv":["17 05 03*","17 05 04","17 09 03*","17 09 04"],"regeln":["trgs524"]},
-  {"id":"mkw","titel":"Mineralöl / MKW","kurz":"Werkstätten, Ölschäden","stichworte":"Mineralölkohlenwasserstoffe Öl Ölschaden Werkstatt",
-   "fundorte":["Verbundestrich in Werkstätten","Kellerböden mit Ölschaden"],
-   "quelle":"atlas","avv":["17 05 03*","17 05 04"],"regeln":["trgs524"]}
+ {
+  "id": "asbest",
+  "titel": "Asbest",
+  "kurz": "Bauwerke vor dem 31.10.1993",
+  "stichworte": "Spritzasbest Asbestzement Faserzement Flexplatten Spachtel Putz Fliesenkleber PSF",
+  "fundorte": [
+   "Putze, Spachtel und Fliesenkleber (v. a. 1960er–1980er, im Einzelfall bis 1994)",
+   "Floor-Flex-Platten, schwarzer Kleber, bis zum Verbot 1982",
+   "Cushion-Vinyl, schwach gebundene Rückenpappe, bis zum Verbot 1982",
+   "Faserzement-Abstandhalter in der Bewehrung",
+   "Spritzasbest an Stahlträgern und Brandschutz (bis ca. 1979)",
+   "Faserzementplatten und -schindeln, asbesthaltig in der Regel bis 1991",
+   "Steinholzestrich als Zuschlag",
+   "Fugenbänder, ältere Bitumenkleber und Dichtmassen",
+   "Dach- und Schweißbahnen",
+   "Flanschdichtungen an Heizung und Lüftung",
+   "Brandschutzklappen, -türen und Leichtbauplatten",
+   "Spachtelmassen im Trockenbau",
+   "Asbestpappe in Heizkörpernischen und Estrichen",
+   "Fensterbänke aus Asbestzement, v. a. 1960er–1980er, bis 1992",
+   "Asbestzementrohre bis in die 1990er",
+   "Kitte, Stopfmassen, Sockelleisten, Buntsteinputze"
+  ],
+  "text": [
+   "Bei Bauwerken, mit deren Errichtung vor dem 31.10.1993 begonnen wurde, ist mit Asbest zu rechnen, solange kein Nachweis der Asbestfreiheit vorliegt.",
+   "Bauschutt mit weniger als 0,1 M.-% Asbest ist ein gering asbesthaltiger, nicht gefährlicher Abfall (z. B. 17 01 01). Ab 0,1 M.-% kommt der Spiegeleintrag 17 01 06* in Betracht. Die Verfahren und Sonderfälle stehen in der LAGA M23.",
+   "Lose Asbestfasern wurden vor allem in den 1960ern und 1970ern auch auf der Baustelle Putz, Fliesenkleber und Spachtel zugesetzt. Das Baujahr schützt deshalb nur begrenzt.",
+   "Zeitmarken: 1969 Spritzasbest in der DDR verboten, 1979 in der BRD. 1982 asbesthaltige Bodenbeläge. 1984 schwach gebundene Produkte im Bau und in Speicherheizgeräten. 1992 Asbestzementplatten im Hochbau. November 1993 allgemeines Verbot. Bestände aus der Zeit vor dem 20.10.1993 durften noch bis 20.04.1994 in Verkehr gebracht werden.",
+   "Produktnamen: Eternit und Glasal (bis 1991 asbesthaltig), Fulgurit, Inertol, Klingerit, Litaflex, Morinol, Promabest, Sokalit, Neptunit, Baufatherm.",
+   "Schwach gebundene Produkte setzen leicht Fasern frei. Aber auch fest gebundene Produkte geben Fasern ab, sobald sie bearbeitet werden."
+  ],
+  "quelle": "laga-m23",
+  "avv": [
+   "17 06 05*",
+   "17 06 01*",
+   "17 01 06*",
+   "17 01 07"
+  ],
+  "regeln": [
+   "gefstoffv-asbest",
+   "trgs519"
+  ],
+  "belege": [
+   "lfu-ratgeber",
+   "gefstoffv"
+  ]
+ },
+ {
+  "id": "pak",
+  "titel": "PAK / Teer",
+  "kurz": "Teerkleber, Teerpappe, Schlacke",
+  "stichworte": "polyzyklische aromatische Kohlenwasserstoffe Benzo(a)pyren BaP Steinkohlenteer Pech Teerkleber Carbolineum",
+  "fundorte": [
+   "Parkettkleber, schwarz glänzend, bis ca. 1970er",
+   "Teerpappe als Trennlage, vor ca. 1970er",
+   "Gussasphalt mit Steinkohlenteerpech, bis ca. 1970er",
+   "Schlacke- und Asche-Schüttungen",
+   "Teerkork an Rohren, Decken und Bodenplatten",
+   "Teeranstriche und Teerbahnen an Kellerwänden, vor ca. 1970",
+   "Bitumen-/Teeranstriche am Sockel",
+   "Ölpapier als Trennlage",
+   "Teerschnüre in Rohrmuffen, Teerauskleidung von Rohren",
+   "Teerkork-Halbschalen an Rohren"
+  ],
+  "quelle": "lfu-ratgeber",
+  "avv": [
+   "17 03 01*",
+   "17 03 02",
+   "17 03 03*",
+   "17 05 03*",
+   "17 05 04",
+   "17 01 06*",
+   "17 01 07"
+  ],
+  "regeln": [
+   "trgs524",
+   "trgs551"
+  ]
+ },
+ {
+  "id": "pcb",
+  "titel": "PCB und Chlorparaffine",
+  "kurz": "Fugenmassen, Farben, Altbeschichtungen",
+  "stichworte": "polychlorierte Biphenyle dauerelastisch Fugen Beschichtung Chlorparaffine CP SCCP EOX Wilhelmi Buntsteinputz",
+  "fundorte": [
+   "Dauerelastische Fugenmassen, v. a. 1955–1975, vereinzelt bis Anfang der 1990er",
+   "Akustik-Deckenplatten Typ Wilhelmi, 1960er bis Anfang 1970er",
+   "Kapillarrohr-Regler in Speicherheizgeräten bis 1989",
+   "Alte Bodenbeschichtungen",
+   "Kunstharzbeschichtungen in Altbeständen",
+   "Kleber",
+   "Trafos und Leistungskondensatoren (Öl)",
+   "Altkabelummantelungen",
+   "Farben und Lacke, Buntsteinputze, Verguss- und Spachtelmassen",
+   "Bodenbelagskleber"
+  ],
+  "text": [
+   "PCB-haltige Dichtungsmassen müssen vor dem Abbruch von den übrigen Baumaterialien getrennt und separat entsorgt werden. Die Betonkanten sind auf PCB zu untersuchen.",
+   "Ab 50 mg/kg PCB (Summe der 6 Kongenere mal 5) ist der Abfall gefährlich und zu beseitigen, er darf nicht verwertet werden.",
+   "Zeitmarken: Einsatz in Dichtmassen ab ca. 1955 (nicht DDR), 1978 Verbot offener Anwendungen, 1989 Verwendungsverbot in Deutschland.",
+   "PCB können die Raumluft belasten und Sekundärkontaminationen verursachen, die Primärquelle zu entfernen reicht dann nicht immer.",
+   "Chlorparaffine ersetzten PCB. Eine PCB-Analyse erfasst sie nicht, deshalb bei Verdacht EOX bestimmen."
+  ],
+  "quelle": "he-merkblatt",
+  "avv": [
+   "17 09 02*",
+   "17 09 03*",
+   "17 09 04"
+  ],
+  "regeln": [
+   "trgs524"
+  ],
+  "belege": [
+   "lfu-ratgeber"
+  ]
+ },
+ {
+  "id": "kmf",
+  "titel": "KMF / alte Mineralwolle",
+  "kurz": "Mineralwolle vor 1996",
+  "stichworte": "künstliche Mineralfasern Glaswolle Steinwolle Dämmung",
+  "fundorte": [
+   "Trittschalldämmung aus alter Mineralwolle",
+   "Dämmung zwischen Lagerhölzern",
+   "Nachträgliche Dämmung in Holzbalkendecken",
+   "Metallständerwände",
+   "Kerndämmung und Fassadendämmung",
+   "KMF-Spritzputz an Stahlträgern",
+   "Rohrverkleidungen unter Gipsmantel",
+   "Deckenplatten"
+  ],
+  "text": [
+   "Bei Mineralwolle, die vor 1996 eingebaut wurde, ist von alter Mineralwolle auszugehen, zwischen 1996 und 2000 ist sie noch möglich. Für sie gilt seit Juni 2000 das Herstellungs- und Verwendungsverbot. Abfallschlüssel: 17 06 03*."
+  ],
+  "quelle": "trgs521",
+  "avv": [
+   "17 06 03*",
+   "17 06 04"
+  ],
+  "regeln": [
+   "trgs521"
+  ],
+  "belege": [
+   "lfu-ratgeber"
+  ]
+ },
+ {
+  "id": "holzschutz",
+  "titel": "Holzschutzmittel",
+  "kurz": "PCP, Lindan, DDT, Carbolineum",
+  "stichworte": "Pentachlorphenol PCP Lindan DDT Carbolineum Chloranisole Formaldehyd Fertighaus",
+  "fundorte": [
+   "Holzbalken, v. a. 1950–1989",
+   "Lagerhölzer",
+   "Holzständer und Fachwerk",
+   "Holzlattung an Fassaden",
+   "Fertighäuser 1960–1990, dort auch Formaldehyd und Chloranisole (Geruch)",
+   "Holzfassaden, Fenster, Außentüren"
+  ],
+  "quelle": "lfu-ratgeber",
+  "avv": [
+   "17 02 04*"
+  ],
+  "regeln": [
+   "trgs524"
+  ],
+  "text": [
+   "Bis Ende der 1980er mussten tragende Holzbauteile vorbeugend chemisch behandelt werden, in der DDR bis 1990. Wirkstoffe: lösemittelhaltig (PCP, Lindan, DDT), steinkohleteerhaltig (Teeröle, Carbolineen: PAK) und Salze (Arsen, Chrom, Kupfer, Quecksilber).",
+   "PCP: 1978 Verbot im Innenbereich, 1989 PCP-Verbot. Lindan: Herstellungsstopp 1984 BRD, 1989 DDR. DDT: 1972 Verbot BRD, bis 1990 in der DDR verwendet (Hylotox 59).",
+   "PCP gast lange aus und belastet Raumluft und Hausstaub. Entsorgung: siehe Altholz."
+  ]
+ },
+ {
+  "id": "blei",
+  "titel": "Blei",
+  "kurz": "Bleimennige an Stahl",
+  "stichworte": "Bleimennige Rostschutz Anstrich",
+  "fundorte": [
+   "Stahlträger mit Bleimennige-Anstrich",
+   "Ältere Stahlbauteile",
+   "Einblechungen am Dach",
+   "Bleirohre, sehr verbreitet bis ca. 1935",
+   "Bleikabel und Kabel mit Bleiblech",
+   "Bleiweiß und Mennige in Anstrichen"
+  ],
+  "quelle": "lfu-ratgeber",
+  "regeln": [
+   "trgs524"
+  ],
+  "avv": [
+   "17 04 03"
+  ]
+ },
+ {
+  "id": "hbcd",
+  "titel": "HBCD",
+  "kurz": "EPS bis ca. 2015, POP-Abfall",
+  "stichworte": "Hexabromcyclododecan Styropor EPS Flammschutz POP",
+  "fundorte": [
+   "EPS und XPS: Fassade, Perimeter, Dach, Fußboden. Produktion 2015 umgestellt, XPS-Verbot Juni 2016, EPS 2018"
+  ],
+  "text": [
+   "HBCD wurde 2016 in die EU-POP-Verordnung aufgenommen. Bis Februar 2018 durften gekennzeichnete EPS-Dämmstoffe mit HBCD noch verwendet werden. HBCD-haltiges EPS ist ab 500 mg/kg POP-Abfall und getrennt zu entsorgen, ab 30.000 mg/kg ist es gefährlicher Abfall. Die Vorgaben stehen in der LAGA-Mitteilung 41."
+  ],
+  "quelle": "laga-th",
+  "avv": [
+   "17 06 03*",
+   "17 06 04"
+  ]
+ },
+ {
+  "id": "schwermetalle",
+  "titel": "Schlacke, Schwermetalle, Chromat",
+  "kurz": "Schüttungen, Pigmente, Kernsteine",
+  "stichworte": "Asche Schlacke Hüttenbims Sulfat Schüttung Chrom VI Chromat Quecksilber Zinnober Chromgelb Zinkweiß",
+  "fundorte": [
+   "Schüttungen aus Schlacke oder Asche in Holzbalken- und Kappendecken",
+   "Flachdach-Ausgleichsschüttungen",
+   "Tragschichten unter Bodenplatten",
+   "Bims aus Schlacke oder Hütten (auch Sulfat möglich)",
+   "Chromat in bestimmten Mörteln, Estrichen und Schamottesteinen",
+   "Chromat in Kernsteinen von Speicherheizgeräten",
+   "Quecksilber in Schaltern, Manometern, Thermometern, Leuchtstoffröhren",
+   "Farbpigmente wie Chromgelb und Zinnober"
+  ],
+  "text": [
+   "Fehlböden sind bei der Erkundung immer zu öffnen und die Füllung zu dokumentieren. Bei Kohleschlacken sind auch schwach erhöhte natürliche Radionuklide möglich."
+  ],
+  "quelle": "lfu-ratgeber",
+  "avv": [
+   "17 05 03*",
+   "17 05 04",
+   "17 09 03*",
+   "17 09 04"
+  ],
+  "regeln": [
+   "trgs524"
+  ]
+ },
+ {
+  "id": "mkw",
+  "titel": "Mineralöl / MKW",
+  "kurz": "Werkstätten, Ölschäden",
+  "stichworte": "Mineralölkohlenwasserstoffe Öl Ölschaden Werkstatt",
+  "fundorte": [
+   "Verbundestrich in Werkstätten",
+   "Kellerböden mit Ölschaden"
+  ],
+  "quelle": "lfu-ratgeber",
+  "avv": [
+   "17 05 03*",
+   "17 05 04"
+  ],
+  "regeln": [
+   "trgs524"
+  ]
+ },
+ {
+  "id": "fckw",
+  "titel": "FCKW",
+  "kurz": "XPS und PUR bis 1989/90",
+  "stichworte": "Fluorchlorkohlenwasserstoffe R12 Treibmittel Ozon",
+  "fundorte": [
+   "XPS-Hartschaum bis 1989/90, FCKW-Gehalt ca. 5–8 %",
+   "PUR-Schaum",
+   "Kältemittel in Altanlagen"
+  ],
+  "text": [
+   "Ozonabbauende Stoffe gelten ab 0,1 % als gefährlich. Ab 1990 wurden sie durch H-FCKW ersetzt."
+  ],
+  "quelle": "lfu-ratgeber",
+  "avv": [
+   "17 06 03*"
+  ]
+ },
+ {
+  "id": "biologisch",
+  "titel": "Taubenkot und Schimmel",
+  "kurz": "Leerstand, Dachböden",
+  "stichworte": "Biostoffe Taubenzecke Schimmelpilze BioStoffV",
+  "fundorte": [
+   "Dachböden und leerstehende Gebäude",
+   "Feuchte Wände, Decken und Hölzer"
+  ],
+  "text": [
+   "Taubenkot birgt Infektionsgefahr, Endotoxine, sensibilisierende Schimmelpilze und Parasiten. Befallene Bereiche müssen vor dem Rückbau von einer Fachfirma gereinigt und desinfiziert werden."
+  ],
+  "quelle": "lfu-ratgeber"
+ },
+ {
+  "id": "radioaktiv",
+  "titel": "Radioaktive Materialien",
+  "kurz": "Rauchmelder, Schlacken",
+  "stichworte": "Ionisationsrauchmelder Radionuklide",
+  "fundorte": [
+   "Ältere Ionisationsrauchmelder, vor allem in Gewerbebauten",
+   "Schlackesteine und Fehlbodenschüttungen, schwach erhöhte natürliche Radionuklide"
+  ],
+  "quelle": "lfu-ratgeber"
+ }
 ]
