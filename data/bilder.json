@@ -384,6 +384,86 @@
   "url": "https://commons.wikimedia.org/wiki/File:2014-07-06_Bodenprofil_Postluch_Agrarmuseum_Wandlitz_anagoria.JPG"
  },
  {
+  "id": "flachdach",
+  "datei": "flachdach.jpg",
+  "titel": "Bituminöse Abdichtung auf einem Flachdach",
+  "urheber": "W.carter",
+  "lizenz": "CC0",
+  "url": "https://commons.wikimedia.org/wiki/File:Bituminous_waterproofing_on_flat_roof_1.jpg"
+ },
+ {
+  "id": "pappdach",
+  "datei": "pappdach.jpg",
+  "titel": "Beschädigte Dachabdichtung",
+  "urheber": "W.carter",
+  "lizenz": "CC0",
+  "url": "https://commons.wikimedia.org/wiki/File:Bituminous_waterproofing_on_flat_roof_3.jpg"
+ },
+ {
+  "id": "steildach",
+  "datei": "steildach.jpg",
+  "titel": "Dachlattung",
+  "urheber": "Metzner",
+  "lizenz": "CC BY-SA 3.0",
+  "url": "https://commons.wikimedia.org/wiki/File:Haus%2BTurm%2BLattung.JPG"
+ },
+ {
+  "id": "wellasbest",
+  "datei": "wellasbest.jpg",
+  "titel": "Dach aus Wellplatten",
+  "urheber": "Harald Weber Hawedi",
+  "lizenz": "CC BY-SA 3.0",
+  "url": "https://commons.wikimedia.org/wiki/File:Wellasbestdach-233-3358_IMG.JPG"
+ },
+ {
+  "id": "rasterdecke",
+  "datei": "rasterdecke.jpg",
+  "titel": "Abgehängte Rasterdecke",
+  "urheber": "Adamantios",
+  "lizenz": "CC BY-SA 3.0",
+  "url": "https://commons.wikimedia.org/wiki/File:Suspended-ceiling-0a.jpg"
+ },
+ {
+  "id": "lueftung",
+  "datei": "lueftung.jpg",
+  "titel": "Lüftungskanal",
+  "urheber": "pinqui",
+  "lizenz": "CC BY-SA 3.0",
+  "url": "https://commons.wikimedia.org/wiki/File:Duct_connected_01.jpg"
+ },
+ {
+  "id": "brandklappe",
+  "datei": "brandklappe.jpg",
+  "titel": "Brandschutzklappe",
+  "urheber": "Georg Pik",
+  "lizenz": "CC0",
+  "url": "https://commons.wikimedia.org/wiki/File:Fire_damper_KPU_(01).jpg"
+ },
+ {
+  "id": "rohre",
+  "datei": "rohre.jpg",
+  "titel": "Asbesthaltige Rohrisolierung",
+  "urheber": "User:EPO",
+  "lizenz": "Attribution",
+  "url": "https://commons.wikimedia.org/wiki/File:Asbestos_pipe_insulation.jpg"
+ },
+ {
+  "id": "rohre-2",
+  "datei": "rohre-2.jpg",
+  "titel": "Asbesthaltige Rohrisolierung, Detail",
+  "urheber": "User:EPO",
+  "lizenz": "Attribution",
+  "url": "https://commons.wikimedia.org/wiki/File:Asbestos_pipe_insulation_close-up.jpg"
+ },
+ {
+  "id": "speicher",
+  "datei": "speicher.jpg",
+  "titel": "Geöffnetes Speicherheizgerät",
+  "urheber": "Kat1100",
+  "lizenz": "CC BY 4.0",
+  "url": "https://commons.wikimedia.org/wiki/File:Storage-heater-open.JPG"
+ },
+ {
   "id": "holzbalken-2",
   "datei": "holzbalken-2.jpg",
   "titel": "Offener Fehlboden mit Schüttung",

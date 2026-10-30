@@ -67,7 +67,7 @@ function head(titel, sub, opts = {}) {
   };
 }
 
-const GRUPPEN = { A: "Decken", B: "Fußböden", "B+": "Bodenbeläge", C: "Wände innen", D: "Wände außen" };
+const GRUPPEN = { A: "Decken", B: "Fußböden", "B+": "Bodenbeläge", C: "Wände innen", D: "Wände außen", E: "Dächer", F: "Bodenplatten und Keller", G: "Abgehängte Decken und Bekleidungen", H: "Technik und Fugen" };
 // CC licences ask for a link to the licence text next to the credit.
 const LIZENZ = { "CC BY-SA 2.0": "by-sa/2.0/", "CC BY-SA 3.0": "by-sa/3.0/", "CC BY-SA 3.0 de": "by-sa/3.0/de/", "CC BY-SA 4.0": "by-sa/4.0/", "CC BY 3.0": "by/3.0/", "CC BY 4.0": "by/4.0/" };
 const lizenz = l => LIZENZ[l] ? `<a href="https://creativecommons.org/licenses/${LIZENZ[l]}" target="_blank" rel="noopener">${esc(l)}</a>` : esc(l);
@@ -164,7 +164,7 @@ async function bauteil(id) {
     <div class="card"><h2>Erkennen</h2><p>${esc(b.erkennen)}</p></div>
     <div class="card alert"><h2>Schadstoffverdacht</h2><p>${esc(b.verdacht)}</p>${sch ? `<div class="tags">${sch}</div>` : ""}</div>
     ${galerie(b.fotos)}
-    ${srcLine("atlas", "Bandbreiten, keine Planungswerte. Ein Verdacht ersetzt keine Probenahme.")}`;
+    ${srcLine(b.quelle || "atlas", "Bandbreiten, keine Planungswerte. Ein Verdacht ersetzt keine Probenahme.")}`;
   wireGalerie();
   // Inlined so the drawing can use the light/dark CSS variables.
   if (schnitt) {

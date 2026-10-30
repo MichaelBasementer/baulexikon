@@ -1,5 +1,5 @@
 [
-  {"id":"bauteile","titel":"Bauteilaufbauten","kurz":"Decken, Böden, Wände, Dächer","lang":"Decken, Fußböden, Beläge, Wände, Dächer, Keller, Materialien","route":"#/k/bauteile","icon":"<path d=\"M3 7h18M3 12h18M3 17h18\"/>"},
+  {"id":"bauteile","titel":"Bauteilaufbauten","kurz":"Decken, Böden, Wände, Dächer","lang":"Decken, Fußböden, Beläge, Wände, Dächer, Keller, Unterdecken, Technik, Materialien","route":"#/k/bauteile","icon":"<path d=\"M3 7h18M3 12h18M3 17h18\"/>"},
   {"id":"schadstoffe","titel":"Schadstoffe","kurz":"Asbest, PAK, PCB, KMF","lang":"Asbest, PAK, PCB, KMF, Holzschutzmittel, Blei, HBCD, Schlacke","route":"#/k/schadstoffe","icon":"<path d=\"M12 3l9 16H3zM12 10v4M12 17v.5\"/>"},
   {"id":"regeln","titel":"Arbeitsschutz","kurz":"TRGS 519, 521, 524","lang":"TRGS 519, 521, 524, GefStoffV","route":"#/k/regeln","icon":"<path d=\"M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z\"/>"},
   {"id":"abfall","titel":"Abfallrecht","kurz":"AVV, DepV, EBV, LAGA","lang":"AVV Kapitel 17, Gefährlichkeit, LAGA M23, DepV, EBV, BBodSchV","route":"#/k/abfall","icon":"<path d=\"M5 7h14l-1 14H6zM9 7V4h6v3M3 7h18\"/>"},
