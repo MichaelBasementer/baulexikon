@@ -1,5 +1,5 @@
 // Baulexikon: hash router and views. All content comes from data/*.json.
-const FILES = ["kapitel", "bauteile", "materialien", "schadstoffe", "regeln", "avv", "tabellen", "laender", "quellen", "wandel", "bilder"];
+const FILES = ["kapitel", "bauteile", "erkennung", "materialien", "schadstoffe", "regeln", "avv", "tabellen", "laender", "quellen", "wandel", "bilder"];
 const STALE_DAYS = 180;
 const STORE = "baulexikon-v1";
 const D = {};
@@ -11,11 +11,15 @@ const byId = (list, id) => list.find(x => x.id === id);
 const fmtDate = iso => iso ? iso.split("-").reverse().join(".") : "";
 const fmtNum = n => n.toLocaleString("de-DE", { maximumFractionDigits: 6 });
 
+// Tables keep the law's own notation in s; country values are built from the number.
 function fmtWert(w) {
   if (!w) return "–";
+  if (w.text) return w.text;
+  if (w.s) return w.s;
   if (w.von != null) return `${fmtNum(w.von)}–${fmtNum(w.bis)}`;
   return `${w.op ? w.op + " " : ""}${fmtNum(w.zahl)}`;
 }
+const sup = fn => fn ? `<sup>${esc(fn)}</sup>` : "";
 
 // Favourites and recently viewed only; nothing leaves the device.
 function loadStore() {
@@ -63,12 +67,19 @@ function head(titel, sub, opts = {}) {
   };
 }
 
+const GRUPPEN = { A: "Decken", B: "Fußböden", "B+": "Bodenbeläge", C: "Wände innen", D: "Wände außen" };
+const foto = id => {
+  const b = id && byId(D.bilder, id);
+  return b ? `<figure class="foto"><img src="img/fotos/${esc(b.datei)}" alt="${esc(b.titel)}" loading="lazy"><figcaption><a href="${esc(b.url)}" target="_blank" rel="noopener">${esc(b.titel)}</a> · ${esc(b.urheber)} · ${esc(b.lizenz)}</figcaption></figure>` : "";
+};
+const schadTags = ids => (ids || []).map(s => { const x = byId(D.schadstoffe, s); return `<a class="tag warn" href="#/s/${x.id}">${esc(x.titel)} ›</a>`; }).join("");
+
 /* ---------- Search index ---------- */
 function buildEntries() {
   const e = [];
   const add = (titel, sub, stichworte, route, kind) => e.push({ titel, sub, stichworte, route, kind });
-  D.bauteile.forEach(b => add(b.titel, `Bauteil · ${b.bauzeit}`, [b.alias, ...(b.schichten || []).map(s => s.name), b.erkennen].join(" "), `#/b/${b.id}`));
-  D.materialien.forEach(m => add(m.titel, `Material · ${m.sub || ""}`, m.stichworte, `#/m/${m.id}`));
+  D.bauteile.forEach(b => add(b.titel, `${GRUPPEN[b.gruppe]} · ${b.bauzeit}`, [b.alias, b.stichworte, ...b.schichten.map(s => s[0]), b.erkennen].join(" "), `#/b/${b.id}`));
+  D.materialien.forEach(m => add(m.titel, `Material · ${m.sub || ""}`, m.text.join(" "), `#/m/${m.id}`));
   D.schadstoffe.forEach(s => add(s.titel, "Schadstoff", [s.stichworte, ...(s.fundorte || [])].join(" "), `#/s/${s.id}`));
   D.regeln.forEach(r => add(r.titel, `Regelwerk · ${r.sub || ""}`, r.stichworte, `#/r/${r.id}`));
   D.avv.forEach(a => add(`${a.code} ${a.titel}`, `AVV-Schlüssel · ${a.gefaehrlich ? "gefährlich" : "nicht gefährlich"}`, a.stichworte, `#/a/${a.code.replace(/\D/g, "")}`));
@@ -104,14 +115,29 @@ function kapitel(id) {
   if (!k) return notFound();
   head(k.titel, k.kurz, { back: "#/themen" });
   const lists = {
-    bauteile: () => D.bauteile.map(b => row(`#/b/${b.id}`, b.titel, b.bauzeit)),
     schadstoffe: () => D.schadstoffe.map(s => row(`#/s/${s.id}`, s.titel, s.kurz)),
-    regeln: () => D.regeln.map(r => row(`#/r/${r.id}`, r.titel, r.sub)),
-    abfall: () => [...D.tabellen.map(t => row(`#/t/${t.id}`, t.titel, t.sub)),
-      ...D.avv.map(a => row(`#/a/${a.code.replace(/\D/g, "")}`, a.code, a.titel, avvTag(a)))],
+    regeln: () => D.regeln.filter(r => r.bereich === "arbeitsschutz").map(r => row(`#/r/${r.id}`, r.titel, r.sub)),
     laender: () => D.laender.laender.map(l => row(`#/l/${l.id}`, l.name, l.ausbau ? "voll ausgearbeitet" : "Linkliste")),
   };
+  if (id === "abfall") {
+    view.innerHTML = hRow("Grundlagen", `<div class="panel">${D.regeln.filter(r => r.bereich === "abfall").map(r => row(`#/r/${r.id}`, r.titel, r.sub)).join("")}</div>`) +
+      hRow("Grenzwerttabellen", `<div class="panel">${D.tabellen.map(t => row(`#/t/${t.id}`, t.titel, t.sub)).join("")}</div>`) +
+      hRow("AVV Kapitel 17", `<div class="panel">${D.avv.map(a => row(`#/a/${a.code.replace(/\D/g, "")}`, a.code, a.titel, avvTag(a))).join("")}</div>`);
+    return;
+  }
+  if (id === "bauteile") {
+    view.innerHTML = `<a class="card" href="#/erkennen"><h2>Schnell erkennen</h2><p>Was ist das für eine Decke?</p></a>` +
+      Object.entries(GRUPPEN).map(([g, t]) => hRow(t, `<div class="panel">${D.bauteile.filter(b => b.gruppe === g).map(b => row(`#/b/${b.id}`, b.titel, b.bauzeit)).join("")}</div>`)).join("") +
+      hRow("Materialien", `<div class="panel">${D.materialien.map(m => row(`#/m/${m.id}`, m.titel, m.sub)).join("")}</div>`);
+    return;
+  }
   view.innerHTML = `<div class="panel">${lists[id]().join("") || `<p class="item">Noch keine Einträge</p>`}</div>`;
+}
+
+function erkennen() {
+  head("Schnell erkennen", "Was ist das für eine Decke?", { back: "#/k/bauteile" });
+  view.innerHTML = `<div class="section-h">Beobachtung an Untersicht / beim Bohren</div><div class="panel">` +
+    D.erkennung.map(e => { const b = byId(D.bauteile, e.bauteil); return row(`#/b/${b.id}`, e.beobachtung, `Wahrscheinlich: ${b.titel}`); }).join("") + `</div>`;
 }
 
 async function bauteil(id) {
@@ -119,19 +145,17 @@ async function bauteil(id) {
   if (!b) return notFound();
   head(b.titel, b.alias, { back: "#/k/bauteile", route });
   remember({ route });
-  const sch = (b.schadstoffe || []).map(s => {
-    const x = byId(D.schadstoffe, s);
-    return x ? `<a class="tag warn" href="#/s/${x.id}">${esc(x.titel)} ›</a>` : "";
-  }).join("");
+  const sch = schadTags(b.schadstoffe), schnitt = b.richtung !== "belag";
   view.innerHTML = `<div class="tags"><span class="tag">${esc(b.bauzeit)}</span>${b.dicke ? `<span class="tag">${esc(b.dicke)}</span>` : ""}</div>
-    ${b.schnitt ? `<div class="card section" id="schnitt"></div>` : ""}
-    <ul class="panel layers">${b.schichten.map((s, i) => `<li><span class="n">${i + 1}</span><span>${esc(s.name)}</span><span class="num">${esc(s.dicke || "")}</span></li>`).join("")}</ul>
+    ${schnitt ? `<div class="card section" id="schnitt"></div>` : ""}
+    ${b.schichten.length ? `<ul class="panel layers">${b.schichten.map((s, i) => `<li><span class="n">${i + 1}</span><span>${esc(s[0])}</span><span class="num">${esc(s[1])}</span></li>`).join("")}</ul>` : ""}
     <div class="card"><h2>Erkennen</h2><p>${esc(b.erkennen)}</p></div>
     <div class="card alert"><h2>Schadstoffverdacht</h2><p>${esc(b.verdacht)}</p>${sch ? `<div class="tags">${sch}</div>` : ""}</div>
-    ${srcLine(b.quelle, "Bandbreiten, keine Planungswerte. Ein Verdacht ersetzt keine Probenahme.")}`;
+    ${foto(b.foto)}
+    ${srcLine("atlas", "Bandbreiten, keine Planungswerte. Ein Verdacht ersetzt keine Probenahme.")}`;
   // Inlined so the drawing can use the light/dark CSS variables.
-  if (b.schnitt) {
-    const svg = await fetch(`img/schnitte/${b.schnitt}.svg`).then(r => r.text());
+  if (schnitt) {
+    const svg = await fetch(`img/schnitte/${b.id}.svg`).then(r => r.text());
     const box = document.getElementById("schnitt");
     if (box) box.innerHTML = svg;
   }
@@ -145,18 +169,21 @@ function schadstoff(id) {
   const werte = D.laender.werte.filter(w => w.schadstoff === id);
   const avv = (s.avv || []).map(c => D.avv.find(a => a.code === c)).filter(Boolean);
   const regeln = (s.regeln || []).map(r => byId(D.regeln, r)).filter(Boolean);
+  const vor = D.bauteile.filter(b => b.schadstoffe.includes(id));
   view.innerHTML = `<div class="card"><h2>Wo typisch?</h2><ul>${s.fundorte.map(f => `<li>${esc(f)}</li>`).join("")}</ul></div>
     ${s.text ? `<div class="card">${paras(s.text)}</div>` : ""}
     ${hRow("Gefährlicher Abfall ab", werte.length ? `<div class="panel">${laenderRows(werte)}</div>${[...new Set(werte.map(w => w.quelle))].map(q => srcLine(q)).join("")}` : "")}
     ${hRow("AVV-Schlüssel", avv.length ? `<div class="panel">${avv.map(a => row(`#/a/${a.code.replace(/\D/g, "")}`, a.code, a.titel, avvTag(a))).join("")}</div>` : "")}
-    ${hRow("Arbeitsschutz", regeln.length ? `<div class="panel">${regeln.map(r => row(`#/r/${r.id}`, r.titel, r.sub)).join("")}</div>` : "")}`;
+    ${hRow("Arbeitsschutz", regeln.length ? `<div class="panel">${regeln.map(r => row(`#/r/${r.id}`, r.titel, r.sub)).join("")}</div>` : "")}
+    ${hRow("Kommt vor in", vor.length ? `<div class="panel">${vor.map(b => row(`#/b/${b.id}`, b.titel, GRUPPEN[b.gruppe])).join("")}</div>` : "")}
+    ${srcLine(s.quelle, "Orientierung. Ein Verdacht ersetzt keine Probenahme.")}`;
 }
 
 // Values of an unverified source are never displayed, only the state.
 function laenderRows(werte) {
   return werte.map(w => {
     const land = byId(D.laender.laender, w.land), q = byId(D.quellen, w.quelle);
-    const right = !w.offen && q.status === "geprueft" ? `<span class="num">${esc(fmtWert(w))} ${esc(w.einheit)}</span>` : `<span class="tag warn">ungeprüft</span>`;
+    const right = q.status !== "geprueft" ? `<span class="tag warn">ungeprüft</span>` : w.text ? `<span class="tag">${esc(w.text)}</span>` : `<span class="num">${esc(fmtWert(w))} ${esc(w.einheit)}</span>`;
     return `<a class="item" href="#/l/${land.id}"><span>${esc(land.name)}, ${esc(w.material)}<small>${esc(w.bezug)}</small></span>${right}</a>`;
   }).join("");
 }
@@ -164,9 +191,12 @@ function laenderRows(werte) {
 function regel(id) {
   const r = byId(D.regeln, id), route = `#/r/${id}`;
   if (!r) return notFound();
-  head(r.titel, r.sub, { back: "#/k/regeln", route });
+  head(r.titel, r.sub, { back: r.bereich === "abfall" ? "#/k/abfall" : "#/k/regeln", route });
   remember({ route });
-  view.innerHTML = `<div class="card">${paras(r.text)}</div>${srcLine(r.quelle)}`;
+  const tabs = (r.tabellen || []).map(t => byId(D.tabellen, t)).filter(Boolean);
+  view.innerHTML = `<div class="card">${paras(r.text)}</div>
+    ${hRow("Grenzwerttabellen", tabs.length ? `<div class="panel">${tabs.map(t => row(`#/t/${t.id}`, t.titel, t.sub)).join("")}</div>` : "")}
+    ${srcLine(r.quelle)}`;
 }
 
 function avv(code) {
@@ -187,15 +217,15 @@ const picks = {};
 function tabelle(id) {
   const t = byId(D.tabellen, id), route = `#/t/${id}`;
   if (!t) return notFound();
-  const pick = picks[id] ||= t.spalten.slice(0, 3).map((_, i) => i);
+  const pick = picks[id] ||= t.start;
   head(t.titel, t.sub, { back: "#/k/abfall", route });
   remember({ route });
   const shown = pick.slice().sort((a, b) => a - b);
   view.innerHTML = `<div class="section-h">Bis drei Klassen vergleichen</div>
     <div class="chips">${t.spalten.map((c, i) => `<button class="chip" data-c="${i}" aria-pressed="${pick.includes(i)}">${esc(c)}</button>`).join("")}</div>
     <div class="tablewrap"><table><thead><tr><th>Parameter</th>${shown.map(i => `<th>${esc(t.spalten[i])}</th>`).join("")}</tr></thead>
-    <tbody>${t.zeilen.map(z => `<tr><td>${esc(z.parameter)}<small>${esc(z.einheit)}</small></td>${shown.map(i => `<td class="num">${esc(fmtWert(z.werte[i]))}</td>`).join("")}</tr>`).join("")}</tbody></table></div>
-    ${t.hinweis ? `<div class="card alert"><p>${esc(t.hinweis)}</p></div>` : ""}
+    <tbody>${t.zeilen.map(z => `<tr><td>${esc(z.parameter)}${sup(z.fn)}<small>${esc(z.einheit)}</small></td>${shown.map(i => { const w = z.werte[i]; return `<td class="${w && w.text ? "txt" : "num"}">${esc(fmtWert(w))}${sup(w && w.fn)}</td>`; }).join("")}</tr>`).join("")}</tbody></table></div>
+    ${t.fussnoten.length ? `<details class="card"><summary>Fußnoten</summary>${t.fussnoten.map(f => `<p>${esc(f)}</p>`).join("")}</details>` : ""}
     ${srcLine(t.quelle, t.fundstelle)}`;
   view.querySelectorAll(".chip").forEach(b => b.onclick = () => {
     const c = +b.dataset.c;
@@ -212,10 +242,12 @@ function land(id) {
   remember({ route });
   const werte = D.laender.werte.filter(w => w.land === id);
   const docs = (l.quellen || []).map(q => byId(D.quellen, q)).filter(Boolean);
+  const links = l.links || [];
   view.innerHTML = `${l.text ? `<div class="card">${paras(l.text)}</div>` : ""}
     ${hRow("Werte", werte.length ? `<div class="panel">${laenderRows(werte)}</div>` : "")}
     ${hRow("Dokumente", docs.length ? `<div class="panel">${docs.map(q => row(`#/q/${q.id}`, q.kurz, `Stand ${q.fassung}`, statusTag(q))).join("")}</div>` : "")}
-    ${l.text || werte.length || docs.length ? "" : `<p class="empty">Für dieses Land sind noch keine Dokumente hinterlegt.</p>`}`;
+    ${hRow("Links", links.length ? `<div class="panel">${links.map(k => `<a class="item" href="${esc(k.url)}" target="_blank" rel="noopener"><span>${esc(k.titel)}</span><i>↗</i></a>`).join("")}</div>` : "")}
+    ${l.ausbau ? "" : `<div class="card"><p>Dieses Land ist noch nicht ausgearbeitet. Die Länderregelungen im Überblick nennt das Informationsportal Abfallbewertung.</p></div><a class="link center" href="https://www.abfallbewertung.org/" target="_blank" rel="noopener">abfallbewertung.org ↗</a>`}`;
 }
 
 function material(id) {
@@ -223,7 +255,8 @@ function material(id) {
   if (!m) return notFound();
   head(m.titel, m.sub, { back: "#/k/bauteile", route });
   remember({ route });
-  view.innerHTML = `<div class="card">${paras(m.text)}</div>`;
+  const sch = schadTags(m.schadstoffe);
+  view.innerHTML = `<div class="card">${paras(m.text)}${sch ? `<div class="tags">${sch}</div>` : ""}</div>${foto(m.foto)}${srcLine("atlas")}`;
 }
 
 function quelle(id) {
@@ -269,7 +302,7 @@ function notFound() {
 
 /* ---------- Router ---------- */
 const ROUTES = [
-  [/^#\/themen$/, themen, "themen"], [/^#\/k\/(\w+)$/, kapitel, "themen"], [/^#\/b\/([\w-]+)$/, bauteil, "themen"],
+  [/^#\/themen$/, themen, "themen"], [/^#\/erkennen$/, erkennen, "themen"], [/^#\/k\/(\w+)$/, kapitel, "themen"], [/^#\/b\/([\w-]+)$/, bauteil, "themen"],
   [/^#\/m\/([\w-]+)$/, material, "themen"], [/^#\/s\/([\w-]+)$/, schadstoff, "themen"], [/^#\/r\/([\w-]+)$/, regel, "themen"],
   [/^#\/a\/(\d+)$/, avv, "themen"], [/^#\/t\/([\w-]+)$/, tabelle, "themen"], [/^#\/l\/([\w-]+)$/, land, "themen"],
   [/^#\/q\/([\w-]+)$/, quelle, "quellen"], [/^#\/quellen$/, quellen, "quellen"], [/^#\/bilder$/, bildnachweis, "quellen"],

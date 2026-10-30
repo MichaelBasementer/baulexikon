@@ -64,15 +64,25 @@ main{display:flex;flex-direction:column;gap:16px;padding-top:8px}
 .n{width:20px;height:20px;border-radius:50%;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;font:600 11px var(--sans)}
 .section svg{display:block;width:100%;height:auto}
 .src{font-size:12px;color:var(--muted);display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin:0}
+.foto{margin:0;background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.foto img{display:block;width:100%;height:auto;max-height:280px;object-fit:cover}
+.foto figcaption{font-size:12px;color:var(--muted);padding:8px 12px;overflow-wrap:anywhere}
+.foto a{color:var(--accent);text-decoration:none}
+a.card{display:block;color:var(--ink);text-decoration:none}
 /* Tables: pick classes, first column stays put */
 .chips{display:flex;gap:8px;flex-wrap:wrap}
 .chip{min-height:40px;min-width:56px;padding:0 12px;border-radius:12px;border:1px solid var(--line);background:var(--surface);color:var(--ink);font:600 14px var(--sans);cursor:pointer}
 .chip[aria-pressed=true]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
 table{width:100%;border-collapse:collapse;font-size:14px}
-th,td{padding:10px 8px;text-align:right;border-bottom:1px solid var(--line)}
+th,td{padding:10px 5px;text-align:right;border-bottom:1px solid var(--line)}
 tr:last-child td{border-bottom:0}
-th:first-child,td:first-child{text-align:left;position:sticky;left:0;background:var(--surface)}
-td.num{white-space:nowrap;font-size:13px}
+th:first-child,td:first-child{text-align:left;position:sticky;left:0;background:var(--surface);max-width:118px;hyphens:auto;overflow-wrap:break-word;font-size:13px}
+td.num{white-space:nowrap;font-size:12px}
+.tablewrap th:not(:first-child){font-size:12px}
+td.txt{font-size:11px}
+td sup,td small sup{font-size:10px;color:var(--muted);font-family:var(--sans)}
+details.card summary{font-size:15px;font-weight:600;cursor:pointer}
+details.card p{font-size:13px;color:var(--muted);margin-top:8px}
 td small{display:block;color:var(--muted);font-size:12px}
 th{font-size:13px;color:var(--muted)}
 .tablewrap{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:2px 8px}

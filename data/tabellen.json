@@ -1,12 +1,3802 @@
 [
-  {"id":"depv-eluat","titel":"Deponieklassen, Eluat","sub":"DepV Anhang 3 Tabelle 2","stichworte":"DK0 DK1 DK2 DK3 Deponie Zuordnung","spalten":["DK 0","DK I","DK II","DK III"],
-   "zeilen":[
-    {"parameter":"pH-Wert","einheit":"","werte":[{"von":5.5,"bis":13},{"von":5.5,"bis":13},{"von":5.5,"bis":13},{"von":4,"bis":13}]},
-    {"parameter":"DOC","einheit":"mg/l","werte":[{"op":"≤","zahl":50},{"op":"≤","zahl":50},{"op":"≤","zahl":80},{"op":"≤","zahl":100}]},
-    {"parameter":"Arsen","einheit":"mg/l","werte":[{"op":"≤","zahl":0.05},{"op":"≤","zahl":0.2},{"op":"≤","zahl":0.2},{"op":"≤","zahl":2.5}]},
-    {"parameter":"Blei","einheit":"mg/l","werte":[{"op":"≤","zahl":0.05},{"op":"≤","zahl":0.2},{"op":"≤","zahl":1},{"op":"≤","zahl":5}]},
-    {"parameter":"Cadmium","einheit":"mg/l","werte":[{"op":"≤","zahl":0.004},{"op":"≤","zahl":0.05},{"op":"≤","zahl":0.1},{"op":"≤","zahl":0.5}]},
-    {"parameter":"Quecksilber","einheit":"mg/l","werte":[{"op":"≤","zahl":0.001},{"op":"≤","zahl":0.005},{"op":"≤","zahl":0.02},{"op":"≤","zahl":0.2}]},
-    {"parameter":"Gelöste Feststoffe","einheit":"mg/l","werte":[{"op":"≤","zahl":400},{"op":"≤","zahl":3000},{"op":"≤","zahl":6000},{"op":"≤","zahl":10000}]}
-   ],"hinweis":"Vorläufiger Auszug ohne Fußnoten. Die vollständige Tabelle folgt in Schritt M5.","quelle":"depv","fundstelle":"Anhang 3 Tabelle 2, Nr. 3"}
+ {
+  "id": "depv-fest",
+  "titel": "Deponieklassen, Feststoff",
+  "sub": "DepV Anhang 3 Tabelle 2",
+  "stichworte": "DK0 DK1 DK2 DK3 DK 0 DK I DK II DK III Deponieklasse Zuordnungskriterien",
+  "spalten": [
+   "Geol. Barriere",
+   "DK 0",
+   "DK I",
+   "DK II",
+   "DK III",
+   "Rekult."
+  ],
+  "start": [
+   1,
+   2,
+   3
+  ],
+  "zeilen": [
+   {
+    "parameter": "bestimmt als Glühverlust",
+    "einheit": "Masse% TM",
+    "werte": [
+     {
+      "s": "≤ 3",
+      "fn": "2a",
+      "op": "≤",
+      "zahl": 3
+     },
+     {
+      "s": "≤ 3",
+      "fn": "2a",
+      "op": "≤",
+      "zahl": 3
+     },
+     {
+      "s": "≤ 3",
+      "fn": "2a,3,4,5",
+      "op": "≤",
+      "zahl": 3
+     },
+     {
+      "s": "≤ 5",
+      "fn": "3,4,5",
+      "op": "≤",
+      "zahl": 5
+     },
+     {
+      "s": "≤ 10",
+      "fn": "4,5",
+      "op": "≤",
+      "zahl": 10
+     },
+     null
+    ]
+   },
+   {
+    "parameter": "bestimmt als TOC",
+    "einheit": "Masse% TM",
+    "werte": [
+     {
+      "s": "≤ 1",
+      "fn": "2a",
+      "op": "≤",
+      "zahl": 1
+     },
+     {
+      "s": "≤ 1",
+      "fn": "2a",
+      "op": "≤",
+      "zahl": 1
+     },
+     {
+      "s": "≤ 1",
+      "fn": "2a,3,4,5",
+      "op": "≤",
+      "zahl": 1
+     },
+     {
+      "s": "≤ 3",
+      "fn": "3,4,5",
+      "op": "≤",
+      "zahl": 3
+     },
+     {
+      "s": "≤ 6",
+      "fn": "4,5",
+      "op": "≤",
+      "zahl": 6
+     },
+     null
+    ]
+   },
+   {
+    "parameter": "Summe BTEX (Benzol,Toluol, Ethylbenzol, o-, m-, p-Xylol, Styrol, Cumol)",
+    "einheit": "mg/kg TM",
+    "werte": [
+     {
+      "s": "≤ 1",
+      "op": "≤",
+      "zahl": 1
+     },
+     {
+      "s": "≤ 6",
+      "op": "≤",
+      "zahl": 6
+     },
+     null,
+     null,
+     null,
+     null
+    ]
+   },
+   {
+    "parameter": "PCB (Summe der 7 PCB-Kongenere, PCB-28, -52, -101, -118, -138, -153, -180)",
+    "einheit": "mg/kg TM",
+    "werte": [
+     {
+      "s": "≤ 0,02",
+      "op": "≤",
+      "zahl": 0.02
+     },
+     {
+      "s": "≤ 1",
+      "op": "≤",
+      "zahl": 1
+     },
+     null,
+     null,
+     null,
+     {
+      "s": "≤ 0,1",
+      "op": "≤",
+      "zahl": 0.1
+     }
+    ]
+   },
+   {
+    "parameter": "Mineralölkohlenwasserstoffe (C 10 bis C 40)",
+    "einheit": "mg/kg TM",
+    "werte": [
+     {
+      "s": "≤ 100",
+      "op": "≤",
+      "zahl": 100
+     },
+     {
+      "s": "≤ 500",
+      "op": "≤",
+      "zahl": 500
+     },
+     null,
+     null,
+     null,
+     null
+    ]
+   },
+   {
+    "parameter": "Summe PAK nach EPA",
+    "einheit": "mg/kg TM",
+    "werte": [
+     {
+      "s": "≤ 1",
+      "op": "≤",
+      "zahl": 1
+     },
+     {
+      "s": "≤ 30",
+      "op": "≤",
+      "zahl": 30
+     },
+     null,
+     null,
+     null,
+     {
+      "s": "≤ 5",
+      "fn": "6",
+      "op": "≤",
+      "zahl": 5
+     }
+    ]
+   },
+   {
+    "parameter": "Benzo(a)pyren",
+    "einheit": "mg/kg TM",
+    "werte": [
+     null,
+     null,
+     null,
+     null,
+     null,
+     {
+      "s": "≤ 0,6",
+      "op": "≤",
+      "zahl": 0.6
+     }
+    ]
+   },
+   {
+    "parameter": "Säureneutralisationskapazität",
+    "einheit": "mmol/kg",
+    "werte": [
+     null,
+     null,
+     {
+      "text": "muss bei gefährlichen Abfällen ermittelt werden",
+      "fn": "7"
+     },
+     {
+      "text": "muss bei gefährlichen Abfällen ermittelt werden",
+      "fn": "7"
+     },
+     {
+      "text": "muss ermittelt werden"
+     },
+     null
+    ]
+   },
+   {
+    "parameter": "extrahierbare lipophile Stoffe in der Originalsubstanz",
+    "einheit": "Masse% TM",
+    "werte": [
+     null,
+     {
+      "s": "≤ 0,1",
+      "op": "≤",
+      "zahl": 0.1
+     },
+     {
+      "s": "≤ 0,4",
+      "fn": "5",
+      "op": "≤",
+      "zahl": 0.4
+     },
+     {
+      "s": "≤ 0,8",
+      "fn": "5",
+      "op": "≤",
+      "zahl": 0.8
+     },
+     {
+      "s": "≤ 4",
+      "fn": "5",
+      "op": "≤",
+      "zahl": 4
+     },
+     null
+    ]
+   },
+   {
+    "parameter": "Blei",
+    "einheit": "mg/kg TM",
+    "werte": [
+     null,
+     null,
+     null,
+     null,
+     null,
+     {
+      "s": "≤ 140",
+      "op": "≤",
+      "zahl": 140
+     }
+    ]
+   },
+   {
+    "parameter": "Cadmium",
+    "einheit": "mg/kg TM",
+    "werte": [
+     null,
+     null,
+     null,
+     null,
+     null,
+     {
+      "s": "≤ 1,0",
+      "op": "≤",
+      "zahl": 1
+     }
+    ]
+   },
+   {
+    "parameter": "Chrom",
+    "einheit": "mg/kg TM",
+    "werte": [
+     null,
+     null,
+     null,
+     null,
+     null,
+     {
+      "s": "≤ 120",
+      "op": "≤",
+      "zahl": 120
+     }
+    ]
+   },
+   {
+    "parameter": "Kupfer",
+    "einheit": "mg/kg TM",
+    "werte": [
+     null,
+     null,
+     null,
+     null,
+     null,
+     {
+      "s": "≤ 80",
+      "op": "≤",
+      "zahl": 80
+     }
+    ]
+   },
+   {
+    "parameter": "Nickel",
+    "einheit": "mg/kg TM",
+    "werte": [
+     null,
+     null,
+     null,
+     null,
+     null,
+     {
+      "s": "≤ 100",
+      "op": "≤",
+      "zahl": 100
+     }
+    ]
+   },
+   {
+    "parameter": "Quecksilber",
+    "einheit": "mg/kg TM",
+    "werte": [
+     null,
+     null,
+     null,
+     null,
+     null,
+     {
+      "s": "≤ 1,0",
+      "op": "≤",
+      "zahl": 1
+     }
+    ]
+   },
+   {
+    "parameter": "Zink",
+    "einheit": "mg/kg TM",
+    "werte": [
+     null,
+     null,
+     null,
+     null,
+     null,
+     {
+      "s": "≤ 300",
+      "op": "≤",
+      "zahl": 300
+     }
+    ]
+   }
+  ],
+  "quelle": "depv",
+  "fundstelle": "Anhang 3 Tabelle 2, Nr. 1 und 2",
+  "fussnoten": [
+   "1) In Gebieten mit naturbedingt oder großflächig siedlungsbedingt erhöhten Schadstoffgehalten in Böden ist eine Verwendung von Bodenmaterial aus diesen Gebieten zulässig, welches die Hintergrundgehalte des Gebietes nicht überschreitet, sofern die Funktion der Rekultivierungsschicht nicht beeinträchtigt wird.",
+   "2) Nummer 1.01 kann gleichwertig zu Nummer 1.02 angewandt werden.",
+   "2a) Für Bodenmaterial ohne Fremdbestandteile sind Überschreitungen beim Glühverlust bis 5 Masse% oder beim TOC bis 3 Masse% zulässig, wenn die Überschreitung ausschließlich auf natürliche Bestandteile des Bodenmaterials zurückgeht.",
+   "3) Eine Überschreitung des Zuordnungswertes ist mit Zustimmung der zuständigen Behörde bei Bodenaushub (Abfallschlüssel 17 05 04 und 20 02 02 nach der Anlage zur Abfallverzeichnis-Verordnung) und bei Baggergut (Abfallschlüssel 17 05 06 nach der Anlage zur Abfallverzeichnis-Verordnung) zulässig, wenn a) die Überschreitung ausschließlich auf natürliche Bestandteile des Bodenaushubes oder des Baggergutes zurückgeht, b) sonstige Fremdbestandteile nicht mehr als 5 Volumenprozent ausmachen, c) bei der gemeinsamen Ablagerung mit gipshaltigen Abfällen der DOC-Wert maximal 80 mg/l beträgt, d) auf der Deponie, dem Deponieabschnitt oder dem gesonderten Teilabschnitt eines Deponieabschnitts ausschließlich nicht gefährliche Abfälle abgelagert werden und e) das Wohl der Allgemeinheit – gemessen an den Anforderungen dieser Verordnung – nicht beeinträchtigt wird.",
+   "4) Der Zuordnungswert gilt nicht für Aschen aus der Braunkohlefeuerung sowie für Abfälle oder Deponieersatzbaustoffe aus Hochtemperaturprozessen; zu Letzteren gehören insbesondere Abfälle aus der Verarbeitung von Schlacke, unbearbeitete Schlacke, Stäube und Schlämme aus der Abgasreinigung von Sinteranlagen, Hochöfen, Schachtöfen und Stahlwerken der Eisen- und Stahlindustrie. Bei gemeinsamer Ablagerung mit gipshaltigen Abfällen darf der TOC-Wert der in Satz 1 genannten Abfälle oder Deponieersatzbaustoffe maximal 5 Masseprozent betragen. Eine Überschreitung dieses TOC-Wertes ist zulässig, wenn der DOC-Wert maximal 80 mg/l beträgt.",
+   "5) Gilt nicht für Asphalt auf Bitumen- oder auf Teerbasis.",
+   "6) Bei PAK-Gehalten von mehr als 3 mg/kg ist mit Hilfe eines Säulenversuches nach Anhang 4 Nummer 3.2.2 nachzuweisen, dass in dem Säuleneluat bei einem Flüssigkeits-Feststoffverhältnis von 2:1 ein Wert von 0,2 µg/l nicht überschritten wird.",
+   "7) Nicht erforderlich bei asbesthaltigen Abfällen und Abfällen, die andere gefährliche Mineralfasern enthalten.",
+   "8) Abweichende pH-Werte stellen allein kein Ausschlusskriterium dar. Bei Über- oder Unterschreitungen ist die Ursache zu prüfen. Werden jedoch auf Deponien der Klassen I und II gefährliche Abfälle abgelagert, muss deren pH-Wert mindestens 6,0 betragen.",
+   "9) Der Zuordnungswert für DOC ist auch eingehalten, wenn der Abfall oder der Deponieersatzbaustoff den Zuordnungswert nicht bei seinem eigenen pH-Wert, aber bei einem pH-Wert zwischen 7,5 und 8,0 einhält.",
+   "10) Auf Abfälle oder Deponieersatzbaustoffe auf Gipsbasis nur anzuwenden, wenn sie gemeinsam mit gefährlichen Abfällen abgelagert oder eingesetzt werden.",
+   "11) Überschreitungen des DOC-Wertes bis maximal 100 mg/l sind zulässig, wenn auf der Deponie oder dem Deponieabschnitt keine gipshaltigen Abfälle und seit dem 16. Juli 2005 ausschließlich nicht gefährliche Abfälle oder Deponieersatzbaustoffe abgelagert oder eingesetzt werden.",
+   "12) Nummer 3.20 kann, außer in den Fällen gemäß Spalte 9 (Rekultivierungsschicht), gleichwertig zu den Nummern 3.11 und 3.12 angewandt werden.",
+   "13) Der Zuordnungswert gilt nicht, wenn auf der Deponie oder dem Deponieabschnitt seit dem 16. Juli 2005 ausschließlich nicht gefährliche Abfälle oder Deponieersatzbaustoffe abgelagert oder eingesetzt werden.",
+   "14) Untersuchung entfällt bei Bodenmaterial ohne mineralische Fremdbestandteile.",
+   "15) Überschreitungen des Sulfatwertes bis zu einem Wert von 600 mg/l sind zulässig, wenn der C o -Wert der Perkolationsprüfung den Wert von 1 500 mg/l bei L/S = 0,1 l/kg nicht überschreitet.",
+   "16) Überschreitungen des Antimonwertes nach Nummer 3.18a sind zulässig, wenn der C o -Wert der Perkolationsprüfung bei L/S = 0,1 l/kg nach Nummer 3.18b nicht überschritten wird. 17 Bei Überschreitung des Zuordnungswertes ist die Ursache zu prüfen. Im Falle von naturbedingt erhöhter Konzentration ist eine Überschreitung des Zuordnungswertes bei Bodenmaterial oder aufbereitetem Baggergut mit Zustimmung der zuständigen Behörde im Einzelfall zulässig, wenn eine Wasserhaushaltsschicht gemäß Anhang 1 Nummer 2.3.1.1 errichtet wird."
+  ]
+ },
+ {
+  "id": "depv-eluat",
+  "titel": "Deponieklassen, Eluat",
+  "sub": "DepV Anhang 3 Tabelle 2",
+  "stichworte": "DK0 DK1 DK2 DK3 DK 0 DK I DK II DK III Deponieklasse Zuordnungskriterien",
+  "spalten": [
+   "Geol. Barriere",
+   "DK 0",
+   "DK I",
+   "DK II",
+   "DK III",
+   "Rekult."
+  ],
+  "start": [
+   1,
+   2,
+   3
+  ],
+  "zeilen": [
+   {
+    "parameter": "pH-Wert",
+    "fn": "8",
+    "einheit": "",
+    "werte": [
+     {
+      "s": "6,5–9",
+      "von": 6.5,
+      "bis": 9
+     },
+     {
+      "s": "5,5–13",
+      "von": 5.5,
+      "bis": 13
+     },
+     {
+      "s": "5,5–13",
+      "von": 5.5,
+      "bis": 13
+     },
+     {
+      "s": "5,5–13",
+      "von": 5.5,
+      "bis": 13
+     },
+     {
+      "s": "4–13",
+      "von": 4,
+      "bis": 13
+     },
+     {
+      "s": "6,5–9",
+      "von": 6.5,
+      "bis": 9
+     }
+    ]
+   },
+   {
+    "parameter": "DOC",
+    "fn": "9",
+    "einheit": "mg/l",
+    "werte": [
+     null,
+     {
+      "s": "≤ 50",
+      "op": "≤",
+      "zahl": 50
+     },
+     {
+      "s": "≤ 50",
+      "fn": "3,10",
+      "op": "≤",
+      "zahl": 50
+     },
+     {
+      "s": "≤ 80",
+      "fn": "3,10,11",
+      "op": "≤",
+      "zahl": 80
+     },
+     {
+      "s": "≤ 100",
+      "op": "≤",
+      "zahl": 100
+     },
+     null
+    ]
+   },
+   {
+    "parameter": "Phenole",
+    "einheit": "mg/l",
+    "werte": [
+     {
+      "s": "≤ 0,05",
+      "op": "≤",
+      "zahl": 0.05
+     },
+     {
+      "s": "≤ 0,1",
+      "op": "≤",
+      "zahl": 0.1
+     },
+     {
+      "s": "≤ 0,2",
+      "op": "≤",
+      "zahl": 0.2
+     },
+     {
+      "s": "≤ 50",
+      "op": "≤",
+      "zahl": 50
+     },
+     {
+      "s": "≤ 100",
+      "op": "≤",
+      "zahl": 100
+     },
+     null
+    ]
+   },
+   {
+    "parameter": "Arsen",
+    "einheit": "mg/l",
+    "werte": [
+     {
+      "s": "≤ 0,01",
+      "op": "≤",
+      "zahl": 0.01
+     },
+     {
+      "s": "≤ 0,05",
+      "op": "≤",
+      "zahl": 0.05
+     },
+     {
+      "s": "≤ 0,2",
+      "op": "≤",
+      "zahl": 0.2
+     },
+     {
+      "s": "≤ 0,2",
+      "op": "≤",
+      "zahl": 0.2
+     },
+     {
+      "s": "≤ 2,5",
+      "op": "≤",
+      "zahl": 2.5
+     },
+     {
+      "s": "≤ 0,01",
+      "op": "≤",
+      "zahl": 0.01
+     }
+    ]
+   },
+   {
+    "parameter": "Blei",
+    "einheit": "mg/l",
+    "werte": [
+     {
+      "s": "≤ 0,02",
+      "op": "≤",
+      "zahl": 0.02
+     },
+     {
+      "s": "≤ 0,05",
+      "op": "≤",
+      "zahl": 0.05
+     },
+     {
+      "s": "≤ 0,2",
+      "op": "≤",
+      "zahl": 0.2
+     },
+     {
+      "s": "≤ 1",
+      "op": "≤",
+      "zahl": 1
+     },
+     {
+      "s": "≤ 5",
+      "op": "≤",
+      "zahl": 5
+     },
+     {
+      "s": "≤ 0,04",
+      "op": "≤",
+      "zahl": 0.04
+     }
+    ]
+   },
+   {
+    "parameter": "Cadmium",
+    "einheit": "mg/l",
+    "werte": [
+     {
+      "s": "≤ 0,002",
+      "op": "≤",
+      "zahl": 0.002
+     },
+     {
+      "s": "≤ 0,004",
+      "op": "≤",
+      "zahl": 0.004
+     },
+     {
+      "s": "≤ 0,05",
+      "op": "≤",
+      "zahl": 0.05
+     },
+     {
+      "s": "≤ 0,1",
+      "op": "≤",
+      "zahl": 0.1
+     },
+     {
+      "s": "≤ 0,5",
+      "op": "≤",
+      "zahl": 0.5
+     },
+     {
+      "s": "≤ 0,002",
+      "op": "≤",
+      "zahl": 0.002
+     }
+    ]
+   },
+   {
+    "parameter": "Kupfer",
+    "einheit": "mg/l",
+    "werte": [
+     {
+      "s": "≤ 0,05",
+      "op": "≤",
+      "zahl": 0.05
+     },
+     {
+      "s": "≤ 0,2",
+      "op": "≤",
+      "zahl": 0.2
+     },
+     {
+      "s": "≤ 1",
+      "op": "≤",
+      "zahl": 1
+     },
+     {
+      "s": "≤ 5",
+      "op": "≤",
+      "zahl": 5
+     },
+     {
+      "s": "≤ 10",
+      "op": "≤",
+      "zahl": 10
+     },
+     {
+      "s": "≤ 0,05",
+      "op": "≤",
+      "zahl": 0.05
+     }
+    ]
+   },
+   {
+    "parameter": "Nickel",
+    "einheit": "mg/l",
+    "werte": [
+     {
+      "s": "≤ 0,04",
+      "op": "≤",
+      "zahl": 0.04
+     },
+     {
+      "s": "≤ 0,04",
+      "op": "≤",
+      "zahl": 0.04
+     },
+     {
+      "s": "≤ 0,2",
+      "op": "≤",
+      "zahl": 0.2
+     },
+     {
+      "s": "≤ 1",
+      "op": "≤",
+      "zahl": 1
+     },
+     {
+      "s": "≤ 4",
+      "op": "≤",
+      "zahl": 4
+     },
+     {
+      "s": "≤ 0,05",
+      "op": "≤",
+      "zahl": 0.05
+     }
+    ]
+   },
+   {
+    "parameter": "Quecksilber",
+    "einheit": "mg/l",
+    "werte": [
+     {
+      "s": "≤ 0,0002",
+      "op": "≤",
+      "zahl": 0.0002
+     },
+     {
+      "s": "≤ 0,001",
+      "op": "≤",
+      "zahl": 0.001
+     },
+     {
+      "s": "≤ 0,005",
+      "op": "≤",
+      "zahl": 0.005
+     },
+     {
+      "s": "≤ 0,02",
+      "op": "≤",
+      "zahl": 0.02
+     },
+     {
+      "s": "≤ 0,2",
+      "op": "≤",
+      "zahl": 0.2
+     },
+     {
+      "s": "≤ 0,0002",
+      "op": "≤",
+      "zahl": 0.0002
+     }
+    ]
+   },
+   {
+    "parameter": "Zink",
+    "einheit": "mg/l",
+    "werte": [
+     {
+      "s": "≤ 0,1",
+      "op": "≤",
+      "zahl": 0.1
+     },
+     {
+      "s": "≤ 0,4",
+      "op": "≤",
+      "zahl": 0.4
+     },
+     {
+      "s": "≤ 2",
+      "op": "≤",
+      "zahl": 2
+     },
+     {
+      "s": "≤ 5",
+      "op": "≤",
+      "zahl": 5
+     },
+     {
+      "s": "≤ 20",
+      "op": "≤",
+      "zahl": 20
+     },
+     {
+      "s": "≤ 0,1",
+      "op": "≤",
+      "zahl": 0.1
+     }
+    ]
+   },
+   {
+    "parameter": "Chlorid",
+    "fn": "12",
+    "einheit": "mg/l",
+    "werte": [
+     {
+      "s": "≤ 10",
+      "op": "≤",
+      "zahl": 10
+     },
+     {
+      "s": "≤ 80",
+      "op": "≤",
+      "zahl": 80
+     },
+     {
+      "s": "≤ 1 500",
+      "fn": "13",
+      "op": "≤",
+      "zahl": 1500
+     },
+     {
+      "s": "≤ 1 500",
+      "fn": "13",
+      "op": "≤",
+      "zahl": 1500
+     },
+     {
+      "s": "≤ 2 500",
+      "op": "≤",
+      "zahl": 2500
+     },
+     {
+      "s": "≤ 10",
+      "fn": "14,17",
+      "op": "≤",
+      "zahl": 10
+     }
+    ]
+   },
+   {
+    "parameter": "Sulfat",
+    "fn": "12",
+    "einheit": "mg/l",
+    "werte": [
+     {
+      "s": "≤ 50",
+      "op": "≤",
+      "zahl": 50
+     },
+     {
+      "s": "≤ 100",
+      "fn": "15",
+      "op": "≤",
+      "zahl": 100
+     },
+     {
+      "s": "≤ 2 000",
+      "fn": "13",
+      "op": "≤",
+      "zahl": 2000
+     },
+     {
+      "s": "≤ 2 000",
+      "fn": "13",
+      "op": "≤",
+      "zahl": 2000
+     },
+     {
+      "s": "≤ 5 000",
+      "op": "≤",
+      "zahl": 5000
+     },
+     {
+      "s": "≤ 50",
+      "fn": "14,17",
+      "op": "≤",
+      "zahl": 50
+     }
+    ]
+   },
+   {
+    "parameter": "Cyanid, leicht freisetzbar",
+    "einheit": "mg/l",
+    "werte": [
+     {
+      "s": "≤ 0,01",
+      "op": "≤",
+      "zahl": 0.01
+     },
+     {
+      "s": "≤ 0,01",
+      "op": "≤",
+      "zahl": 0.01
+     },
+     {
+      "s": "≤ 0,1",
+      "op": "≤",
+      "zahl": 0.1
+     },
+     {
+      "s": "≤ 0,5",
+      "op": "≤",
+      "zahl": 0.5
+     },
+     {
+      "s": "≤ 1",
+      "op": "≤",
+      "zahl": 1
+     },
+     null
+    ]
+   },
+   {
+    "parameter": "Fluorid",
+    "einheit": "mg/l",
+    "werte": [
+     null,
+     {
+      "s": "≤ 1",
+      "op": "≤",
+      "zahl": 1
+     },
+     {
+      "s": "≤ 5",
+      "op": "≤",
+      "zahl": 5
+     },
+     {
+      "s": "≤ 15",
+      "op": "≤",
+      "zahl": 15
+     },
+     {
+      "s": "≤ 50",
+      "op": "≤",
+      "zahl": 50
+     },
+     null
+    ]
+   },
+   {
+    "parameter": "Barium",
+    "einheit": "mg/l",
+    "werte": [
+     null,
+     {
+      "s": "≤ 2",
+      "op": "≤",
+      "zahl": 2
+     },
+     {
+      "s": "≤ 5",
+      "fn": "13",
+      "op": "≤",
+      "zahl": 5
+     },
+     {
+      "s": "≤ 10",
+      "fn": "13",
+      "op": "≤",
+      "zahl": 10
+     },
+     {
+      "s": "≤ 30",
+      "op": "≤",
+      "zahl": 30
+     },
+     null
+    ]
+   },
+   {
+    "parameter": "Chrom, gesamt",
+    "einheit": "mg/l",
+    "werte": [
+     null,
+     {
+      "s": "≤ 0,05",
+      "op": "≤",
+      "zahl": 0.05
+     },
+     {
+      "s": "≤ 0,3",
+      "op": "≤",
+      "zahl": 0.3
+     },
+     {
+      "s": "≤ 1",
+      "op": "≤",
+      "zahl": 1
+     },
+     {
+      "s": "≤ 7",
+      "op": "≤",
+      "zahl": 7
+     },
+     {
+      "s": "≤ 0,03",
+      "op": "≤",
+      "zahl": 0.03
+     }
+    ]
+   },
+   {
+    "parameter": "Molybdän",
+    "einheit": "mg/l",
+    "werte": [
+     null,
+     {
+      "s": "≤ 0,05",
+      "op": "≤",
+      "zahl": 0.05
+     },
+     {
+      "s": "≤ 0,3",
+      "fn": "13",
+      "op": "≤",
+      "zahl": 0.3
+     },
+     {
+      "s": "≤ 1",
+      "fn": "13",
+      "op": "≤",
+      "zahl": 1
+     },
+     {
+      "s": "≤ 3",
+      "op": "≤",
+      "zahl": 3
+     },
+     null
+    ]
+   },
+   {
+    "parameter": "Antimon",
+    "fn": "16",
+    "einheit": "mg/l",
+    "werte": [
+     null,
+     {
+      "s": "≤ 0,006",
+      "op": "≤",
+      "zahl": 0.006
+     },
+     {
+      "s": "≤ 0,03",
+      "fn": "13",
+      "op": "≤",
+      "zahl": 0.03
+     },
+     {
+      "s": "≤ 0,07",
+      "fn": "13",
+      "op": "≤",
+      "zahl": 0.07
+     },
+     {
+      "s": "≤ 0,5",
+      "op": "≤",
+      "zahl": 0.5
+     },
+     null
+    ]
+   },
+   {
+    "parameter": "Antimon – C o -Wert",
+    "fn": "16",
+    "einheit": "mg/l",
+    "werte": [
+     null,
+     {
+      "s": "≤ 0,1",
+      "op": "≤",
+      "zahl": 0.1
+     },
+     {
+      "s": "≤ 0,12",
+      "fn": "13",
+      "op": "≤",
+      "zahl": 0.12
+     },
+     {
+      "s": "≤ 0,15",
+      "fn": "13",
+      "op": "≤",
+      "zahl": 0.15
+     },
+     {
+      "s": "≤ 1,0",
+      "op": "≤",
+      "zahl": 1
+     },
+     null
+    ]
+   },
+   {
+    "parameter": "Selen",
+    "einheit": "mg/l",
+    "werte": [
+     null,
+     {
+      "s": "≤ 0,01",
+      "op": "≤",
+      "zahl": 0.01
+     },
+     {
+      "s": "≤ 0,03",
+      "fn": "13",
+      "op": "≤",
+      "zahl": 0.03
+     },
+     {
+      "s": "≤ 0,05",
+      "fn": "13",
+      "op": "≤",
+      "zahl": 0.05
+     },
+     {
+      "s": "≤ 0,7",
+      "op": "≤",
+      "zahl": 0.7
+     },
+     null
+    ]
+   },
+   {
+    "parameter": "Gesamtgehalt an gelösten Feststoffen",
+    "fn": "12",
+    "einheit": "mg/l",
+    "werte": [
+     {
+      "s": "≤ 400",
+      "op": "≤",
+      "zahl": 400
+     },
+     {
+      "s": "≤ 400",
+      "op": "≤",
+      "zahl": 400
+     },
+     {
+      "s": "≤ 3 000",
+      "op": "≤",
+      "zahl": 3000
+     },
+     {
+      "s": "≤ 6 000",
+      "op": "≤",
+      "zahl": 6000
+     },
+     {
+      "s": "≤ 10 000",
+      "op": "≤",
+      "zahl": 10000
+     },
+     null
+    ]
+   },
+   {
+    "parameter": "elektrische Leitfähigkeit",
+    "einheit": "μS/cm",
+    "werte": [
+     null,
+     null,
+     null,
+     null,
+     null,
+     {
+      "s": "≤ 500",
+      "fn": "17",
+      "op": "≤",
+      "zahl": 500
+     }
+    ]
+   }
+  ],
+  "quelle": "depv",
+  "fundstelle": "Anhang 3 Tabelle 2, Nr. 3",
+  "fussnoten": [
+   "1) In Gebieten mit naturbedingt oder großflächig siedlungsbedingt erhöhten Schadstoffgehalten in Böden ist eine Verwendung von Bodenmaterial aus diesen Gebieten zulässig, welches die Hintergrundgehalte des Gebietes nicht überschreitet, sofern die Funktion der Rekultivierungsschicht nicht beeinträchtigt wird.",
+   "2) Nummer 1.01 kann gleichwertig zu Nummer 1.02 angewandt werden.",
+   "2a) Für Bodenmaterial ohne Fremdbestandteile sind Überschreitungen beim Glühverlust bis 5 Masse% oder beim TOC bis 3 Masse% zulässig, wenn die Überschreitung ausschließlich auf natürliche Bestandteile des Bodenmaterials zurückgeht.",
+   "3) Eine Überschreitung des Zuordnungswertes ist mit Zustimmung der zuständigen Behörde bei Bodenaushub (Abfallschlüssel 17 05 04 und 20 02 02 nach der Anlage zur Abfallverzeichnis-Verordnung) und bei Baggergut (Abfallschlüssel 17 05 06 nach der Anlage zur Abfallverzeichnis-Verordnung) zulässig, wenn a) die Überschreitung ausschließlich auf natürliche Bestandteile des Bodenaushubes oder des Baggergutes zurückgeht, b) sonstige Fremdbestandteile nicht mehr als 5 Volumenprozent ausmachen, c) bei der gemeinsamen Ablagerung mit gipshaltigen Abfällen der DOC-Wert maximal 80 mg/l beträgt, d) auf der Deponie, dem Deponieabschnitt oder dem gesonderten Teilabschnitt eines Deponieabschnitts ausschließlich nicht gefährliche Abfälle abgelagert werden und e) das Wohl der Allgemeinheit – gemessen an den Anforderungen dieser Verordnung – nicht beeinträchtigt wird.",
+   "4) Der Zuordnungswert gilt nicht für Aschen aus der Braunkohlefeuerung sowie für Abfälle oder Deponieersatzbaustoffe aus Hochtemperaturprozessen; zu Letzteren gehören insbesondere Abfälle aus der Verarbeitung von Schlacke, unbearbeitete Schlacke, Stäube und Schlämme aus der Abgasreinigung von Sinteranlagen, Hochöfen, Schachtöfen und Stahlwerken der Eisen- und Stahlindustrie. Bei gemeinsamer Ablagerung mit gipshaltigen Abfällen darf der TOC-Wert der in Satz 1 genannten Abfälle oder Deponieersatzbaustoffe maximal 5 Masseprozent betragen. Eine Überschreitung dieses TOC-Wertes ist zulässig, wenn der DOC-Wert maximal 80 mg/l beträgt.",
+   "5) Gilt nicht für Asphalt auf Bitumen- oder auf Teerbasis.",
+   "6) Bei PAK-Gehalten von mehr als 3 mg/kg ist mit Hilfe eines Säulenversuches nach Anhang 4 Nummer 3.2.2 nachzuweisen, dass in dem Säuleneluat bei einem Flüssigkeits-Feststoffverhältnis von 2:1 ein Wert von 0,2 µg/l nicht überschritten wird.",
+   "7) Nicht erforderlich bei asbesthaltigen Abfällen und Abfällen, die andere gefährliche Mineralfasern enthalten.",
+   "8) Abweichende pH-Werte stellen allein kein Ausschlusskriterium dar. Bei Über- oder Unterschreitungen ist die Ursache zu prüfen. Werden jedoch auf Deponien der Klassen I und II gefährliche Abfälle abgelagert, muss deren pH-Wert mindestens 6,0 betragen.",
+   "9) Der Zuordnungswert für DOC ist auch eingehalten, wenn der Abfall oder der Deponieersatzbaustoff den Zuordnungswert nicht bei seinem eigenen pH-Wert, aber bei einem pH-Wert zwischen 7,5 und 8,0 einhält.",
+   "10) Auf Abfälle oder Deponieersatzbaustoffe auf Gipsbasis nur anzuwenden, wenn sie gemeinsam mit gefährlichen Abfällen abgelagert oder eingesetzt werden.",
+   "11) Überschreitungen des DOC-Wertes bis maximal 100 mg/l sind zulässig, wenn auf der Deponie oder dem Deponieabschnitt keine gipshaltigen Abfälle und seit dem 16. Juli 2005 ausschließlich nicht gefährliche Abfälle oder Deponieersatzbaustoffe abgelagert oder eingesetzt werden.",
+   "12) Nummer 3.20 kann, außer in den Fällen gemäß Spalte 9 (Rekultivierungsschicht), gleichwertig zu den Nummern 3.11 und 3.12 angewandt werden.",
+   "13) Der Zuordnungswert gilt nicht, wenn auf der Deponie oder dem Deponieabschnitt seit dem 16. Juli 2005 ausschließlich nicht gefährliche Abfälle oder Deponieersatzbaustoffe abgelagert oder eingesetzt werden.",
+   "14) Untersuchung entfällt bei Bodenmaterial ohne mineralische Fremdbestandteile.",
+   "15) Überschreitungen des Sulfatwertes bis zu einem Wert von 600 mg/l sind zulässig, wenn der C o -Wert der Perkolationsprüfung den Wert von 1 500 mg/l bei L/S = 0,1 l/kg nicht überschreitet.",
+   "16) Überschreitungen des Antimonwertes nach Nummer 3.18a sind zulässig, wenn der C o -Wert der Perkolationsprüfung bei L/S = 0,1 l/kg nach Nummer 3.18b nicht überschritten wird. 17 Bei Überschreitung des Zuordnungswertes ist die Ursache zu prüfen. Im Falle von naturbedingt erhöhter Konzentration ist eine Überschreitung des Zuordnungswertes bei Bodenmaterial oder aufbereitetem Baggergut mit Zustimmung der zuständigen Behörde im Einzelfall zulässig, wenn eine Wasserhaushaltsschicht gemäß Anhang 1 Nummer 2.3.1.1 errichtet wird."
+  ]
+ },
+ {
+  "id": "ebv-rc",
+  "titel": "RC-Baustoffe und Schlacken",
+  "sub": "EBV Anlage 1 Tabelle 1",
+  "stichworte": "Recycling Baustoff RC RC-1 RC-2 RC-3 Hochofenstückschlacke Stahlwerksschlacke Materialwerte",
+  "spalten": [
+   "RC-1",
+   "RC-2",
+   "RC-3",
+   "HOS-1",
+   "HOS-2",
+   "HS",
+   "SWS-1",
+   "SWS-2",
+   "GKOS"
+  ],
+  "start": [
+   0,
+   1,
+   2
+  ],
+  "zeilen": [
+   {
+    "parameter": "pH-Wert",
+    "fn": "1",
+    "einheit": "",
+    "werte": [
+     {
+      "s": "6 – 13",
+      "von": 6,
+      "bis": 13
+     },
+     {
+      "s": "6 – 13",
+      "von": 6,
+      "bis": 13
+     },
+     {
+      "s": "6 – 13",
+      "von": 6,
+      "bis": 13
+     },
+     {
+      "s": "9 – 12",
+      "von": 9,
+      "bis": 12
+     },
+     {
+      "s": "9 – 12",
+      "von": 9,
+      "bis": 12
+     },
+     {
+      "s": "8 – 12",
+      "von": 8,
+      "bis": 12
+     },
+     {
+      "s": "9 – 13",
+      "von": 9,
+      "bis": 13
+     },
+     {
+      "s": "9 – 13",
+      "von": 9,
+      "bis": 13
+     },
+     {
+      "s": "7 – 12",
+      "von": 7,
+      "bis": 12
+     }
+    ]
+   },
+   {
+    "parameter": "Elektrische Leitfähigkeit",
+    "fn": "2",
+    "einheit": "µS/cm",
+    "werte": [
+     {
+      "s": "2 500",
+      "zahl": 2500
+     },
+     {
+      "s": "3 200",
+      "zahl": 3200
+     },
+     {
+      "s": "10 000",
+      "zahl": 10000
+     },
+     {
+      "s": "5 000",
+      "zahl": 5000
+     },
+     {
+      "s": "7 000",
+      "zahl": 7000
+     },
+     {
+      "s": "4 000",
+      "zahl": 4000
+     },
+     {
+      "s": "10 000",
+      "zahl": 10000
+     },
+     {
+      "s": "10 000",
+      "zahl": 10000
+     },
+     {
+      "s": "1 500",
+      "zahl": 1500
+     }
+    ]
+   },
+   {
+    "parameter": "Sulfat",
+    "einheit": "mg/l",
+    "werte": [
+     {
+      "s": "600",
+      "zahl": 600
+     },
+     {
+      "s": "1 000",
+      "zahl": 1000
+     },
+     {
+      "s": "3 500",
+      "zahl": 3500
+     },
+     {
+      "s": "1 300",
+      "zahl": 1300
+     },
+     {
+      "s": "3 600",
+      "zahl": 3600
+     },
+     {
+      "s": "350",
+      "zahl": 350
+     },
+     null,
+     null,
+     null
+    ]
+   },
+   {
+    "parameter": "Fluorid",
+    "einheit": "mg/l",
+    "werte": [
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     {
+      "s": "1,1",
+      "zahl": 1.1
+     },
+     {
+      "s": "4,7",
+      "zahl": 4.7
+     },
+     null
+    ]
+   },
+   {
+    "parameter": "PAK 15",
+    "fn": "3",
+    "einheit": "µg/l",
+    "werte": [
+     {
+      "s": "4,0",
+      "zahl": 4
+     },
+     {
+      "s": "8,0",
+      "zahl": 8
+     },
+     {
+      "s": "25",
+      "zahl": 25
+     },
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ]
+   },
+   {
+    "parameter": "PAK 16",
+    "fn": "4",
+    "einheit": "mg/kg",
+    "werte": [
+     {
+      "s": "10",
+      "zahl": 10
+     },
+     {
+      "s": "15",
+      "zahl": 15
+     },
+     {
+      "s": "20",
+      "zahl": 20
+     },
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ]
+   },
+   {
+    "parameter": "Blei",
+    "einheit": "µg/l",
+    "werte": [
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     {
+      "s": "90",
+      "zahl": 90
+     }
+    ]
+   },
+   {
+    "parameter": "Chrom, ges.",
+    "einheit": "µg/l",
+    "werte": [
+     {
+      "s": "150",
+      "zahl": 150
+     },
+     {
+      "s": "440",
+      "zahl": 440
+     },
+     {
+      "s": "900",
+      "zahl": 900
+     },
+     null,
+     null,
+     null,
+     {
+      "s": "110",
+      "zahl": 110
+     },
+     {
+      "s": "190",
+      "zahl": 190
+     },
+     {
+      "s": "150",
+      "zahl": 150
+     }
+    ]
+   },
+   {
+    "parameter": "Kupfer",
+    "einheit": "µg/l",
+    "werte": [
+     {
+      "s": "110",
+      "zahl": 110
+     },
+     {
+      "s": "250",
+      "zahl": 250
+     },
+     {
+      "s": "500",
+      "zahl": 500
+     },
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ]
+   },
+   {
+    "parameter": "Molybdän",
+    "einheit": "µg/l",
+    "werte": [
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     {
+      "s": "55",
+      "zahl": 55
+     },
+     {
+      "s": "400",
+      "zahl": 400
+     },
+     null
+    ]
+   },
+   {
+    "parameter": "Nickel",
+    "einheit": "µg/l",
+    "werte": [
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     {
+      "s": "30",
+      "zahl": 30
+     }
+    ]
+   },
+   {
+    "parameter": "Vanadium",
+    "einheit": "µg/l",
+    "werte": [
+     {
+      "s": "120",
+      "zahl": 120
+     },
+     {
+      "s": "700",
+      "zahl": 700
+     },
+     {
+      "s": "1 350",
+      "zahl": 1350
+     },
+     null,
+     null,
+     {
+      "s": "55",
+      "zahl": 55
+     },
+     {
+      "s": "180",
+      "zahl": 180
+     },
+     {
+      "s": "450",
+      "zahl": 450
+     },
+     {
+      "s": "55",
+      "zahl": 55
+     }
+    ]
+   }
+  ],
+  "quelle": "ebv",
+  "fundstelle": "Anlage 1 Tabelle 1",
+  "fussnoten": [
+   "1) Nur bei GRS Grenzwert, ansonsten stoffspezifischer Orientierungswert; bei Abweichungen ist die Ursache zu prüfen.",
+   "2) Stoffspezifischer Orientierungswert; bei Abweichungen ist die Ursache zu prüfen.",
+   "3) PAK 15 : PAK 16 ohne Naphthalin und Methylnaphthaline.",
+   "4) PAK 16 : stellvertretend für die Gruppe der polyzyklischen aromatischen Kohlenwasserstoffe (PAK) werden nach der Liste der Environmental Protection Agency (EPA) 16 ausgewählte PAK untersucht: Acenaphthen, Acenaphthylen, Anthracen, Benzo[a]anthracen, Benzo[a]pyren, Benzo[b]fluoranthen, Benzo[g,h,i]perylen, Benzo[k]fluoranthen, Chrysen, Dibenzo[a,h]anthracen, Fluoranthen, Fluoren, Indeno[1,2,3-cd]pyren, Naphthalin, Phenanthren und Pyren. Tabelle 2: Materialwerte für Gleisschotter"
+  ]
+ },
+ {
+  "id": "ebv-asche",
+  "titel": "Aschen und weitere Ersatzbaustoffe",
+  "sub": "EBV Anlage 1 Tabelle 1",
+  "stichworte": "Hausmüllverbrennungsasche HMVA Flugasche Gießereirestsand Kupferhüttenmaterial",
+  "spalten": [
+   "CUM-1",
+   "CUM-2",
+   "GRS",
+   "SKG",
+   "SKA",
+   "SFA",
+   "BFA",
+   "HMVA-1",
+   "HMVA-2"
+  ],
+  "start": [
+   0,
+   1,
+   2
+  ],
+  "zeilen": [
+   {
+    "parameter": "pH-Wert",
+    "fn": "1",
+    "einheit": "",
+    "werte": [
+     {
+      "s": "6 – 10",
+      "von": 6,
+      "bis": 10
+     },
+     {
+      "s": "6 – 10",
+      "von": 6,
+      "bis": 10
+     },
+     {
+      "s": "> 9",
+      "op": ">",
+      "zahl": 9
+     },
+     {
+      "s": "6 – 10",
+      "von": 6,
+      "bis": 10
+     },
+     {
+      "s": "7 – 12",
+      "von": 7,
+      "bis": 12
+     },
+     {
+      "s": "8 – 13",
+      "von": 8,
+      "bis": 13
+     },
+     {
+      "s": "11 – 13",
+      "von": 11,
+      "bis": 13
+     },
+     {
+      "s": "7 – 13",
+      "von": 7,
+      "bis": 13
+     },
+     {
+      "s": "7 – 13",
+      "von": 7,
+      "bis": 13
+     }
+    ]
+   },
+   {
+    "parameter": "Elektrische Leitfähigkeit",
+    "fn": "2",
+    "einheit": "µS/cm",
+    "werte": [
+     {
+      "s": "300",
+      "zahl": 300
+     },
+     {
+      "s": "300",
+      "zahl": 300
+     },
+     {
+      "s": "2 700",
+      "zahl": 2700
+     },
+     {
+      "s": "10 – 60",
+      "von": 10,
+      "bis": 60
+     },
+     {
+      "s": "2 100",
+      "zahl": 2100
+     },
+     {
+      "s": "10 000",
+      "zahl": 10000
+     },
+     {
+      "s": "15 000",
+      "zahl": 15000
+     },
+     {
+      "s": "2 000",
+      "zahl": 2000
+     },
+     {
+      "s": "12 500",
+      "zahl": 12500
+     }
+    ]
+   },
+   {
+    "parameter": "Chlorid",
+    "einheit": "mg/l",
+    "werte": [
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     {
+      "s": "160",
+      "zahl": 160
+     },
+     {
+      "s": "5 000",
+      "zahl": 5000
+     }
+    ]
+   },
+   {
+    "parameter": "Sulfat",
+    "einheit": "mg/l",
+    "werte": [
+     null,
+     null,
+     null,
+     null,
+     {
+      "s": "600",
+      "zahl": 600
+     },
+     {
+      "s": "4 500",
+      "zahl": 4500
+     },
+     {
+      "s": "2 500",
+      "zahl": 2500
+     },
+     {
+      "s": "820",
+      "zahl": 820
+     },
+     {
+      "s": "3 000",
+      "zahl": 3000
+     }
+    ]
+   },
+   {
+    "parameter": "Fluorid",
+    "einheit": "mg/l",
+    "werte": [
+     null,
+     null,
+     {
+      "s": "8,7",
+      "zahl": 8.7
+     },
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ]
+   },
+   {
+    "parameter": "DOC",
+    "einheit": "mg/l",
+    "werte": [
+     null,
+     null,
+     {
+      "s": "30",
+      "zahl": 30
+     },
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ]
+   },
+   {
+    "parameter": "Antimon",
+    "einheit": "µg/l",
+    "werte": [
+     {
+      "s": "25",
+      "zahl": 25
+     },
+     {
+      "s": "25",
+      "zahl": 25
+     },
+     null,
+     null,
+     null,
+     null,
+     null,
+     {
+      "s": "10",
+      "zahl": 10
+     },
+     {
+      "s": "60",
+      "zahl": 60
+     }
+    ]
+   },
+   {
+    "parameter": "Arsen",
+    "einheit": "µg/l",
+    "werte": [
+     {
+      "s": "55",
+      "zahl": 55
+     },
+     {
+      "s": "65",
+      "zahl": 65
+     },
+     {
+      "s": "65",
+      "zahl": 65
+     },
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ]
+   },
+   {
+    "parameter": "Blei",
+    "einheit": "µg/l",
+    "werte": [
+     null,
+     null,
+     {
+      "s": "90",
+      "zahl": 90
+     },
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ]
+   },
+   {
+    "parameter": "Chrom, ges.",
+    "einheit": "µg/l",
+    "werte": [
+     null,
+     null,
+     {
+      "s": "110",
+      "zahl": 110
+     },
+     null,
+     null,
+     {
+      "s": "1 000",
+      "zahl": 1000
+     },
+     {
+      "s": "150",
+      "zahl": 150
+     },
+     {
+      "s": "150",
+      "zahl": 150
+     },
+     {
+      "s": "460",
+      "zahl": 460
+     }
+    ]
+   },
+   {
+    "parameter": "Kupfer",
+    "einheit": "µg/l",
+    "werte": [
+     {
+      "s": "55",
+      "zahl": 55
+     },
+     {
+      "s": "110",
+      "zahl": 110
+     },
+     {
+      "s": "110",
+      "zahl": 110
+     },
+     null,
+     null,
+     null,
+     null,
+     {
+      "s": "110",
+      "zahl": 110
+     },
+     {
+      "s": "1 000",
+      "zahl": 1000
+     }
+    ]
+   },
+   {
+    "parameter": "Molybdän",
+    "einheit": "µg/l",
+    "werte": [
+     {
+      "s": "110",
+      "zahl": 110
+     },
+     {
+      "s": "110",
+      "zahl": 110
+     },
+     {
+      "s": "55",
+      "zahl": 55
+     },
+     null,
+     {
+      "s": "400",
+      "zahl": 400
+     },
+     {
+      "s": "7 000",
+      "zahl": 7000
+     },
+     {
+      "s": "400",
+      "zahl": 400
+     },
+     {
+      "s": "55",
+      "zahl": 55
+     },
+     {
+      "s": "400",
+      "zahl": 400
+     }
+    ]
+   },
+   {
+    "parameter": "Nickel",
+    "einheit": "µg/l",
+    "werte": [
+     null,
+     null,
+     {
+      "s": "30",
+      "zahl": 30
+     },
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ]
+   },
+   {
+    "parameter": "Vanadium",
+    "einheit": "µg/l",
+    "werte": [
+     null,
+     null,
+     {
+      "s": "200",
+      "zahl": 200
+     },
+     null,
+     {
+      "s": "230",
+      "zahl": 230
+     },
+     {
+      "s": "300",
+      "zahl": 300
+     },
+     null,
+     {
+      "s": "55",
+      "zahl": 55
+     },
+     {
+      "s": "150",
+      "zahl": 150
+     }
+    ]
+   },
+   {
+    "parameter": "Zink",
+    "einheit": "µg/l",
+    "werte": [
+     null,
+     null,
+     {
+      "s": "160",
+      "zahl": 160
+     },
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ]
+   }
+  ],
+  "quelle": "ebv",
+  "fundstelle": "Anlage 1 Tabelle 1",
+  "fussnoten": [
+   "1) Nur bei GRS Grenzwert, ansonsten stoffspezifischer Orientierungswert; bei Abweichungen ist die Ursache zu prüfen.",
+   "2) Stoffspezifischer Orientierungswert; bei Abweichungen ist die Ursache zu prüfen.",
+   "3) PAK 15 : PAK 16 ohne Naphthalin und Methylnaphthaline.",
+   "4) PAK 16 : stellvertretend für die Gruppe der polyzyklischen aromatischen Kohlenwasserstoffe (PAK) werden nach der Liste der Environmental Protection Agency (EPA) 16 ausgewählte PAK untersucht: Acenaphthen, Acenaphthylen, Anthracen, Benzo[a]anthracen, Benzo[a]pyren, Benzo[b]fluoranthen, Benzo[g,h,i]perylen, Benzo[k]fluoranthen, Chrysen, Dibenzo[a,h]anthracen, Fluoranthen, Fluoren, Indeno[1,2,3-cd]pyren, Naphthalin, Phenanthren und Pyren. Tabelle 2: Materialwerte für Gleisschotter"
+  ]
+ },
+ {
+  "id": "ebv-gs",
+  "titel": "Gleisschotter",
+  "sub": "EBV Anlage 1 Tabelle 2",
+  "stichworte": "Gleisschotter GS",
+  "spalten": [
+   "GS-0",
+   "GS-1",
+   "GS-2",
+   "GS-3"
+  ],
+  "start": [
+   0,
+   1,
+   2
+  ],
+  "zeilen": [
+   {
+    "parameter": "pH",
+    "fn": "1",
+    "einheit": "",
+    "werte": [
+     {
+      "s": "6,5 – 10",
+      "von": 6.5,
+      "bis": 10
+     },
+     {
+      "s": "6,5 – 10",
+      "von": 6.5,
+      "bis": 10
+     },
+     {
+      "s": "6,5 – 10",
+      "von": 6.5,
+      "bis": 10
+     },
+     {
+      "s": "5 – 12",
+      "von": 5,
+      "bis": 12
+     }
+    ]
+   },
+   {
+    "parameter": "Elektrische Leitfähigkeit",
+    "fn": "1",
+    "einheit": "µS/cm",
+    "werte": [
+     {
+      "s": "500",
+      "zahl": 500
+     },
+     {
+      "s": "500",
+      "zahl": 500
+     },
+     {
+      "s": "500",
+      "zahl": 500
+     },
+     {
+      "s": "1 000",
+      "zahl": 1000
+     }
+    ]
+   },
+   {
+    "parameter": "Atrazin",
+    "einheit": "µg/l",
+    "werte": [
+     {
+      "s": "0,2",
+      "zahl": 0.2
+     },
+     {
+      "s": "0,7",
+      "zahl": 0.7
+     },
+     {
+      "s": "3,5",
+      "zahl": 3.5
+     },
+     {
+      "s": "14",
+      "zahl": 14
+     }
+    ]
+   },
+   {
+    "parameter": "Bromacil",
+    "einheit": "µg/l",
+    "werte": [
+     {
+      "s": "0,2",
+      "zahl": 0.2
+     },
+     {
+      "s": "0,4",
+      "zahl": 0.4
+     },
+     {
+      "s": "1,2",
+      "zahl": 1.2
+     },
+     {
+      "s": "5,3",
+      "zahl": 5.3
+     }
+    ]
+   },
+   {
+    "parameter": "Diuron",
+    "einheit": "µg/l",
+    "werte": [
+     {
+      "s": "0,1",
+      "zahl": 0.1
+     },
+     {
+      "s": "0,2",
+      "zahl": 0.2
+     },
+     {
+      "s": "0,8",
+      "zahl": 0.8
+     },
+     {
+      "s": "4,6",
+      "zahl": 4.6
+     }
+    ]
+   },
+   {
+    "parameter": "Glyphosat",
+    "einheit": "µg/l",
+    "werte": [
+     {
+      "s": "0,2",
+      "zahl": 0.2
+     },
+     {
+      "s": "1,7",
+      "zahl": 1.7
+     },
+     {
+      "s": "17",
+      "zahl": 17
+     },
+     {
+      "s": "27",
+      "zahl": 27
+     }
+    ]
+   },
+   {
+    "parameter": "AMPA",
+    "einheit": "µg/l",
+    "werte": [
+     {
+      "s": "2,5",
+      "zahl": 2.5
+     },
+     {
+      "s": "4,5",
+      "zahl": 4.5
+     },
+     {
+      "s": "17",
+      "zahl": 17
+     },
+     {
+      "s": "50",
+      "zahl": 50
+     }
+    ]
+   },
+   {
+    "parameter": "Simazin",
+    "einheit": "µg/l",
+    "werte": [
+     {
+      "s": "0,2",
+      "zahl": 0.2
+     },
+     {
+      "s": "1,5",
+      "zahl": 1.5
+     },
+     {
+      "s": "12",
+      "zahl": 12
+     },
+     {
+      "s": "27",
+      "zahl": 27
+     }
+    ]
+   },
+   {
+    "parameter": "sonst. Herbizide",
+    "fn": "2",
+    "einheit": "µg/l",
+    "werte": [
+     {
+      "s": "0,2",
+      "zahl": 0.2
+     },
+     {
+      "s": "2,1",
+      "zahl": 2.1
+     },
+     {
+      "s": "17",
+      "zahl": 17
+     },
+     {
+      "s": "27",
+      "zahl": 27
+     }
+    ]
+   },
+   {
+    "parameter": "MKW",
+    "einheit": "µg/l",
+    "werte": [
+     {
+      "s": "150",
+      "zahl": 150
+     },
+     {
+      "s": "160",
+      "zahl": 160
+     },
+     {
+      "s": "310",
+      "zahl": 310
+     },
+     {
+      "s": "500",
+      "zahl": 500
+     }
+    ]
+   },
+   {
+    "parameter": "PAK 15",
+    "fn": "3",
+    "einheit": "µg/l",
+    "werte": [
+     {
+      "s": "0,3",
+      "zahl": 0.3
+     },
+     {
+      "s": "2,3",
+      "zahl": 2.3
+     },
+     {
+      "s": "42",
+      "zahl": 42
+     },
+     {
+      "s": "50",
+      "zahl": 50
+     }
+    ]
+   }
+  ],
+  "quelle": "ebv",
+  "fundstelle": "Anlage 1 Tabelle 2",
+  "fussnoten": [
+   "1) Stoffspezifischer Orientierungswert, bei Abweichungen ist die Ursache zu prüfen.",
+   "2) Einzelwerte jeweils für Dimefuron, Flazasulfuron, Flumioxazin, Ethidimuron, Thiazafluron sowie für neu zugelassene Wirkstoffe.",
+   "3) PAK 15 : PAK 16 ohne Naphthalin und Methylnaphthaline. Tabelle 3: Materialwerte für Bodenmaterial  1  und Baggergut"
+  ]
+ },
+ {
+  "id": "ebv-bm",
+  "titel": "Bodenmaterial und Baggergut",
+  "sub": "EBV Anlage 1 Tabelle 3, gilt auch für BG",
+  "stichworte": "Bodenmaterial BM BG Baggergut BM-0 BM-F0 BM-F1 BM-F2 BM-F3",
+  "spalten": [
+   "BM-0 Sand",
+   "BM-0 Lehm",
+   "BM-0 Ton",
+   "BM-0*",
+   "BM-F0*",
+   "BM-F1",
+   "BM-F2",
+   "BM-F3"
+  ],
+  "start": [
+   0,
+   1,
+   2
+  ],
+  "zeilen": [
+   {
+    "parameter": "Mineralische Fremdbestandteile",
+    "einheit": "Vol.-%",
+    "werte": [
+     {
+      "text": "bis 10"
+     },
+     {
+      "text": "bis 10"
+     },
+     {
+      "text": "bis 10"
+     },
+     {
+      "text": "bis 10"
+     },
+     {
+      "text": "bis 50"
+     },
+     {
+      "text": "bis 50"
+     },
+     {
+      "text": "bis 50"
+     },
+     {
+      "text": "bis 50"
+     }
+    ]
+   },
+   {
+    "parameter": "pH-Wert",
+    "fn": "4",
+    "einheit": "",
+    "werte": [
+     null,
+     null,
+     null,
+     null,
+     {
+      "s": "6,5 – 9,5",
+      "von": 6.5,
+      "bis": 9.5
+     },
+     {
+      "s": "6,5 – 9,5",
+      "von": 6.5,
+      "bis": 9.5
+     },
+     {
+      "s": "6,5 – 9,5",
+      "von": 6.5,
+      "bis": 9.5
+     },
+     {
+      "s": "5,5 – 12,0",
+      "von": 5.5,
+      "bis": 12
+     }
+    ]
+   },
+   {
+    "parameter": "Elektrische Leitfähigkeit.",
+    "fn": "4",
+    "einheit": "µS/cm",
+    "werte": [
+     null,
+     null,
+     null,
+     {
+      "s": "350",
+      "zahl": 350
+     },
+     {
+      "s": "350",
+      "zahl": 350
+     },
+     {
+      "s": "500",
+      "zahl": 500
+     },
+     {
+      "s": "500",
+      "zahl": 500
+     },
+     {
+      "s": "2 000",
+      "zahl": 2000
+     }
+    ]
+   },
+   {
+    "parameter": "Sulfat",
+    "einheit": "mg/l",
+    "werte": [
+     {
+      "s": "250",
+      "fn": "5",
+      "zahl": 250
+     },
+     {
+      "s": "250",
+      "fn": "5",
+      "zahl": 250
+     },
+     {
+      "s": "250",
+      "fn": "5",
+      "zahl": 250
+     },
+     {
+      "s": "250",
+      "fn": "5",
+      "zahl": 250
+     },
+     {
+      "s": "250",
+      "fn": "5",
+      "zahl": 250
+     },
+     {
+      "s": "450",
+      "zahl": 450
+     },
+     {
+      "s": "450",
+      "zahl": 450
+     },
+     {
+      "s": "1 000",
+      "zahl": 1000
+     }
+    ]
+   },
+   {
+    "parameter": "Arsen",
+    "einheit": "mg/kg",
+    "werte": [
+     {
+      "s": "10",
+      "zahl": 10
+     },
+     {
+      "s": "20",
+      "zahl": 20
+     },
+     {
+      "s": "20",
+      "zahl": 20
+     },
+     {
+      "s": "20",
+      "zahl": 20
+     },
+     {
+      "s": "40",
+      "zahl": 40
+     },
+     {
+      "s": "40",
+      "zahl": 40
+     },
+     {
+      "s": "40",
+      "zahl": 40
+     },
+     {
+      "s": "150",
+      "zahl": 150
+     }
+    ]
+   },
+   {
+    "parameter": "Arsen",
+    "einheit": "µg/l",
+    "werte": [
+     null,
+     null,
+     null,
+     {
+      "s": "8 (13)",
+      "zahl": 8,
+      "klammer": 13
+     },
+     {
+      "s": "12",
+      "zahl": 12
+     },
+     {
+      "s": "20",
+      "zahl": 20
+     },
+     {
+      "s": "85",
+      "zahl": 85
+     },
+     {
+      "s": "100",
+      "zahl": 100
+     }
+    ]
+   },
+   {
+    "parameter": "Blei",
+    "einheit": "mg/kg",
+    "werte": [
+     {
+      "s": "40",
+      "zahl": 40
+     },
+     {
+      "s": "70",
+      "zahl": 70
+     },
+     {
+      "s": "100",
+      "zahl": 100
+     },
+     {
+      "s": "140",
+      "zahl": 140
+     },
+     {
+      "s": "140",
+      "zahl": 140
+     },
+     {
+      "s": "140",
+      "zahl": 140
+     },
+     {
+      "s": "140",
+      "zahl": 140
+     },
+     {
+      "s": "700",
+      "zahl": 700
+     }
+    ]
+   },
+   {
+    "parameter": "Blei",
+    "einheit": "µg/l",
+    "werte": [
+     null,
+     null,
+     null,
+     {
+      "s": "23 (43)",
+      "zahl": 23,
+      "klammer": 43
+     },
+     {
+      "s": "35",
+      "zahl": 35
+     },
+     {
+      "s": "90",
+      "zahl": 90
+     },
+     {
+      "s": "250",
+      "zahl": 250
+     },
+     {
+      "s": "470",
+      "zahl": 470
+     }
+    ]
+   },
+   {
+    "parameter": "Cadmium",
+    "einheit": "mg/kg",
+    "werte": [
+     {
+      "s": "0,4",
+      "zahl": 0.4
+     },
+     {
+      "s": "1",
+      "zahl": 1
+     },
+     {
+      "s": "1,5",
+      "zahl": 1.5
+     },
+     {
+      "s": "1",
+      "fn": "6",
+      "zahl": 1
+     },
+     {
+      "s": "2",
+      "zahl": 2
+     },
+     {
+      "s": "2",
+      "zahl": 2
+     },
+     {
+      "s": "2",
+      "zahl": 2
+     },
+     {
+      "s": "10",
+      "zahl": 10
+     }
+    ]
+   },
+   {
+    "parameter": "Cadmium",
+    "einheit": "µg/l",
+    "werte": [
+     null,
+     null,
+     null,
+     {
+      "s": "2 (4)",
+      "zahl": 2,
+      "klammer": 4
+     },
+     {
+      "s": "3,0",
+      "zahl": 3
+     },
+     {
+      "s": "3,0",
+      "zahl": 3
+     },
+     {
+      "s": "10",
+      "zahl": 10
+     },
+     {
+      "s": "15",
+      "zahl": 15
+     }
+    ]
+   },
+   {
+    "parameter": "Chrom, gesamt",
+    "einheit": "mg/kg",
+    "werte": [
+     {
+      "s": "30",
+      "zahl": 30
+     },
+     {
+      "s": "60",
+      "zahl": 60
+     },
+     {
+      "s": "100",
+      "zahl": 100
+     },
+     {
+      "s": "120",
+      "zahl": 120
+     },
+     {
+      "s": "120",
+      "zahl": 120
+     },
+     {
+      "s": "120",
+      "zahl": 120
+     },
+     {
+      "s": "120",
+      "zahl": 120
+     },
+     {
+      "s": "600",
+      "zahl": 600
+     }
+    ]
+   },
+   {
+    "parameter": "Chrom, gesamt",
+    "einheit": "µg/l",
+    "werte": [
+     null,
+     null,
+     null,
+     {
+      "s": "10 (19)",
+      "zahl": 10,
+      "klammer": 19
+     },
+     {
+      "s": "15",
+      "zahl": 15
+     },
+     {
+      "s": "150",
+      "zahl": 150
+     },
+     {
+      "s": "290",
+      "zahl": 290
+     },
+     {
+      "s": "530",
+      "zahl": 530
+     }
+    ]
+   },
+   {
+    "parameter": "Kupfer",
+    "einheit": "mg/kg",
+    "werte": [
+     {
+      "s": "20",
+      "zahl": 20
+     },
+     {
+      "s": "40",
+      "zahl": 40
+     },
+     {
+      "s": "60",
+      "zahl": 60
+     },
+     {
+      "s": "80",
+      "zahl": 80
+     },
+     {
+      "s": "80",
+      "zahl": 80
+     },
+     {
+      "s": "80",
+      "zahl": 80
+     },
+     {
+      "s": "80",
+      "zahl": 80
+     },
+     {
+      "s": "320",
+      "zahl": 320
+     }
+    ]
+   },
+   {
+    "parameter": "Kupfer",
+    "einheit": "µg/l",
+    "werte": [
+     null,
+     null,
+     null,
+     {
+      "s": "20 (41)",
+      "zahl": 20,
+      "klammer": 41
+     },
+     {
+      "s": "30",
+      "zahl": 30
+     },
+     {
+      "s": "110",
+      "zahl": 110
+     },
+     {
+      "s": "170",
+      "zahl": 170
+     },
+     {
+      "s": "320",
+      "zahl": 320
+     }
+    ]
+   },
+   {
+    "parameter": "Nickel",
+    "einheit": "mg/kg",
+    "werte": [
+     {
+      "s": "15",
+      "zahl": 15
+     },
+     {
+      "s": "50",
+      "zahl": 50
+     },
+     {
+      "s": "70",
+      "zahl": 70
+     },
+     {
+      "s": "100",
+      "zahl": 100
+     },
+     {
+      "s": "100",
+      "zahl": 100
+     },
+     {
+      "s": "100",
+      "zahl": 100
+     },
+     {
+      "s": "100",
+      "zahl": 100
+     },
+     {
+      "s": "350",
+      "zahl": 350
+     }
+    ]
+   },
+   {
+    "parameter": "Nickel",
+    "einheit": "µg/l",
+    "werte": [
+     null,
+     null,
+     null,
+     {
+      "s": "20 (31)",
+      "zahl": 20,
+      "klammer": 31
+     },
+     {
+      "s": "30",
+      "zahl": 30
+     },
+     {
+      "s": "30",
+      "zahl": 30
+     },
+     {
+      "s": "150",
+      "zahl": 150
+     },
+     {
+      "s": "280",
+      "zahl": 280
+     }
+    ]
+   },
+   {
+    "parameter": "Quecksilber",
+    "einheit": "mg/kg",
+    "werte": [
+     {
+      "s": "0,2",
+      "zahl": 0.2
+     },
+     {
+      "s": "0,3",
+      "zahl": 0.3
+     },
+     {
+      "s": "0,3",
+      "zahl": 0.3
+     },
+     {
+      "s": "0,6",
+      "zahl": 0.6
+     },
+     {
+      "s": "0,6",
+      "zahl": 0.6
+     },
+     {
+      "s": "0,6",
+      "zahl": 0.6
+     },
+     {
+      "s": "0,6",
+      "zahl": 0.6
+     },
+     {
+      "s": "5",
+      "zahl": 5
+     }
+    ]
+   },
+   {
+    "parameter": "Quecksilber",
+    "fn": "12",
+    "einheit": "µg/l",
+    "werte": [
+     null,
+     null,
+     null,
+     {
+      "s": "0,1",
+      "zahl": 0.1
+     },
+     null,
+     null,
+     null,
+     null
+    ]
+   },
+   {
+    "parameter": "Thallium",
+    "einheit": "mg/kg",
+    "werte": [
+     {
+      "s": "0,5",
+      "zahl": 0.5
+     },
+     {
+      "s": "1,0",
+      "zahl": 1
+     },
+     {
+      "s": "1,0",
+      "zahl": 1
+     },
+     {
+      "s": "1,0",
+      "zahl": 1
+     },
+     {
+      "s": "2",
+      "zahl": 2
+     },
+     {
+      "s": "2",
+      "zahl": 2
+     },
+     {
+      "s": "2",
+      "zahl": 2
+     },
+     {
+      "s": "7",
+      "zahl": 7
+     }
+    ]
+   },
+   {
+    "parameter": "Thallium",
+    "fn": "12",
+    "einheit": "µg/l",
+    "werte": [
+     null,
+     null,
+     null,
+     {
+      "s": "0,2 (0,3)",
+      "zahl": 0.2,
+      "klammer": 0.3
+     },
+     null,
+     null,
+     null,
+     null
+    ]
+   },
+   {
+    "parameter": "Zink",
+    "einheit": "mg/kg",
+    "werte": [
+     {
+      "s": "60",
+      "zahl": 60
+     },
+     {
+      "s": "150",
+      "zahl": 150
+     },
+     {
+      "s": "200",
+      "zahl": 200
+     },
+     {
+      "s": "300",
+      "zahl": 300
+     },
+     {
+      "s": "300",
+      "zahl": 300
+     },
+     {
+      "s": "300",
+      "zahl": 300
+     },
+     {
+      "s": "300",
+      "zahl": 300
+     },
+     {
+      "s": "1 200",
+      "zahl": 1200
+     }
+    ]
+   },
+   {
+    "parameter": "Zink",
+    "einheit": "µg/l",
+    "werte": [
+     null,
+     null,
+     null,
+     {
+      "s": "100 (210)",
+      "zahl": 100,
+      "klammer": 210
+     },
+     {
+      "s": "150",
+      "zahl": 150
+     },
+     {
+      "s": "160",
+      "zahl": 160
+     },
+     {
+      "s": "840",
+      "zahl": 840
+     },
+     {
+      "s": "1 600",
+      "zahl": 1600
+     }
+    ]
+   },
+   {
+    "parameter": "TOC",
+    "einheit": "M%",
+    "werte": [
+     {
+      "s": "1",
+      "fn": "7",
+      "zahl": 1
+     },
+     {
+      "s": "1",
+      "fn": "7",
+      "zahl": 1
+     },
+     {
+      "s": "1",
+      "fn": "7",
+      "zahl": 1
+     },
+     {
+      "s": "1",
+      "fn": "7",
+      "zahl": 1
+     },
+     {
+      "s": "5",
+      "zahl": 5
+     },
+     {
+      "s": "5",
+      "zahl": 5
+     },
+     {
+      "s": "5",
+      "zahl": 5
+     },
+     {
+      "s": "5",
+      "zahl": 5
+     }
+    ]
+   },
+   {
+    "parameter": "Kohlenwasserstoffe",
+    "fn": "8",
+    "einheit": "mg/kg",
+    "werte": [
+     null,
+     null,
+     null,
+     {
+      "s": "300 (600)",
+      "zahl": 300,
+      "klammer": 600
+     },
+     {
+      "s": "300 (600)",
+      "zahl": 300,
+      "klammer": 600
+     },
+     {
+      "s": "300 (600)",
+      "zahl": 300,
+      "klammer": 600
+     },
+     {
+      "s": "300 (600)",
+      "zahl": 300,
+      "klammer": 600
+     },
+     {
+      "s": "1 000 (2 000)",
+      "zahl": 1000,
+      "klammer": 2000
+     }
+    ]
+   },
+   {
+    "parameter": "Benzo(a)pyren",
+    "einheit": "mg/kg",
+    "werte": [
+     {
+      "s": "0,3",
+      "zahl": 0.3
+     },
+     {
+      "s": "0,3",
+      "zahl": 0.3
+     },
+     {
+      "s": "0,3",
+      "zahl": 0.3
+     },
+     null,
+     null,
+     null,
+     null,
+     null
+    ]
+   },
+   {
+    "parameter": "PAK 15",
+    "fn": "9",
+    "einheit": "µg/l",
+    "werte": [
+     null,
+     null,
+     null,
+     {
+      "s": "0,2",
+      "zahl": 0.2
+     },
+     {
+      "s": "0,3",
+      "zahl": 0.3
+     },
+     {
+      "s": "1,5",
+      "zahl": 1.5
+     },
+     {
+      "s": "3,8",
+      "zahl": 3.8
+     },
+     {
+      "s": "20",
+      "zahl": 20
+     }
+    ]
+   },
+   {
+    "parameter": "PAK 16",
+    "fn": "10",
+    "einheit": "mg/kg",
+    "werte": [
+     {
+      "s": "3",
+      "zahl": 3
+     },
+     {
+      "s": "3",
+      "zahl": 3
+     },
+     {
+      "s": "3",
+      "zahl": 3
+     },
+     {
+      "s": "6",
+      "zahl": 6
+     },
+     {
+      "s": "6",
+      "zahl": 6
+     },
+     {
+      "s": "6",
+      "zahl": 6
+     },
+     {
+      "s": "9",
+      "zahl": 9
+     },
+     {
+      "s": "30",
+      "zahl": 30
+     }
+    ]
+   },
+   {
+    "parameter": "Naphthalin und Methylnaphthaline, gesamt",
+    "einheit": "µg/l",
+    "werte": [
+     null,
+     null,
+     null,
+     {
+      "s": "2",
+      "zahl": 2
+     },
+     null,
+     null,
+     null,
+     null
+    ]
+   },
+   {
+    "parameter": "PCB 6 und PCB-118",
+    "einheit": "mg/kg",
+    "werte": [
+     {
+      "s": "0,05",
+      "zahl": 0.05
+     },
+     {
+      "s": "0,05",
+      "zahl": 0.05
+     },
+     {
+      "s": "0,05",
+      "zahl": 0.05
+     },
+     {
+      "s": "0,1",
+      "zahl": 0.1
+     },
+     null,
+     null,
+     null,
+     null
+    ]
+   },
+   {
+    "parameter": "PCB 6 und PCB-118",
+    "einheit": "µg/l",
+    "werte": [
+     null,
+     null,
+     null,
+     {
+      "s": "0,01",
+      "zahl": 0.01
+     },
+     null,
+     null,
+     null,
+     null
+    ]
+   },
+   {
+    "parameter": "EOX",
+    "fn": "11",
+    "einheit": "mg/kg",
+    "werte": [
+     {
+      "s": "1",
+      "zahl": 1
+     },
+     {
+      "s": "1",
+      "zahl": 1
+     },
+     {
+      "s": "1",
+      "zahl": 1
+     },
+     {
+      "s": "1",
+      "zahl": 1
+     },
+     null,
+     null,
+     null,
+     null
+    ]
+   }
+  ],
+  "quelle": "ebv",
+  "fundstelle": "Anlage 1 Tabelle 3",
+  "fussnoten": [
+   "1) Die Materialwerte gelten für Bodenmaterial und Baggergut mit bis zu",
+   "10) Volumenprozent (BM und BG) oder bis zu",
+   "50) Volumenprozent (BM-F und BG-F) mineralischer Fremdbestandteile im Sinne von §",
+   "2) Nummer 8 der Bundes-Bodenschutz- und Altlastenverordnung mit nur vernachlässigbaren Anteilen an Störstoffen im Sinne von §",
+   "2) Nummer 9 der Bundes-Bodenschutz- und Altlastenverordnung. Bodenmaterial der Klasse BM-0 und Baggergut der Klasse BG-0 erfüllen die wertebezogenen Anforderungen an das Auf- oder Einbringen gemäß §",
+   "7) Absatz 3 der Bundes-Bodenschutz- und Altlastenverordnung. Bodenmaterial der Klasse BM-0 und Baggergut der Klasse BG-0 Sand erfüllen die wertebezogenen Anforderungen an das Auf- oder Einbringen gemäß §",
+   "8) Absatz 2 der Bundes-Bodenschutz- und Altlastenverordnung; Bodenmaterial der Klasse BM-0* und Baggergut der Klasse BG-0* erfüllen die wertebezogenen Anforderungen an das Auf- oder Einbringen gemäß §",
+   "8) Absatz",
+   "3) Nummer 1 der Bundes-Bodenschutz- und Altlastenverordnung.",
+   "2) Bodenarten-Hauptgruppen gemäß Bodenkundlicher Kartieranleitung, 5. Auflage, Hannover 2005 (KA5); stark schluffige Sande, lehmig-schluffige Sande und stark lehmige Sande sowie Materialien, die nicht bodenartspezifisch zugeordnet werden können, sind entsprechend der Bodenart Lehm, Schluff zu bewerten.",
+   "3) Die Eluatwerte in Spalte 6 sind mit Ausnahme des Eluatwertes für Sulfat nur maßgeblich, wenn für den betreffenden Stoff der jeweilige Feststoffwert nach Spalte 3 bis 5 überschritten wird. Der Eluatwert für PAK 15 und Napthalin und Methylnaphtaline, gesamt, ist maßgeblich, wenn der Feststoffwert für PAK 16 nach Spalte 3 bis 5 überschritten wird. Die in Klammern genannten Werte gelten jeweils bei einem TOC-Gehalt von ≥ 0,5 %.",
+   "4) Stoffspezifischer Orientierungswert; bei Abweichungen ist die Ursache zu prüfen.",
+   "5) Bei Überschreitung des Wertes ist die Ursache zu prüfen. Handelt es sich um naturbedingt erhöhte Sulfatkonzentrationen, ist eine Verwertung innerhalb der betroffenen Gebiete möglich. Außerhalb dieser Gebiete ist über die Verwertungseignung im Einzelfall und in Abstimmung mit der zuständigen Behörde zu entscheiden.",
+   "6) Der Wert 1 mg/kg gilt für Bodenmaterial der Bodenarten Sand und Lehm, Schluff. Für Bodenmaterial der Bodenart Ton gilt der Wert 1,5 mg/kg.",
+   "7) Bodenmaterialspezifischer Orientierungswert. Bei heterogenen Bodenverhältnissen mineralischer Böden kann der TOC-Gehalt der Masse des anfallenden Materials als maßgeblich bei Verwertung im Umfeld des anfallenden Materials und Verwendung unter gleichen Bedingungen herangezogen werden. Beim Einbau sind Volumenbeständigkeit und Setzungsprozesse sowie die Vorgaben von §",
+   "6) Absatz",
+   "11) Satz 2 und 3 der Bundes-Bodenschutz- und Altlastenverordnung zu berücksichtigen. Beim Einbau sind Volumenbeständigkeit und Setzungsprozesse zu berücksichtigen.",
+   "8) Die angegebenen Werte gelten für Kohlenwasserstoffverbindungen mit einer Kettenlänge von C 10 bis C 22 . Der Gesamtgehalt bestimmt nach der DIN EN 14039, „Charakterisierung von Abfällen – Bestimmung des Gehalts an Kohlenwasserstoffen von C 10 bis C 40 mittels Gaschromatographie“, Ausgabe Januar 2005 darf insgesamt den in Klammern genannten Wert nicht überschreiten.",
+   "9) PAK 15 : PAK 16 ohne Naphthalin und Methylnaphthaline.",
+   "10) PAK 16 : stellvertretend für die Gruppe der polyzyklischen aromatischen Kohlenwasserstoffe (PAK) werden nach der Liste der US-amerikanischen Umweltbehörde, Environmental Protection Agency (EPA), 16 ausgewählte PAK untersucht: Acenaphthen, Acenaphthylen, Anthracen, Benzo[a]anthracen, Benzo[a]pyren, Benzo[b]fluoranthen, Benzo[g,h,i]perylen, Benzo[k]fluoranthen, Chrysen, Dibenzo[a,h]anthracen, Fluoranthen, Fluoren, Indeno[1,2,3- cd]pyren, Naphthalin, Phenanthren und Pyren.",
+   "11) Bei Überschreitung der Werte sind die Materialien auf fallspezifische Belastungen zu untersuchen.",
+   "12) Bei Quecksilber und Thallium ist für die Klassifizierung in die Materialklassen BM-F0*/BG-F0*, BM-F1/BG-F1, BM-F2/BG-F2, BM-F3/BG-F3 der angegebene Gesamtgehalt maßgeblich. Der Eluatwert der Materialklasse BM-0*/BG-0* ist einzuhalten. Tabelle 4: Zusätzliche Materialwerte für spezifische Belastungsparameter von Bodenmaterial und Baggergut. Zusätzliche Materialwerte für nicht aufbereiteten Bauschutt (zu §",
+   "3) Absatz",
+   "1) Satz",
+   "3) Nummer 1, bei Hinweisen auf diese Schadstoffe anzuwenden)."
+  ]
+ },
+ {
+  "id": "ebv-bm-zusatz",
+  "titel": "Bodenmaterial, weitere Stoffe",
+  "sub": "EBV Anlage 1 Tabelle 4",
+  "stichworte": "Bodenmaterial Zusatzparameter Antimon Herbizide",
+  "spalten": [
+   "BM-F0*",
+   "BM-F1",
+   "BM-F2",
+   "BM-F3"
+  ],
+  "start": [
+   0,
+   1,
+   2
+  ],
+  "zeilen": [
+   {
+    "parameter": "Antimon",
+    "einheit": "µg/l",
+    "werte": [
+     {
+      "s": "7,5",
+      "zahl": 7.5
+     },
+     {
+      "s": "7,5",
+      "zahl": 7.5
+     },
+     {
+      "s": "7,5",
+      "zahl": 7.5
+     },
+     {
+      "s": "15",
+      "zahl": 15
+     }
+    ]
+   },
+   {
+    "parameter": "Molybdän",
+    "einheit": "µg/l",
+    "werte": [
+     {
+      "s": "55",
+      "zahl": 55
+     },
+     {
+      "s": "55",
+      "zahl": 55
+     },
+     {
+      "s": "55",
+      "zahl": 55
+     },
+     {
+      "s": "110",
+      "zahl": 110
+     }
+    ]
+   },
+   {
+    "parameter": "Vanadium",
+    "einheit": "µg/l",
+    "werte": [
+     {
+      "s": "30",
+      "zahl": 30
+     },
+     {
+      "s": "55",
+      "zahl": 55
+     },
+     {
+      "s": "450",
+      "zahl": 450
+     },
+     {
+      "s": "840",
+      "zahl": 840
+     }
+    ]
+   },
+   {
+    "parameter": "BTEX",
+    "einheit": "mg/kg",
+    "werte": [
+     {
+      "s": "1",
+      "zahl": 1
+     },
+     {
+      "s": "1",
+      "zahl": 1
+     },
+     {
+      "s": "1",
+      "zahl": 1
+     },
+     {
+      "s": "1",
+      "zahl": 1
+     }
+    ]
+   },
+   {
+    "parameter": "EOX",
+    "einheit": "mg/kg",
+    "werte": [
+     {
+      "s": "3",
+      "zahl": 3
+     },
+     {
+      "s": "3",
+      "zahl": 3
+     },
+     {
+      "s": "3",
+      "zahl": 3
+     },
+     {
+      "s": "10",
+      "zahl": 10
+     }
+    ]
+   },
+   {
+    "parameter": "MKW",
+    "einheit": "µg/l",
+    "werte": [
+     {
+      "s": "150",
+      "zahl": 150
+     },
+     {
+      "s": "160",
+      "zahl": 160
+     },
+     {
+      "s": "160",
+      "zahl": 160
+     },
+     {
+      "s": "310",
+      "zahl": 310
+     }
+    ]
+   },
+   {
+    "parameter": "LHKW",
+    "einheit": "mg/kg",
+    "werte": [
+     {
+      "s": "1",
+      "zahl": 1
+     },
+     {
+      "s": "1",
+      "zahl": 1
+     },
+     {
+      "s": "1",
+      "zahl": 1
+     },
+     {
+      "s": "1",
+      "zahl": 1
+     }
+    ]
+   },
+   {
+    "parameter": "Cyanide",
+    "einheit": "mg/kg",
+    "werte": [
+     {
+      "s": "3",
+      "zahl": 3
+     },
+     {
+      "s": "3",
+      "zahl": 3
+     },
+     {
+      "s": "3",
+      "zahl": 3
+     },
+     {
+      "s": "10",
+      "zahl": 10
+     }
+    ]
+   },
+   {
+    "parameter": "Tributylzinn-Kation",
+    "einheit": "µg/kg",
+    "werte": [
+     {
+      "s": "20",
+      "zahl": 20
+     },
+     {
+      "s": "100",
+      "zahl": 100
+     },
+     {
+      "s": "100",
+      "zahl": 100
+     },
+     {
+      "s": "1 000",
+      "zahl": 1000
+     }
+    ]
+   },
+   {
+    "parameter": "Phenole",
+    "einheit": "µg/l",
+    "werte": [
+     {
+      "s": "12",
+      "zahl": 12
+     },
+     {
+      "s": "60",
+      "zahl": 60
+     },
+     {
+      "s": "60",
+      "zahl": 60
+     },
+     {
+      "s": "2 000",
+      "zahl": 2000
+     }
+    ]
+   },
+   {
+    "parameter": "PCB 6 und PCB-118",
+    "einheit": "µg/l",
+    "werte": [
+     {
+      "s": "0,02",
+      "zahl": 0.02
+     },
+     {
+      "s": "0,02",
+      "zahl": 0.02
+     },
+     {
+      "s": "0,02",
+      "zahl": 0.02
+     },
+     {
+      "s": "0,04",
+      "zahl": 0.04
+     }
+    ]
+   },
+   {
+    "parameter": "PCB 6 und PCB-118",
+    "einheit": "mg/kg",
+    "werte": [
+     {
+      "s": "0,15",
+      "zahl": 0.15
+     },
+     {
+      "s": "0,15",
+      "zahl": 0.15
+     },
+     {
+      "s": "0,15",
+      "zahl": 0.15
+     },
+     {
+      "s": "0,5",
+      "zahl": 0.5
+     }
+    ]
+   },
+   {
+    "parameter": "Chlorphenole, ges.",
+    "einheit": "µg/l",
+    "werte": [
+     {
+      "s": "1,5",
+      "zahl": 1.5
+     },
+     {
+      "s": "10",
+      "zahl": 10
+     },
+     {
+      "s": "10",
+      "zahl": 10
+     },
+     {
+      "s": "100",
+      "zahl": 100
+     }
+    ]
+   },
+   {
+    "parameter": "Chlorbenzole, ges.",
+    "einheit": "µg/l",
+    "werte": [
+     {
+      "s": "1,5",
+      "zahl": 1.5
+     },
+     {
+      "s": "1,7",
+      "zahl": 1.7
+     },
+     {
+      "s": "1,7",
+      "zahl": 1.7
+     },
+     {
+      "s": "4",
+      "zahl": 4
+     }
+    ]
+   },
+   {
+    "parameter": "Atrazin",
+    "einheit": "µg/l",
+    "werte": [
+     {
+      "s": "0,2",
+      "zahl": 0.2
+     },
+     {
+      "s": "0,4",
+      "zahl": 0.4
+     },
+     {
+      "s": "0,5",
+      "zahl": 0.5
+     },
+     {
+      "s": "1,3",
+      "zahl": 1.3
+     }
+    ]
+   },
+   {
+    "parameter": "Bromacil",
+    "einheit": "µg/l",
+    "werte": [
+     {
+      "s": "0,2",
+      "zahl": 0.2
+     },
+     {
+      "s": "0,2",
+      "zahl": 0.2
+     },
+     {
+      "s": "0,3",
+      "zahl": 0.3
+     },
+     {
+      "s": "0,4",
+      "zahl": 0.4
+     }
+    ]
+   },
+   {
+    "parameter": "Diuron",
+    "einheit": "µg/l",
+    "werte": [
+     {
+      "s": "0,1",
+      "zahl": 0.1
+     },
+     {
+      "s": "0,1",
+      "zahl": 0.1
+     },
+     {
+      "s": "0,2",
+      "zahl": 0.2
+     },
+     {
+      "s": "0,3",
+      "zahl": 0.3
+     }
+    ]
+   },
+   {
+    "parameter": "Glyphosat",
+    "einheit": "µg/l",
+    "werte": [
+     {
+      "s": "0,2",
+      "zahl": 0.2
+     },
+     {
+      "s": "0,6",
+      "zahl": 0.6
+     },
+     {
+      "s": "2,2",
+      "zahl": 2.2
+     },
+     {
+      "s": "4,0",
+      "zahl": 4
+     }
+    ]
+   },
+   {
+    "parameter": "AMPA",
+    "einheit": "µg/l",
+    "werte": [
+     {
+      "s": "2,5",
+      "zahl": 2.5
+     },
+     {
+      "s": "2,5",
+      "zahl": 2.5
+     },
+     {
+      "s": "2,5",
+      "zahl": 2.5
+     },
+     {
+      "s": "4,0",
+      "zahl": 4
+     }
+    ]
+   },
+   {
+    "parameter": "Simazin",
+    "einheit": "µg/l",
+    "werte": [
+     {
+      "s": "0,2",
+      "zahl": 0.2
+     },
+     {
+      "s": "0,6",
+      "zahl": 0.6
+     },
+     {
+      "s": "1,2",
+      "zahl": 1.2
+     },
+     {
+      "s": "4,0",
+      "zahl": 4
+     }
+    ]
+   },
+   {
+    "parameter": "sonst. Herbizide",
+    "fn": "1",
+    "einheit": "µg/l",
+    "werte": [
+     {
+      "s": "0,2",
+      "zahl": 0.2
+     },
+     {
+      "s": "0,7",
+      "zahl": 0.7
+     },
+     {
+      "s": "1,0",
+      "zahl": 1
+     },
+     {
+      "s": "4,0",
+      "zahl": 4
+     }
+    ]
+   },
+   {
+    "parameter": "Hexachlorbenzol",
+    "einheit": "µg/l",
+    "werte": [
+     {
+      "s": "0,02",
+      "zahl": 0.02
+     },
+     {
+      "s": "0,02",
+      "zahl": 0.02
+     },
+     {
+      "s": "0,02",
+      "zahl": 0.02
+     },
+     {
+      "s": "0,04",
+      "zahl": 0.04
+     }
+    ]
+   }
+  ],
+  "quelle": "ebv",
+  "fundstelle": "Anlage 1 Tabelle 4",
+  "fussnoten": [
+   "1) Einzelwerte jeweils für Dimefuron, Flazasulfuron, Flumioxazin, Ethidimuron, Thiazafluron sowie für neu zugelassene Wirkstoffe."
+  ]
+ }
 ]

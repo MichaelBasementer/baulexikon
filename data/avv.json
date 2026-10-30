@@ -1,9 +1,266 @@
 [
-  {"code":"17 01 06*","titel":"Gemische aus oder getrennte Fraktionen von Beton, Ziegeln, Fliesen und Keramik, die gefährliche Stoffe enthalten","gefaehrlich":true,"spiegel":"17 01 07","stichworte":"Bauschutt","quelle":"avv"},
-  {"code":"17 01 07","titel":"Gemische aus Beton, Ziegeln, Fliesen und Keramik mit Ausnahme derjenigen, die unter 17 01 06 fallen","gefaehrlich":false,"spiegel":"17 01 06*","stichworte":"Bauschutt","quelle":"avv"},
-  {"code":"17 03 01*","titel":"kohlenteerhaltige Bitumengemische","gefaehrlich":true,"spiegel":"17 03 02","stichworte":"Straßenaufbruch Teer Asphalt","quelle":"avv"},
-  {"code":"17 03 02","titel":"Bitumengemische mit Ausnahme derjenigen, die unter 17 03 01 fallen","gefaehrlich":false,"spiegel":"17 03 01*","stichworte":"Ausbauasphalt","quelle":"avv"},
-  {"code":"17 05 03*","titel":"Boden und Steine, die gefährliche Stoffe enthalten","gefaehrlich":true,"spiegel":"17 05 04","stichworte":"Aushub Bodenmaterial","quelle":"avv"},
-  {"code":"17 05 04","titel":"Boden und Steine mit Ausnahme derjenigen, die unter 17 05 03 fallen","gefaehrlich":false,"spiegel":"17 05 03*","stichworte":"Aushub Bodenmaterial","quelle":"avv"},
-  {"code":"17 06 05*","titel":"asbesthaltige Baustoffe","gefaehrlich":true,"stichworte":"Asbest Faserzement Flexplatten","quelle":"avv"}
+ {
+  "code": "17 01 01",
+  "titel": "Beton",
+  "gefaehrlich": false,
+  "stichworte": "Bauschutt",
+  "quelle": "avv"
+ },
+ {
+  "code": "17 01 02",
+  "titel": "Ziegel",
+  "gefaehrlich": false,
+  "quelle": "avv"
+ },
+ {
+  "code": "17 01 03",
+  "titel": "Fliesen und Keramik",
+  "gefaehrlich": false,
+  "quelle": "avv"
+ },
+ {
+  "code": "17 01 06*",
+  "titel": "Gemische aus oder getrennte Fraktionen von Beton, Ziegeln, Fliesen und Keramik, die gefährliche Stoffe enthalten",
+  "gefaehrlich": true,
+  "spiegel": "17 01 07",
+  "stichworte": "Bauschutt",
+  "quelle": "avv"
+ },
+ {
+  "code": "17 01 07",
+  "titel": "Gemische aus Beton, Ziegeln, Fliesen und Keramik mit Ausnahme derjenigen, die unter 17 01 06 fallen",
+  "gefaehrlich": false,
+  "spiegel": "17 01 06*",
+  "stichworte": "Bauschutt",
+  "quelle": "avv"
+ },
+ {
+  "code": "17 02 01",
+  "titel": "Holz",
+  "gefaehrlich": false,
+  "spiegel": "17 02 04*",
+  "quelle": "avv"
+ },
+ {
+  "code": "17 02 02",
+  "titel": "Glas",
+  "gefaehrlich": false,
+  "quelle": "avv"
+ },
+ {
+  "code": "17 02 03",
+  "titel": "Kunststoff",
+  "gefaehrlich": false,
+  "quelle": "avv"
+ },
+ {
+  "code": "17 02 04*",
+  "titel": "Glas, Kunststoff und Holz, die gefährliche Stoffe enthalten oder durch gefährliche Stoffe verunreinigt sind",
+  "gefaehrlich": true,
+  "spiegel": "17 02 01",
+  "stichworte": "Altholz Holzschutz",
+  "quelle": "avv"
+ },
+ {
+  "code": "17 03 01*",
+  "titel": "kohlenteerhaltige Bitumengemische",
+  "gefaehrlich": true,
+  "spiegel": "17 03 02",
+  "stichworte": "Straßenaufbruch Teer Asphalt",
+  "quelle": "avv"
+ },
+ {
+  "code": "17 03 02",
+  "titel": "Bitumengemische mit Ausnahme derjenigen, die unter 17 03 01 fallen",
+  "gefaehrlich": false,
+  "spiegel": "17 03 01*",
+  "stichworte": "Ausbauasphalt",
+  "quelle": "avv"
+ },
+ {
+  "code": "17 03 03*",
+  "titel": "Kohlenteer und teerhaltige Produkte",
+  "gefaehrlich": true,
+  "quelle": "avv"
+ },
+ {
+  "code": "17 04 01",
+  "titel": "Kupfer, Bronze, Messing",
+  "gefaehrlich": false,
+  "quelle": "avv"
+ },
+ {
+  "code": "17 04 02",
+  "titel": "Aluminium",
+  "gefaehrlich": false,
+  "quelle": "avv"
+ },
+ {
+  "code": "17 04 03",
+  "titel": "Blei",
+  "gefaehrlich": false,
+  "quelle": "avv"
+ },
+ {
+  "code": "17 04 04",
+  "titel": "Zink",
+  "gefaehrlich": false,
+  "quelle": "avv"
+ },
+ {
+  "code": "17 04 05",
+  "titel": "Eisen und Stahl",
+  "gefaehrlich": false,
+  "quelle": "avv"
+ },
+ {
+  "code": "17 04 06",
+  "titel": "Zinn",
+  "gefaehrlich": false,
+  "quelle": "avv"
+ },
+ {
+  "code": "17 04 07",
+  "titel": "gemischte Metalle",
+  "gefaehrlich": false,
+  "spiegel": "17 04 09*",
+  "quelle": "avv"
+ },
+ {
+  "code": "17 04 09*",
+  "titel": "Metallabfälle, die durch gefährliche Stoffe verunreinigt sind",
+  "gefaehrlich": true,
+  "spiegel": "17 04 07",
+  "quelle": "avv"
+ },
+ {
+  "code": "17 04 10*",
+  "titel": "Kabel, die Öl, Kohlenteer oder andere gefährliche Stoffe enthalten",
+  "gefaehrlich": true,
+  "spiegel": "17 04 11",
+  "quelle": "avv"
+ },
+ {
+  "code": "17 04 11",
+  "titel": "Kabel mit Ausnahme derjenigen, die unter 17 04 10 fallen",
+  "gefaehrlich": false,
+  "spiegel": "17 04 10*",
+  "quelle": "avv"
+ },
+ {
+  "code": "17 05 03*",
+  "titel": "Boden und Steine, die gefährliche Stoffe enthalten",
+  "gefaehrlich": true,
+  "spiegel": "17 05 04",
+  "stichworte": "Aushub Bodenmaterial",
+  "quelle": "avv"
+ },
+ {
+  "code": "17 05 04",
+  "titel": "Boden und Steine mit Ausnahme derjenigen, die unter 17 05 03 fallen",
+  "gefaehrlich": false,
+  "spiegel": "17 05 03*",
+  "stichworte": "Aushub Bodenmaterial",
+  "quelle": "avv"
+ },
+ {
+  "code": "17 05 05*",
+  "titel": "Baggergut, das gefährliche Stoffe enthält",
+  "gefaehrlich": true,
+  "spiegel": "17 05 06",
+  "quelle": "avv"
+ },
+ {
+  "code": "17 05 06",
+  "titel": "Baggergut mit Ausnahme desjenigen, das unter 17 05 05 fällt",
+  "gefaehrlich": false,
+  "spiegel": "17 05 05*",
+  "quelle": "avv"
+ },
+ {
+  "code": "17 05 07*",
+  "titel": "Gleisschotter, der gefährliche Stoffe enthält",
+  "gefaehrlich": true,
+  "spiegel": "17 05 08",
+  "quelle": "avv"
+ },
+ {
+  "code": "17 05 08",
+  "titel": "Gleisschotter mit Ausnahme desjenigen, der unter 17 05 07 fällt",
+  "gefaehrlich": false,
+  "spiegel": "17 05 07*",
+  "quelle": "avv"
+ },
+ {
+  "code": "17 06 01*",
+  "titel": "Dämmmaterial, das Asbest enthält",
+  "gefaehrlich": true,
+  "stichworte": "Asbest Spritzasbest",
+  "quelle": "avv"
+ },
+ {
+  "code": "17 06 03*",
+  "titel": "anderes Dämmmaterial, das aus gefährlichen Stoffen besteht oder solche Stoffe enthält",
+  "gefaehrlich": true,
+  "spiegel": "17 06 04",
+  "stichworte": "KMF Mineralwolle HBCD",
+  "quelle": "avv"
+ },
+ {
+  "code": "17 06 04",
+  "titel": "Dämmmaterial mit Ausnahme desjenigen, das unter 17 06 01 und 17 06 03 fällt",
+  "gefaehrlich": false,
+  "spiegel": "17 06 03*",
+  "stichworte": "Dämmung",
+  "quelle": "avv"
+ },
+ {
+  "code": "17 06 05*",
+  "titel": "asbesthaltige Baustoffe",
+  "gefaehrlich": true,
+  "stichworte": "Asbest Faserzement Flexplatten",
+  "quelle": "avv"
+ },
+ {
+  "code": "17 08 01*",
+  "titel": "Baustoffe auf Gipsbasis, die durch gefährliche Stoffe verunreinigt sind",
+  "gefaehrlich": true,
+  "spiegel": "17 08 02",
+  "quelle": "avv"
+ },
+ {
+  "code": "17 08 02",
+  "titel": "Baustoffe auf Gipsbasis mit Ausnahme derjenigen, die unter 17 08 01 fallen",
+  "gefaehrlich": false,
+  "spiegel": "17 08 01*",
+  "quelle": "avv"
+ },
+ {
+  "code": "17 09 01*",
+  "titel": "Bau- und Abbruchabfälle, die Quecksilber enthalten",
+  "gefaehrlich": true,
+  "quelle": "avv"
+ },
+ {
+  "code": "17 09 02*",
+  "titel": "Bau- und Abbruchabfälle, die PCB enthalten (z.B. PCB-haltige Dichtungsmassen, PCB-haltige Bodenbeläge auf Harzbasis, PCB-haltige Isolierverglasungen, PCB-haltige Kondensatoren)",
+  "gefaehrlich": true,
+  "quelle": "avv"
+ },
+ {
+  "code": "17 09 03*",
+  "titel": "sonstige Bau- und Abbruchabfälle (einschließlich gemischte Abfälle), die gefährliche Stoffe enthalten",
+  "gefaehrlich": true,
+  "spiegel": "17 09 04",
+  "stichworte": "Mischabfall",
+  "quelle": "avv"
+ },
+ {
+  "code": "17 09 04",
+  "titel": "gemischte Bau- und Abbruchabfälle mit Ausnahme derjenigen, die unter 17 09 01, 17 09 02 und 17 09 03 fallen",
+  "gefaehrlich": false,
+  "spiegel": "17 09 03*",
+  "stichworte": "Baumischabfall",
+  "quelle": "avv"
+ }
 ]

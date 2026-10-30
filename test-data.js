@@ -4,12 +4,12 @@ const fs = require("fs"), path = require("path");
 const load = f => JSON.parse(fs.readFileSync(path.join(__dirname, "data", f + ".json"), "utf8"));
 const release = process.argv.includes("--release");
 const D = {};
-["kapitel", "bauteile", "materialien", "schadstoffe", "regeln", "avv", "tabellen", "laender", "quellen", "wandel", "bilder"].forEach(f => D[f] = load(f));
+["kapitel", "bauteile", "erkennung", "materialien", "schadstoffe", "regeln", "avv", "tabellen", "laender", "quellen", "wandel", "bilder"].forEach(f => D[f] = load(f));
 
 const errs = [];
 const err = m => errs.push(m);
 const ids = l => new Set(l.map(x => x.id));
-const Q = ids(D.quellen), S = ids(D.schadstoffe), R = ids(D.regeln), L = ids(D.laender.laender), AVV = new Set(D.avv.map(a => a.code));
+const B = ids(D.bilder), M = ids(D.materialien), T = ids(D.bauteile), Q = ids(D.quellen), S = ids(D.schadstoffe), R = ids(D.regeln), L = ids(D.laender.laender), AVV = new Set(D.avv.map(a => a.code));
 
 const need = (o, where, fields) => fields.forEach(f => { if (o[f] == null || o[f] === "") err(`${where}: Feld ${f} fehlt`); });
 const uniq = (l, name) => { const s = new Set(); l.forEach(x => { if (s.has(x.id)) err(`${name}: doppelte id ${x.id}`); s.add(x.id); }); };
@@ -28,18 +28,31 @@ D.quellen.forEach(q => {
 });
 D.bauteile.forEach(b => {
   const w = `bauteil ${b.id}`;
-  need(b, w, ["titel", "bauzeit", "schichten", "erkennen", "verdacht", "quelle"]);
-  quelle(b.quelle, w);
-  (b.schadstoffe || []).forEach(s => { if (!S.has(s)) err(`${w}: unbekannter Schadstoff ${s}`); });
-  if (b.schnitt && !fs.existsSync(path.join(__dirname, "img/schnitte", b.schnitt + ".svg"))) err(`${w}: Skizze fehlt`);
+  need(b, w, ["titel", "gruppe", "bauzeit", "schichten", "erkennen", "verdacht", "schadstoffe", "richtung"]);
+  b.schadstoffe.forEach(s => { if (!S.has(s)) err(`${w}: unbekannter Schadstoff ${s}`); });
+  b.schichten.forEach(s => { if (s[2] && !M.has(s[2]) && s[2] !== "luft") err(`${w}: unbekanntes Material ${s[2]}`); });
+  if (b.richtung !== "belag" && !b.schichten.length) err(`${w}: keine Schichten`);
+  if (b.richtung !== "belag" && !fs.existsSync(path.join(__dirname, "img/schnitte", b.id + ".svg"))) err(`${w}: Skizze fehlt`);
+  if (b.foto && !B.has(b.foto)) err(`${w}: Foto ${b.foto} fehlt`);
 });
 D.schadstoffe.forEach(s => {
   const w = `schadstoff ${s.id}`;
-  need(s, w, ["titel", "fundorte"]);
+  need(s, w, ["titel", "fundorte", "quelle"]);
+  quelle(s.quelle, w);
   (s.avv || []).forEach(c => { if (!AVV.has(c)) err(`${w}: unbekannter AVV-Schlüssel ${c}`); });
   (s.regeln || []).forEach(r => { if (!R.has(r)) err(`${w}: unbekannte Regel ${r}`); });
 });
-D.regeln.forEach(r => { need(r, `regel ${r.id}`, ["titel", "text", "quelle"]); quelle(r.quelle, `regel ${r.id}`); });
+D.erkennung.forEach(e => { if (!T.has(e.bauteil)) err(`erkennung: ${e.bauteil}`); });
+D.materialien.forEach(m => {
+  need(m, `material ${m.id}`, ["titel", "text", "schadstoffe"]);
+  m.schadstoffe.forEach(s => { if (!S.has(s)) err(`material ${m.id}: ${s}`); });
+  if (m.foto && !B.has(m.foto)) err(`material ${m.id}: Foto ${m.foto} fehlt`);
+});
+D.regeln.forEach(r => {
+  need(r, `regel ${r.id}`, ["titel", "text", "quelle", "bereich"]);
+  quelle(r.quelle, `regel ${r.id}`);
+  (r.tabellen || []).forEach(t => { if (!D.tabellen.some(x => x.id === t)) err(`regel ${r.id}: Tabelle ${t}`); });
+});
 D.avv.forEach(a => {
   const w = `avv ${a.code}`;
   need(a, w, ["code", "titel", "quelle"]);
@@ -51,12 +64,14 @@ D.avv.forEach(a => {
 });
 const wert = (v, w) => {
   const num = x => typeof x === "number" && Number.isFinite(x);
-  if (v == null || v.offen) return;
+  if (v == null || v.text) return;
+  if (v.s && /[\^)]$/.test(v.s) && !v.s.includes("(")) err(`${w}: Fußnotenrest ${v.s}`);
   if (v.von != null ? !(num(v.von) && num(v.bis)) : !num(v.zahl)) err(`${w}: Wert nicht numerisch`);
 };
 D.tabellen.forEach(t => {
   const w = `tabelle ${t.id}`;
-  need(t, w, ["titel", "sub", "spalten", "zeilen", "quelle", "fundstelle"]);
+  need(t, w, ["titel", "sub", "spalten", "start", "zeilen", "fussnoten", "quelle", "fundstelle"]);
+  if (t.zeilen.length < 5) err(`${w}: nur ${t.zeilen.length} Zeilen, Import prüfen`);
   quelle(t.quelle, w);
   t.zeilen.forEach(z => {
     if (z.werte.length !== t.spalten.length) err(`${w}/${z.parameter}: Spaltenzahl`);
@@ -65,7 +80,7 @@ D.tabellen.forEach(t => {
 });
 D.laender.werte.forEach((v, i) => {
   const w = `landeswert ${i}`;
-  need(v, w, ["land", "schadstoff", "material", "einheit", "bezug", "quelle"]);
+  need(v, w, ["land", "schadstoff", "material", "bezug", "quelle", ...(v.text ? [] : ["einheit"])]);
   quelle(v.quelle, w);
   if (!L.has(v.land)) err(`${w}: unbekanntes Land ${v.land}`);
   if (!S.has(v.schadstoff)) err(`${w}: unbekannter Schadstoff ${v.schadstoff}`);
@@ -79,10 +94,8 @@ D.bilder.forEach((b, i) => {
   if (!fs.existsSync(path.join(__dirname, "img/fotos", b.datei || ""))) err(`bild ${i}: Datei fehlt`);
 });
 // Offline must cover every file the app can ask for.
-const sw = fs.readFileSync(path.join(__dirname, "sw.js"), "utf8");
-fs.readdirSync(path.join(__dirname, "data")).forEach(f => { if (!sw.includes(`data/${f}`)) err(`sw.js: data/${f} fehlt`); });
-fs.readdirSync(path.join(__dirname, "img/schnitte")).forEach(f => { if (!sw.includes(`img/schnitte/${f}`)) err(`sw.js: img/schnitte/${f} fehlt`); });
-fs.readdirSync(path.join(__dirname, "img/fotos")).forEach(f => { if (!sw.includes(`img/fotos/${f}`)) err(`sw.js: img/fotos/${f} fehlt`); });
+const off = fs.readFileSync(path.join(__dirname, "files.js"), "utf8");
+["data", "img/schnitte", "img/fotos", "fonts"].forEach(d => fs.readdirSync(path.join(__dirname, d)).forEach(f => { if (!off.includes(`"${d}/${f}"`)) err(`files.js: ${d}/${f} fehlt, tools/make-schnitte.js laufen lassen`); }));
 
 errs.forEach(e => console.log("FAIL " + e));
 console.log(errs.length ? `${errs.length} Fehler` : `Daten ok: ${D.bauteile.length} Bauteile, ${D.schadstoffe.length} Schadstoffe, ${D.avv.length} AVV, ${D.tabellen.length} Tabellen, ${D.quellen.length} Quellen`);

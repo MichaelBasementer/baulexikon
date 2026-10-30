@@ -1,5 +1,6 @@
 [
+  {"titel":"Asbest-Genehmigung","text":"Für Abbruch im niedrigen und mittleren Risiko bis zum Ablauf des 19.12.2026 nachzuweisen (§ 25 Abs. 9 GefStoffV)","status":"Frist","quelle":"gefstoffv"},
+  {"titel":"TRGS 519 Neufassung","text":"Anpassung an die GefStoffV angekündigt, am 30.10.2026 noch nicht erschienen","status":"offen","quelle":"trgs519"},
   {"titel":"EBV-Novelle","text":"Referentenentwurf Juli 2026, noch nicht in Kraft","status":"Entwurf","quelle":"ebv-novelle"},
-  {"titel":"TRGS 519 Neufassung","text":"Anpassung an die GefStoffV erwartet","status":"offen","quelle":"trgs519"},
-  {"titel":"Asbest-Genehmigung","text":"Übergangsfrist Dezember 2026, genaues Datum wird geprüft","status":"klären","quelle":"gefstoffv"}
+  {"titel":"Sachkunde Asbest","text":"Sachkunde und Fachkunde bis zum 05.12.2027 nachzuweisen (§ 25 Abs. 5 GefStoffV)","status":"Frist","quelle":"gefstoffv"}
 ]

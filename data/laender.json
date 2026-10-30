@@ -1,18 +1,18 @@
 {
   "laender": [
-    {"id":"he","name":"Hessen","ausbau":true,"quellen":["he-merkblatt","he-verfuellung"]},
-    {"id":"bw","name":"Baden-Württemberg","ausbau":true,"quellen":["bw-einstufung"]},
-    {"id":"rp","name":"Rheinland-Pfalz","ausbau":true,"quellen":["rp-einstufung"]},
-    {"id":"by","name":"Bayern","ausbau":false},
-    {"id":"be","name":"Berlin","ausbau":false},
+    {"id":"he","name":"Hessen","ausbau":true,"quellen":["he-merkblatt","he-verfuellung"],"stichworte":"RP Darmstadt Gießen Kassel Regierungspräsidium HLNUG","text":["Das Merkblatt der Regierungspräsidien regelt Einstufung, Beprobung, Trennung und Entsorgung von Bauabfällen. Hessen unterscheidet bei PAK zwischen teerpechhaltigen und pechfreien Abfällen.","Für die Verwertung von Bodenmaterial, Bauschutt und Straßenaufbruch in Tagebauen und Abgrabungen gilt die Verfüllrichtlinie vom 08.08.2023. Sie arbeitet mit den EBV-Klassen, etwa BM-0 und BM-0*."]},
+    {"id":"bw","name":"Baden-Württemberg","ausbau":true,"quellen":["bw-schreiben"],"stichworte":"LUBW Umweltministerium","text":["Das Umweltministerium wendet die LAGA Technischen Hinweise an und ergänzt sie mit Schreiben vom 12.08.2024 um eigene Konzentrationsgrenzen für teerhaltige Abfälle, Quecksilber und natürliche MKW-Gehalte.","Die 200 mg/kg gelten für teerhaltige Abfälle wie Straßenaufbruch oder Dachpappe. Die 8.000 mg/kg MKW gelten nur für natürliche Gehalte in Böden (Ölschiefer)."]},
+    {"id":"rp","name":"Rheinland-Pfalz","ausbau":true,"quellen":["rp-entscheidung"],"links":[{"titel":"Leitfaden Bauabfälle","url":"https://mkuem.rlp.de/fileadmin/14/Themen/Abfall_und_Boden/Kreislaufwirtschaft__Produktionsintegrierter_Umweltschutz__Produktverantwortung/Abfall/Leitfaden_Bauabfaelle.pdf"}],"stichworte":"LfU Mainz SAM Sonderabfall","text":["Boden und mineralischer Bauabfall gelten in der Regel als gefährlich, wenn die Feststoffwerte BM-F3 der EBV und/oder die Werte der Deponieklasse II überschritten sind. Abweichungen und Ausnahmen stehen im Ministeriumsschreiben vom 11.01.2023.","Die LAGA Technischen Hinweise werden orientierend zugrunde gelegt. Für Stoffe, die dort nicht geregelt sind, bleibt es bei der bisherigen Vorgehensweise des Landes."]},
+    {"id":"by","name":"Bayern","ausbau":false,"links":[{"titel":"Hinweise zur Einstufung von Abfällen in Bayern (LfU)","url":"https://www.lfu.bayern.de/abfall/merkblaetter_vollzug/doc/einstufung_abfaelle.pdf"}]},
+    {"id":"be","name":"Berlin","ausbau":false,"links":[{"titel":"Vollzugshinweise zur Zuordnung von Abfällen","url":"https://www.berlin.de/sen/uvk/_assets/umwelt/kreislaufwirtschaft/service/gewerbetreibende/bauabfall/vollzugshinweise2022.pdf"}]},
     {"id":"bb","name":"Brandenburg","ausbau":false},
-    {"id":"hb","name":"Bremen","ausbau":false},
-    {"id":"hh","name":"Hamburg","ausbau":false},
+    {"id":"hb","name":"Bremen","ausbau":false,"links":[{"titel":"Gefährlichkeit von Abfällen","url":"https://umwelt.bremen.de/sixcms/media.php/13/Gef%C3%A4hrlichkeit%20von%20Abf%C3%A4llen_%C3%9Cberarbeitung_0122.pdf"}]},
+    {"id":"hh","name":"Hamburg","ausbau":false,"links":[{"titel":"Hinweise zur Abgrenzung gefährlicher und nicht gefährlicher Bauabfälle","url":"https://www.hamburg.de/resource/blob/159444/ab787d017bcbe1720f50390bec3daf06/d-hinweise-abgrenzung-gefaehrlicher-und-nicht-gefaehrlicher-bauabfaelle-data.pdf"}]},
     {"id":"mv","name":"Mecklenburg-Vorpommern","ausbau":false},
-    {"id":"ni","name":"Niedersachsen","ausbau":false},
+    {"id":"ni","name":"Niedersachsen","ausbau":false,"links":[{"titel":"Merkblatt teerhaltiger Straßenaufbruch (NGS)","url":"https://www.ngsmbh.de/bin/pdfs/Merkblatt_Strassenaufbruch.pdf"}]},
     {"id":"nw","name":"Nordrhein-Westfalen","ausbau":false},
     {"id":"sl","name":"Saarland","ausbau":false},
-    {"id":"sn","name":"Sachsen","ausbau":false},
+    {"id":"sn","name":"Sachsen","ausbau":false,"links":[{"titel":"Erlass Technische Hinweise vom 12.01.2026 (PAK 1.000 mg/kg, BaP 50 mg/kg)","url":"https://www.wertstoffe.sachsen.de/download/Erlass_Technische_Hinweise_2026.pdf"}]},
     {"id":"st","name":"Sachsen-Anhalt","ausbau":false},
     {"id":"sh","name":"Schleswig-Holstein","ausbau":false},
     {"id":"th","name":"Thüringen","ausbau":false}
@@ -21,7 +21,11 @@
     {"land":"he","schadstoff":"pak","material":"teerpechhaltig","bezug":"Summe 16 PAK nach EPA, Originalsubstanz","op":"≥","zahl":400,"einheit":"mg/kg","quelle":"he-merkblatt","fundstelle":"Kapitel 3.2 PAK"},
     {"land":"he","schadstoff":"pak","material":"pechfrei","bezug":"Summe 16 PAK nach EPA, Originalsubstanz","op":"≥","zahl":1000,"einheit":"mg/kg","quelle":"he-merkblatt","fundstelle":"Kapitel 3.2 PAK"},
     {"land":"he","schadstoff":"pak","material":"Benzo(a)pyren","bezug":"Originalsubstanz","op":"≥","zahl":50,"einheit":"mg/kg","quelle":"he-merkblatt","fundstelle":"Kapitel 3.2 PAK"},
-    {"land":"bw","schadstoff":"pak","material":"PAK","bezug":"Wert wird geprüft","offen":true,"einheit":"mg/kg","quelle":"bw-einstufung"},
-    {"land":"rp","schadstoff":"pak","material":"PAK","bezug":"Wert wird geprüft","offen":true,"einheit":"mg/kg","quelle":"rp-einstufung"}
+    {"land":"bw","schadstoff":"pak","material":"teerhaltig","bezug":"PAK nach EPA, Originalsubstanz","zahl":200,"einheit":"mg/kg","quelle":"bw-schreiben","fundstelle":"Schreiben vom 12.08.2024, Nr. 2"},
+    {"land":"bw","schadstoff":"pak","material":"andere PAK-haltige Abfälle","bezug":"z. B. Brandschutt, Aschen; PAK nach EPA, OS","zahl":1000,"einheit":"mg/kg","quelle":"bw-schreiben","fundstelle":"Schreiben vom 12.08.2024, Nr. 2"},
+    {"land":"bw","schadstoff":"schwermetalle","material":"Quecksilber","bezug":"Originalsubstanz","zahl":500,"einheit":"mg/kg","quelle":"bw-schreiben","fundstelle":"Schreiben vom 12.08.2024, Nr. 3"},
+    {"land":"bw","schadstoff":"mkw","material":"natürliche MKW in Böden","bezug":"MKW C10–C40, Ölschiefer","op":">","zahl":8000,"einheit":"mg/kg","quelle":"bw-schreiben","fundstelle":"Schreiben vom 12.08.2024, Nr. 1"},
+    {"land":"rp","schadstoff":"pak","material":"Boden, mineralischer Bauabfall","bezug":"Regeleinstufung, Ausnahmen beachten","text":"über BM-F3 / DK II","quelle":"rp-entscheidung"},
+    {"land":"rp","schadstoff":"schwermetalle","material":"Boden, mineralischer Bauabfall","bezug":"Regeleinstufung, Ausnahmen beachten","text":"über BM-F3 / DK II","quelle":"rp-entscheidung"}
   ]
 }

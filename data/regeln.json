@@ -1,6 +1,56 @@
 [
-  {"id":"trgs519","titel":"TRGS 519 Asbest","sub":"Abbruch-, Sanierungs- oder Instandhaltungsarbeiten","stichworte":"Asbest Sachkunde Anzeige","text":["Regelt Abbruch-, Sanierungs- und Instandhaltungsarbeiten mit Asbest. Die Anpassung an die geänderte GefStoffV steht noch aus. Bis dahin gibt es eine Überleitungshilfe des AGS."],"quelle":"trgs519"},
-  {"id":"trgs521","titel":"TRGS 521 Alte Mineralwolle","sub":"Tätigkeiten mit alter Mineralwolle","stichworte":"KMF Mineralfasern Glaswolle Steinwolle","text":["Regelt Tätigkeiten mit alter Mineralwolle. Die Fassung von 2008 wurde 2026 durch eine Neufassung ersetzt."],"quelle":"trgs521"},
-  {"id":"trgs524","titel":"TRGS 524 Kontaminierte Bereiche","sub":"Neufassung Juli 2026","stichworte":"Altlasten Sanierung Gebäudeschadstoffe Fachkunde","text":["Schutzmaßnahmen bei Tätigkeiten in kontaminierten Bereichen, auch beim Gebäudeabbruch. Für Asbest gilt sie nicht, dafür sind TRGS 519 und 517 maßgeblich."],"quelle":"trgs524"},
-  {"id":"trgs551","titel":"TRGS 551 Teer und andere Pyrolyseprodukte","sub":"Für PAK-haltige Materialien","stichworte":"PAK Teer Pech","text":["Wird bei Teer- und Pechprodukten herangezogen. Die Auswertung folgt in Schritt M4."],"quelle":"trgs551"}
+  {"id":"gefstoffv-asbest","bereich":"arbeitsschutz","titel":"GefStoffV: Tätigkeiten mit Asbest","sub":"§ 11a, § 25, Anhang I Nr. 3","stichworte":"Genehmigung Zulassung Anzeige Sachkunde Risikobereich Abbruch Stichtag","text":[
+    "Stichtag: Begann der Bau nach dem 31. Oktober 1993, kann in der Regel vermutet werden, dass kein Asbest vorhanden ist (§ 11a Abs. 1). Für bestimmte Stoffe gelten andere Übergangsfristen.",
+    "Der Arbeitgeber ermittelt vorab, ob die Tätigkeit im Bereich niedrigen, mittleren oder hohen Risikos liegt, und erstellt einen Arbeitsplan.",
+    "Anzeige: spätestens eine Woche vor Beginn bei der zuständigen Behörde (§ 11a Abs. 4). Niedriges und mittleres Risiko werden unternehmensbezogen angezeigt, spätestens nach sechs Jahren erneut.",
+    "Genehmigung: Abbrucharbeiten im niedrigen oder mittleren Risiko brauchen eine Genehmigung (§ 11a Abs. 4a). Sie wird mit der unternehmensbezogenen Anzeige angefordert, gilt vier Wochen nach Eingang ohne Einwände als erteilt und läuft sechs Jahre. Nachweis bis zum Ablauf des 19. Dezember 2026 (§ 25 Abs. 9).",
+    "Zulassung: Tätigkeiten im hohen Risiko brauchen eine Zulassung, maximal sechs Jahre (§ 11a Abs. 3). Sie schließt die Genehmigung ein.",
+    "Sachkunde und Fachkunde sind bis zum 5. Dezember 2027 nachzuweisen (§ 25 Abs. 5)."
+  ],"quelle":"gefstoffv"},
+  {"id":"trgs519","bereich":"arbeitsschutz","titel":"TRGS 519 Asbest","sub":"Abbruch-, Sanierungs- oder Instandhaltungsarbeiten","stichworte":"Asbest Sachkunde Anzeige Akzeptanzkonzentration Toleranzkonzentration Exposition Anlage 9 PSF","text":[
+    "Gültige Fassung: Ausgabe Januar 2014, zuletzt geändert GMBl 2025 S. 144. Die Änderung 2025 betraf die Anlage 9 zu asbesthaltigen Putzen, Spachtelmassen und Fliesenklebern.",
+    "Achtung: Die TRGS verweist noch auf alte Nummern der GefStoffV (Anhang I Nr. 2.4). Maßgeblich sind die aktuellen Regeln der GefStoffV. Die Neufassung steht aus, der AGS hat dafür eine Überleitungshilfe veröffentlicht.",
+    "Bezugswerte nach TRGS 910: Akzeptanzkonzentration 10.000 Fasern/m³, Toleranzkonzentration 100.000 Fasern/m³.",
+    "Inhalt: Zulassung und Anzeige, Gefährdungsbeurteilung, Ausstattung, Schutzmaßnahmen, Regelungen für Abbruch, Sanierung und Instandhaltung, asbesthaltige Abfälle, Sachkundelehrgänge."
+  ],"quelle":"trgs519"},
+  {"id":"trgs521","bereich":"arbeitsschutz","titel":"TRGS 521 Alte Mineralwolle","sub":"Ausgabe Mai 2026","stichworte":"KMF Mineralfasern Glaswolle Steinwolle Expositionskategorie Demontage","text":[
+    "Bei Mineralwolle, die vor 1996 eingebaut wurde, ist von alter Mineralwolle auszugehen. Seit Juni 2000 gilt das Herstellungs- und Verwendungsverbot. Zwischen 1996 und 2000 können noch alte Produkte verwendet worden sein.",
+    "Faserstäube aus alter Mineralwolle sind als krebserzeugend zu bewerten (TRGS 905).",
+    "Die Gefährdungsbeurteilung arbeitet mit drei Expositionskategorien. Die Tabellen 1a Hochbau und 1b Technische Isolierung ordnen Tätigkeiten zu. Eine Messung ist entbehrlich, wenn nur diese Tätigkeiten mit allen zugehörigen Maßnahmen ausgeführt werden und die Wirksamkeit regelmäßig geprüft wird.",
+    "Neu 2026: Begriffe an die GefStoffV angepasst, Anforderungen an Entstauber und Luftreiniger konkretisiert, Expositionsverzeichnis nach § 10a GefStoffV ab Kategorie 2.",
+    "Abfall: am Entstehungsort möglichst staubdicht verpacken, ggf. befeuchten, kennzeichnen. Abfallschlüssel 17 06 03*. Die Entsorgung ist landesspezifisch, also bei der zuständigen Behörde zu erfragen."
+  ],"quelle":"trgs521"},
+  {"id":"trgs524","bereich":"arbeitsschutz","titel":"TRGS 524 Kontaminierte Bereiche","sub":"Ausgabe März 2026","stichworte":"Altlasten Sanierung Gebäudeschadstoffe Fachkunde Veranlasser Gefährdungsbeurteilung","text":[
+    "Gilt für Tätigkeiten in kontaminierten Bereichen einschließlich vorbereitender, begleitender und abschließender Arbeiten.",
+    "Sie konkretisiert die Mitwirkungs- und Informationspflichten des Veranlassers nach § 5a GefStoffV und die Informationsermittlung des Arbeitgebers.",
+    "Für Asbest gelten TRGS 519 und TRGS 517."
+  ],"quelle":"trgs524"},
+  {"id":"trgs551","bereich":"arbeitsschutz","titel":"TRGS 551 Teer und andere Pyrolyseprodukte","sub":"Ausgabe August 2015","stichworte":"PAK Teer Pech","text":["Regelt Tätigkeiten mit Teer und anderen Pyrolyseprodukten aus organischem Material, also PAK-haltigen Materialien."],"quelle":"trgs551"},
+  {"id":"trgs-weitere","bereich":"arbeitsschutz","titel":"Weitere TRGS","sub":"517, 900, 905, 910","stichworte":"Arbeitsplatzgrenzwerte krebserzeugend Akzeptanz Toleranz","text":["TRGS 517: potenziell asbesthaltige mineralische Rohstoffe.","TRGS 900: Arbeitsplatzgrenzwerte.","TRGS 905: Verzeichnis krebserzeugender, keimzellmutagener oder reproduktionstoxischer Stoffe.","TRGS 910: Risikobezogenes Maßnahmenkonzept für krebserzeugende Gefahrstoffe."],"quelle":"trgs519"},
+
+  {"id":"spiegel","bereich":"abfall","titel":"Spiegeleinträge und Gefährlichkeit","sub":"LAGA Technische Hinweise","stichworte":"Einstufung gefährlich Spiegeleintrag Sternchen Abfallschlüssel","text":[
+    "Ein Stern am Abfallschlüssel bedeutet gefährlicher Abfall. Bei Spiegeleinträgen gibt es denselben Abfall einmal mit und einmal ohne Stern. Dann entscheiden die Gehalte gefährlicher Stoffe und die gefahrenrelevanten Eigenschaften.",
+    "Weil Abfälle oft Gemische unbekannter Zusammensetzung sind, empfiehlt die LAGA die Technischen Hinweise als vereinfachte Prüfung anhand geeigneter Parameter. Die Länder ergänzen sie durch eigene Werte, siehe Länderregeln.",
+    "Die Technischen Hinweise wurden zuletzt mit Stand Juli 2025 aktualisiert."
+  ],"quelle":"laga-th"},
+  {"id":"boden-bauschutt","bereich":"abfall","titel":"Boden-Bauschutt-Gemische","sub":"LAGA-Information Juni 2024","stichworte":"Gemisch Fremdbestandteile Aushub Bauschutt 50 Vol.-%","text":[
+    "Die AVV kennt für solche Gemische keinen eigenen Schlüssel.",
+    "Bauschuttanteil bis 50 Vol.-%: Spiegeleintrag 17 05 03* / 17 05 04.",
+    "Bauschuttanteil über 50 Vol.-%: Spiegeleintrag 17 01 06* / 17 01 07.",
+    "Nicht mineralische Anteile können zum Spiegeleintrag 17 09 03* / 17 09 04 führen. Die genauen Fälle stehen im Papier."
+  ],"quelle":"laga-bbg"},
+  {"id":"asbest-abfall","bereich":"abfall","titel":"Asbesthaltige Abfälle","sub":"LAGA M23","stichworte":"Asbest Bauschutt 0,1 M.-% Rückbaukonzept Getrennthaltung Deponie","text":[
+    "Bei Bauwerken, mit deren Errichtung vor dem 31.10.1993 begonnen wurde, ist ohne Nachweis der Asbestfreiheit von möglichem Asbest auszugehen.",
+    "Mineralische Bau- und Abbruchabfälle gehören grundsätzlich zur Gruppe 17 01. Asbesthaltige Baustoffe sind davon abweichend 17 06 05* zuzuordnen.",
+    "Bauschutt unter 0,1 M.-% Asbest ist gering asbesthaltig und nicht gefährlich. Ab 0,1 M.-% kommt der Spiegeleintrag 17 01 06* in Betracht.",
+    "Die M23 regelt außerdem Probenahme, Rückbaukonzept, Annahmekontrolle in Recyclinganlagen, Verpackung, Transport und Deponierung."
+  ],"quelle":"laga-m23"},
+  {"id":"teer-strasse","bereich":"abfall","titel":"Teerhaltiger Straßenaufbruch","sub":"LAGA-Grundsätze Mai 2024","stichworte":"Ausbauasphalt Teer PAK 25 mg/kg RuVA-StB","text":[
+    "Ein bundeseinheitlicher Grenzwert für die Gefährlichkeit besteht nicht, die Länder regeln das selbst.",
+    "Ausbauasphalt mit PAK16 bis 25 mg/kg gilt als pechfrei im Sinne der Verwertung, darüber liegen pechtypische Bestandteile vor. Die Einstufung als gefährlicher Abfall 17 03 01* richtet sich nach dem Länderwert."
+  ],"quelle":"laga-teer"},
+  {"id":"depv-kurz","bereich":"abfall","titel":"Deponieklassen","sub":"DepV","stichworte":"DK 0 DK I DK II DK III Inertstoff Zuordnung","text":["Die DepV ordnet Abfälle über die Zuordnungskriterien nach Anhang 3 Tabelle 2 den Deponieklassen 0 bis III zu. Daneben gelten die Fußnoten und die Genehmigung der jeweiligen Deponie."],"quelle":"depv","tabellen":["depv-fest","depv-eluat"]},
+  {"id":"ebv-kurz","bereich":"abfall","titel":"Ersatzbaustoffverordnung","sub":"EBV","stichworte":"Materialklassen RC BM BG Einbau technische Bauwerke","text":["Die EBV regelt Herstellung und Einbau mineralischer Ersatzbaustoffe in technische Bauwerke. Die Materialklassen ergeben sich aus den Materialwerten der Anlage 1. Für Einbauweisen gelten die weiteren Anlagen.","Eine Novelle liegt als Referentenentwurf vom Juli 2026 vor und ist noch nicht in Kraft."],"quelle":"ebv","tabellen":["ebv-rc","ebv-bm","ebv-bm-zusatz","ebv-asche","ebv-gs"]},
+  {"id":"verfuellung","bereich":"abfall","titel":"Verfüllung und Bodenschutz","sub":"BBodSchV","stichworte":"Verfüllung Auffüllung durchwurzelbare Bodenschicht Grube","text":["Für das Auf- oder Einbringen von Materialien auf oder in den Boden gelten die §§ 6 bis 8 BBodSchV. Technische Bauwerke fallen unter die EBV.","Die Länder können eigene Regeln zur Verfüllung treffen. In Hessen gilt die Verfüllrichtlinie, siehe Länderregeln."],"quelle":"bbodschv"},
+  {"id":"pop","bereich":"abfall","titel":"POP-Abfälle","sub":"LAGA M41","stichworte":"HBCD Dämmung EU-POP-Verordnung persistente organische Schadstoffe","text":["Die EU-POP-Verordnung regelt Abfälle mit persistenten organischen Schadstoffen, im Bauwesen vor allem HBCD in EPS und XPS. Die LAGA-Mitteilung 41 enthält die Vollzugshilfe mit Stoffsteckbriefen."],"quelle":"laga-m41"}
 ]

@@ -1,0 +1,11 @@
+[
+  {"beobachtung":"Fugenlos, Schalbrett- oder Schaltafelabdruck, Bohrstaub grau, durchgehend massiv","bauteil":"ortbeton"},
+  {"beobachtung":"Gerade Fugen/Risslinien im Raster ca. 2,0–2,5 m, oft nachgespachtelt","bauteil":"filigran"},
+  {"beobachtung":"Längsfugen im Abstand 1,20 m, Bohrer fällt nach wenigen cm in einen Hohlraum","bauteil":"hohldiele"},
+  {"beobachtung":"Bohrung trifft porösen, leichten grauen Stein mit Hohlkammern; Rippen/Träger im Raster","bauteil":"bimsdecke"},
+  {"beobachtung":"Roter Bohrstaub, Lochziegel mit Kammern, Betonrippen dazwischen","bauteil":"ziegeldecke"},
+  {"beobachtung":"Decke schwingt, hohler Klang, Putz auf Schilfrohr oder Latten, Holzspäne im Bohrloch","bauteil":"holzbalken"},
+  {"beobachtung":"Stahlträger (I-Profil) sichtbar, flache Gewölbebögen dazwischen (oft Keller)","bauteil":"kappe"},
+  {"beobachtung":"Profiliertes Stahlblech an der Untersicht","bauteil":"trapez"},
+  {"beobachtung":"Holzuntersicht mit kreuzweise verleimten Lagen oder Brettstapeln","bauteil":"bsp"}
+]

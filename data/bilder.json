@@ -1,1 +1,386 @@
-[]
+[
+ {
+  "id": "ortbeton",
+  "datei": "ortbeton.jpg",
+  "titel": "Deckenschalung mit Bewehrung vor dem Betonieren",
+  "urheber": "Mcapdevila",
+  "lizenz": "CC BY-SA 3.0",
+  "url": "https://commons.wikimedia.org/wiki/File:Suspended-slab-blockwork.jpg"
+ },
+ {
+  "id": "filigran",
+  "datei": "filigran.jpg",
+  "titel": "Filigranplatten mit Gitterträgern",
+  "urheber": "sarang",
+  "lizenz": "Public domain",
+  "url": "https://commons.wikimedia.org/wiki/File:Elementdecke_1.jpg"
+ },
+ {
+  "id": "hohldiele",
+  "datei": "hohldiele.jpg",
+  "titel": "Verlegte Hohldielen, Hohlkanäle an der Stirnseite",
+  "urheber": "Elie Malti",
+  "lizenz": "CC BY-SA 4.0",
+  "url": "https://commons.wikimedia.org/wiki/File:Hollow_core_slabs.jpg"
+ },
+ {
+  "id": "bimsdecke",
+  "datei": "bimsdecke.jpg",
+  "titel": "Träger-Füllkörperdecke im Bau",
+  "urheber": "Oast House Archive",
+  "lizenz": "CC BY-SA 2.0",
+  "url": "https://commons.wikimedia.org/wiki/File:Beam_%5E_block_floor,_Meadows_View_development_-_geograph.org.uk_-_4523943.jpg"
+ },
+ {
+  "id": "ziegeldecke",
+  "datei": "ziegeldecke.jpg",
+  "titel": "Deckenziegel für Einhängedecken",
+  "urheber": "Kozuch",
+  "lizenz": "CC BY-SA 3.0",
+  "url": "https://commons.wikimedia.org/wiki/File:Wienerberger_POROTHERM_brick_ceiling_-_MIAKO_angle.jpg"
+ },
+ {
+  "id": "holzbalken",
+  "datei": "holzbalken.jpg",
+  "titel": "Holzbalkendecke mit Einschubbrettern",
+  "urheber": "Rene Fleischer",
+  "lizenz": "CC BY-SA 3.0",
+  "url": "https://commons.wikimedia.org/wiki/File:Holzbalkendecke_mit_Einschubbrettern_im_Umgebinde_von_1587.jpg"
+ },
+ {
+  "id": "kappe",
+  "datei": "kappe.jpg",
+  "titel": "Preußische Kappendecke (Werkstatt, 1890)",
+  "urheber": "Schlesinger",
+  "lizenz": "Public domain",
+  "url": "https://commons.wikimedia.org/wiki/File:Preu%C3%9Fische_Kappendecke_in_einer_Werkstatt_von_1890.jpg"
+ },
+ {
+  "id": "trapez",
+  "datei": "trapez.jpg",
+  "titel": "Stahlblech-Deck vor dem Betonieren",
+  "urheber": "Unknown authorUnknown author",
+  "lizenz": "Public domain",
+  "url": "https://commons.wikimedia.org/wiki/File:Deck_steel_in_place_before_concrete_is_poured,_during_a_rebuilding_and_extension_project_at_Puget_Sound_Navy_Yard,_Bremerton_(INDOCC_1677).jpg"
+ },
+ {
+  "id": "bsp",
+  "datei": "bsp.jpg",
+  "titel": "Brettsperrholz, kreuzweise verleimte Lagen",
+  "urheber": "Райн Александр Дмитриевич",
+  "lizenz": "CC BY-SA 4.0",
+  "url": "https://commons.wikimedia.org/wiki/File:Cross-laminated_timber_(detail).jpg"
+ },
+ {
+  "id": "schwimmend",
+  "datei": "schwimmend.jpg",
+  "titel": "Frischer schwimmender Estrich, Randdämmstreifen",
+  "urheber": "KaiKemmann",
+  "lizenz": "CC BY-SA 4.0",
+  "url": "https://commons.wikimedia.org/wiki/File:Frischer_schwimmender_Estrich,_Geschwister-Scholl-Stra%C3%9Fe_3_(Weimar)_02.jpg"
+ },
+ {
+  "id": "heizestrich",
+  "datei": "heizestrich.jpg",
+  "titel": "Estrichaufbau mit Fußbodenheizung",
+  "urheber": "HTL-Mödchen23",
+  "lizenz": "CC BY-SA 4.0",
+  "url": "https://commons.wikimedia.org/wiki/File:Estrichaufbau_mit_Fu%C3%9Fbodenheizung.jpg"
+ },
+ {
+  "id": "gussasphalt",
+  "datei": "gussasphalt.jpg",
+  "titel": "Parkdeck mit 40 mm Gussasphalt",
+  "urheber": "Алексей Покровский",
+  "lizenz": "CC BY-SA 3.0",
+  "url": "https://commons.wikimedia.org/wiki/File:%D0%9F%D0%BE%D0%BA%D1%80%D1%8B%D1%82%D0%B8%D0%B5_%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE%D1%8F%D1%80%D1%83%D1%81%D0%BD%D0%BE%D0%B3%D0%BE_%D0%BF%D0%B0%D1%80%D0%BA%D0%B8%D0%BD%D0%B3%D0%B0_%D0%B8%D0%B7_%D0%BB%D0%B8%D1%82%D0%BE%D0%B3%D0%BE_%D0%BF%D0%BE%D0%BB%D0%B8%D0%BC%D0%B5%D1%80%D0%B0%D1%81%D1%84%D0%B0%D0%BB%D1%8C%D1%82%D0%BE%D0%B1%D0%B5%D1%82%D0%BE%D0%BD%D0%B0..jpg"
+ },
+ {
+  "id": "dielen",
+  "datei": "dielen.jpg",
+  "titel": "Breite Eichendielen",
+  "urheber": "Tomticker5 at en.wikipedia",
+  "lizenz": "Public domain",
+  "url": "https://commons.wikimedia.org/wiki/File:16_inch_wide_oak_flooring.jpeg"
+ },
+ {
+  "id": "bodenplatte",
+  "datei": "bodenplatte.jpg",
+  "titel": "Bewehrung einer Bodenplatte",
+  "urheber": "Erkaha",
+  "lizenz": "CC BY-SA 4.0",
+  "url": "https://commons.wikimedia.org/wiki/File:Bewehrung_einer_Bodenplatte.jpg"
+ },
+ {
+  "id": "mauerwand",
+  "datei": "mauerwand.jpg",
+  "titel": "Kalksandstein-Mauerwerk",
+  "urheber": "In eegent",
+  "lizenz": "CC BY-SA 4.0",
+  "url": "https://commons.wikimedia.org/wiki/File:Ceg%C5%82a_silikatowa_(murowana_%C5%9Bciana).jpg"
+ },
+ {
+  "id": "metallstaender",
+  "datei": "metallstaender.jpg",
+  "titel": "Metallständerwerk vor dem Beplanken",
+  "urheber": "P199",
+  "lizenz": "Public domain",
+  "url": "https://commons.wikimedia.org/wiki/File:Light_gage_metal_framing.JPG"
+ },
+ {
+  "id": "holzstaender",
+  "datei": "holzstaender.jpg",
+  "titel": "Holzständerwand (Zimmerei)",
+  "urheber": "Björn Stieler",
+  "lizenz": "Public domain",
+  "url": "https://commons.wikimedia.org/wiki/File:Holzst%C3%A4nderwand.JPG"
+ },
+ {
+  "id": "leichtbau",
+  "datei": "leichtbau.jpg",
+  "titel": "Alte Holzwolle-Leichtbauplatte",
+  "urheber": "Ilmtaler",
+  "lizenz": "CC BY-SA 4.0",
+  "url": "https://commons.wikimedia.org/wiki/File:Sauerkrautplatte80_2022.jpg"
+ },
+ {
+  "id": "stbwand",
+  "datei": "stbwand.jpg",
+  "titel": "Wandschalung mit Schalungsanker und Bewehrung",
+  "urheber": "HTL-Mödchen23",
+  "lizenz": "CC BY-SA 4.0",
+  "url": "https://commons.wikimedia.org/wiki/File:Schalungsanker.jpg"
+ },
+ {
+  "id": "monolith",
+  "datei": "monolith.jpg",
+  "titel": "Hochlochziegel mit Perlitfüllung",
+  "urheber": "Schlagmann",
+  "lizenz": "CC BY-SA 4.0",
+  "url": "https://commons.wikimedia.org/wiki/File:Poroton-S9_mit_Perlitf%C3%BCllung.jpg"
+ },
+ {
+  "id": "wdvs",
+  "datei": "wdvs.jpg",
+  "titel": "WDVS, teilweise auf Altbau aufgebracht",
+  "urheber": "Handwerker",
+  "lizenz": "CC BY-SA 3.0",
+  "url": "https://commons.wikimedia.org/wiki/File:W%C3%A4rmed%C3%A4mmverbundsystem_(WDVS)_teilweise_auf_Altbau..JPG"
+ },
+ {
+  "id": "zweischalig",
+  "datei": "zweischalig.jpg",
+  "titel": "Zweischaliges Mauerwerk mit Dämmung",
+  "urheber": "Patrick Oberdörfer",
+  "lizenz": "CC BY-SA 4.0",
+  "url": "https://commons.wikimedia.org/wiki/File:Zweischaliges_Mauerwerk_mit_D%C3%A4mmung.jpg"
+ },
+ {
+  "id": "vhf",
+  "datei": "vhf.jpg",
+  "titel": "Montage VHF: Dämmung und Unterkonstruktion",
+  "urheber": "Mmanokhin",
+  "lizenz": "CC BY-SA 3.0",
+  "url": "https://commons.wikimedia.org/wiki/File:%D0%9C%D0%BE%D0%BD%D1%82%D0%B0%D0%B6_%D0%B2%D0%B5%D0%BD%D1%82%D0%B8%D0%BB%D0%B8%D1%80%D1%83%D0%B5%D0%BC%D1%8B%D1%85_%D1%84%D0%B0%D1%81%D0%B0%D0%B4%D0%BD%D1%8B%D1%85_%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC_%D1%81_%D0%BF%D1%80%D0%B8%D0%BC%D0%B5%D0%BD%D0%B5%D0%BD%D0%B8%D0%B5%D0%BC_%D1%83%D1%82%D0%B5%D0%BF%D0%BB%D0%B8%D1%82%D0%B5%D0%BB%D1%8F.jpg"
+ },
+ {
+  "id": "sandwich",
+  "datei": "sandwich.jpg",
+  "titel": "Waschbeton-Fassadenplatten",
+  "urheber": "Kai Kemmann",
+  "lizenz": "CC BY-SA 4.0",
+  "url": "https://commons.wikimedia.org/wiki/File:Waschbeton-Fassadenplatten_vor_der_Sanierung_des_Technischen_Rathauses_Erfurt,_Warsbergstra%C3%9Fe_3,_Br%C3%BChlervorstadt,_99092_Erfurt,_Germany_01.jpg"
+ },
+ {
+  "id": "holzrahmen",
+  "datei": "holzrahmen.jpg",
+  "titel": "Holzrahmen mit Windschutzplatte",
+  "urheber": "Riisipuuro",
+  "lizenz": "CC BY-SA 3.0",
+  "url": "https://commons.wikimedia.org/wiki/File:Timber_frame_0857.jpg"
+ },
+ {
+  "id": "fachwerk",
+  "datei": "fachwerk.jpg",
+  "titel": "Freigelegtes Fachwerk mit Flechtwerk",
+  "urheber": "Fachwerk-meiningen002.jpg: Dontworry derivative work: Sebastian Wallroth (talk)",
+  "lizenz": "CC BY-SA 3.0",
+  "url": "https://commons.wikimedia.org/wiki/File:Fachwerk-meiningen002-2.jpg"
+ },
+ {
+  "id": "keller",
+  "datei": "keller.jpg",
+  "titel": "Kellerwand vor dem Abdichten",
+  "urheber": "Kai Kemmann",
+  "lizenz": "CC BY-SA 4.0",
+  "url": "https://commons.wikimedia.org/wiki/File:Verputzte_Kellerwand_aus_Naturstein_vor_dem_Auftrag_einer_wasserdichten_Beschichtung,_Mutterhaus_des_Sophienhauses,_Trierer_Stra%C3%9Fe_2,_Westvorstadt,_99423_Weimar.jpg"
+ },
+ {
+  "id": "flex",
+  "datei": "flex.jpg",
+  "titel": "Vinyl-Asbest-Platten",
+  "urheber": "Tim Ebert (tebert)",
+  "lizenz": "CC BY-SA 3.0",
+  "url": "https://commons.wikimedia.org/wiki/File:Dunloplan_Pastell-Polyflex.jpg"
+ },
+ {
+  "id": "parkett",
+  "datei": "parkett.jpg",
+  "titel": "Mosaikparkett, netzverklebt",
+  "urheber": "MartinMulde",
+  "lizenz": "CC BY-SA 4.0",
+  "url": "https://commons.wikimedia.org/wiki/File:21_Parkett3.jpg"
+ },
+ {
+  "id": "fliesen",
+  "datei": "fliesen.jpg",
+  "titel": "Fliesenverlegung",
+  "urheber": "Frank Winkelmann",
+  "lizenz": "CC0",
+  "url": "https://commons.wikimedia.org/wiki/File:Verlegen_von_Fliesen_mit_einem_Nivelliersystem.jpg"
+ },
+ {
+  "id": "linoleum",
+  "datei": "linoleum.jpg",
+  "titel": "Historischer Linoleumboden",
+  "urheber": "Peter Liptau",
+  "lizenz": "CC BY-SA 4.0",
+  "url": "https://commons.wikimedia.org/wiki/File:VillaRotLinoleum.jpg"
+ },
+ {
+  "id": "teppich",
+  "datei": "teppich.jpg",
+  "titel": "Teppich und Unterlage, aufgenommen",
+  "urheber": "Downtowngal",
+  "lizenz": "CC BY-SA 4.0",
+  "url": "https://commons.wikimedia.org/wiki/File:Wall_to_wall_carpet_and_carpet_pad.jpg"
+ },
+ {
+  "id": "laminat",
+  "datei": "laminat.jpg",
+  "titel": "Laminat, Nahaufnahme",
+  "urheber": "Rainer R. Herweck",
+  "lizenz": "Copyrighted free use",
+  "url": "https://commons.wikimedia.org/wiki/File:Quick-step-laminat-eiche-dunkel-geoelt-ul-918.JPG"
+ },
+ {
+  "id": "kunstharz",
+  "datei": "kunstharz.jpg",
+  "titel": "Epoxidharz-Beschichtung",
+  "urheber": "ARKdeko' Design",
+  "lizenz": "CC BY-SA 3.0",
+  "url": "https://commons.wikimedia.org/wiki/File:Pavimento_in_resina.jpg"
+ },
+ {
+  "id": "m-beton",
+  "datei": "m-beton.jpg",
+  "titel": "Sichtbeton",
+  "urheber": "KaiKemmann",
+  "lizenz": "CC BY-SA 4.0",
+  "url": "https://commons.wikimedia.org/wiki/File:Bauhaus_Museum_Weimar,_Neubau_2018,_Sichtbeton_Fassade_-_Montage_der_bis_zu_20_Tonnen_schweren_Fertigteile.jpg"
+ },
+ {
+  "id": "m-estrich",
+  "datei": "m-estrich.jpg",
+  "titel": "Estrich, geglättet",
+  "urheber": "Hundehalter",
+  "lizenz": "CC BY-SA 3.0",
+  "url": "https://commons.wikimedia.org/wiki/File:Estrichglaettung_5.jpg"
+ },
+ {
+  "id": "m-mauerwerk",
+  "datei": "m-mauerwerk.jpg",
+  "titel": "Hochlochziegel",
+  "urheber": "Kozuch",
+  "lizenz": "CC BY-SA 3.0",
+  "url": "https://commons.wikimedia.org/wiki/File:Porotherm_style_clay_block_bricks_angle.jpg"
+ },
+ {
+  "id": "m-mineralwolle",
+  "datei": "m-mineralwolle.jpg",
+  "titel": "Mineralwolle",
+  "urheber": "FMI Fachverband Mineralwolleindustrie",
+  "lizenz": "CC BY-SA 3.0 de",
+  "url": "https://commons.wikimedia.org/wiki/File:Arrangement_Mineralwolle.jpeg"
+ },
+ {
+  "id": "m-eps",
+  "datei": "m-eps.jpg",
+  "titel": "EPS-Hartschaum",
+  "urheber": "Energieeffiziente Dämmstoffe",
+  "lizenz": "CC0",
+  "url": "https://commons.wikimedia.org/wiki/File:EPS_insulation_board.jpg"
+ },
+ {
+  "id": "m-holz",
+  "datei": "m-holz.jpg",
+  "titel": "Kantholz",
+  "urheber": "ReteMK",
+  "lizenz": "CC BY-SA 4.0",
+  "url": "https://commons.wikimedia.org/wiki/File:Uso_Fiume.jpg"
+ },
+ {
+  "id": "m-gips",
+  "datei": "m-gips.jpg",
+  "titel": "Gipskartonwand, verspachtelt",
+  "urheber": "Amaxson at English Wikipedia",
+  "lizenz": "Public domain",
+  "url": "https://commons.wikimedia.org/wiki/File:Drywall.jpg"
+ },
+ {
+  "id": "m-putz",
+  "datei": "m-putz.jpg",
+  "titel": "Kalkputz",
+  "urheber": "Jules Verne Times Two",
+  "lizenz": "CC BY-SA 4.0",
+  "url": "https://commons.wikimedia.org/wiki/File:Blue_window_on_white_lime_plaster_wall,_Potamia,_Tinos,_Greece_julesvernex2.jpg"
+ },
+ {
+  "id": "m-bims",
+  "datei": "m-bims.jpg",
+  "titel": "Naturbims (Neuwieder Becken)",
+  "urheber": "Hausmaus at German Wikipedia",
+  "lizenz": "Public domain",
+  "url": "https://commons.wikimedia.org/wiki/File:Bims.jpeg"
+ },
+ {
+  "id": "m-lehm",
+  "datei": "m-lehm.jpg",
+  "titel": "Lehmputz",
+  "urheber": "זלדה10",
+  "lizenz": "CC BY-SA 3.0",
+  "url": "https://commons.wikimedia.org/wiki/File:Mud_plaster_over_straw_bales_wall.jpg"
+ },
+ {
+  "id": "m-schlacke",
+  "datei": "m-schlacke.jpg",
+  "titel": "Granulierte Hochofenschlacke",
+  "urheber": "Blast furnace chip worker",
+  "lizenz": "CC BY-SA 3.0",
+  "url": "https://commons.wikimedia.org/wiki/File:Granulated_slag_%E2%80%94_%D0%93%D1%80%D0%B0%D0%BD%D1%83%D0%BB%D1%8C%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B9_%D1%88%D0%BB%D0%B0%D0%BA_1.jpg"
+ },
+ {
+  "id": "m-kies",
+  "datei": "m-kies.jpg",
+  "titel": "Splitt",
+  "urheber": "a22375",
+  "lizenz": "CC BY-SA 4.0",
+  "url": "https://commons.wikimedia.org/wiki/File:10mm-crushed-pebbles.jpg"
+ },
+ {
+  "id": "m-asphalt",
+  "datei": "m-asphalt.jpg",
+  "titel": "Gussasphalt im Schnitt",
+  "urheber": "Алексей Покровский",
+  "lizenz": "CC BY-SA 3.0",
+  "url": "https://commons.wikimedia.org/wiki/File:%D0%92%D0%BD%D1%83%D1%82%D1%80%D0%B5%D0%BD%D0%BD%D1%8F%D1%8F_%D1%81%D1%82%D1%80%D1%83%D0%BA%D1%82%D1%83%D1%80%D0%B0_%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BE%D0%B2_%D0%BB%D0%B8%D1%82%D0%BE%D0%B9_%D1%81%D0%BC%D0%B5%D1%81%D0%B8..jpg"
+ },
+ {
+  "id": "m-erde",
+  "datei": "m-erde.jpg",
+  "titel": "Bodenprofil",
+  "urheber": "Anagoria",
+  "lizenz": "CC BY 3.0",
+  "url": "https://commons.wikimedia.org/wiki/File:2014-07-06_Bodenprofil_Postluch_Agrarmuseum_Wandlitz_anagoria.JPG"
+ }
+]
