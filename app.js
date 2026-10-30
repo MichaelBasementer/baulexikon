@@ -173,6 +173,7 @@ function schadstoff(id) {
   view.innerHTML = `<div class="card"><h2>Wo typisch?</h2><ul>${s.fundorte.map(f => `<li>${esc(f)}</li>`).join("")}</ul></div>
     ${s.text ? `<div class="card">${paras(s.text)}</div>` : ""}
     ${hRow("Gefährlicher Abfall ab", werte.length ? `<div class="panel">${laenderRows(werte)}</div>${[...new Set(werte.map(w => w.quelle))].map(q => srcLine(q)).join("")}` : "")}
+    ${hinweisCards(D.laender.hinweise.filter(h => h.schadstoff === id))}
     ${hRow("AVV-Schlüssel", avv.length ? `<div class="panel">${avv.map(a => row(`#/a/${a.code.replace(/\D/g, "")}`, a.code, a.titel, avvTag(a))).join("")}</div>` : "")}
     ${hRow("Arbeitsschutz", regeln.length ? `<div class="panel">${regeln.map(r => row(`#/r/${r.id}`, r.titel, r.sub)).join("")}</div>` : "")}
     ${hRow("Kommt vor in", vor.length ? `<div class="panel">${vor.map(b => row(`#/b/${b.id}`, b.titel, GRUPPEN[b.gruppe])).join("")}</div>` : "")}
@@ -187,6 +188,8 @@ function laenderRows(werte) {
     return `<a class="item" href="#/l/${land.id}"><span>${esc(land.name)}, ${esc(w.material)}<small>${esc(w.bezug)}</small></span>${right}</a>`;
   }).join("");
 }
+
+const hinweisCards = list => list.map(h => `<div class="card alert"><h2>${esc(h.titel)}</h2>${paras(h.text)}</div>${srcLine(h.quelle, h.fundstelle)}`).join("");
 
 function regel(id) {
   const r = byId(D.regeln, id), route = `#/r/${id}`;
@@ -245,6 +248,7 @@ function land(id) {
   const links = l.links || [];
   view.innerHTML = `${l.text ? `<div class="card">${paras(l.text)}</div>` : ""}
     ${hRow("Werte", werte.length ? `<div class="panel">${laenderRows(werte)}</div>` : "")}
+    ${hinweisCards(D.laender.hinweise.filter(h => h.land === id))}
     ${hRow("Dokumente", docs.length ? `<div class="panel">${docs.map(q => row(`#/q/${q.id}`, q.kurz, `Stand ${q.fassung}`, statusTag(q))).join("")}</div>` : "")}
     ${hRow("Links", links.length ? `<div class="panel">${links.map(k => `<a class="item" href="${esc(k.url)}" target="_blank" rel="noopener"><span>${esc(k.titel)}</span><i>↗</i></a>`).join("")}</div>` : "")}
     ${l.ausbau ? "" : `<div class="card"><p>Dieses Land ist noch nicht ausgearbeitet. Die Länderregelungen im Überblick nennt das Informationsportal Abfallbewertung.</p></div><a class="link center" href="https://www.abfallbewertung.org/" target="_blank" rel="noopener">abfallbewertung.org ↗</a>`}`;

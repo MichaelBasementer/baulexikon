@@ -17,6 +17,15 @@
     {"id":"sh","name":"Schleswig-Holstein","ausbau":false},
     {"id":"th","name":"Thüringen","ausbau":false}
   ],
+  "hinweise": [
+    {"land":"he","schadstoff":"pak","titel":"Hessen: teerpechhaltig oder pechfrei?","text":[
+      "Pech (Steinkohlenteer) ist der Rückstand aus der Destillation von Teer. Bitumen wird aus Erdöl gewonnen. Pechfreies Bitumen erreicht in der Regel keine PAK-Gehalte, die es gefährlich machen.",
+      "Schnelltest: Eine lufttrockene Bruchfläche der Probe dünn mit weißem, lösemittelhaltigem Acryllackspray (RAL 9010) ansprühen. Je nach Pechgehalt verfärbt sich der Lack schon nach wenigen Sekunden gelb-bräunlich.",
+      "Positiver Befund: Zunächst von gefährlichem Abfall ausgehen und entsprechend entsorgen. Soll der Abfall trotzdem als nicht gefährlich gelten oder wird der genaue Belastungsgrad gebraucht, ist die quantitative PAK-Analyse nach EPA nötig.",
+      "Labor: Der Pechgehalt wird üblicherweise nicht direkt analysiert. Beurteilt wird über die Summe der 16 PAK nach EPA.",
+      "Die 1.000 mg/kg gelten nur, wenn der Abfall nachweislich frei von Pech ist. Benzo(a)pyren ≥ 50 mg/kg gilt auch dann."
+    ],"quelle":"he-merkblatt","fundstelle":"Kapitel 3.2 und 4.3"}
+  ],
   "werte": [
     {"land":"he","schadstoff":"pak","material":"teerpechhaltig","bezug":"Summe 16 PAK nach EPA, Originalsubstanz","op":"≥","zahl":400,"einheit":"mg/kg","quelle":"he-merkblatt","fundstelle":"Kapitel 3.2 PAK"},
     {"land":"he","schadstoff":"pak","material":"pechfrei","bezug":"Summe 16 PAK nach EPA, Originalsubstanz","op":"≥","zahl":1000,"einheit":"mg/kg","quelle":"he-merkblatt","fundstelle":"Kapitel 3.2 PAK"},

@@ -86,6 +86,12 @@ D.laender.werte.forEach((v, i) => {
   if (!S.has(v.schadstoff)) err(`${w}: unbekannter Schadstoff ${v.schadstoff}`);
   wert(v, w);
 });
+D.laender.hinweise.forEach((h, i) => {
+  need(h, `hinweis ${i}`, ["land", "schadstoff", "titel", "text", "quelle", "fundstelle"]);
+  quelle(h.quelle, `hinweis ${i}`);
+  if (!L.has(h.land)) err(`hinweis ${i}: Land ${h.land}`);
+  if (!S.has(h.schadstoff)) err(`hinweis ${i}: Schadstoff ${h.schadstoff}`);
+});
 D.laender.laender.forEach(l => (l.quellen || []).forEach(q => quelle(q, `land ${l.id}`)));
 if (D.laender.laender.length !== 16) err(`laender: ${D.laender.laender.length} statt 16`);
 D.wandel.forEach((w, i) => { need(w, `wandel ${i}`, ["titel", "text", "status", "quelle"]); quelle(w.quelle, `wandel ${i}`); });
