@@ -14,7 +14,8 @@ const get = async p => {
   return new TextDecoder("latin1").decode(await r.arrayBuffer());
 };
 const tables = html => [...html.matchAll(/<table[\s\S]*?<\/table>/gi)].map(m => [...m[0].matchAll(/<tr[\s\S]*?<\/tr>/gi)].map(r => [...r[0].matchAll(/<t[dh][^>]*>([\s\S]*?)<\/t[dh]>/gi)].map(c => txt(c[1]))));
-const unhyphen = s => s.replace(/(\p{Ll})- (\p{Ll})/gu, "$1$2").replace(/\^/g, "").trim();
+// Joins words broken over a line, but keeps "bitumen- oder hydraulisch".
+const unhyphen = s => s.replace(/(\p{Ll})- (?!oder |und |bzw\.? |sowie )(\p{Ll})/gu, "$1$2").replace(/\^/g, "").trim();
 const toNum = s => Number(s.replace(/ /g, "").replace(",", "."));
 const NUM = "\\d[\\d ]*(?:,\\d+)?";
 
@@ -100,6 +101,23 @@ async function bbodschv() {
   ];
 }
 
+// Anlagen 2 and 3: one table per material, every row one way of building it in.
+async function einsatz(anlage, gruppe, prefix) {
+  const html = await get(`/ersatzbaustoffv/anlage_${anlage}.html`);
+  const t = tables(html), parts = html.split(/<\/table>/i);
+  const spalten = ["ungünstig", "günstig Sand", "günstig Lehm/Ton", "WSG III A Sand", "WSG III A Lehm/Ton", "WSG III B Sand", "WSG III B Lehm/Ton", "Vorrang Sand", "Vorrang Lehm/Ton"];
+  const out = [];
+  t.forEach((rows, i) => {
+    const data = rows.filter(r => r.length === 11 && r[0] !== "Sand");
+    if (!data.length) return;
+    const titel = unhyphen(rows[0][0]).replace(/\s+/g, " ");
+    out.push({ id: `${prefix}-${out.length + 1}`, gruppe, titel, sub: `EBV Anlage ${anlage} Tabelle ${out.length + 1}`, stichworte: "Einbauweise Einsatzmöglichkeiten Grundwasserdeckschicht", spalten, start: [0, 1, 2],
+      zeilen: data.map(r => { const p = split(r[1]); return { parameter: `${r[0]} ${unhyphen(p.c)}`, einheit: "", werte: r.slice(2).map(cell) }; }),
+      quelle: "ebv", fundstelle: `Anlage ${anlage} Tabelle ${out.length + 1}`, fussnoten: notesPlain((parts[i + 1] || "").split(/<table/i)[0].split(/Tabelle \d+:/)[0]) });
+  });
+  return out;
+}
+
 async function avv(old) {
   const html = await get("/avv/anlage.html");
   const rows = tables(html)[0].filter(r => /^17 \d\d \d\d\*?$/.test(r[0]));
@@ -112,7 +130,7 @@ async function avv(old) {
 
 (async () => {
   const old = JSON.parse(fs.readFileSync(path.join(ROOT, "data/avv.json"), "utf8"));
-  const tabs = [...await depv(), ...await ebv(), ...await bbodschv()];
+  const tabs = [...await depv(), ...await ebv(), ...await bbodschv(), ...await einsatz(2, "ebv-einsatz", "ebv-e"), ...await einsatz(3, "ebv-bahn", "ebv-b")];
   const codes = await avv(old);
   // Tables from PDFs (LAGA, Länder) are maintained in the file itself.
   const lagaTabs = JSON.parse(fs.readFileSync(path.join(ROOT, "data/tabellen.json"), "utf8")).filter(t => !["depv", "ebv", "bbodschv"].includes(t.quelle));

@@ -133,7 +133,7 @@ function kapitel(id) {
   };
   if (id === "abfall") {
     view.innerHTML = hRow("Grundlagen", `<div class="panel">${D.regeln.filter(r => r.bereich === "abfall").map(r => row(`#/r/${r.id}`, r.titel, r.sub)).join("")}</div>`) +
-      hRow("Grenzwerttabellen", `<div class="panel">${D.tabellen.map(t => row(`#/t/${t.id}`, t.titel, t.sub)).join("")}</div>`) +
+      hRow("Grenzwerttabellen", `<div class="panel">${D.tabellen.filter(t => !t.gruppe).map(t => row(`#/t/${t.id}`, t.titel, t.sub)).join("")}</div>`) +
       hRow("AVV Kapitel 17", `<div class="panel">${D.avv.map(a => row(`#/a/${a.code.replace(/\D/g, "")}`, a.code, a.titel, avvTag(a))).join("")}</div>`);
     return;
   }
@@ -211,7 +211,7 @@ function regel(id) {
   if (!r) return notFound();
   head(r.titel, r.sub, { back: { abfall: "#/k/abfall", bauteil: "#/k/bauteile" }[r.bereich] || "#/k/regeln", route });
   remember({ route });
-  const tabs = (r.tabellen || []).map(t => byId(D.tabellen, t)).filter(Boolean);
+  const tabs = [...(r.tabellen || []).map(t => byId(D.tabellen, t)), ...D.tabellen.filter(t => r.gruppe && t.gruppe === r.gruppe)].filter(Boolean);
   view.innerHTML = `${galerie(r.fotos)}<div class="card">${paras(r.text)}</div>
     ${hRow("Grenzwerttabellen", tabs.length ? `<div class="panel">${tabs.map(t => row(`#/t/${t.id}`, t.titel, t.sub)).join("")}</div>` : "")}
     ${srcLine(r.quelle)}
@@ -241,10 +241,10 @@ function tabelle(id) {
   head(t.titel, t.sub, { back: "#/k/abfall", route });
   remember({ route });
   const shown = pick.slice().sort((a, b) => a - b);
-  view.innerHTML = `<div class="section-h">Bis drei Klassen vergleichen</div>
+  view.innerHTML = `<div class="section-h">${t.gruppe ? "Bis drei Spalten vergleichen" : "Bis drei Klassen vergleichen"}</div>
     <div class="chips">${t.spalten.map((c, i) => `<button class="chip" data-c="${i}" aria-pressed="${pick.includes(i)}">${esc(c)}</button>`).join("")}</div>
-    <div class="tablewrap"><table><thead><tr><th>Parameter</th>${shown.map(i => `<th>${esc(t.spalten[i])}</th>`).join("")}</tr></thead>
-    <tbody>${t.zeilen.map(z => `<tr><td>${z.link ? `<a class="link" href="${esc(z.link)}">${esc(z.parameter)} ›</a>` : esc(z.parameter)}${sup(z.fn)}<small>${esc(z.einheit)}</small></td>${shown.map(i => { const w = z.werte[i], v = `${esc(fmtWert(w))}${sup(w && w.fn)}`; return `<td class="${w && w.text ? "txt" : "num"}">${z.link && w && w.text ? `<a class="link" href="${esc(z.link)}">${v} ›</a>` : v}</td>`; }).join("")}</tr>`).join("")}</tbody></table></div>
+    <div class="tablewrap"><table><thead><tr><th>${t.gruppe ? "Einbauweise" : "Parameter"}</th>${shown.map(i => `<th>${esc(t.spalten[i])}</th>`).join("")}</tr></thead>
+    <tbody>${t.zeilen.map(z => `<tr><td>${z.link ? `<a class="link" href="${esc(z.link)}">${esc(z.parameter)} ›</a>` : esc(z.parameter)}${sup(z.fn)}<small>${esc(z.einheit)}</small></td>${shown.map(i => { const w = z.werte[i], v = `${esc(fmtWert(w))}${sup(w && w.fn)}`; const sym = w && { "+": " ja", "–": " nein" }[w.text] || ""; return `<td class="${w && w.text ? "txt" : "num"}${sym}">${z.link && w && w.text ? `<a class="link" href="${esc(z.link)}">${v} ›</a>` : v}</td>`; }).join("")}</tr>`).join("")}</tbody></table></div>
     ${t.fussnoten.length ? `<details class="card"><summary>Fußnoten</summary>${t.fussnoten.map(f => `<p>${esc(f)}</p>`).join("")}</details>` : ""}
     ${srcLine(t.quelle, t.fundstelle)}`;
   view.querySelectorAll(".chip").forEach(b => b.onclick = () => {

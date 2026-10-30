@@ -75,7 +75,7 @@ const wert = (v, w) => {
 D.tabellen.forEach(t => {
   const w = `tabelle ${t.id}`;
   need(t, w, ["titel", "sub", "spalten", "start", "zeilen", "fussnoten", "quelle", "fundstelle"]);
-  if (t.zeilen.length < 3) err(`${w}: nur ${t.zeilen.length} Zeilen, Import prüfen`);
+  if (t.zeilen.length < 3 && !t.gruppe) err(`${w}: nur ${t.zeilen.length} Zeilen, Import prüfen`);
   quelle(t.quelle, w);
   t.zeilen.forEach(z => {
     if (z.werte.length !== t.spalten.length) err(`${w}/${z.parameter}: Spaltenzahl`);

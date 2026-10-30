@@ -87,6 +87,9 @@ th:first-child,td:first-child{text-align:left;position:sticky;left:0;background:
 td.num{white-space:nowrap;font-size:12px}
 .tablewrap th:not(:first-child){font-size:12px}
 td.txt{font-size:11px}
+td.ja,td.nein{font-size:18px;font-weight:700}
+td.ja{color:var(--plus)}
+td.nein{color:var(--minus)}
 td sup,td small sup{font-size:10px;color:var(--muted);font-family:var(--sans)}
 details.card summary{font-size:15px;font-weight:600;cursor:pointer}
 details.card p{font-size:13px;color:var(--muted);margin-top:8px}
