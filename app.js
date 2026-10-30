@@ -68,10 +68,22 @@ function head(titel, sub, opts = {}) {
 }
 
 const GRUPPEN = { A: "Decken", B: "Fußböden", "B+": "Bodenbeläge", C: "Wände innen", D: "Wände außen" };
-const foto = id => {
-  const b = id && byId(D.bilder, id);
-  return b ? `<figure class="foto"><img src="img/fotos/${esc(b.datei)}" alt="${esc(b.titel)}" loading="lazy"><figcaption><a href="${esc(b.url)}" target="_blank" rel="noopener">${esc(b.titel)}</a> · ${esc(b.urheber)} · ${esc(b.lizenz)}</figcaption></figure>` : "";
-};
+// CC licences ask for a link to the licence text next to the credit.
+const LIZENZ = { "CC BY-SA 2.0": "by-sa/2.0/", "CC BY-SA 3.0": "by-sa/3.0/", "CC BY-SA 3.0 de": "by-sa/3.0/de/", "CC BY-SA 4.0": "by-sa/4.0/", "CC BY 3.0": "by/3.0/", "CC BY 4.0": "by/4.0/" };
+const lizenz = l => LIZENZ[l] ? `<a href="https://creativecommons.org/licenses/${LIZENZ[l]}" target="_blank" rel="noopener">${esc(l)}</a>` : esc(l);
+const foto = b => `<figure class="foto"><img src="img/fotos/${esc(b.datei)}" alt="${esc(b.titel)}" loading="lazy"><figcaption><a href="${esc(b.url)}" target="_blank" rel="noopener">${esc(b.titel)}</a> · ${esc(b.urheber)} · ${lizenz(b.lizenz)}</figcaption></figure>`;
+// One photo stands alone; several become a swipe row with position dots.
+function galerie(ids) {
+  const list = (ids || []).map(id => byId(D.bilder, id)).filter(Boolean);
+  if (list.length < 2) return list.map(foto).join("");
+  return `<div class="galerie" tabindex="0" aria-label="${list.length} Fotos, seitlich wischen">${list.map(foto).join("")}</div><div class="dots">${list.map((_, i) => `<i class="${i ? "" : "on"}"></i>`).join("")}</div>`;
+}
+function wireGalerie() {
+  view.querySelectorAll(".galerie").forEach(g => g.addEventListener("scroll", () => {
+    const i = Math.round(g.scrollLeft / g.clientWidth);
+    [...g.nextElementSibling.children].forEach((d, k) => d.classList.toggle("on", k === i));
+  }, { passive: true }));
+}
 const schadTags = ids => (ids || []).map(s => { const x = byId(D.schadstoffe, s); return `<a class="tag warn" href="#/s/${x.id}">${esc(x.titel)} ›</a>`; }).join("");
 
 /* ---------- Search index ---------- */
@@ -126,7 +138,7 @@ function kapitel(id) {
     return;
   }
   if (id === "bauteile") {
-    view.innerHTML = `<a class="card" href="#/erkennen"><h2>Schnell erkennen</h2><p>Was ist das für eine Decke?</p></a>` +
+    view.innerHTML = `<a class="card" href="#/erkennen"><h2>Schnell erkennen</h2><p>Was ist das für eine Decke?</p></a><a class="card" href="#/r/kernbohrung"><h2>Kernbohrungen</h2><p>Was der Bohrkern verrät, und worauf vorher zu achten ist</p></a>` +
       Object.entries(GRUPPEN).map(([g, t]) => hRow(t, `<div class="panel">${D.bauteile.filter(b => b.gruppe === g).map(b => row(`#/b/${b.id}`, b.titel, b.bauzeit)).join("")}</div>`)).join("") +
       hRow("Materialien", `<div class="panel">${D.materialien.map(m => row(`#/m/${m.id}`, m.titel, m.sub)).join("")}</div>`);
     return;
@@ -151,8 +163,9 @@ async function bauteil(id) {
     ${b.schichten.length ? `<ul class="panel layers">${b.schichten.map((s, i) => `<li><span class="n">${i + 1}</span><span>${esc(s[0])}</span><span class="num">${esc(s[1])}</span></li>`).join("")}</ul>` : ""}
     <div class="card"><h2>Erkennen</h2><p>${esc(b.erkennen)}</p></div>
     <div class="card alert"><h2>Schadstoffverdacht</h2><p>${esc(b.verdacht)}</p>${sch ? `<div class="tags">${sch}</div>` : ""}</div>
-    ${foto(b.foto)}
+    ${galerie(b.fotos)}
     ${srcLine("atlas", "Bandbreiten, keine Planungswerte. Ein Verdacht ersetzt keine Probenahme.")}`;
+  wireGalerie();
   // Inlined so the drawing can use the light/dark CSS variables.
   if (schnitt) {
     const svg = await fetch(`img/schnitte/${b.id}.svg`).then(r => r.text());
@@ -194,12 +207,13 @@ const hinweisCards = list => list.map(h => `<div class="card alert"><h2>${esc(h.
 function regel(id) {
   const r = byId(D.regeln, id), route = `#/r/${id}`;
   if (!r) return notFound();
-  head(r.titel, r.sub, { back: r.bereich === "abfall" ? "#/k/abfall" : "#/k/regeln", route });
+  head(r.titel, r.sub, { back: { abfall: "#/k/abfall", bauteil: "#/k/bauteile" }[r.bereich] || "#/k/regeln", route });
   remember({ route });
   const tabs = (r.tabellen || []).map(t => byId(D.tabellen, t)).filter(Boolean);
-  view.innerHTML = `<div class="card">${paras(r.text)}</div>
+  view.innerHTML = `${galerie(r.fotos)}<div class="card">${paras(r.text)}</div>
     ${hRow("Grenzwerttabellen", tabs.length ? `<div class="panel">${tabs.map(t => row(`#/t/${t.id}`, t.titel, t.sub)).join("")}</div>` : "")}
     ${srcLine(r.quelle)}`;
+  wireGalerie();
 }
 
 function avv(code) {
@@ -260,7 +274,7 @@ function material(id) {
   head(m.titel, m.sub, { back: "#/k/bauteile", route });
   remember({ route });
   const sch = schadTags(m.schadstoffe);
-  view.innerHTML = `<div class="card">${paras(m.text)}${sch ? `<div class="tags">${sch}</div>` : ""}</div>${foto(m.foto)}${srcLine("atlas")}`;
+  view.innerHTML = `<div class="card">${paras(m.text)}${sch ? `<div class="tags">${sch}</div>` : ""}</div>${galerie([m.foto])}${srcLine("atlas")}`;
 }
 
 function quelle(id) {
@@ -286,7 +300,8 @@ function quellen() {
 
 function bildnachweis() {
   head("Bildnachweis", "Urheber und Lizenzen", { back: "#/quellen" });
-  view.innerHTML = `<div class="panel">${D.bilder.map(b => `<a class="item" href="${esc(b.url)}" target="_blank" rel="noopener"><span>${esc(b.titel)}<small>${esc(b.urheber)} · ${esc(b.lizenz)}</small></span><i>↗</i></a>`).join("")}</div>`;
+  view.innerHTML = `<div class="panel">${D.bilder.map(b => `<a class="item" href="${esc(b.url)}" target="_blank" rel="noopener"><span>${esc(b.titel)}<small>${esc(b.urheber)} · ${esc(b.lizenz)}</small></span><i>↗</i></a>`).join("")}</div>
+    <p class="src">Die Fotos wurden verkleinert, sonst unverändert. Lizenztexte: creativecommons.org.</p>`;
 }
 
 function merkliste() {

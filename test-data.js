@@ -33,7 +33,7 @@ D.bauteile.forEach(b => {
   b.schichten.forEach(s => { if (s[2] && !M.has(s[2]) && s[2] !== "luft") err(`${w}: unbekanntes Material ${s[2]}`); });
   if (b.richtung !== "belag" && !b.schichten.length) err(`${w}: keine Schichten`);
   if (b.richtung !== "belag" && !fs.existsSync(path.join(__dirname, "img/schnitte", b.id + ".svg"))) err(`${w}: Skizze fehlt`);
-  if (b.foto && !B.has(b.foto)) err(`${w}: Foto ${b.foto} fehlt`);
+  (b.fotos || []).forEach(f => { if (!B.has(f)) err(`${w}: Foto ${f} fehlt`); });
 });
 D.schadstoffe.forEach(s => {
   const w = `schadstoff ${s.id}`;
@@ -51,6 +51,7 @@ D.materialien.forEach(m => {
 D.regeln.forEach(r => {
   need(r, `regel ${r.id}`, ["titel", "text", "quelle", "bereich"]);
   quelle(r.quelle, `regel ${r.id}`);
+  (r.fotos || []).forEach(f => { if (!B.has(f)) err(`regel ${r.id}: Foto ${f} fehlt`); });
   (r.tabellen || []).forEach(t => { if (!D.tabellen.some(x => x.id === t)) err(`regel ${r.id}: Tabelle ${t}`); });
 });
 D.avv.forEach(a => {
@@ -97,6 +98,7 @@ if (D.laender.laender.length !== 16) err(`laender: ${D.laender.laender.length} s
 D.wandel.forEach((w, i) => { need(w, `wandel ${i}`, ["titel", "text", "status", "quelle"]); quelle(w.quelle, `wandel ${i}`); });
 D.bilder.forEach((b, i) => {
   need(b, `bild ${i}`, ["datei", "titel", "urheber", "lizenz", "url"]);
+  if (b.urheber.length > 120) err(`bild ${i}: Urheberfeld zu lang, Lizenzbedingungen prüfen`);
   if (!fs.existsSync(path.join(__dirname, "img/fotos", b.datei || ""))) err(`bild ${i}: Datei fehlt`);
 });
 // Offline must cover every file the app can ask for.

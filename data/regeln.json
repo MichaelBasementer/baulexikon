@@ -1,4 +1,10 @@
 [
+  {"id":"kernbohrung","bereich":"bauteil","titel":"Kernbohrungen","sub":"Bauteil öffnen und Aufbau erkennen","stichworte":"Bohrkern Kernbohrung Bohrloch Bohrstaub Erkundung BT 50 BT 51 BT 55","fotos":["kern-poller","ortbeton-kern","stbwand-kern","kern-geraet"],"text":[
+    "Was der Bohrer zeigt: Ortbeton bleibt durchgehend massiv mit grauem Staub, Stahl wird getroffen. Bei der Filigrandecke zeigt der Kern die Fuge zwischen Fertigteil und Aufbeton. Bei der Hohldiele folgt nach 3–5 cm ein Hohlraum. Roter Bohrstaub deutet auf Ziegel, weißer auf Kalksandstein oder Porenbeton, grauer auf Bims oder Beton.",
+    "Schwimmender Estrich: Der Kern zeigt Estrich und darunter weiches Dämmmaterial. WDVS: Der Bohrstaub zeigt erst Putz, dann Styropor oder Wolle.",
+    "Vorher klären: Spannlitzen in Hohldielen niemals ohne Statik anbohren. Bei Fußbodenheizung den Rohrverlauf klären (Wärmebildkamera, Pläne).",
+    "Asbest: Bei Baubeginn vor dem 31.10.1993 ist Asbest in Spachtel, Klebern und Bodenaufbauten möglich. TRGS 519 Anlage 9 nennt dafür Verfahren mit niedrigem Risiko: BT 50 durch Wände mit asbesthaltigen Wandbekleidungen, BT 51 durch Bodenplatten und Zwischendecken aus Beton mit asbesthaltigen Bodenaufbauten, jeweils 42–125 mm Durchmesser, sowie BT 55 in asbesthaltige Fußbodenaufbauten mit spezieller Absaugvorrichtung. Die Einschränkungen und Schutzmaßnahmen stehen in den BT-Blättern."
+  ],"quelle":"trgs519"},
   {"id":"gefstoffv-asbest","bereich":"arbeitsschutz","titel":"GefStoffV: Tätigkeiten mit Asbest","sub":"§ 11a, § 25, Anhang I Nr. 3","stichworte":"Genehmigung Zulassung Anzeige Sachkunde Risikobereich Abbruch Stichtag","text":[
     "Stichtag: Begann der Bau nach dem 31. Oktober 1993, kann in der Regel vermutet werden, dass kein Asbest vorhanden ist (§ 11a Abs. 1). Für bestimmte Stoffe gelten andere Übergangsfristen.",
     "Der Arbeitgeber ermittelt vorab, ob die Tätigkeit im Bereich niedrigen, mittleren oder hohen Risikos liegt, und erstellt einen Arbeitsplan.",

@@ -6,6 +6,7 @@ const UA = "Baulexikon/1.0 (offline reference web app)";
 const API = "https://commons.wikimedia.org/w/api.php";
 
 // id, shown title, Commons file name as far as the atlas credits print it (a name without extension is a prefix)
+// Not used on purpose: Kernbohrung 2011-Q2-by-RaBoe-*. The author adds own terms with fee and legal threats.
 const LIST = [
   ["ortbeton", "Deckenschalung mit Bewehrung vor dem Betonieren", "Suspended-slab-blockwork.jpg"],
   ["filigran", "Filigranplatten mit Gitterträgern", "Elementdecke 1.jpg"],
@@ -55,6 +56,15 @@ const LIST = [
   ["m-kies", "Splitt", "10mm-crushed-pebbles.jpg"],
   ["m-asphalt", "Gussasphalt im Schnitt", "Внутренняя структура составов литой"],
   ["m-erde", "Bodenprofil", "2014-07-06 Bodenprofil Postluch"],
+  ["holzbalken-2", "Offener Fehlboden mit Schüttung", "Aufgeschütteter Fehlboden.jpg"],
+  ["kappe-2", "Gemauerte Kappendecken", "Gemauerte Kappendecken.jpg"],
+  ["kappe-3", "Stahlträger und Kappen im Keller", "Gesundbrunnen Luisenhaus Keller.jpg"],
+  ["hohldiele-2", "Verlegte Hohldielen von oben", "Hollow core slab.JPG"],
+  ["bsp-2", "Deckenaufbau im Holz-Hybrid-Bau", "LCT ONE 02 - ceiling structure.jpg"],
+  ["ortbeton-kern", "Bohrkern aus Beton", "Carotte de béton \"ultra bas carbone\" - SOLIDEO.jpg"],
+  ["stbwand-kern", "Bohrkerne am Hochbunker Heußweg, Hamburg", "Hochbunker Heußweg 114, Hamburg-Eimsbüttel (10).jpg"],
+  ["kern-poller", "Bohrkern und Bohrloch im Belag", "Kernbohrung für Betonpoller.jpg"],
+  ["kern-geraet", "Kernbohrgerät mit Zubehör", "Kernbohrgeraet.jpg"],
 ];
 
 const sleep = ms => new Promise(r => setTimeout(r, ms));

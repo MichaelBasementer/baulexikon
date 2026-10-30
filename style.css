@@ -68,6 +68,13 @@ main{display:flex;flex-direction:column;gap:16px;padding-top:8px}
 .foto img{display:block;width:100%;height:auto;max-height:280px;object-fit:cover}
 .foto figcaption{font-size:12px;color:var(--muted);padding:8px 12px;overflow-wrap:anywhere}
 .foto a{color:var(--accent);text-decoration:none}
+.galerie{display:flex;align-items:flex-start;overflow-x:auto;scroll-snap-type:x mandatory;gap:8px;scrollbar-width:none;margin-bottom:-8px}
+.galerie::-webkit-scrollbar{display:none}
+.galerie .foto{flex:0 0 100%;scroll-snap-align:center}
+.galerie .foto img{height:240px;object-fit:cover}
+.dots{display:flex;justify-content:center;gap:6px}
+.dots i{width:7px;height:7px;border-radius:50%;background:var(--line)}
+.dots i.on{background:var(--accent)}
 a.card{display:block;color:var(--ink);text-decoration:none}
 /* Tables: pick classes, first column stays put */
 .chips{display:flex;gap:8px;flex-wrap:wrap}
