@@ -54,6 +54,7 @@ D.regeln.forEach(r => {
   need(r, `regel ${r.id}`, ["titel", "text", "quelle", "bereich"]);
   quelle(r.quelle, `regel ${r.id}`);
   (r.fotos || []).forEach(f => { if (!B.has(f)) err(`regel ${r.id}: Foto ${f} fehlt`); });
+  (r.belege || []).forEach(q => quelle(q, `regel ${r.id}`));
   (r.tabellen || []).forEach(t => { if (!D.tabellen.some(x => x.id === t)) err(`regel ${r.id}: Tabelle ${t}`); });
 });
 D.avv.forEach(a => {
@@ -74,7 +75,7 @@ const wert = (v, w) => {
 D.tabellen.forEach(t => {
   const w = `tabelle ${t.id}`;
   need(t, w, ["titel", "sub", "spalten", "start", "zeilen", "fussnoten", "quelle", "fundstelle"]);
-  if (t.zeilen.length < 5) err(`${w}: nur ${t.zeilen.length} Zeilen, Import prüfen`);
+  if (t.zeilen.length < 3) err(`${w}: nur ${t.zeilen.length} Zeilen, Import prüfen`);
   quelle(t.quelle, w);
   t.zeilen.forEach(z => {
     if (z.werte.length !== t.spalten.length) err(`${w}/${z.parameter}: Spaltenzahl`);

@@ -214,7 +214,8 @@ function regel(id) {
   const tabs = (r.tabellen || []).map(t => byId(D.tabellen, t)).filter(Boolean);
   view.innerHTML = `${galerie(r.fotos)}<div class="card">${paras(r.text)}</div>
     ${hRow("Grenzwerttabellen", tabs.length ? `<div class="panel">${tabs.map(t => row(`#/t/${t.id}`, t.titel, t.sub)).join("")}</div>` : "")}
-    ${srcLine(r.quelle)}`;
+    ${srcLine(r.quelle)}
+    ${(r.belege || []).map(q => srcLine(q)).join("")}`;
   wireGalerie();
 }
 
@@ -243,7 +244,7 @@ function tabelle(id) {
   view.innerHTML = `<div class="section-h">Bis drei Klassen vergleichen</div>
     <div class="chips">${t.spalten.map((c, i) => `<button class="chip" data-c="${i}" aria-pressed="${pick.includes(i)}">${esc(c)}</button>`).join("")}</div>
     <div class="tablewrap"><table><thead><tr><th>Parameter</th>${shown.map(i => `<th>${esc(t.spalten[i])}</th>`).join("")}</tr></thead>
-    <tbody>${t.zeilen.map(z => `<tr><td>${esc(z.parameter)}${sup(z.fn)}<small>${esc(z.einheit)}</small></td>${shown.map(i => { const w = z.werte[i]; return `<td class="${w && w.text ? "txt" : "num"}">${esc(fmtWert(w))}${sup(w && w.fn)}</td>`; }).join("")}</tr>`).join("")}</tbody></table></div>
+    <tbody>${t.zeilen.map(z => `<tr><td>${z.link ? `<a class="link" href="${esc(z.link)}">${esc(z.parameter)} ›</a>` : esc(z.parameter)}${sup(z.fn)}<small>${esc(z.einheit)}</small></td>${shown.map(i => { const w = z.werte[i], v = `${esc(fmtWert(w))}${sup(w && w.fn)}`; return `<td class="${w && w.text ? "txt" : "num"}">${z.link && w && w.text ? `<a class="link" href="${esc(z.link)}">${v} ›</a>` : v}</td>`; }).join("")}</tr>`).join("")}</tbody></table></div>
     ${t.fussnoten.length ? `<details class="card"><summary>Fußnoten</summary>${t.fussnoten.map(f => `<p>${esc(f)}</p>`).join("")}</details>` : ""}
     ${srcLine(t.quelle, t.fundstelle)}`;
   view.querySelectorAll(".chip").forEach(b => b.onclick = () => {

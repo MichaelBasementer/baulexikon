@@ -36,10 +36,26 @@ function cell(raw) {
 }
 const rowsOf = (rows, nameCol, unitCol, cols) => rows
   .filter(r => r.length > Math.max(...cols))
-  .map(r => { const p = split(r[nameCol]); return { parameter: unhyphen(p.c), ...(p.fn ? { fn: p.fn } : {}), einheit: r[unitCol], werte: cols.map(c => cell(r[c] || "")) }; })
+  .map(r => { const p = split(r[nameCol]); return { parameter: unhyphen(p.c), ...(p.fn ? { fn: p.fn } : {}), einheit: unitCol < 0 ? "" : r[unitCol], werte: cols.map(c => cell(r[c] || "")) }; })
   .filter(z => z.werte.some(Boolean));
 const notes = s => txt(s).replace(/\^/g, "").split(/\s(?=\d{1,2}[a-z]?\)\s)/).map(x => x.trim()).filter(x => /^\d{1,2}[a-z]?\)\s/.test(x));
-const notesPlain = s => txt(s).replace(/zum Seitenanfang[\s\S]*$/, "").replace(/\^/g, "").split(/\s(?=\d{1,2}\s[A-ZÄÖÜ])/).map(x => x.trim()).filter(x => /^\d{1,2}\s/.test(x)).map(x => x.replace(/^(\d{1,2})\s/, "$1) "));
+// Notes are numbered 1, 2, 3 … Walking the sequence keeps "§ 6 Absatz 2 Nummer 8" from being read as a note.
+function notesPlain(s) {
+  const t = " " + txt(s).replace(/zum Seitenanfang[\s\S]*$/, "").replace(/\^/g, " ").replace(/\s+/g, " ");
+  const out = [];
+  let pos = 0, cur = null;
+  for (let n = 1; n < 40; n++) {
+    const re = new RegExp(`(?<!(?:§|Absatz|Nummer|Satz|Tabelle|Anlage|Teil|bis|und|Abs\\.)) ${n} (?=[A-ZÄÖÜ])`, "g");
+    re.lastIndex = pos;
+    const m = re.exec(t);
+    if (!m) break;
+    if (cur != null) out.push(`${n - 1}) ${t.slice(cur, m.index).trim()}`);
+    cur = m.index + m[0].length;
+    pos = cur;
+  }
+  if (cur != null) out.push(`${out.length + 1}) ${t.slice(cur).trim()}`);
+  return out;
+}
 
 async function depv() {
   const html = await get("/depv_2009/anhang_3.html");
@@ -71,6 +87,19 @@ async function ebv() {
   ];
 }
 
+async function bbodschv() {
+  const html = await get("/bbodschv_2023/anlage_1.html");
+  const t = tables(html), parts = html.split(/<\/table>/i);
+  const after = i => notesPlain((parts[i + 1] || "").split(/<table/i)[0].split(/Tabelle \d:/)[0]);
+  const mk = (i, skip, id, titel, fund, spalten) => ({ id, titel, sub: `BBodSchV Anlage 1 ${fund}`, stichworte: "Bodenschutz Vorsorgewert Verfüllung Auf- oder Einbringen durchwurzelbare Bodenschicht", spalten, start: spalten.map((_, k) => k).slice(0, 3), zeilen: rowsOf(t[i].slice(skip), 0, -1, spalten.map((_, k) => k + 1)).map(z => ({ ...z, einheit: z.einheit || "" })), quelle: "bbodschv", fundstelle: `Anlage 1 ${fund}`, fussnoten: after(i) });
+  return [
+    mk(0, 2, "bbod-anorg", "Vorsorgewerte, anorganisch", "Tabelle 1", ["Sand", "Lehm/Schluff", "Ton"]),
+    mk(1, 2, "bbod-org", "Vorsorgewerte, organisch", "Tabelle 2", ["TOC ≤ 4 %", "TOC > 4–9 %"]),
+    mk(3, 3, "bbod-verfuell", "Auf- oder Einbringen unterhalb der durchwurzelbaren Schicht", "Tabelle 4", ["Feststoff mg/kg TM", "Eluat µg/l, TOC < 0,5 %", "Eluat µg/l, TOC ≥ 0,5 %"]),
+    mk(4, 3, "bbod-zusatz", "Zusätzliche Stoffe bei über 10 % Fremdbestandteilen", "Tabelle 5", ["Feststoff mg/kg TM", "Eluat µg/l, TOC < 0,5 %", "Eluat µg/l, TOC ≥ 0,5 %"]),
+  ];
+}
+
 async function avv(old) {
   const html = await get("/avv/anlage.html");
   const rows = tables(html)[0].filter(r => /^17 \d\d \d\d\*?$/.test(r[0]));
@@ -83,10 +112,10 @@ async function avv(old) {
 
 (async () => {
   const old = JSON.parse(fs.readFileSync(path.join(ROOT, "data/avv.json"), "utf8"));
-  const tabs = [...await depv(), ...await ebv()];
+  const tabs = [...await depv(), ...await ebv(), ...await bbodschv()];
   const codes = await avv(old);
-  // LAGA tables come from a PDF and are maintained in the file itself.
-  const lagaTabs = JSON.parse(fs.readFileSync(path.join(ROOT, "data/tabellen.json"), "utf8")).filter(t => t.quelle === "laga-th");
+  // Tables from PDFs (LAGA, Länder) are maintained in the file itself.
+  const lagaTabs = JSON.parse(fs.readFileSync(path.join(ROOT, "data/tabellen.json"), "utf8")).filter(t => !["depv", "ebv", "bbodschv"].includes(t.quelle));
   fs.writeFileSync(path.join(ROOT, "data/tabellen.json"), JSON.stringify([...tabs, ...lagaTabs], null, 1) + "\n");
   fs.writeFileSync(path.join(ROOT, "data/avv.json"), JSON.stringify(codes, null, 1) + "\n");
   tabs.forEach(t => console.log(`${t.id}: ${t.zeilen.length} Zeilen, ${t.fussnoten.length} Fußnoten`));
