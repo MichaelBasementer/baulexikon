@@ -24,7 +24,13 @@
       "Positiver Befund: Zunächst von gefährlichem Abfall ausgehen und entsprechend entsorgen. Soll der Abfall trotzdem als nicht gefährlich gelten oder wird der genaue Belastungsgrad gebraucht, ist die quantitative PAK-Analyse nach EPA nötig.",
       "Labor: Der Pechgehalt wird üblicherweise nicht direkt analysiert. Beurteilt wird über die Summe der 16 PAK nach EPA.",
       "Die 1.000 mg/kg gelten nur, wenn der Abfall nachweislich frei von Pech ist. Benzo(a)pyren ≥ 50 mg/kg gilt auch dann."
-    ],"quelle":"he-merkblatt","fundstelle":"Kapitel 3.2 und 4.3"}
+    ],"quelle":"he-merkblatt","fundstelle":"Kapitel 3.2 und 4.3"},
+    {"land":"he","schadstoff":"pak","titel":"Hessen: Was sagen die Laborwerte?","text":[
+      "Die Unterscheidung entscheidet nur bei PAK von 400 bis unter 1.000 mg/kg OS mit Benzo(a)pyren unter 50 mg/kg OS. Unter 400 mg/kg führt PAK nicht zur Gefährlichkeit, ab 1.000 mg/kg oder Benzo(a)pyren ≥ 50 mg/kg ist der Abfall in beiden Fällen gefährlich.",
+      "Orientierung aus dem Straßenbau: Reines Bitumen enthält rund 20–30 mg/kg PAK und etwa 2 mg/kg Benzo(a)pyren, Teer 265.000–500.000 mg/kg PAK und 4.200–14.000 mg/kg Benzo(a)pyren. Reines Bitumen erklärt also keine 400 mg/kg.",
+      "Der PAK-Wert allein beweist trotzdem weder Pech noch Pechfreiheit, denn hohe PAK können auch aus Brandschutt oder Aschen stammen. Auch ein niedriger Phenolindex schließt Pech nicht aus: Straßenpeche enthalten meist wenig Phenole, sind aber nicht phenolfrei.",
+      "Für den Nachweis der Pechfreiheit daher Laborwerte mit Herkunft, Baujahr und Schnelltest zusammen bewerten. Halbquantitativ hilft die Dünnschichtchromatographie mit UV-Licht. Im Zweifel als pechhaltig behandeln oder mit der Behörde klären."
+    ],"quelle":"fgsv-ruva","fundstelle":"Abschnitt E 2, Tabellen E 2.1 und E 2.5"}
   ],
   "werte": [
     {"land":"he","schadstoff":"pak","material":"teerpechhaltig","bezug":"Summe 16 PAK nach EPA, Originalsubstanz","op":"≥","zahl":400,"einheit":"mg/kg","quelle":"he-merkblatt","fundstelle":"Kapitel 3.2 PAK"},
