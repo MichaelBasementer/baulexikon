@@ -29,6 +29,7 @@ D.quellen.forEach(q => {
 D.bauteile.forEach(b => {
   const w = `bauteil ${b.id}`;
   if (b.quelle) quelle(b.quelle, w);
+  (b.belege || []).forEach(q => quelle(q, w));
   need(b, w, ["titel", "gruppe", "bauzeit", "schichten", "erkennen", "verdacht", "schadstoffe", "richtung"]);
   b.schadstoffe.forEach(s => { if (!S.has(s)) err(`${w}: unbekannter Schadstoff ${s}`); });
   b.schichten.forEach(s => { if (s[2] && !M.has(s[2]) && s[2] !== "luft") err(`${w}: unbekanntes Material ${s[2]}`); });

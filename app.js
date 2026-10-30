@@ -164,7 +164,8 @@ async function bauteil(id) {
     <div class="card"><h2>Erkennen</h2><p>${esc(b.erkennen)}</p></div>
     <div class="card alert"><h2>Schadstoffverdacht</h2><p>${esc(b.verdacht)}</p>${sch ? `<div class="tags">${sch}</div>` : ""}</div>
     ${galerie(b.fotos)}
-    ${srcLine(b.quelle || "atlas", "Bandbreiten, keine Planungswerte. Ein Verdacht ersetzt keine Probenahme.")}`;
+    ${srcLine(b.quelle || "atlas", "Bandbreiten, keine Planungswerte. Ein Verdacht ersetzt keine Probenahme.")}
+    ${(b.belege || []).map(q => srcLine(q)).join("")}`;
   wireGalerie();
   // Inlined so the drawing can use the light/dark CSS variables.
   if (schnitt) {
