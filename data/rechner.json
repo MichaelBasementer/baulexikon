@@ -1,0 +1,48 @@
+{
+  "gefahr": [
+    {"id":"arsen","name":"Arsen","laga":["laga-metalle","Arsen"],"rp":"Arsen"},
+    {"id":"blei","name":"Blei","laga":["laga-metalle","Blei"],"rp":"Blei"},
+    {"id":"cadmium","name":"Cadmium","laga":["laga-metalle","Cadmium"],"rp":"Cadmium"},
+    {"id":"kupfer","name":"Kupfer","laga":["laga-metalle","Kupfer"],"rp":"Kupfer"},
+    {"id":"nickel","name":"Nickel","laga":["laga-metalle","Nickel"],"rp":"Nickel"},
+    {"id":"zink","name":"Zink","laga":["laga-metalle","Zink"],"rp":"Zink"},
+    {"id":"quecksilber","name":"Quecksilber","laga":["laga-metalle","Quecksilber"],"land":"quecksilber","rp":"Quecksilber"},
+    {"id":"pak","name":"PAK 16","land":"pak","rp":"PAK nach EPA"},
+    {"id":"bap","name":"Benzo(a)pyren","laga":["laga-organik","Benzo(a)pyren"]},
+    {"id":"mkw","name":"MKW C10–C40","laga":["laga-organik","MKW C10–C40"],"rp":"Kohlenwasserstoffe C10–C40"},
+    {"id":"pcb","name":"PCB","laga":["laga-organik","PCB"],"rp":"PCB"},
+    {"id":"asbest","name":"Asbest","text":"0,1 M.-%","regel":"asbest-abfall","quelle":"laga-m23","rp":"Asbest (nur bei Verdacht)"}
+  ],
+  "standard": ["arsen","blei","cadmium","kupfer","nickel","zink","quecksilber","pak","bap","mkw","pcb"],
+  "ebv": {
+    "bm": {"tabelle":"ebv-bm","nurEinheit":"mg/kg"},
+    "rc": {"tabelle":"ebv-rc","spalten":[0,1,2]}
+  },
+  "depv": {"tabelle":"depv-fest","spalten":[1,2,3,4],"zeilen":[
+    ["bestimmt als Glühverlust","Glühverlust, Masse-%"],
+    ["bestimmt als TOC","TOC, Masse-%"],
+    ["Summe BTEX","BTEX, mg/kg"],
+    ["PCB (Summe","PCB, mg/kg"],
+    ["Mineralölkohlenwasserstoffe","MKW, mg/kg"],
+    ["Summe PAK","PAK 16, mg/kg"],
+    ["extrahierbare lipophile","Lipophile Stoffe, Masse-%"]
+  ]},
+  "materialien": [
+    {"id":"bodenaushub","titel":"Bodenaushub","stichworte":"Boden Erdaushub Erde Sand Kies Lehm Ton Steine Aushub","art":"spiegel","avv":["17 05 03*","17 05 04"],"stoffe":["standard"],"rpTabelle":true,"ebv":"bm","depv":true,"lexikon":["#/r/ebv-kurz","#/r/verfuellung","#/t/ebv-bm"]},
+    {"id":"bauschutt","titel":"Bauschutt","stichworte":"Beton Ziegel Fliesen Keramik Mauerwerk Estrich Putz Kalksandstein Abbruch","art":"spiegel","avv":["17 01 06*","17 01 07"],"stoffe":["standard","asbest"],"rpTabelle":true,"ebv":"rc","depv":true,"lexikon":["#/r/asbest-abfall","#/t/ebv-rc"]},
+    {"id":"gemisch","titel":"Boden-Bauschutt-Gemisch","stichworte":"Boden Bauschutt Gemisch Auffüllung","art":"spiegel","avv":["17 05 03*","17 05 04","17 01 06*","17 01 07"],"hinweis":"Bauschuttanteil bis 50 Vol.-%: 17 05 03* oder 17 05 04. Darüber: 17 01 06* oder 17 01 07.","hinweisRegel":"boden-bauschutt","stoffe":["standard","asbest"],"rpTabelle":true,"ebv":"bm","depv":true,"lexikon":["#/r/boden-bauschutt"]},
+    {"id":"strassenaufbruch","titel":"Straßenaufbruch","stichworte":"Asphalt Ausbauasphalt Teer Pech Bitumen Straße","art":"spiegel","avv":["17 03 01*","17 03 02"],"stoffe":["pak","bap"],"lexikon":["#/r/teer-strasse","#/s/pak"]},
+    {"id":"fugendichtstoff","titel":"Fugendichtstoff","stichworte":"Fuge Fugenmasse Dichtmasse Dichtstoff Dehnfuge Thiokol Chlorparaffine","art":"spiegel","avv":["17 09 02*","17 09 04"],"hinweis":"Mit Asbest beigemischt: 17 06 05*.","stoffe":["pcb","asbest"],"lexikon":["#/b/fugen","#/s/pcb"]},
+    {"id":"gemischt","titel":"Gemischte Bau- und Abbruchabfälle","stichworte":"Baumischabfall Baustellenabfall Mischabfall Sperrmüll","art":"spiegel","avv":["17 09 03*","17 09 04"],"stoffe":["standard"],"lexikon":["#/r/getrennthaltung"]},
+    {"id":"gipskarton","titel":"Gipsbaustoffe","stichworte":"Gipskarton Gipsplatte Rigips Gipsputz Trockenbau","art":"spiegel","avv":["17 08 01*","17 08 02"],"stoffe":["standard"],"lexikon":["#/r/spiegel"]},
+    {"id":"kmf","titel":"Mineralwolle","stichworte":"KMF Glaswolle Steinwolle Dämmung Dämmstoff","art":"spiegel","avv":["17 06 03*","17 06 04"],"hinweis":"Vor 1996 eingebaut: von alter Mineralwolle ausgehen, 17 06 03*. Zwischen 1996 und 2000 noch möglich.","lexikon":["#/s/kmf"]},
+    {"id":"hartschaum","titel":"Hartschaum-Dämmung","stichworte":"EPS XPS Styropor HBCD Polystyrol Dämmplatte FCKW","art":"spiegel","avv":["17 06 03*","17 06 04"],"hinweis":"HBCD: POP-Grenze 500 mg/kg, gefährlich ab 30.000 mg/kg.","hinweisRegel":"pop","lexikon":["#/s/hbcd","#/r/pop"]},
+    {"id":"altholz","titel":"Altholz","stichworte":"Holz Dachsparren Fachwerk Fenster Dielen Holzschutzmittel A I A II A III A IV","art":"kategorie","avv":["17 02 01","17 02 04*"],"hinweis":"Innenausbau ohne schädliche Verunreinigung meist A II, 17 02 01. Tragende Hölzer, Fenster, Außentüren und imprägniertes Holz meist A IV, 17 02 04*.","hinweisRegel":"altholz","lexikon":["#/r/altholz","#/s/holzschutz"]},
+    {"id":"asbestzement","titel":"Asbestzement","stichworte":"Eternit Faserzement Wellplatte Asbest Fassadenplatte","art":"immer","avv":["17 06 05*"],"lexikon":["#/s/asbest","#/r/asbest-abfall"]},
+    {"id":"asbestbaustoff","titel":"Asbesthaltiger Baustoff","stichworte":"Floor-Flex Flexplatten Asbest Fliesenkleber Spachtel Putz","art":"immer","avv":["17 06 05*"],"lexikon":["#/s/asbest","#/r/asbest-abfall"]},
+    {"id":"asbestdaemmung","titel":"Asbesthaltige Dämmung","stichworte":"Spritzasbest Asbest Dämmmaterial Brandschutz","art":"immer","avv":["17 06 01*"],"lexikon":["#/s/asbest"]},
+    {"id":"teerprodukt","titel":"Teerhaltige Produkte","stichworte":"Dachpappe Teerpappe Kohlenteer Teerkork Pech Abdichtung","art":"immer","avv":["17 03 03*"],"lexikon":["#/s/pak"]},
+    {"id":"pcbbauteil","titel":"PCB-haltige Bauteile","stichworte":"PCB Kondensator Isolierverglasung Bodenbelag Dichtungsmasse","art":"immer","avv":["17 09 02*"],"lexikon":["#/s/pcb"]},
+    {"id":"quecksilberabfall","titel":"Quecksilberhaltige Bauabfälle","stichworte":"Quecksilber Schalter Thermometer","art":"immer","avv":["17 09 01*"],"lexikon":["#/r/quecksilber"]}
+  ]
+}

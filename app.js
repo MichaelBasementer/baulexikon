@@ -1,6 +1,9 @@
 // Baulexikon: hash router and views. All content comes from data/*.json.
 const FILES = ["kapitel", "bauteile", "erkennung", "materialien", "schadstoffe", "regeln", "avv", "tabellen", "laender", "quellen", "wandel", "bilder"];
 const STALE_DAYS = 180;
+// Only under /werkzeuge/ on the website does the KE AbfallCheck sit next to this app.
+const IM_WERKZEUG = location.pathname.includes("/werkzeuge/baulexikon/");
+const pruefen = () => IM_WERKZEUG ? `<a class="link" href="../abfallcheck/index.html">Im KE AbfallCheck prüfen</a>` : "";
 const STORE = "baulexikon-v1";
 const D = {};
 let index = [];
@@ -110,6 +113,7 @@ function start() {
     D.kapitel.map(k => `<a class="tile" href="${k.route}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">${k.icon}</svg><b>${esc(k.titel)}</b><span>${esc(k.kurz)}</span></a>`).join("") +
     `<a class="tile" href="#/quellen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><b>Im Wandel</b><span>${offen} offene Änderungen</span></a></div>`;
   const q = document.getElementById("q"), res = document.getElementById("res"), home = document.getElementById("home");
+  if (IM_WERKZEUG) home.insertAdjacentHTML("afterbegin", `<a class="tile" href="../abfallcheck/index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 4h14v16H5zM9 9h6M9 13h6M9 17h3"/></svg><b>KE AbfallCheck</b><span>Einstufung und Grenzwerte</span></a>`);
   q.addEventListener("input", () => {
     const hits = Search.find(index, q.value), on = !!q.value.trim();
     home.hidden = on; res.hidden = !on;
@@ -164,6 +168,7 @@ async function bauteil(id) {
     <div class="card"><h2>Erkennen</h2><p>${esc(b.erkennen)}</p></div>
     <div class="card alert"><h2>Schadstoffverdacht</h2><p>${esc(b.verdacht)}</p>${sch ? `<div class="tags">${sch}</div>` : ""}</div>
     ${galerie(b.fotos)}
+    ${pruefen()}
     ${srcLine(b.quelle || "atlas", "Bandbreiten, keine Planungswerte. Ein Verdacht ersetzt keine Probenahme.")}
     ${(b.belege || []).map(q => srcLine(q)).join("")}`;
   wireGalerie();
@@ -191,6 +196,7 @@ function schadstoff(id) {
     ${hRow("AVV-Schlüssel", avv.length ? `<div class="panel">${avv.map(a => row(`#/a/${a.code.replace(/\D/g, "")}`, a.code, a.titel, avvTag(a))).join("")}</div>` : "")}
     ${hRow("Arbeitsschutz", regeln.length ? `<div class="panel">${regeln.map(r => row(`#/r/${r.id}`, r.titel, r.sub)).join("")}</div>` : "")}
     ${hRow("Kommt vor in", vor.length ? `<div class="panel">${vor.map(b => row(`#/b/${b.id}`, b.titel, GRUPPEN[b.gruppe])).join("")}</div>` : "")}
+    ${pruefen()}
     ${srcLine(s.quelle, "Orientierung. Ein Verdacht ersetzt keine Probenahme.")}
     ${(s.belege || []).map(q => srcLine(q)).join("")}`;
 }
@@ -277,7 +283,7 @@ function material(id) {
   head(m.titel, m.sub, { back: "#/k/bauteile", route });
   remember({ route });
   const sch = schadTags(m.schadstoffe);
-  view.innerHTML = `<div class="card">${paras(m.text)}${sch ? `<div class="tags">${sch}</div>` : ""}</div>${galerie([m.foto])}${srcLine("atlas")}`;
+  view.innerHTML = `<div class="card">${paras(m.text)}${sch ? `<div class="tags">${sch}</div>` : ""}</div>${galerie([m.foto])}${pruefen()}${srcLine("atlas")}`;
 }
 
 function quelle(id) {

@@ -104,6 +104,39 @@ D.bilder.forEach((b, i) => {
   if (b.urheber.length > 120) err(`bild ${i}: Urheberfeld zu lang, Lizenzbedingungen prüfen`);
   if (!fs.existsSync(path.join(__dirname, "img/fotos", b.datei || ""))) err(`bild ${i}: Datei fehlt`);
 });
+// KE AbfallCheck reads rechner.json. It may only point at existing rows, never carry limit values itself.
+const rechner = load("rechner");
+const zeile = (tabelle, parameter, w) => {
+  const t = D.tabellen.find(x => x.id === tabelle);
+  if (!t) return err(`${w}: Tabelle ${tabelle} fehlt`);
+  if (!t.zeilen.some(z => z.parameter === parameter)) err(`${w}: Zeile ${parameter} fehlt in ${tabelle}`);
+};
+rechner.gefahr.forEach(g => {
+  const w = `rechner ${g.id}`;
+  if (g.laga) zeile(g.laga[0], g.laga[1], w);
+  if (g.rp) zeile("rp-gefaehrlich", g.rp, w);
+  if (g.quelle) quelle(g.quelle, w);
+  if (g.text && !D.regeln.find(r => r.id === g.regel).text.join(" ").includes(g.text)) err(`${w}: Wert ${g.text} steht nicht in Regel ${g.regel}`);
+});
+Object.values(rechner.ebv).forEach(e => { if (!D.tabellen.some(t => t.id === e.tabelle)) err(`rechner: Tabelle ${e.tabelle} fehlt`); });
+const depv = D.tabellen.find(t => t.id === rechner.depv.tabelle);
+rechner.depv.zeilen.forEach(([anfang]) => { if (!depv.zeilen.some(z => z.parameter.startsWith(anfang))) err(`rechner: DepV-Zeile ${anfang} fehlt`); });
+const stoffe = new Set(["standard", ...rechner.gefahr.map(g => g.id)]);
+const ROUTEN = { r: D.regeln, s: D.schadstoffe, b: D.bauteile, t: D.tabellen };
+rechner.materialien.forEach(m => {
+  const w = `rechner ${m.id}`;
+  need(m, w, ["titel", "stichworte", "art", "avv", "lexikon"]);
+  if (!["immer", "spiegel", "kategorie"].includes(m.art)) err(`${w}: Art ${m.art}`);
+  m.avv.forEach(c => { if (!AVV.has(c)) err(`${w}: unbekannter AVV-Schlüssel ${c}`); });
+  if (m.art === "immer" && !m.avv.every(c => c.endsWith("*"))) err(`${w}: immer gefährlich ohne Stern`);
+  (m.stoffe || []).forEach(s => { if (!stoffe.has(s)) err(`${w}: unbekannter Stoff ${s}`); });
+  if (m.ebv && !rechner.ebv[m.ebv]) err(`${w}: EBV ${m.ebv}`);
+  if (m.hinweisRegel && !R.has(m.hinweisRegel)) err(`${w}: Regel ${m.hinweisRegel}`);
+  m.lexikon.forEach(l => {
+    const treffer = l.match(/^#\/([rsbt])\/(.+)$/);
+    if (!treffer || !ROUTEN[treffer[1]].some(x => x.id === treffer[2])) err(`${w}: Verweis ${l}`);
+  });
+});
 // Offline must cover every file the app can ask for.
 const off = fs.readFileSync(path.join(__dirname, "files.js"), "utf8");
 ["data", "img/schnitte", "img/fotos", "fonts"].forEach(d => fs.readdirSync(path.join(__dirname, d)).forEach(f => { if (!off.includes(`"${d}/${f}"`)) err(`files.js: ${d}/${f} fehlt, tools/make-schnitte.js laufen lassen`); }));
