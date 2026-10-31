@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KE AbfallCheck Mockup</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* Layout idea: the real website shell (tokens, header, footer from site.css) with the tool as a plain subpage. */
+:root{--bg:#0a0e13;--bg2:#0e141b;--bg3:#101720;--line:#223040;--line2:#3a4c5e;--text:#e9eef3;--text2:#c3cfda;--text3:#93a4b5;--accent:#8fd3ff;--hit:#ff8f80;--pad:clamp(16px,5vw,48px);--mono:"IBM Plex Mono",ui-monospace,monospace;color-scheme:dark}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--text);font-family:"IBM Plex Sans","Segoe UI",sans-serif;font-size:18px;line-height:1.6}
+a{color:var(--accent);text-underline-offset:4px}
+h1,p{margin:0}
+button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.review{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center;padding:10px 16px;font:400 13px var(--mono);color:var(--text3);background:var(--bg2);border-bottom:1px solid var(--line)}
+.seg{display:flex;gap:4px}
+.seg button{min-height:34px;padding:0 10px;border:1px solid var(--line2);background:none;color:var(--text);font:400 13px var(--mono);cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+.site{margin:0 auto;width:100%;border-inline:1px solid var(--line)}
+.site.phone{width:390px;max-width:100%}
+.breite{max-width:1280px;margin:0 auto;padding-inline:var(--pad)}
+.kopf{border-bottom:1px solid var(--line)}
+.kopf nav{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 32px;padding-block:16px;font-family:var(--mono);font-size:14px}
+.kopf a{color:var(--text3);text-decoration:none;padding:8px 0}
+.kopf a[aria-current]{color:var(--text)}
+.kopf .marke{color:var(--text);display:inline-flex;align-items:center;gap:12px}
+.kopf .marke svg{width:28px;height:28px;flex:none;fill:none;stroke-width:8}
+.kopf nav div{display:flex;flex-wrap:wrap;gap:4px 28px}
+main{padding-block:clamp(36px,6vw,72px);display:flex;flex-direction:column;gap:22px}
+.zurueck{font-family:var(--mono);font-size:14px;text-decoration:none}
+h1{font-size:clamp(30px,3.6vw,44px);line-height:1.1;font-weight:300;letter-spacing:-.02em}
+.schmal{max-width:820px;display:flex;flex-direction:column;gap:20px;width:100%}
+.find{display:grid;grid-template-columns:1fr 210px;gap:1px;background:var(--line2);border:1px solid var(--line2)}
+.site.phone .find{grid-template-columns:1fr}
+.find input,.find select{width:100%;min-height:58px;border:0;background:var(--bg);color:var(--text);font:400 18px "IBM Plex Sans",sans-serif;padding:0 16px}
+.drop{grid-column:1/-1;background:var(--bg2)}
+.drop button{display:block;width:100%;text-align:left;padding:12px 16px;border:0;border-top:1px solid var(--line);background:none;color:var(--text);font:400 17px "IBM Plex Sans",sans-serif;cursor:pointer}
+.drop button:hover{background:var(--bg3)}
+.answer{font-size:clamp(28px,3.6vw,38px);font-weight:300;line-height:1.15;letter-spacing:-.02em;text-wrap:balance}
+.answer.always{color:var(--hit)}
+.avv{margin-top:-12px;font:400 15px var(--mono)}
+.tabs{display:flex;gap:24px;border-bottom:1px solid var(--line2)}
+.tabs button{border:0;background:none;color:var(--text3);font:400 14px var(--mono);padding:8px 0;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px}
+.tabs button[aria-pressed="true"]{color:var(--text);border-color:var(--accent)}
+.wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse}
+th{font:400 13px var(--mono);color:var(--text3);text-align:right;padding:6px 10px;border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:11px 10px;text-align:right;border-bottom:1px solid var(--line);font:400 15px var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+th:first-child,td:first-child{text-align:left;padding-left:0;white-space:normal}
+td:first-child{font:400 17px "IBM Plex Sans",sans-serif}
+.foot{font:400 13px var(--mono);color:var(--text3)}
+.quellen{display:flex;flex-wrap:wrap;gap:4px 18px;font:400 13px var(--mono)}
+.fuss{border-top:1px solid var(--line);font-family:var(--mono);font-size:13px;color:var(--text3)}
+.fuss div.breite{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 32px;padding-block:20px}
+.fuss a{color:var(--text3);margin-left:20px}
+</style>
+</head>
+<body>
+<div class="review"><span>Breite</span><div class="seg" id="width"></div></div>
+<div class="site" id="site"></div>
+
+<script>
+const Q = {
+  laga: ["LAGA Technische Hinweise, Juli 2025", "https://www.laga-online.de/media/technische-hinweise-zur-einstufung-von-abfaellen-nach-ihrere-gefaehrlichkeit_1765200021.pdf"],
+  m23: ["LAGA M 23, 29.11.2022", "https://www.laga-online.de/media/m23-ueberarbeitung-konsolidiert-2022-11-29-v3-endfassung-redakt-bereinigt-4_2_1690372365.pdf"],
+  he: ["Merkblatt Hessen, 05.03.2025", "https://landwirtschaft.hessen.de/sites/landwirtschaft.hessen.de/files/2025-03/2025-03-05_baumerkblatt-entsorgung_von_bauabfaellen.pdf"],
+  bw: ["Schreiben BW, 12.08.2024", "https://www.lubw.baden-wuerttemberg.de/documents/10184/735003/Einf%C3%BChrung+LAGA+Technische+Hinweise+zur+Einstufung.pdf/5c978af9-a846-4741-8c5b-97809982118e"],
+  rp: ["Rundschreiben RLP, 28.07.2025", "https://sam-rlp.de/download/abgrenzung-gefaehrlicher-nicht-gefaehrlicher-boden-bzw-mineralischer-bauabfall-ab-01-08-2023-2/"],
+  ebv: ["EBV Anlage 1, 13.07.2023", "https://www.gesetze-im-internet.de/ersatzbaustoffv/anlage_1.html"],
+  depv: ["DepV Anhang 3, 22.07.2026", "https://www.gesetze-im-internet.de/depv_2009/anhang_3.html"],
+  avv: ["AVV, 30.06.2020", "https://www.gesetze-im-internet.de/avv/anlage.html"],
+  bbg: ["LAGA Boden-Bauschutt, Juni 2024", "https://www.laga-online.de/documents/einstufung-boden-bauschutt-gemische_2_3_4_1723199628.pdf"],
+};
+const links = ids => `<nav class="quellen" aria-label="Quellen">${ids.map(i => `<a href="${Q[i][1]}">${Q[i][0]}</a>`).join("")}</nav>`;
+const danger = land => {
+  if (land === "rp") return { unit: "mg/kg TM", rows: [["Arsen", "150"], ["Blei", "700"], ["Cadmium", "10"], ["Quecksilber", "5"], ["PAK 16", "30"], ["MKW C10–C40", "2.000"], ["PCB", "10 bzw. 50"]], src: ["rp"] };
+  const pak = { he: "1.000, teerpechhaltig 400", bw: "1.000, teerhaltig 200" }[land] || "je nach Land";
+  const hg = { he: "2.500 oder 15, klären", bw: "500 oder 15, klären" }[land] || "15";
+  return { unit: "mg/kg OS", rows: [["Arsen", "1.000"], ["Blei", "2.500"], ["Cadmium", "1.000"], ["Quecksilber", hg], ["PAK 16", pak], ["Benzo(a)pyren", "50"], ["MKW C10–C40", "1.000"], ["PCB", "50"]],
+    src: land === "he" ? ["laga", "he"] : land === "bw" ? ["laga", "bw"] : ["laga"], note: land === "x" ? "Länderregeln nicht ausgewertet." : "" };
+};
+const EBV = { head: ["BM-0 Sand", "BM-0*", "BM-F0*", "BM-F1", "BM-F2", "BM-F3"], rows: [
+  ["Arsen", "10", "20", "40", "40", "40", "150"], ["Blei", "40", "140", "140", "140", "140", "700"], ["Cadmium", "0,4", "1", "2", "2", "2", "10"],
+  ["Quecksilber", "0,2", "0,6", "0,6", "0,6", "0,6", "5"], ["Zink", "60", "300", "300", "300", "300", "1.200"], ["PAK 16", "3", "6", "6", "6", "9", "30"]],
+  src: ["ebv"], note: "Nur Feststoff. Eluatwerte und Bodenarten im KE Baulexikon." };
+const DEP = { head: ["DK 0", "DK I", "DK II", "DK III"], rows: [
+  ["Glühverlust, Masse-%", "3", "3", "5", "10"], ["TOC, Masse-%", "1", "1", "3", "6"], ["BTEX, mg/kg", "6", "–", "–", "–"],
+  ["PCB, mg/kg", "1", "–", "–", "–"], ["MKW, mg/kg", "500", "–", "–", "–"], ["PAK 16, mg/kg", "30", "–", "–", "–"]],
+  src: ["depv"], note: "Nur Feststoff. Eluatwerte im KE Baulexikon." };
+const MATERIAL = {
+  "Bodenaushub": { avv: "17 05 03* oder 17 05 04", tabs: true },
+  "Bauschutt": { avv: "17 01 06* oder 17 01 07", tabs: true },
+  "Boden-Bauschutt-Gemisch": { avv: "17 05 03* oder 17 05 04, über 50 Vol.-% Bauschutt 17 01 06* oder 17 01 07", tabs: true, extra: ["bbg"] },
+  "Fugendichtstoff": { avv: "17 09 02* oder 17 09 04", only: { rows: [["PCB, mg/kg OS", "50"], ["Asbest, Masse-%", "0,1"]], src: ["laga", "m23"] } },
+  "Asbestzement": { avv: "17 06 05*", always: true },
+  "Dachpappe, teerhaltig": { avv: "17 03 03*", always: true },
+};
+const state = { width: "pc", q: "Bodenaushub", mat: "Bodenaushub", open: false, land: "he", tab: 0 };
+const LAND = [["he", "Hessen"], ["bw", "Baden-Württemberg"], ["rp", "Rheinland-Pfalz"], ["x", "Anderes Land"]];
+const fold = s => s.toLowerCase().replace(/ä/g, "ae").replace(/ö/g, "oe").replace(/ü/g, "ue").replace(/ß/g, "ss");
+const avvLink = t => `<p class="avv"><a href="${Q.avv[1]}">${t}</a></p>`;
+const table = (t, first, extra = []) => `<div class="wrap"><table><thead><tr><th>${first}</th>${(t.head || ["Gefährlich ab"]).map(h => `<th>${h}</th>`).join("")}</tr></thead><tbody>${t.rows.map(r => `<tr>${r.map(c => `<td>${c}</td>`).join("")}</tr>`).join("")}</tbody></table></div>${t.note ? `<p class="foot">${t.note}</p>` : ""}${links([...t.src, ...extra])}`;
+function result() {
+  const m = MATERIAL[state.mat];
+  if (!m) return "";
+  if (m.always) return `<p class="answer always">Immer gefährlicher Abfall</p>${avvLink(m.avv)}`;
+  const answer = `<p class="answer">Je nach Befund gefährlich</p>${avvLink(m.avv)}`;
+  if (m.only) return answer + table(m.only, "Stoff");
+  const d = danger(state.land);
+  const body = [() => table(d, `Stoff, ${d.unit}`, m.extra), () => table(EBV, "Stoff, mg/kg", m.extra), () => table(DEP, "Stoff", m.extra)][state.tab]();
+  return answer + `<div class="tabs">${["Gefährlich", "EBV", "Deponie"].map((n, i) => `<button type="button" data-tab="${i}" aria-pressed="${i === state.tab}">${n}</button>`).join("")}</div>` + body;
+}
+function drop() {
+  if (!state.open) return "";
+  const q = fold(state.q.trim());
+  const hits = Object.keys(MATERIAL).filter(k => fold(k).includes(q));
+  return `<div class="drop">${hits.length ? hits.map(k => `<button type="button" data-mat="${k}">${k}</button>`).join("") : `<button type="button" disabled>Kein Treffer</button>`}</div>`;
+}
+function render(focus) {
+  document.getElementById("width").innerHTML = [["pc", "PC"], ["phone", "Handy"]].map(([k, n]) => `<button type="button" data-w="${k}" aria-pressed="${k === state.width}">${n}</button>`).join("");
+  const el = document.getElementById("site");
+  el.className = "site" + (state.width === "phone" ? " phone" : "");
+  el.innerHTML = `<header class="kopf"><nav class="breite" aria-label="Hauptnavigation"><a class="marke" href="#"><svg viewBox="0 0 96 96" aria-hidden="true"><path d="M12 12V84M12 48L46 12M12 48L46 84" stroke="#e9eef3"/><path d="M12 48H84M56 12H84M56 84H84" stroke="#8fd3ff"/></svg>KELLERER ENGINEERING</a><div><a href="#">Software</a><a href="#" aria-current="page">Werkzeuge</a><a href="#">Kontakt</a></div></nav></header>
+    <main class="breite"><a class="zurueck" href="#">← Werkzeuge</a><h1>KE AbfallCheck</h1>
+    <div class="schmal"><div class="find">
+      <input id="q" aria-label="Material" placeholder="Material, z. B. Fugendichtstoff" value="${state.q}" autocomplete="off">
+      <select id="land" aria-label="Bundesland">${LAND.map(([k, n]) => `<option value="${k}" ${k === state.land ? "selected" : ""}>${n}</option>`).join("")}</select>
+      ${drop()}</div>${result()}<p class="foot">Orientierung, keine verbindliche Einstufung.</p></div></main>
+    <footer class="fuss"><div class="breite"><span>© 2026 Michael Kellerer</span><span><a href="#">Impressum</a><a href="#">Datenschutz</a></span></div></footer>`;
+  if (focus) { const i = document.getElementById("q"); i.focus(); i.setSelectionRange(i.value.length, i.value.length); }
+}
+document.addEventListener("click", e => {
+  const a = e.target.closest("a"), b = e.target.closest("button");
+  if (a && a.getAttribute("href") === "#") e.preventDefault();
+  if (!b) return;
+  if (b.dataset.w) state.width = b.dataset.w;
+  else if (b.dataset.tab) state.tab = +b.dataset.tab;
+  else if (b.dataset.mat) { state.mat = state.q = b.dataset.mat; state.open = false; state.tab = 0; }
+  else return;
+  render();
+});
+document.addEventListener("focusin", e => { if (e.target.id === "q" && !state.open) { state.open = true; state.q = ""; render(true); } });
+document.addEventListener("input", e => { if (e.target.id === "q") { state.q = e.target.value; state.open = true; render(true); } });
+document.addEventListener("change", e => { if (e.target.id === "land") { state.land = e.target.value; render(); } });
+render();
+</script>
+</body>
+</html>
