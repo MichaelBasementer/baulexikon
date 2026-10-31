@@ -24,12 +24,13 @@ function fmtWert(w) {
 }
 const sup = fn => fn ? `<sup>${esc(fn)}</sup>` : "";
 
-// Favourites and recently viewed only; nothing leaves the device.
+// Favourites and recently viewed only; nothing leaves the device. The website edition stores nothing.
 function loadStore() {
+  if (IM_WERKZEUG) return { fav: [], recent: [] };
   try { return { fav: [], recent: [], ...JSON.parse(localStorage.getItem(STORE)) }; }
   catch { return { fav: [], recent: [] }; }
 }
-const saveStore = s => localStorage.setItem(STORE, JSON.stringify(s));
+const saveStore = s => { if (!IM_WERKZEUG) localStorage.setItem(STORE, JSON.stringify(s)); };
 function remember(entry) {
   const s = loadStore();
   s.recent = [entry.route, ...s.recent.filter(r => r !== entry.route)].slice(0, 12);
@@ -59,10 +60,12 @@ const hRow = (titel, html) => html ? `<div class="section-h">${esc(titel)}</div>
 const FAV_ICON = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 4h12v17l-6-4-6 4z"/></svg>`;
 function head(titel, sub, opts = {}) {
   const fav = opts.route ? loadStore().fav.includes(opts.route) : false;
-  hdr.innerHTML = (opts.back ? `<a class="icon-btn" href="${opts.back}" aria-label="Zurück">‹</a>` : "") +
+  const merken = opts.route && !IM_WERKZEUG;
+  const zurueck = opts.back && !(IM_WERKZEUG && opts.back === "#/themen"); // The sidebar replaces the Themen page.
+  hdr.innerHTML = (zurueck ? `<a class="icon-btn" href="${opts.back}" aria-label="Zurück">‹</a>` : "") +
     `<div class="ttl"><h1>${esc(titel)}</h1><small>${esc(sub || "")}</small></div>` +
-    (opts.route ? `<button class="icon-btn" id="fav" aria-label="Merken" aria-pressed="${fav}">${FAV_ICON}</button>` : "");
-  if (opts.route) document.getElementById("fav").onclick = e => {
+    (merken ? `<button class="icon-btn" id="fav" aria-label="Merken" aria-pressed="${fav}">${FAV_ICON}</button>` : "");
+  if (merken) document.getElementById("fav").onclick = e => {
     const s = loadStore(), on = !s.fav.includes(opts.route);
     s.fav = on ? [opts.route, ...s.fav] : s.fav.filter(r => r !== opts.route);
     saveStore(s);
@@ -106,19 +109,76 @@ function buildEntries() {
 /* ---------- Views ---------- */
 const SEARCH = `<div class="search"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><input id="q" type="search" placeholder="17 06 05, Flexplatte, PAK …" aria-label="Suche" autocomplete="off"></div>`;
 
+const trefferListe = text => Search.find(index, text).map(h => row(h.route, h.titel, h.sub)).join("") || `<p class="item">Kein Treffer</p>`;
+
 function start() {
-  head("Baulexikon", "Nachschlagen für Bestand und Rückbau");
+  head(IM_WERKZEUG ? "KE Baulexikon" : "Baulexikon", "Nachschlagen für Bestand und Rückbau");
   const offen = D.wandel.length;
-  view.innerHTML = SEARCH + `<div id="res" class="panel" hidden></div><div id="home" class="tiles">` +
+  view.innerHTML = (IM_WERKZEUG ? "" : SEARCH + `<div id="res" class="panel" hidden></div>`) + `<div id="home" class="tiles">` +
     D.kapitel.map(k => `<a class="tile" href="${k.route}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">${k.icon}</svg><b>${esc(k.titel)}</b><span>${esc(k.kurz)}</span></a>`).join("") +
     `<a class="tile" href="#/quellen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><b>Im Wandel</b><span>${offen} offene Änderungen</span></a></div>`;
   const q = document.getElementById("q"), res = document.getElementById("res"), home = document.getElementById("home");
-  if (IM_WERKZEUG) home.insertAdjacentHTML("afterbegin", `<a class="tile" href="../abfallcheck/index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 4h14v16H5zM9 9h6M9 13h6M9 17h3"/></svg><b>KE AbfallCheck</b><span>Einstufung und Grenzwerte</span></a>`);
+  if (IM_WERKZEUG) {
+    home.insertAdjacentHTML("afterbegin", `<a class="tile" href="../abfallcheck/index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 4h14v16H5zM9 9h6M9 13h6M9 17h3"/></svg><b>KE AbfallCheck</b><span>Einstufung und Grenzwerte</span></a>`);
+    return; // The search sits in the sidebar there.
+  }
   q.addEventListener("input", () => {
-    const hits = Search.find(index, q.value), on = !!q.value.trim();
+    const on = !!q.value.trim();
     home.hidden = on; res.hidden = !on;
-    res.innerHTML = hits.map(h => row(h.route, h.titel, h.sub)).join("") || `<p class="item">Kein Treffer</p>`;
+    res.innerHTML = trefferListe(q.value);
   });
+}
+
+/* ---------- Website edition: site header, sidebar, footer around the same views ---------- */
+function webRahmen() {
+  const app = document.querySelector(".app");
+  const kapitelLinks = D.kapitel.map(k => `<a href="${k.route}" data-k="${k.id}">${esc(k.titel)}</a>`).join("");
+  const raum = document.createElement("div");
+  raum.className = "web-raum breite";
+  raum.innerHTML = `<aside class="web-leiste">
+      <a class="web-marke" href="#/">KE Baulexikon</a>
+      ${SEARCH}
+      <details class="web-kapitel" id="kapitelwahl"><summary>Kapitel</summary><nav aria-label="Kapitel">
+        ${kapitelLinks}
+        <a href="#/quellen" data-k="quellen">Quellen</a>
+        <a class="trenner" href="../abfallcheck/index.html">KE AbfallCheck</a>
+        <a href="../index.html">← Werkzeuge</a>
+      </nav></details>
+    </aside>`;
+  app.replaceWith(raum);
+  raum.append(app);
+  document.body.insertAdjacentHTML("afterbegin", `<header class="kopf"><nav class="breite" aria-label="Hauptnavigation">
+    <a class="marke" href="../../index.html"><svg viewBox="0 0 96 96" aria-hidden="true"><path d="M12 12V84M12 48L46 12M12 48L46 84" stroke="#e9eef3"/><path d="M12 48H84M56 12H84M56 84H84" stroke="#8fd3ff"/></svg>KELLERER ENGINEERING</a>
+    <div><a href="../../index.html#software">Software</a><a href="../index.html" aria-current="page">Werkzeuge</a><a href="../../index.html#kontakt">Kontakt</a></div>
+  </nav></header>`);
+  raum.insertAdjacentHTML("afterend", `<footer class="fuss"><div class="breite"><span>© 2026 Michael Kellerer</span>
+    <nav aria-label="Rechtliches"><a href="../../impressum.html">Impressum</a><a href="../../datenschutz.html">Datenschutz</a></nav></div></footer>`);
+
+  const wahl = document.getElementById("kapitelwahl"), breit = matchMedia("(min-width:900px)");
+  const passeAn = () => { wahl.open = breit.matches; };
+  breit.addEventListener("change", passeAn);
+  passeAn();
+  wahl.addEventListener("click", e => { if (e.target.closest("a") && !breit.matches) wahl.open = false; });
+
+  const q = document.getElementById("q");
+  q.addEventListener("input", () => {
+    if (!q.value.trim()) return route();
+    head("Suche", q.value.trim());
+    view.innerHTML = `<div class="panel">${trefferListe(q.value)}</div>`;
+  });
+}
+const WEB_KAPITEL = { b: "bauteile", m: "bauteile", s: "schadstoffe", t: "abfall", a: "abfall", l: "laender", q: "quellen" };
+function webAktiv(h) {
+  document.getElementById("q").value = "";
+  const r = h.match(/^#\/(\w+)(?:\/([\w-]+))?$/) || [];
+  let k = r[1] === "k" ? r[2] : WEB_KAPITEL[r[1]];
+  if (r[1] === "quellen" || r[1] === "bilder") k = "quellen";
+  if (r[1] === "erkennen") k = "bauteile";
+  if (r[1] === "r") {
+    const bereich = (byId(D.regeln, r[2]) || {}).bereich;
+    k = bereich === "bauteil" ? "bauteile" : bereich === "abfall" ? "abfall" : "regeln";
+  }
+  document.querySelectorAll(".web-kapitel a[data-k]").forEach(a => a.dataset.k === k ? a.setAttribute("aria-current", "page") : a.removeAttribute("aria-current"));
 }
 
 function themen() {
@@ -162,12 +222,12 @@ async function bauteil(id) {
   head(b.titel, b.alias, { back: "#/k/bauteile", route });
   remember({ route });
   const sch = schadTags(b.schadstoffe), schnitt = b.richtung !== "belag";
-  view.innerHTML = `<div class="tags"><span class="tag">${esc(b.bauzeit)}</span>${b.dicke ? `<span class="tag">${esc(b.dicke)}</span>` : ""}</div>
-    ${schnitt ? `<div class="card section" id="schnitt"></div>` : ""}
-    ${b.schichten.length ? `<ul class="panel layers">${b.schichten.map((s, i) => `<li><span class="n">${i + 1}</span><span>${esc(s[0])}</span><span class="num">${esc(s[1])}</span></li>`).join("")}</ul>` : ""}
+  const skizze = schnitt ? `<div class="card section" id="schnitt"></div>` : "";
+  const texte = `${b.schichten.length ? `<ul class="panel layers">${b.schichten.map((s, i) => `<li><span class="n">${i + 1}</span><span>${esc(s[0])}</span><span class="num">${esc(s[1])}</span></li>`).join("")}</ul>` : ""}
     <div class="card"><h2>Erkennen</h2><p>${esc(b.erkennen)}</p></div>
-    <div class="card alert"><h2>Schadstoffverdacht</h2><p>${esc(b.verdacht)}</p>${sch ? `<div class="tags">${sch}</div>` : ""}</div>
-    ${galerie(b.fotos)}
+    <div class="card alert"><h2>Schadstoffverdacht</h2><p>${esc(b.verdacht)}</p>${sch ? `<div class="tags">${sch}</div>` : ""}</div>`;
+  view.innerHTML = `<div class="tags"><span class="tag">${esc(b.bauzeit)}</span>${b.dicke ? `<span class="tag">${esc(b.dicke)}</span>` : ""}</div>
+    ${IM_WERKZEUG ? `<div class="web-zwei"><div>${texte}</div><div>${skizze}${galerie(b.fotos)}</div></div>` : `${skizze}${texte}${galerie(b.fotos)}`}
     ${pruefen()}
     ${srcLine(b.quelle || "atlas", "Bandbreiten, keine Planungswerte. Ein Verdacht ersetzt keine Probenahme.")}
     ${(b.belege || []).map(q => srcLine(q)).join("")}`;
@@ -243,12 +303,13 @@ const picks = {};
 function tabelle(id) {
   const t = byId(D.tabellen, id), route = `#/t/${id}`;
   if (!t) return notFound();
-  const pick = picks[id] ||= t.start;
+  const pick = IM_WERKZEUG ? t.spalten.map((_, i) => i) : picks[id] ||= t.start;
   head(t.titel, t.sub, { back: "#/k/abfall", route });
   remember({ route });
   const shown = pick.slice().sort((a, b) => a - b);
-  view.innerHTML = `<div class="section-h">${t.gruppe ? "Bis drei Spalten vergleichen" : "Bis drei Klassen vergleichen"}</div>
-    <div class="chips">${t.spalten.map((c, i) => `<button class="chip" data-c="${i}" aria-pressed="${pick.includes(i)}">${esc(c)}</button>`).join("")}</div>
+  const wahl = IM_WERKZEUG ? "" : `<div class="section-h">${t.gruppe ? "Bis drei Spalten vergleichen" : "Bis drei Klassen vergleichen"}</div>
+    <div class="chips">${t.spalten.map((c, i) => `<button class="chip" data-c="${i}" aria-pressed="${pick.includes(i)}">${esc(c)}</button>`).join("")}</div>`;
+  view.innerHTML = `${wahl}
     <div class="tablewrap"><table><thead><tr><th>${t.gruppe ? "Einbauweise" : "Parameter"}</th>${shown.map(i => `<th>${esc(t.spalten[i])}</th>`).join("")}</tr></thead>
     <tbody>${t.zeilen.map(z => `<tr><td>${z.link ? `<a class="link" href="${esc(z.link)}">${esc(z.parameter)} ›</a>` : esc(z.parameter)}${sup(z.fn)}<small>${esc(z.einheit)}</small></td>${shown.map(i => { const w = z.werte[i], v = `${esc(fmtWert(w))}${sup(w && w.fn)}`; const sym = w && { "+": " ja", "–": " nein" }[w.text] || ""; return `<td class="${w && w.text ? "txt" : "num"}${sym}">${z.link && w && w.text ? `<a class="link" href="${esc(z.link)}">${v} ›</a>` : v}</td>`; }).join("")}</tr>`).join("")}</tbody></table></div>
     ${t.fussnoten.length ? `<details class="card"><summary>Fußnoten</summary>${t.fussnoten.map(f => `<p>${esc(f)}</p>`).join("")}</details>` : ""}
@@ -338,6 +399,8 @@ const ROUTES = [
 ];
 function route() {
   const h = location.hash || "#/";
+  if (IM_WERKZEUG && h === "#/merkliste") { location.hash = "#/"; return; }
+  if (IM_WERKZEUG) webAktiv(h);
   const r = ROUTES.find(x => x[0].test(h));
   if (r) r[1](...h.match(r[0]).slice(1));
   else if (h === "#/" ) start();
@@ -355,11 +418,12 @@ async function boot() {
     return;
   }
   index = Search.build(buildEntries());
+  if (IM_WERKZEUG) webRahmen();
   addEventListener("hashchange", route);
   route();
 }
 
-if ("serviceWorker" in navigator) {
+if (!IM_WERKZEUG && "serviceWorker" in navigator) {
   // First-time installs must not reload; only a replacement worker does.
   const hadController = !!navigator.serviceWorker.controller;
   navigator.serviceWorker.addEventListener("controllerchange", () => { if (hadController) location.reload(); });
