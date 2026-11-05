@@ -10,16 +10,7 @@
 <link rel="icon" href="icon-192.png">
 <link rel="apple-touch-icon" href="icon-192.png">
 <link rel="stylesheet" href="style.css">
-<script>
-// Website edition: same app and data, own look. document.write keeps the styles render-blocking, so the phone look never flashes.
-if (location.pathname.includes("/werkzeuge/baulexikon/")) {
-  document.documentElement.classList.add("web");
-  document.querySelector('link[rel="manifest"]').remove();
-  document.querySelector('meta[name="theme-color"]').content = "#0a0e13";
-  document.title = "KE Baulexikon – Kellerer Engineering";
-  document.write('<link rel="stylesheet" href="../../assets/site.css"><link rel="stylesheet" href="web.css">');
-}
-</script>
+<script src="web-init.js"></script>
 </head>
 <body>
 <div class="app">
