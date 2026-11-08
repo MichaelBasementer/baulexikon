@@ -32559,7 +32559,7 @@
     ]
    },
    {
-    "parameter": "DDT, HCH inkl. Lindan, Aldrin u. a., je Stoff",
+    "parameter": "DDT, Pentachlorbenzol, Hexachlorbenzol, Aldrin, Chlordan, Chlordecon, HCH inkl. Lindan, Dieldrin, Endrin, Heptachlor, Hexabrombiphenyl, Mirex, Toxaphen, je Stoff",
     "einheit": "",
     "werte": [
      {
@@ -32606,7 +32606,8 @@
       "zahl": 1500,
       "fn": "1"
      }
-    ]
+    ],
+    "x": true
    },
    {
     "parameter": "Dicofol",
@@ -32620,7 +32621,8 @@
       "s": "50",
       "zahl": 50
      }
-    ]
+    ],
+    "x": true
    },
    {
     "parameter": "Endosulfan",
@@ -32634,7 +32636,8 @@
       "s": "50",
       "zahl": 50
      }
-    ]
+    ],
+    "x": true
    },
    {
     "parameter": "HBCD",
@@ -32663,7 +32666,8 @@
       "s": "100",
       "zahl": 100
      }
-    ]
+    ],
+    "x": true
    },
    {
     "parameter": "Pentachlorphenol (PCP)",
@@ -32677,7 +32681,8 @@
       "s": "100",
       "zahl": 100
      }
-    ]
+    ],
+    "x": true
    },
    {
     "parameter": "PFHxS und Salze",
@@ -32766,7 +32771,8 @@
       "zahl": 350,
       "fn": "5"
      }
-    ]
+    ],
+    "x": true
    },
    {
     "parameter": "Polychlorierte Naphthaline",
@@ -32780,7 +32786,8 @@
       "s": "10",
       "zahl": 10
      }
-    ]
+    ],
+    "x": true
    }
   ],
   "quelle": "laga-th",
@@ -33107,7 +33114,7 @@
     "einheit": "",
     "werte": [
      {
-      "text": "10 mg/kg bzw. 50 mg/kg"
+      "text": "PCB6 10 mg/kg bzw. PCB gesamt 50 mg/kg"
      },
      null
     ]

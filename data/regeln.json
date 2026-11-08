@@ -43,8 +43,8 @@
     "Ein Stern am Abfallschlüssel bedeutet gefährlicher Abfall. Bei Spiegeleinträgen gibt es denselben Abfall einmal mit und einmal ohne Stern. Dann entscheiden die Gehalte gefährlicher Stoffe und die gefahrenrelevanten Eigenschaften.",
     "Weil Abfälle oft Gemische unbekannter Zusammensetzung sind, empfiehlt die LAGA die Technischen Hinweise als vereinfachte Prüfung anhand geeigneter Parameter. Die Länder ergänzen sie durch eigene Werte, siehe Länderregeln.",
     "Die Konzentrationsgrenzen beziehen sich auf die Originalsubstanz. Ist eine erreicht oder überschritten, gilt der gefährliche Spiegeleintrag. Liegen Detailkenntnisse zur Zusammensetzung vor, haben AVV und Anhang III AbfRRL Vorrang.",
-    "Laborfalle: Bitumen- und Kunststoffanteile können bei der MKW-Analytik falsch-positive Befunde ergeben. pH-Werte ≤ 2 oder ≥ 11,5 sind ein Indiz für reizend oder ätzend (HP 4, HP 8)."
-  ],"quelle":"laga-th","tabellen":["laga-metalle","laga-organik","laga-pop","laga-eluat"]},
+    "FCKW und H-FCKW: Ozonabbauende Stoffe mit H420 machen einen Abfall ab 0,1 % (1.000 mg/kg) gefährlich (HP 14, Verordnung (EU) 2017/997).","EOX: Die LAGA-Tabellen nennen dafür keine Grenze (Kein Grenzwert erfasst). Hessen: Kein Grenzwert, ab 50 mg/kg OS auf POP prüfen. Rheinland-Pfalz nennt für Boden und mineralischen Bauabfall 10 mg/kg TM.","Phenole haben in den LAGA-Tabellen nur einen Eluatwert, keinen Feststoffwert.","Baden-Württemberg: Bei natürlichen MKW-Gehalten im Boden (Ölschiefer) ist erst über 8.000 mg/kg von gefährlichem Abfall auszugehen. Rheinland-Pfalz: Boden mit Summe PFAS ab 50 mg/kg gilt als gefährlich.","Laborfalle: Bitumen- und Kunststoffanteile können bei der MKW-Analytik falsch-positive Befunde ergeben. pH-Werte ≤ 2 oder ≥ 11,5 sind ein Indiz für reizend oder ätzend (HP 4, HP 8)."
+  ],"quelle":"laga-th","belege":["eu-2017-997","he-merkblatt","rp-rundschreiben","rp-pfas","bw-schreiben"],"tabellen":["laga-metalle","laga-organik","laga-pop","laga-eluat"]},
   {"id":"boden-bauschutt","bereich":"abfall","titel":"Boden-Bauschutt-Gemische","sub":"LAGA-Information Juni 2024","stichworte":"Gemisch Fremdbestandteile Aushub Bauschutt 50 Vol.-%","text":[
     "Die AVV kennt für solche Gemische keinen eigenen Schlüssel.",
     "Bauschuttanteil bis 50 Vol.-%: Spiegeleintrag 17 05 03* / 17 05 04.",
@@ -54,7 +54,7 @@
   {"id":"asbest-abfall","bereich":"abfall","titel":"Asbesthaltige Abfälle","sub":"LAGA M23","stichworte":"Asbest Bauschutt 0,1 M.-% Rückbaukonzept Getrennthaltung Deponie","text":[
     "Bei Bauwerken, mit deren Errichtung vor dem 31.10.1993 begonnen wurde, ist ohne Nachweis der Asbestfreiheit von möglichem Asbest auszugehen.",
     "Mineralische Bau- und Abbruchabfälle gehören grundsätzlich zur Gruppe 17 01. Asbesthaltige Baustoffe sind davon abweichend 17 06 05* zuzuordnen.",
-    "Bauschutt unter 0,1 M.-% Asbest ist gering asbesthaltig und nicht gefährlich. Ab 0,1 M.-% kommt der Spiegeleintrag 17 01 06* in Betracht.",
+    "Bauschutt unter 0,1 M.-% Asbest ist gering asbesthaltig und nicht gefährlich. Ab 0,1 M.-% kommt der Spiegeleintrag 17 01 06* in Betracht.","Für asbesthaltige Baustoffe wie Spachtelmasse, Putz oder Fliesenkleber gilt: Gehalt nicht maßgeblich, asbesthaltig = 17 06 05*. Das Kriterium 0,1 M.-% gilt nur, wo es einen nicht gefährlichen Spiegeleintrag gibt.",
     "Die M23 regelt außerdem Probenahme, Rückbaukonzept, Annahmekontrolle in Recyclinganlagen, Verpackung, Transport und Deponierung."
   ],"quelle":"laga-m23"},
   {"id":"teer-strasse","bereich":"abfall","titel":"Teerhaltiger Straßenaufbruch","sub":"LAGA-Grundsätze Mai 2024","stichworte":"Ausbauasphalt Teer PAK 25 mg/kg RuVA-StB","text":[

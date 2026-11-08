@@ -116,7 +116,15 @@ rechner.gefahr.forEach(g => {
   if (g.laga) zeile(g.laga[0], g.laga[1], w);
   if (g.rp) zeile("rp-gefaehrlich", g.rp, w);
   if (g.quelle) quelle(g.quelle, w);
-  if (g.text && !D.regeln.find(r => r.id === g.regel).text.join(" ").includes(g.text)) err(`${w}: Wert ${g.text} steht nicht in Regel ${g.regel}`);
+  [g.text, ...Object.values(g.textLand || {})].filter(Boolean).forEach(text => {
+    if (!D.regeln.find(r => r.id === g.regel).text.join(" ").includes(text)) err(`${w}: Wert ${text} steht nicht in Regel ${g.regel}`);
+  });
+  Object.values(g.quelleLand || {}).forEach(q => quelle(q, w));
+  if (g.rpErsetzt) zeile("rp-gefaehrlich", g.rpErsetzt, w);
+});
+Object.entries(rechner.rpZuordnung).forEach(([laga, rp]) => {
+  if (!["laga-metalle", "laga-organik", "laga-eluat"].some(t => D.tabellen.find(x => x.id === t).zeilen.some(z => z.parameter === laga))) err(`rechner rpZuordnung: ${laga} fehlt`);
+  if (rp) zeile("rp-gefaehrlich", rp, `rechner rpZuordnung ${laga}`);
 });
 Object.values(rechner.ebv).forEach(e => { if (!D.tabellen.some(t => t.id === e.tabelle)) err(`rechner: Tabelle ${e.tabelle} fehlt`); });
 const depv = D.tabellen.find(t => t.id === rechner.depv.tabelle);
@@ -132,6 +140,8 @@ rechner.materialien.forEach(m => {
   (m.stoffe || []).forEach(s => { if (!stoffe.has(s)) err(`${w}: unbekannter Stoff ${s}`); });
   if (m.ebv && !rechner.ebv[m.ebv]) err(`${w}: EBV ${m.ebv}`);
   if (m.hinweisRegel && !R.has(m.hinweisRegel)) err(`${w}: Regel ${m.hinweisRegel}`);
+  (m.quellen || []).forEach(q => quelle(q, w));
+  Object.values(m.landHinweis || {}).forEach(h => quelle(h.quelle, w));
   m.lexikon.forEach(l => {
     const treffer = l.match(/^#\/([rsbt])\/(.+)$/);
     if (!treffer || !ROUTEN[treffer[1]].some(x => x.id === treffer[2])) err(`${w}: Verweis ${l}`);
