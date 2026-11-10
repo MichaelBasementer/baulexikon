@@ -149,7 +149,7 @@ rechner.materialien.forEach(m => {
 });
 // Offline must cover every file the app can ask for.
 const off = fs.readFileSync(path.join(__dirname, "files.js"), "utf8");
-["data", "img/schnitte", "img/fotos", "fonts"].forEach(d => fs.readdirSync(path.join(__dirname, d)).forEach(f => { if (!off.includes(`"${d}/${f}"`)) err(`files.js: ${d}/${f} fehlt, tools/make-schnitte.js laufen lassen`); }));
+["data", "img/schnitte", "img/fotos", "kit/fonts"].forEach(d => fs.readdirSync(path.join(__dirname, d)).forEach(f => { if (!off.includes(`"${d}/${f}"`)) err(`files.js: ${d}/${f} fehlt, tools/make-schnitte.js laufen lassen`); }));
 
 errs.forEach(e => console.log("FAIL " + e));
 console.log(errs.length ? `${errs.length} Fehler` : `Daten ok: ${D.bauteile.length} Bauteile, ${D.schadstoffe.length} Schadstoffe, ${D.avv.length} AVV, ${D.tabellen.length} Tabellen, ${D.quellen.length} Quellen`);

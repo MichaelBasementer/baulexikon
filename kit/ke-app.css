@@ -1,0 +1,249 @@
+/* KE App-Grundgerüst – shared look of the KE app family (Stempeluhr, Baulexikon, Asbestrechner, AbfallCheck).
+   Approved 2026-11-08: angular like the KE logo, rows with hairlines instead of boxes, large numbers,
+   app colour only on name stroke, active tab, main button and result. Every class starts with "ke-".
+   Each app sets its colour once:  :root { --wz: var(--ke-lav); }  (lav | blau | bern | gruen) */
+
+@font-face{font-family:"IBM Plex Sans";font-weight:300;font-display:swap;src:url(fonts/ibm-plex-sans-latin-300-normal.woff2) format("woff2")}
+@font-face{font-family:"IBM Plex Sans";font-weight:400;font-display:swap;src:url(fonts/ibm-plex-sans-latin-400-normal.woff2) format("woff2")}
+@font-face{font-family:"IBM Plex Sans";font-weight:500;font-display:swap;src:url(fonts/ibm-plex-sans-latin-500-normal.woff2) format("woff2")}
+@font-face{font-family:"IBM Plex Mono";font-weight:400;font-display:swap;src:url(fonts/ibm-plex-mono-latin-400-normal.woff2) format("woff2")}
+@font-face{font-family:"IBM Plex Mono";font-weight:500;font-display:swap;src:url(fonts/ibm-plex-mono-latin-500-normal.woff2) format("woff2")}
+
+/* ---------- Tokens: light on :root, dark via system setting or the in-app switch ---------- */
+:root{
+  --ke-bg:#ffffff; --ke-fl:#f3f5f7; --ke-ink:#111820; --ke-mut:#5f6b77; --ke-line:#e2e6ea; --ke-line2:#c4ccd4;
+  --ke-rot:#b3261e; --ke-pos:#1d7a43; --ke-wz-txt:#ffffff; --ke-schleier:rgba(5,8,11,.45);
+  --ke-lav:#5b4fd0; --ke-blau:#1f6fa8; --ke-bern:#9a6200; --ke-gruen:#1d7a43;
+  --ke-sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --ke-mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+  --ke-rand:18px; --ke-leiste-h:62px;
+  --wz:var(--ke-blau);
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="hell"]){
+    --ke-bg:#0a0e13; --ke-fl:#121a23; --ke-ink:#e9eef3; --ke-mut:#93a4b5; --ke-line:#1c2733; --ke-line2:#2e3d4d;
+    --ke-rot:#ff8f80; --ke-pos:#7fdc9a; --ke-wz-txt:#0a0e13; --ke-schleier:rgba(0,0,0,.6);
+    --ke-lav:#b3a8ff; --ke-blau:#8fd3ff; --ke-bern:#ffc24d; --ke-gruen:#7fdc9a;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dunkel"]{
+  --ke-bg:#0a0e13; --ke-fl:#121a23; --ke-ink:#e9eef3; --ke-mut:#93a4b5; --ke-line:#1c2733; --ke-line2:#2e3d4d;
+  --ke-rot:#ff8f80; --ke-pos:#7fdc9a; --ke-wz-txt:#0a0e13; --ke-schleier:rgba(0,0,0,.6);
+  --ke-lav:#b3a8ff; --ke-blau:#8fd3ff; --ke-bern:#ffc24d; --ke-gruen:#7fdc9a;
+  color-scheme:dark;
+}
+
+/* ---------- Base ---------- */
+.ke-app,.ke-app *{box-sizing:border-box}
+.ke-app{margin:0;min-height:100vh;min-height:100dvh;background:var(--ke-bg);color:var(--ke-ink);font-family:var(--ke-sans);
+  font-size:15px;line-height:1.5;-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%}
+/* :where() keeps this reset at low specificity so component colours (.ke-knopf, .ke-kopf__knopf …) win. */
+.ke-app :where(button,input,select,textarea){font:inherit;color:inherit}
+.ke-app :focus-visible{outline:2px solid var(--ke-ink);outline-offset:2px}
+.ke-num{font-variant-numeric:tabular-nums}
+.ke-mono{font-family:var(--ke-mono)}
+[hidden]{display:none!important}
+
+/* ---------- Header: app name with colour stroke, or back link; menu button on the right ---------- */
+.ke-kopf{position:sticky;top:0;z-index:20;background:var(--ke-bg);display:flex;align-items:flex-start;gap:10px;
+  padding:calc(10px + env(safe-area-inset-top,0px)) max(var(--ke-rand),env(safe-area-inset-right,0px)) 12px max(var(--ke-rand),env(safe-area-inset-left,0px))}
+.ke-kopf__name{margin:0;font-size:19px;font-weight:500;line-height:1.3;display:grid;gap:7px}
+.ke-kopf__name::after{content:"";width:18px;height:3px;background:var(--wz)}
+.ke-kopf__zurueck{background:none;border:0;padding:4px 0;font-size:15px;color:var(--ke-mut);cursor:pointer;text-decoration:none}
+.ke-kopf__rechts{margin-left:auto;display:flex;gap:2px;margin-top:-6px;margin-right:-8px}
+.ke-kopf__knopf{width:44px;height:44px;display:grid;place-items:center;background:none;border:0;color:var(--ke-mut);cursor:pointer;padding:0}
+.ke-kopf__knopf svg{width:22px;height:22px}
+.ke-kopf__knopf[aria-pressed="true"]{color:var(--wz)}
+.ke-titel{padding:0 max(var(--ke-rand),env(safe-area-inset-right,0px)) 10px max(var(--ke-rand),env(safe-area-inset-left,0px));display:grid;gap:2px}
+.ke-titel h1,.ke-titel h2{margin:0;font-size:23px;font-weight:500;line-height:1.25;text-wrap:balance}
+.ke-titel p{margin:0;font-size:13.5px;color:var(--ke-mut)}
+
+/* ---------- Content column ---------- */
+.ke-inhalt{display:flex;flex-direction:column;gap:16px;max-width:640px;margin:0 auto;
+  padding:4px max(var(--ke-rand),env(safe-area-inset-right,0px)) calc(var(--ke-leiste-h) + 28px + env(safe-area-inset-bottom,0px)) max(var(--ke-rand),env(safe-area-inset-left,0px))}
+.ke-inhalt--ohne-leiste{padding-bottom:calc(28px + env(safe-area-inset-bottom,0px))}
+
+/* ---------- Bottom bar with symbols ---------- */
+.ke-leiste{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--ke-bg);border-top:1px solid var(--ke-line);
+  display:grid;grid-auto-flow:column;grid-auto-columns:1fr;padding:0 max(8px,env(safe-area-inset-right,0px)) env(safe-area-inset-bottom,0px) max(8px,env(safe-area-inset-left,0px))}
+.ke-leiste>a,.ke-leiste>button{display:grid;justify-items:center;align-content:start;gap:3px;min-height:var(--ke-leiste-h);padding:10px 2px 8px;
+  background:none;border:0;font-size:11.5px;color:var(--ke-mut);text-decoration:none;position:relative;cursor:pointer}
+.ke-leiste svg{width:22px;height:22px}
+.ke-leiste [aria-selected="true"],.ke-leiste [aria-current="page"]{color:var(--ke-ink);font-weight:500}
+.ke-leiste [aria-selected="true"]::before,.ke-leiste [aria-current="page"]::before{content:"";position:absolute;top:-1px;left:50%;width:24px;margin-left:-12px;height:3px;background:var(--wz)}
+
+/* ---------- Rows: label left, value right; ke-z--tipp is tappable (button or a) ---------- */
+.ke-abschn{font-size:12.5px;color:var(--ke-mut);margin:4px 0 -10px}
+.ke-zeilen{display:grid;border-top:1px solid var(--ke-line)}
+.ke-zeilen--ohne{border-top:0}
+.ke-z{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:12px 0;border-bottom:1px solid var(--ke-line);
+  font-size:15px;position:relative;width:100%;background:none;border-left:0;border-right:0;border-top:0;text-align:left;text-decoration:none;color:inherit}
+button.ke-z,a.ke-z{cursor:pointer}
+.ke-z__t{display:grid;min-width:0}
+.ke-z__t small,.ke-z__w small{font-size:12px;color:var(--ke-mut);font-weight:400}
+.ke-z__w{display:grid;justify-items:end;text-align:right;flex:none;max-width:60%;font-variant-numeric:tabular-nums}
+.ke-z--tipp .ke-z__w b{font-weight:400}
+.ke-z--tipp .ke-z__w b::after{content:" \203A";color:var(--ke-mut)}
+.ke-z--summe{font-weight:500;border-bottom:0}
+.ke-z--klein{font-size:14px;padding:10px 0}
+.ke-z:disabled{cursor:default;color:var(--ke-mut)}
+/* Invisible native input over a row (time, number): the whole row opens the picker. */
+.ke-z__eingabe{position:absolute;inset:0;width:100%;height:100%;opacity:0;border:0;padding:0;margin:0;cursor:pointer;-webkit-appearance:none;appearance:none}
+
+/* Visible input or select on the right of a row (numbers, Bundesland …). */
+.ke-feld{flex:none;width:8.5em;max-width:55%;text-align:right;border:1px solid var(--ke-line2);border-radius:2px;background:var(--ke-bg);
+  padding:7px 9px;font-size:16px;font-variant-numeric:tabular-nums;color:var(--ke-ink)}
+select.ke-feld{width:auto;text-align:left}
+.ke-feld:focus{outline:none;border-color:var(--ke-ink)}
+/* Labelled input on its own line (date, note, longer text). */
+.ke-eingabe{display:grid;gap:5px;font-size:13px;color:var(--ke-mut)}
+.ke-eingabe input,.ke-eingabe select,.ke-eingabe textarea{width:100%;border:1px solid var(--ke-line2);border-radius:2px;background:var(--ke-bg);
+  padding:10px 11px;font-size:16px;color:var(--ke-ink)}
+.ke-eingabe input:focus,.ke-eingabe select:focus,.ke-eingabe textarea:focus{outline:none;border-color:var(--ke-ink)}
+.ke-eingaben{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.ke-eingaben .ke-eingabe--voll{grid-column:1/-1}
+/* Checkbox row (pick several). */
+.ke-wahl{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--ke-line);font-size:15px;cursor:pointer}
+.ke-wahl input{width:20px;height:20px;margin:0;accent-color:var(--wz);flex:none}
+
+/* ---------- Status ---------- */
+.ke-pos{color:var(--ke-pos)} .ke-neg{color:var(--ke-rot)}
+.ke-qu{width:7px;height:7px;background:var(--wz);display:inline-block;flex:none}
+.ke-qu--rot{background:var(--ke-rot)} .ke-qu--grau{background:var(--ke-line2)}
+.ke-kat{font-size:12.5px;color:var(--ke-mut);display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+
+/* ---------- Buttons ---------- */
+.ke-knopf{display:block;width:100%;text-align:center;font-size:16px;font-weight:500;padding:13px 16px;border-radius:2px;border:1px solid var(--wz);
+  background:var(--wz);color:var(--ke-wz-txt);cursor:pointer;text-decoration:none}
+.ke-knopf--zweit{background:none;color:var(--ke-ink);border-color:var(--ke-line2);font-weight:400;font-size:15px}
+.ke-knopf:disabled{opacity:.5;cursor:default}
+.ke-knoepfe{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.ke-link{background:none;border:0;padding:0;font-size:14.5px;color:var(--ke-ink);text-decoration:underline;text-decoration-color:var(--wz);
+  text-decoration-thickness:2px;text-underline-offset:4px;cursor:pointer;justify-self:start;align-self:flex-start}
+
+/* ---------- Search field ---------- */
+.ke-suche{display:flex;align-items:center;gap:10px;border:1px solid var(--ke-line2);border-radius:2px;padding:0 12px;background:var(--ke-bg)}
+.ke-suche:focus-within{border-color:var(--ke-ink)}
+.ke-suche svg{width:17px;height:17px;flex:none;color:var(--ke-mut)}
+.ke-suche input{flex:1;min-width:0;border:0;outline:0;background:none;padding:11px 0;font-size:16px}
+.ke-suche input::placeholder{color:var(--ke-mut)}
+
+/* ---------- Text toggle (e.g. Aussagesicherheit | Probenzahl) ---------- */
+.ke-umsch{display:flex;gap:22px;border-bottom:1px solid var(--ke-line)}
+.ke-umsch button{background:none;border:0;padding:4px 0 10px;font-size:14.5px;color:var(--ke-mut);position:relative;cursor:pointer}
+.ke-umsch [aria-pressed="true"]{color:var(--ke-ink)}
+.ke-umsch [aria-pressed="true"]::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--ke-ink)}
+
+/* ---------- Results and large numbers ---------- */
+.ke-erg{display:grid;gap:2px}
+.ke-erg__lbl{font-size:12.5px;color:var(--ke-mut)}
+.ke-erg__zahl{font-size:46px;font-weight:300;line-height:1.05;letter-spacing:-.02em;font-variant-numeric:tabular-nums;color:var(--wz)}
+.ke-erg__zahl--ink{color:var(--ke-ink);font-size:34px}
+.ke-erg__satz{font-size:14px;color:var(--ke-mut);line-height:1.45}
+.ke-erg__warn{font-size:14px;display:flex;align-items:center;gap:8px;color:var(--ke-rot)}
+.ke-gross{font-size:52px;font-weight:300;line-height:1;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.ke-uhr{font-size:62px;font-weight:300;line-height:1;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.ke-text{font-size:14.5px;line-height:1.55;margin:0}
+.ke-text--mut{color:var(--ke-mut);font-size:13px}
+.ke-formel{font-family:var(--ke-mono);font-size:13.5px;padding:10px 12px;background:var(--ke-fl);overflow-x:auto}
+.ke-punkte{margin:0;padding:0;list-style:none;display:grid;gap:8px;font-size:14.5px;line-height:1.45}
+.ke-punkte li{display:grid;grid-template-columns:12px 1fr;gap:8px}
+.ke-punkte li::before{content:"";width:5px;height:5px;background:var(--ke-ink);margin-top:8px}
+.ke-hinweis{display:flex;gap:10px;align-items:flex-start;padding:12px 0;border-top:1px solid var(--ke-line);border-bottom:1px solid var(--ke-line);font-size:14px}
+.ke-hinweis .ke-qu{margin-top:7px}
+.ke-hinweis__text{flex:1;display:grid;gap:8px}
+
+/* ---------- Week bar with target mark ---------- */
+.ke-skala{height:6px;background:var(--ke-fl);position:relative}
+.ke-skala i{position:absolute;left:0;top:0;bottom:0;background:var(--wz)}
+.ke-skala b{position:absolute;top:-3px;bottom:-3px;width:2px;background:var(--ke-ink)}
+
+/* ---------- Month grid ---------- */
+.ke-monat{display:flex;justify-content:space-between;align-items:center;font-size:17px;font-weight:500}
+.ke-monat button{width:44px;height:40px;background:none;border:0;font-size:20px;color:var(--ke-mut);cursor:pointer}
+.ke-kal{display:grid;grid-template-columns:repeat(7,1fr);border-top:1px solid var(--ke-line);border-left:1px solid var(--ke-line)}
+.ke-kal>*{border:0;border-right:1px solid var(--ke-line);border-bottom:1px solid var(--ke-line);min-height:52px;padding:4px 4px 3px;background:none;
+  display:grid;align-content:space-between;justify-items:start;text-align:left;font-size:13px;font-variant-numeric:tabular-nums;position:relative;color:inherit;min-width:0}
+button.ke-kal__tag{cursor:pointer}
+.ke-kal small{font-size:10px;color:var(--ke-mut);white-space:nowrap;overflow:hidden;max-width:100%}
+.ke-kal__wd{min-height:0!important;padding:5px 4px!important;font-size:11px!important;color:var(--ke-mut)}
+.ke-kal__we{background:var(--ke-fl)!important;color:var(--ke-mut)}
+.ke-kal__heute{outline:2px solid var(--wz);outline-offset:-2px}
+.ke-kal__frei small{color:var(--ke-ink)}
+.ke-kal__frei::after{content:"";position:absolute;top:6px;right:5px;width:5px;height:5px;background:var(--ke-line2)}
+.ke-kal__warn::after{content:"";position:absolute;top:6px;right:5px;width:5px;height:5px;background:var(--ke-rot)}
+
+/* ---------- Sheet from below (dialogs, menu) ---------- */
+.ke-schleier{position:fixed;inset:0;z-index:50;background:var(--ke-schleier);display:flex;align-items:flex-end;justify-content:center}
+.ke-blatt{width:100%;max-width:640px;max-height:88vh;max-height:88dvh;overflow-y:auto;background:var(--ke-bg);border-top:1px solid var(--ke-line);
+  padding:18px max(var(--ke-rand),env(safe-area-inset-right,0px)) calc(20px + env(safe-area-inset-bottom,0px)) max(var(--ke-rand),env(safe-area-inset-left,0px));
+  display:grid;gap:14px;animation:ke-hoch .18s ease-out}
+.ke-blatt:focus{outline:none}
+.ke-blatt>.ke-zeilen:first-child{border-top:0}
+.ke-blatt__kz{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.ke-blatt__kz h2,.ke-blatt__kz h3{margin:0;font-weight:500;font-size:17px}
+.ke-blatt__kz span{font-size:13px;color:var(--ke-mut)}
+.ke-box{width:15px;height:15px;border:1.5px solid var(--ke-line2);display:inline-block;position:relative;top:2px;flex:none}
+.ke-box--an{border-color:var(--ke-ink)}
+.ke-box--an::after{content:"";position:absolute;inset:2.5px;background:var(--ke-ink)}
+.ke-apps{display:flex;gap:16px;flex-wrap:wrap}
+.ke-apps a{display:grid;justify-items:center;gap:5px;font-size:11px;color:var(--ke-mut);text-decoration:none;width:62px;text-align:center}
+.ke-apps svg{width:42px;height:42px;border-radius:10px}
+.ke-apps a[aria-current="true"]{color:var(--ke-ink);font-weight:500}
+.ke-fehler{color:var(--ke-rot);font-size:14px;margin:0}
+@keyframes ke-hoch{from{transform:translateY(24px);opacity:.6}to{transform:none;opacity:1}}
+
+/* ---------- Toast ---------- */
+.ke-toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(var(--ke-leiste-h) + 18px + env(safe-area-inset-bottom,0px));z-index:60;
+  background:var(--ke-ink);color:var(--ke-bg);padding:10px 14px;font-size:14px;max-width:calc(100% - 36px)}
+
+/* ---------- KE logo "Konstruktion" (start screen, loading) ---------- */
+.ke-logo{overflow:visible;fill:none}
+.ke-logo .k path,.ke-logo .e path{stroke-width:8}
+.ke-logo .k path{stroke:var(--ke-ink)}
+.ke-logo .e path{stroke:var(--ke-blau)}
+.ke-logo .hilfe{opacity:0;stroke:var(--ke-blau);stroke-width:1.2}
+.ke-logo--klein .hilfe{stroke-width:2.8}
+.ke-logo.spielt path{stroke-dasharray:1}
+.ke-logo.spielt .g1{animation:ke-zeichne 260ms linear 0ms both}
+.ke-logo.spielt .g2{animation:ke-zeichne 260ms linear 50ms both}
+.ke-logo.spielt .g3{animation:ke-zeichne 260ms linear 100ms both}
+.ke-logo.spielt .g4{animation:ke-zeichne 260ms linear 150ms both}
+.ke-logo.spielt .g5{animation:ke-zeichne 260ms linear 200ms both}
+.ke-logo.spielt .g6{animation:ke-zeichne 260ms linear 250ms both}
+.ke-logo.spielt .hilfe{animation:ke-hilfe 1700ms linear both}
+.ke-logo.spielt .kv{animation:ke-zeichne 240ms linear 450ms both}
+.ke-logo.spielt .ko,.ke-logo.spielt .ku{animation:ke-zeichne 200ms linear 600ms both}
+.ke-logo.spielt .em{animation:ke-zeichne 240ms linear 760ms both}
+.ke-logo.spielt .eo,.ke-logo.spielt .eu{animation:ke-zeichne 160ms linear 940ms both}
+.ke-logo--klein.spielt .g1{animation:ke-zeichne 180ms linear 0ms both}
+.ke-logo--klein.spielt .g2{animation:ke-zeichne 180ms linear 30ms both}
+.ke-logo--klein.spielt .g3{animation:ke-zeichne 180ms linear 60ms both}
+.ke-logo--klein.spielt .g4{animation:ke-zeichne 180ms linear 90ms both}
+.ke-logo--klein.spielt .g5{animation:ke-zeichne 180ms linear 120ms both}
+.ke-logo--klein.spielt .g6{animation:ke-zeichne 180ms linear 150ms both}
+.ke-logo--klein.spielt .hilfe{animation:ke-hilfe-k 1100ms linear both}
+.ke-logo--klein.spielt .kv{animation:ke-zeichne 180ms linear 300ms both}
+.ke-logo--klein.spielt .ko,.ke-logo--klein.spielt .ku{animation:ke-zeichne 150ms linear 420ms both}
+.ke-logo--klein.spielt .em{animation:ke-zeichne 180ms linear 540ms both}
+.ke-logo--klein.spielt .eo,.ke-logo--klein.spielt .eu{animation:ke-zeichne 120ms linear 680ms both}
+@keyframes ke-zeichne{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+@keyframes ke-hilfe{0%{opacity:.75}80%{opacity:.75}100%{opacity:0}}
+@keyframes ke-hilfe-k{0%{opacity:.9}78%{opacity:.9}100%{opacity:0}}
+
+.ke-start{position:fixed;inset:0;z-index:100;background:var(--ke-bg);display:grid;place-items:center;align-content:center;gap:22px;transition:opacity .22s ease}
+.ke-start--weg{opacity:0}
+.ke-start .ke-logo{width:92px;height:92px}
+.ke-start__name{text-align:center;font-size:17px;display:grid;gap:2px;color:var(--ke-ink)}
+.ke-start__name small{font-size:12px;color:var(--ke-mut)}
+.ke-laden{display:grid;justify-items:center;gap:12px;padding:28px 0;color:var(--ke-mut);font-size:14px}
+.ke-laden .ke-logo{width:44px;height:44px}
+
+@media (prefers-reduced-motion:reduce){
+  .ke-blatt{animation:none}
+  .ke-logo.spielt path{stroke-dasharray:none;animation:none!important}
+  .ke-logo.spielt .hilfe{animation:none!important;opacity:0}
+  .ke-start{transition:none}
+}

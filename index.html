@@ -3,27 +3,36 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Baulexikon</title>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+<title>KE Baulexikon</title>
 <meta name="description" content="Nachschlagen für Bestand und Rückbau: Bauteilaufbauten, Gebäudeschadstoffe, TRGS und Abfallrecht">
-<meta name="theme-color" content="#2350C8">
+<meta name="theme-color" content="#ffffff">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icon-192.png">
-<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="kit/ke-app.css">
 <link rel="stylesheet" href="style.css">
-<script src="web-init.js"></script>
+<script src="kit/ke-icons.js"></script>
+<script src="kit/ke-app.js"></script>
 </head>
-<body>
-<div class="app">
-  <header id="hdr"></header>
-  <main id="view"></main>
-</div>
+<body class="ke-app">
+<header class="ke-kopf">
+  <span id="kopfLinks"><span class="ke-kopf__name">Baulexikon</span></span>
+  <span class="ke-kopf__rechts">
+    <button type="button" class="ke-kopf__knopf" id="fav" aria-label="Merken" aria-pressed="false" hidden></button>
+    <button type="button" class="ke-kopf__knopf" data-ke-menue></button>
+  </span>
+</header>
+<div class="ke-titel" id="titel" hidden><h1 id="titelText"></h1><p id="titelSub"></p></div>
+<div id="umzug"></div>
+<main class="ke-inhalt" id="view"></main>
 
-<div class="tabbar"><nav id="tabs">
-  <a href="#/" data-t="start"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 11l8-7 8 7v9h-5v-6H9v6H4z"/></svg>Start</a>
-  <a href="#/themen" data-t="themen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 4h14v16H5zM9 9h6M9 13h6"/></svg>Themen</a>
-  <a href="#/merkliste" data-t="merkliste"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 4h12v17l-6-4-6 4z"/></svg>Merkliste</a>
-  <a href="#/quellen" data-t="quellen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 3h7l4 4v14H7zM14 3v4h4M10 12h5M10 16h5"/></svg>Quellen</a>
-</nav></div>
+<nav class="ke-leiste" id="tabs" aria-label="Bereiche">
+  <a href="#/" data-t="start" data-sym="start">Start</a>
+  <a href="#/themen" data-t="themen" data-sym="themen">Themen</a>
+  <a href="#/merkliste" data-t="merkliste" data-sym="merkliste">Merkliste</a>
+  <a href="#/quellen" data-t="quellen" data-sym="quellen">Quellen</a>
+</nav>
 
 <script src="search.js"></script>
 <script src="app.js"></script>

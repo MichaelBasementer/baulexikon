@@ -1,9 +1,15 @@
 // Baulexikon: hash router and views. All content comes from data/*.json.
 const FILES = ["kapitel", "bauteile", "erkennung", "materialien", "schadstoffe", "regeln", "avv", "tabellen", "laender", "quellen", "wandel", "bilder"];
 const STALE_DAYS = 180;
-// Only under /werkzeuge/ on the website does the KE AbfallCheck sit next to this app.
-const IM_WERKZEUG = location.pathname.includes("/werkzeuge/baulexikon/");
-const pruefen = () => IM_WERKZEUG ? `<a class="link" href="../abfallcheck/index.html">Im KE AbfallCheck prüfen</a>` : "";
+const VERSION = "2.0.0";
+// The website no longer embeds its own copy (2026-11, KE app family): the website links to this app.
+// The old website-edition code paths below stay switched off until they are removed.
+const IM_WERKZEUG = false;
+// Link to the KE AbfallCheck only once it is online (kit/ke-icons.js decides).
+const pruefen = () => {
+  const ac = window.KE_ICONS && KE_ICONS.APPS.abfallcheck;
+  return ac && ac.online ? `<a class="link" href="${ac.url}" target="_blank" rel="noopener">Im KE AbfallCheck prüfen</a>` : "";
+};
 const STORE = "baulexikon-v1";
 const D = {};
 let index = [];
@@ -57,19 +63,26 @@ const avvTag = a => a.gefaehrlich ? `<span class="tag bad">gefährlich</span>` :
 const paras = list => (list || []).map(p => `<p>${esc(p)}</p>`).join("");
 const hRow = (titel, html) => html ? `<div class="section-h">${esc(titel)}</div>${html}` : "";
 
-const FAV_ICON = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 4h12v17l-6-4-6 4z"/></svg>`;
+// Header: app name on top-level pages, "‹ Zurück" on detail pages; bookmark on the right where it can be kept.
+// Title and subtitle sit below the header (not on the start page).
 function head(titel, sub, opts = {}) {
-  const fav = opts.route ? loadStore().fav.includes(opts.route) : false;
-  const merken = opts.route && !IM_WERKZEUG;
-  const zurueck = opts.back && !(IM_WERKZEUG && opts.back === "#/themen"); // The sidebar replaces the Themen page.
-  hdr.innerHTML = (zurueck ? `<a class="icon-btn" href="${opts.back}" aria-label="Zurück">‹</a>` : "") +
-    `<div class="ttl"><h1>${esc(titel)}</h1><small>${esc(sub || "")}</small></div>` +
-    (merken ? `<button class="icon-btn" id="fav" aria-label="Merken" aria-pressed="${fav}">${FAV_ICON}</button>` : "");
-  if (merken) document.getElementById("fav").onclick = e => {
+  const favBtn = document.getElementById("fav");
+  document.getElementById("kopfLinks").innerHTML = opts.back
+    ? `<a class="ke-kopf__zurueck" href="${opts.back}">‹ Zurück</a>`
+    : `<span class="ke-kopf__name">Baulexikon</span>`;
+  document.getElementById("titel").hidden = !!opts.start;
+  document.getElementById("titelText").textContent = titel;
+  document.getElementById("titelSub").textContent = sub || "";
+  favBtn.hidden = !opts.route;
+  if (!opts.route) return;
+  const zeige = on => { favBtn.setAttribute("aria-pressed", on); favBtn.innerHTML = KE.symbol("merken", on); };
+  zeige(loadStore().fav.includes(opts.route));
+  favBtn.onclick = () => {
     const s = loadStore(), on = !s.fav.includes(opts.route);
     s.fav = on ? [opts.route, ...s.fav] : s.fav.filter(r => r !== opts.route);
     saveStore(s);
-    e.currentTarget.setAttribute("aria-pressed", on);
+    zeige(on);
+    KE.toast(on ? "Gemerkt" : "Aus der Merkliste entfernt");
   };
 }
 
@@ -112,11 +125,12 @@ const SEARCH = `<div class="search"><svg width="20" height="20" viewBox="0 0 24 
 const trefferListe = text => Search.find(index, text).map(h => row(h.route, h.titel, h.sub)).join("") || `<p class="item">Kein Treffer</p>`;
 
 function start() {
-  head(IM_WERKZEUG ? "KE Baulexikon" : "Baulexikon", "Nachschlagen für Bestand und Rückbau");
+  head("Baulexikon", "Nachschlagen für Bestand und Rückbau", { start: true });
   const offen = D.wandel.length;
-  view.innerHTML = (IM_WERKZEUG ? "" : SEARCH + `<div id="res" class="panel" hidden></div>`) + `<div id="home" class="tiles">` +
-    D.kapitel.map(k => `<a class="tile" href="${k.route}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">${k.icon}</svg><b>${esc(k.titel)}</b><span>${esc(k.kurz)}</span></a>`).join("") +
-    `<a class="tile" href="#/quellen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><b>Im Wandel</b><span>${offen} offene Änderungen</span></a></div>`;
+  // Chapters as rows (approved KE app design), "Im Wandel" leads to the sources page.
+  view.innerHTML = SEARCH + `<div id="res" class="panel" hidden></div>` + `<div id="home" class="panel">` +
+    D.kapitel.map(k => row(k.route, k.titel, k.kurz)).join("") +
+    row("#/quellen", "Im Wandel", `${offen} offene Änderungen`) + `</div>`;
   const q = document.getElementById("q"), res = document.getElementById("res"), home = document.getElementById("home");
   if (IM_WERKZEUG) {
     home.insertAdjacentHTML("afterbegin", `<a class="tile" href="../abfallcheck/index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 4h14v16H5zM9 9h6M9 13h6M9 17h3"/></svg><b>KE AbfallCheck</b><span>Einstufung und Grenzwerte</span></a>`);
@@ -422,6 +436,17 @@ async function boot() {
   addEventListener("hashchange", route);
   route();
 }
+
+// Moved in 2026-11. The old GitHub Pages copy keeps working but points to the new address; the
+// Merkliste lives per address in the browser, so it does not move along.
+if (location.hostname.endsWith("github.io")) {
+  const neu = "https://baulexikon.kellerer-engineering.de/";
+  document.getElementById("umzug").innerHTML = `<div class="ke-hinweis"><span class="ke-qu ke-qu--rot"></span><div class="ke-hinweis__text">
+    <span>Das Baulexikon ist umgezogen. Bitte die neue Adresse öffnen und dort zum Startbildschirm hinzufügen. Die Merkliste wird nicht mit übertragen.</span>
+    <a class="ke-link" href="${neu}">${neu}</a></div></div>`;
+}
+document.querySelectorAll("[data-sym]").forEach(a => a.insertAdjacentHTML("afterbegin", KE.symbol(a.dataset.sym)));
+KE.start({ app: "baulexikon", version: VERSION });
 
 if (!IM_WERKZEUG && "serviceWorker" in navigator) {
   // First-time installs must not reload; only a replacement worker does.
