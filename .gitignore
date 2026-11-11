@@ -1,2 +1,5 @@
 .playwright-mcp/
 node_modules/
+
+# Claude Code: lokale Freigaben koennen Zugangsdaten enthalten - nie committen
+.claude/settings.local.json
